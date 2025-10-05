@@ -12,21 +12,21 @@ export default function CompanyPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-primary/10 to-background py-20 md:py-32">
+      <section className="relative bg-gradient-to-b from-primary/10 to-background py-[48px] md:py-[77px]">
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               <span className="text-primary">PROVOID</span>-Company
             </h1>
             <p className="text-lg text-muted-foreground md:text-xl">
-              Maßgeschneiderte Lösungen für Ihr Unternehmen
+              no brain no gain.
             </p>
           </div>
         </div>
       </section>
 
       {/* Content Section */}
-      <section className="container px-4 md:px-6 lg:px-8 py-16 md:py-24">
+      <section className="container px-4 md:px-6 lg:px-8 py-[38px] md:py-[58px]">
         <div className="mx-auto max-w-4xl">
           <Accordion type="single" collapsible className="space-y-4">
             <AccordionItem value="ziel" className="rounded-2xl border bg-card px-6 shadow-sm">
@@ -38,11 +38,18 @@ export default function CompanyPage() {
                   <span className="text-xl font-semibold">Ziel</span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-2">
+              <AccordionContent className="pt-4 pb-6">
                 <div className="text-muted-foreground leading-relaxed space-y-4">
                   <p>
-                    PROVOID-Company verfolgt das Ziel, Neurowissenschaft in Unternehmenskulturen zu integrieren,
-                    um die neuronale Gesundheit der MitarbeiterInnen sowie die Effizienz ihrer Arbeit zu optimieren.
+                    PROVOID-Company verfolgt das Ziel, Neurowissenschaft fest in Unternehmenskulturen zu verankern, damit die neuronale Gesundheit der Mitarbeitenden gestärkt und die Effizienz ihrer Arbeit nachhaltig verbessert wird. Dazu setzen wir auf praxisnahe Interventionen. Gemeinsam entwickeln wit Leitlinien für Fokus, Erholung und Lernfähigkeit und schulen Führungskräfte in neurofreundlicher Leitung und Kommunikation. 
+                  </p>
+                  <p>
+                    Digitale Tools unterstützen den Alltag mit kurzen Übungen, personalisierten Empfehlungen und Feedback.
+                    Wirkung messen wir transparent über klar definierte Ziele und Kennzahlen, immer mit Datenschutz und Ethik als verbindlichem Rahmen.
+
+                  </p>
+                  <p>
+                    So entsteht Schritt für Schritt eine Kultur, die Gesundheit und Leistung gleichermaßen fördert.
                   </p>
                 </div>
               </AccordionContent>
@@ -57,11 +64,10 @@ export default function CompanyPage() {
                   <span className="text-xl font-semibold">Vision</span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-2">
+              <AccordionContent className="pt-4 pb-6">
                 <div className="text-muted-foreground leading-relaxed space-y-4">
                   <p>
-                    Unsere Vision ist das Verständnis von neuronalen Prozessen als Grundlage für die Arbeit in jeglichen
-                    Unternehmen und Branchen.
+                    Unsere Vision ist, dass Unternehmen neuronale Prozesse so gut verstehen, dass sie Kultur, Zusammenarbeit und Entscheidungen im Einklang mit der menschlichen Biologie gestalten. PROVOID will dafür als verlässliche Instanz die führende Rolle am Unternehmensmarkt einnehmen und  neurowissenschaftliche Erkenntnisse verständlich machen, Vertrauen schaffen und Maßstäbe für Wirksamkeit und Verantwortung setzen. Wir streben an, der bevorzugte Partner für Vorstände und Führungsteams zu sein und einen Branchenstandard zu prägen, an dem sich messbare Wirkung, wissenschaftliche Qualität und Schutz der Privatsphäre orientieren. So entsteht eine Wirtschaft, in der neuronale Gesundheit  und Leistungsfähigkeit nachhaltig miteinander vereint werden und miteinander wachsen können.
                   </p>
                 </div>
               </AccordionContent>
@@ -76,7 +82,7 @@ export default function CompanyPage() {
                   <span className="text-xl font-semibold">Leistungen</span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-2">
+              <AccordionContent className="pt-4 pb-6">
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
                     PROVOID vereint Dienstleistungen und Software zu einem ganzheitlichen Angebot. In enger Zusammenarbeit
@@ -85,7 +91,7 @@ export default function CompanyPage() {
                   </p>
                   <p>
                     So entstehen messbare Veränderungen und spürbare Effizienzgewinne. Dazu entwickeln und implementieren
-                    wir evidenzbasierte Tools, die Mitarbeitende im Alltag unterstützen.
+                    wir evidenzbasierte Tools, die Mitarbeitende in ihrem Arbeitsalltag unterstützen.
                   </p>
                 </div>
               </AccordionContent>
@@ -100,19 +106,18 @@ export default function CompanyPage() {
                   <span className="text-xl font-semibold">Pakete</span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-2">
+              <AccordionContent className="pt-4 pb-6">
                 <div className="grid gap-4 md:grid-cols-2">
                   <Card>
                     <CardHeader>
-                      <CardTitle>Starter Paket</CardTitle>
+                      <CardTitle>Starter-Paket</CardTitle>
                       <CardDescription>Für kleine und mittlere Unternehmen</CardDescription>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• Initiale Analyse und Beratung</li>
+                        <li>• Analyse der MitarbeiterInnen</li>
                         <li>• Strategieentwicklung</li>
-                        <li>• 3 Monate Begleitung</li>
-                        <li>• Quartalsweise Reviews</li>
+                        <li>• Dreimonatige Begleitung</li>
                       </ul>
                     </CardContent>
                   </Card>
@@ -124,10 +129,12 @@ export default function CompanyPage() {
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• Umfassende Analyse</li>
+                        <li>• Analyse der MitarbeiterInnen</li>
                         <li>• Maßgeschneiderte Strategien</li>
-                        <li>• 6 Monate intensive Begleitung</li>
+                        <li>• Intensive sechsmonatige Begleitung</li>
+                        <li>• Softwarezugänge für Mitarbeiterinnen</li>
                         <li>• Monatliche Reviews und Anpassungen</li>
+                        <li>• Abschlussanalyse</li>
                       </ul>
                     </CardContent>
                   </Card>
@@ -138,11 +145,13 @@ export default function CompanyPage() {
                       <CardDescription>Für große Organisationen</CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• Ganzheitliche Transformation</li>
-                        <li>• Dediziertes Beraterteam</li>
-                        <li>• 12 Monate Vollbetreuung</li>
-                        <li>• Kontinuierliche Optimierung</li>
+                      <ul className="space-y-2 text-sm text-muted-foreground list-disc pl-6">
+                        <li>Ganzheitliche Transformation</li>
+                        <li>Konzeptentwicklung zur neurofreundlichen Entwicklung</li>
+                        <li>12-monatige Begleitung</li>
+                        <li>Kontinuierliche Optimierung</li>
+                        <li>Eingangs- und Abschlussanalyse</li>
+                        <li>Softwarezugänge für Abteilungen und Mitarbeiterinnen</li>
                       </ul>
                     </CardContent>
                   </Card>
@@ -150,7 +159,7 @@ export default function CompanyPage() {
                   <Card>
                     <CardHeader>
                       <CardTitle>Individual Paket</CardTitle>
-                      <CardDescription>Maßgeschneiderte Lösungen</CardDescription>
+                      <CardDescription>Let's talk</CardDescription>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-2 text-sm text-muted-foreground">
@@ -174,7 +183,7 @@ export default function CompanyPage() {
                   <span className="text-xl font-semibold">Zielgruppe</span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-2">
+              <AccordionContent className="pt-4 pb-6">
                 <div className="space-y-4 text-muted-foreground">
                   <p className="leading-relaxed">
                     Unsere Dienstleistungen richten sich an:
@@ -197,16 +206,12 @@ export default function CompanyPage() {
                   <div className="rounded-full bg-primary/10 p-3">
                     <FlaskConical className="h-6 w-6 text-primary" />
                   </div>
-                  <span className="text-xl font-semibold">Science behind PROVOID</span>
+                  <span className="text-xl font-semibold">Wissenschaftliche Arbeit & Hintergrund</span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-2">
+              <AccordionContent className="pt-4 pb-6">
                 <p className="text-muted-foreground leading-relaxed">
-                  Unsere Methoden basieren auf aktuellen wissenschaftlichen Erkenntnissen aus den Bereichen 
-                  Organisationspsychologie, Verhaltensökonomie und Management-Forschung. Wir kombinieren 
-                  evidenzbasierte Ansätze mit praktischer Erfahrung und nutzen datengestützte Analysen, 
-                  um messbare Ergebnisse zu erzielen. Durch kontinuierliche Forschung und Entwicklung 
-                  stellen wir sicher, dass unsere Methoden stets dem neuesten Stand der Wissenschaft entsprechen.
+                  Unsere Methoden basieren auf aktuellen wissenschaftlichen Erkenntnissen aus den Bereichen Neurowissenschaft, Organisationspsychologie, Verhaltensökonomie und Managementforschung. Wir stützen uns dabei besonders auf neurowissenschaftliche Evidenz und betreiben eigene Forschung. Unsere Tools werden in EEG Messungen geprüft, um ihre beabsichtigte Wirkung nachweisbar zu erzielen. Wir kombinieren evidenzbasierte Ansätze mit praktischer Erfahrung und nutzen datengestützte Analysen, um messbare Ergebnisse zu erreichen. Durch kontinuierliche Forschung und Entwicklung stellen wir sicher, dass unsere Methoden dem neuesten Stand der Wissenschaft entsprechen. Der Neurotech Markt entwickelt sich rasant und wir möchten ihn aktiv und wissenschaftlich mitgestalten.
                 </p>
               </AccordionContent>
             </AccordionItem>
@@ -217,23 +222,27 @@ export default function CompanyPage() {
                   <div className="rounded-full bg-primary/10 p-3">
                     <BarChart3 className="h-6 w-6 text-primary" />
                   </div>
-                  <span className="text-xl font-semibold">Analysis</span>
+                  <span className="text-xl font-semibold">Analyse</span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-2">
+              <AccordionContent className="pt-4 pb-6">
                 <div className="space-y-4 text-muted-foreground">
                   <p className="leading-relaxed">
-                    Unsere Analysemethoden umfassen:
+                    Aktuell bietet PROVOID eine Analyse zum Prokrastinationsverhalten von Mitarbeiterinnen an. Sie stützt sich auf Erkenntnisse der Verhaltenspsychologie und der Neurowissenschaft, umfasst über 90 Fragen und wird automatisiert ausgewertet. Auf Basis der Ergebnisse ordnen wir jede Person einem von vier entwickelten Typen zu. Im Anschluss erhält jeder Typ neurowissenschaftlich angepasste Tools und Empfehlungen, die auf die jeweiligen Mechanismen und Bedürfnisse zugeschnitten sind.
                   </p>
-                  <ul className="space-y-2 pl-6 list-disc">
-                    <li>Umfassende Ist-Analyse der aktuellen Unternehmenssituation</li>
-                    <li>Stakeholder-Interviews und Mitarbeiterbefragungen</li>
-                    <li>Prozess-Mapping und Effizienzanalysen</li>
-                    <li>Benchmarking und Wettbewerbsanalysen</li>
-                    <li>Datenanalyse und KPI-Auswertungen</li>
-                    <li>SWOT-Analysen und Risikobewertungen</li>
-                    <li>Erstellung detaillierter Handlungsempfehlungen</li>
-                  </ul>
+                  <p className="leading-relaxed">
+                    Weitere Analysen sind in Arbeit und können unternehmensspezifisch ausgearbeitet werden, damit sie den exakten Bedürfnissen und Zielen entsprechen.
+                  </p>
+                  <div>
+                    <p className="leading-relaxed font-medium mb-2">Unsere Analyse umfasst</p>
+                    <ul className="space-y-2 pl-6 list-disc">
+                      <li>Einen wissenschaftlich fundierten Fragebogen mit über 90 Items aus Verhaltenspsychologie und Neurowissenschaft</li>
+                      <li>Eine automatisierte Auswertung mit individuellem Profil und klaren Handlungshinweisen</li>
+                      <li>Die Zuordnung zu vier Typen mit Beschreibung der zugrunde liegenden Muster</li>
+                      <li>Typenspezifische, neurowissenschaftlich adaptierte Tools und Empfehlungen für den Arbeitsalltag</li>
+                      <li>Die Option, weitere Analysen zu entwickeln und auf die spezifische Unternehmenssituation zuzuschneiden</li>
+                    </ul>
+                  </div>
                 </div>
               </AccordionContent>
             </AccordionItem>

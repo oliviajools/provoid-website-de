@@ -8,21 +8,21 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-primary/10 to-background py-20 md:py-32">
+      <section className="relative bg-gradient-to-b from-primary/10 to-background py-[48px] md:py-[77px]">
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               Willkommen bei <span className="text-primary">PROVOID</span>
             </h1>
             <p className="mb-8 text-lg text-muted-foreground md:text-xl">
-              Innovative Lösungen für Unternehmen und Sport
+              no brain no gain.
             </p>
           </div>
         </div>
       </section>
 
       {/* Content Sections */}
-      <section className="container px-4 md:px-6 lg:px-8 py-16 md:py-24">
+      <section className="container px-4 md:px-6 lg:px-8 py-[38px] md:py-[58px]">
         <div className="mx-auto max-w-4xl space-y-16">
           <Section id="was-ist-provoid" title="Was ist PROVOID?">
             <div className="space-y-4">
@@ -44,37 +44,55 @@ export default function Home() {
             </div>
           </Section>
 
-          <Section id="idee" title="Was ist die Idee hinter PROVOID?">
+          <Section id="idee" title="Unsere Idee">
+            <div className="space-y-4">
+              <p>
+                PROVOID begann als „Jugend forscht“-Projekt zur Prokrastination. Der Name war schnell gefunden:
+                PROVOID – kurz für Procrastination avoid.
+              </p>
+              <p>
+                Im Verlauf der Arbeit wurde klar, wie stark neurowissenschaftliche Mechanismen Entscheidungen,
+                Arbeitsverhalten und Kognition prägen. PROVOID wuchs – und mit uns die leitende Idee.
+              </p>
+              <p>
+                Heute verfolgen wir einen breiteren Ansatz: Wir übersetzen aktuelle Forschung und betreiben eigene
+                Studien in der angewandten Neurowissenschaft, um neuronale Fähigkeiten in allen leistungsbezogenen
+                Bereichen zu optimieren – von Fokus und Lernen über Zusammenarbeit bis zu resilienten Strukturen in
+                Organisationen.
+              </p>
+            </div>
+          </Section>
+
+          <Section id="vision" title="Unsere Vision">
             <p>
-              Die Idee hinter PROVOID basiert auf der Erkenntnis, dass sowohl Unternehmen als auch 
-              Sportorganisationen von evidenzbasierten Strategien profitieren können. Wir schaffen 
-              eine Brücke zwischen Theorie und Praxis und ermöglichen es unseren Kunden, ihr volles 
-              Potenzial zu entfalten.
+              Unsere Vision ist eine Gesellschaft, in der jede und jeder neurowissenschaftlichen Fortschritt nutzen kann. Wir machen Erkenntnisse aus der Forschung verständlich und zugänglich, damit Menschen ihre neuronalen Fähigkeiten entfalten und verantwortungsvoll einsetzen. So entstehen bessere Entscheidungen, mehr Fokus, nachhaltiges Lernen und gesunde Zusammenarbeit im Alltag und in Organisationen. Wir wollen wachsen, damit dieser Zugang breit verfügbar wird und die Wirkung für die Gesellschaft stetig zunimmt. Transparenz, Innovation und Qualität leiten unser Handeln. Wir streben danach, Standards zu setzen und innovative Lösungen zu entwickeln, die nachhaltig positive Veränderungen bewirken. So möchten wir der führende Partner für ganzheitliche Entwicklung und Optimierung werden.
             </p>
           </Section>
 
-          <Section id="vision" title="Was ist PROVOIDs Vision?">
+          <Section id="geschichte" title="Unsere Geschichte">
             <p>
-              Unsere Vision ist es, der führende Partner für ganzheitliche Entwicklung und Optimierung 
-              zu werden. Wir streben danach, Standards zu setzen und innovative Lösungen zu entwickeln, 
-              die nachhaltig positive Veränderungen bewirken.
+              Das Ursprungsprojekt von PROVOID entstand 2023 und nahm 2024 erstmals erfolgreich bei dem Wettbewerb
+              „Jugend forscht” teil. Im Frühjahr entstand hieraus das Einzelunternehmen und StartUp PROVOID. 2025 war
+              das Projekt Teil der JugendUnternimmt-Summerschool und belegte deutschlandweit den 2. Platz. Im Oktober
+              2025 wurde es nun für den Hamburger-Award „STARTERiN” 2025 nominiert.
             </p>
           </Section>
 
-          <Section id="geschichte" title="Geschichte von PROVOID">
-            <p>
-              PROVOID wurde aus der Überzeugung heraus gegründet, dass wissenschaftlich fundierte 
-              Methoden den Unterschied machen. Seit unserer Gründung haben wir kontinuierlich an der 
-              Entwicklung innovativer Konzepte gearbeitet und unser Leistungsspektrum erweitert.
-            </p>
-          </Section>
-
-          <Section id="wer-ist-provoid" title="Wer ist PROVOID?">
-            <p>
-              PROVOID ist ein Team von Experten aus verschiedenen Fachbereichen, die ihre Expertise 
-              bündeln, um maßgeschneiderte Lösungen zu entwickeln. Unser interdisziplinäres Team 
-              vereint Fachwissen aus Wissenschaft, Praxis und Beratung.
-            </p>
+          <Section id="wer-ist-provoid" title="Wer sind Wir?">
+            <div className="space-y-4">
+              <p>
+                PROVOID wurde im April 2025 von Olivia Bahr gegründet.
+              </p>
+              <p>
+                Olivia Bahr hat 2025 ihr Abitur im naturwissenschaftlichen Profil abgeschlossen und bereits ein Juniorstudium im Fachbereich Physik (B.Sc.) an der Universität Hamburg absolviert.
+              </p>
+              <p>
+                An ihrer Seite arbeitet seit Juli 2025 ein Programmierer und die Marketing-Abteilung wächst stetig.
+              </p>
+              <p>
+                Wir stehen im engen Austausch mit Neurologen, Neurowissenschaftlern und PsychologInnen in Hamburg und Umgebung und können es kaum erwarten, weiter zu wachsen.
+              </p>
+            </div>
           </Section>
         </div>
       </section>
@@ -91,7 +109,7 @@ export default function Home() {
             </p>
             
             <div className="grid gap-8 md:grid-cols-2">
-              <Card className="group transition-all hover:shadow-lg hover:border-primary">
+              <Card className="group transition-all hover:shadow-lg hover:border-primary h-full flex flex-col">
                 <CardHeader>
                   <div className="mb-4 flex justify-center">
                     <div className="rounded-full bg-primary/10 p-4">
@@ -103,7 +121,7 @@ export default function Home() {
                     Maßgeschneiderte Lösungen für Ihr Unternehmen
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="pb-6 mt-auto">
                   <p className="mb-6 text-sm text-muted-foreground">
                     Optimieren Sie Ihre Unternehmensprozesse mit unseren wissenschaftlich 
                     fundierten Methoden und individuellen Beratungsleistungen.
@@ -117,7 +135,7 @@ export default function Home() {
                 </CardContent>
               </Card>
 
-              <Card className="group transition-all hover:shadow-lg hover:border-primary">
+              <Card className="group transition-all hover:shadow-lg hover:border-primary h-full flex flex-col">
                 <CardHeader>
                   <div className="mb-4 flex justify-center">
                     <div className="rounded-full bg-primary/10 p-4">
@@ -129,7 +147,7 @@ export default function Home() {
                     Professionelle Unterstützung für Sportorganisationen
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="pb-6 mt-auto">
                   <p className="mb-6 text-sm text-muted-foreground">
                     Steigern Sie die Leistung Ihrer Athleten und optimieren Sie Ihre 
                     Sportorganisation mit unseren spezialisierten Programmen.

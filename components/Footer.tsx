@@ -9,7 +9,7 @@ export function Footer() {
           <div>
             <h3 className="mb-4 text-lg font-semibold text-primary">PROVOID</h3>
             <p className="text-sm text-muted-foreground">
-              Innovative Lösungen für Unternehmen und Sport
+              no brain no gain.
             </p>
           </div>
           
@@ -37,8 +37,8 @@ export function Footer() {
           <div>
             <h4 className="mb-4 text-sm font-semibold">Kontakt</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>info@provoid.de</li>
-              <li>+49 (0) 123 456789</li>
+              <li>oliviabahr@avoid-procrastination-provoid.com</li>
+              <li>+49 1744401044</li>
             </ul>
           </div>
         </div>

@@ -12,21 +12,21 @@ export default function SportsPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-primary/10 to-background py-20 md:py-32">
+      <section className="relative bg-gradient-to-b from-primary/10 to-background py-[48px] md:py-[77px]">
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               <span className="text-primary">PROVOID</span>-Sports
             </h1>
             <p className="text-lg text-muted-foreground md:text-xl">
-              Professionelle Unterstützung für Sportorganisationen
+              no brain no gain.
             </p>
           </div>
         </div>
       </section>
 
       {/* Content Section */}
-      <section className="container px-4 md:px-6 lg:px-8 py-16 md:py-24">
+      <section className="container px-4 md:px-6 lg:px-8 py-[38px] md:py-[58px]">
         <div className="mx-auto max-w-4xl">
           <Accordion type="single" collapsible className="space-y-4">
             <AccordionItem value="ziel" className="rounded-2xl border bg-card px-6 shadow-sm">
@@ -38,18 +38,14 @@ export default function SportsPage() {
                   <span className="text-xl font-semibold">Ziel</span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-2">
+              <AccordionContent className="pt-4 pb-6">
                 <p className="text-muted-foreground leading-relaxed">
-                  Unser Ziel ist es, Sportorganisationen und Athleten dabei zu unterstützen, ihre Leistung 
-                  zu maximieren und nachhaltigen Erfolg zu erzielen. Wir entwickeln individuelle Trainings- 
-                  und Entwicklungsprogramme, die auf wissenschaftlichen Erkenntnissen basieren und gleichzeitig 
-                  die spezifischen Anforderungen des jeweiligen Sports berücksichtigen. Durch unseren 
-                  ganzheitlichen Ansatz fördern wir nicht nur die sportliche Leistung, sondern auch die 
-                  mentale Stärke und das Wohlbefinden der Athleten.
+                  Unser Ziel ist es, Sportorganisationen sowie Athletinnen und Athleten durch angewandte Neurowissenschaft zu nachhaltiger Spitzenleistung zu befähigen. Wir wollen Reaktionsfähigkeit, Entscheidungsqualität, Fokus und Selbstregulation stärken und zugleich mentale Stabilität und Wohlbefinden fördern. Leistung soll messbar wachsen und sich im Training, im Wettkampf und in der Teamkultur dauerhaft zeigen.
                 </p>
               </AccordionContent>
             </AccordionItem>
 
+            {/* Vision */}
             <AccordionItem value="vision" className="rounded-2xl border bg-card px-6 shadow-sm">
               <AccordionTrigger className="hover:no-underline">
                 <div className="flex items-center gap-4">
@@ -59,17 +55,14 @@ export default function SportsPage() {
                   <span className="text-xl font-semibold">Vision</span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-2">
+              <AccordionContent className="pt-4 pb-6">
                 <p className="text-muted-foreground leading-relaxed">
-                  Unsere Vision ist es, der führende Partner für evidenzbasierte Sportentwicklung zu werden. 
-                  Wir streben danach, neue Standards in der Sportwissenschaft zu setzen und innovative 
-                  Trainingsmethoden zu entwickeln, die Athleten und Teams dabei helfen, ihr volles Potenzial 
-                  zu entfalten. Dabei legen wir besonderen Wert auf Nachhaltigkeit, Gesundheit und die 
-                  langfristige Entwicklung von Talenten.
+                  Unsere Vision ist es, der führende Partner für angewandte Neurowissenschaft im Sport zu sein. Wir wollen neue Standards in Neuroathletik und Neurotech setzen und den Markt verantwortungsvoll mitgestalten. Dafür verbinden wir Forschung und Praxis, machen neuronale Mechanismen verständlich und nutzbar und richten Entwicklung konsequent auf messbare Wirkung aus. So unterstützen wir Athletinnen, Athleten und Teams dabei, Reaktionsfähigkeit, Entscheidungsqualität, Fokus, Selbstregulation und mentale Stabilität nachhaltig zu stärken, mit Blick auf Gesundheit, Fairness und die langfristige Entwicklung von Talenten.
                 </p>
               </AccordionContent>
             </AccordionItem>
 
+            {/* Leistungen */}
             <AccordionItem value="leistungen" className="rounded-2xl border bg-card px-6 shadow-sm">
               <AccordionTrigger className="hover:no-underline">
                 <div className="flex items-center gap-4">
@@ -79,19 +72,16 @@ export default function SportsPage() {
                   <span className="text-xl font-semibold">Leistungen</span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-2">
-                <div className="space-y-4 text-muted-foreground">
-                  <p className="leading-relaxed">
-                    Wir bieten ein umfassendes Spektrum an Dienstleistungen für den Sportbereich:
-                  </p>
+              <AccordionContent className="pt-4 pb-6">
+                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                  <p className="font-semibold">Unsere Leistungen im Sportbereich</p>
                   <ul className="space-y-2 pl-6 list-disc">
-                    <li>Leistungsdiagnostik und Trainingsplanung</li>
-                    <li>Mentales Training und Sportpsychologie</li>
-                    <li>Ernährungsberatung und Regenerationsmanagement</li>
-                    <li>Talentsichtung und Nachwuchsförderung</li>
-                    <li>Teambuilding und Gruppendynamik</li>
-                    <li>Verletzungsprävention und Rehabilitation</li>
-                    <li>Performance-Analyse und Datenauswertung</li>
+                    <li>Neuroathletik Wissensvermittlung für Athletinnen und Athleten, altersgerecht und praxisnah</li>
+                    <li>Optionale individuelle EEG Analyse zur Testung neuroathletischer Eigenschaften</li>
+                    <li>Gezielte Förderung in sechs Einheiten mit Übungen für Wahrnehmung, Reaktionsfähigkeit, Entscheidungsfindung, Koordination und Selbstregulation</li>
+                    <li>Programme für Jugendteams mit altersgerechter Didaktik, Trainingseinheiten und begleitendem Austausch mit Trainerinnen und Trainern</li>
+                    <li>Optionale Neurostimulation durch die PROVOID-App als non-invasive Ergänzung zur Leistungsunterstützung</li>
+                    <li>Teamprogramme mit klarer Struktur aus Wissen, Analyse, Training, persönlichen Auswertungen und optionalen Abschlusstestungen</li>
                   </ul>
                 </div>
               </AccordionContent>
@@ -106,64 +96,66 @@ export default function SportsPage() {
                   <span className="text-xl font-semibold">Pakete</span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-2">
+              <AccordionContent className="pt-4 pb-6">
                 <div className="grid gap-4 md:grid-cols-2">
                   <Card>
                     <CardHeader>
-                      <CardTitle>Athlet Paket</CardTitle>
+                      <CardTitle>Athlet-Paket</CardTitle>
                       <CardDescription>Für Einzelsportler</CardDescription>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-2 text-sm text-muted-foreground">
                         <li>• Individuelle Leistungsdiagnostik</li>
-                        <li>• Personalisierter Trainingsplan</li>
-                        <li>• Mentales Coaching</li>
-                        <li>• Monatliche Fortschrittskontrolle</li>
+                        <li>• Personalisierter Neuro-Trainingsplan</li>
+                        <li>• App-Zugang</li>
                       </ul>
                     </CardContent>
                   </Card>
 
                   <Card>
                     <CardHeader>
-                      <CardTitle>Team Paket</CardTitle>
+                      <CardTitle>Team-Paket</CardTitle>
                       <CardDescription>Für Mannschaftssportarten</CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• Team-Analyse und Diagnostik</li>
-                        <li>• Kollektive Trainingsstrategien</li>
-                        <li>• Teambuilding-Maßnahmen</li>
-                        <li>• Saisonbegleitende Betreuung</li>
+                      <ul className="space-y-2 text-sm text-muted-foreground list-disc pl-6">
+                        <li>Team-Analyse und Diagnostik</li>
+                        <li>Kollektive Trainingsstrategien</li>
+                        <li>Trainingssitzungen mit neuroathletischen Schwerpunkten</li>
+                        <li>Saisonbegleitende Betreuung</li>
+                        <li>App-Zugänge</li>
                       </ul>
                     </CardContent>
                   </Card>
 
                   <Card>
                     <CardHeader>
-                      <CardTitle>Verein Paket</CardTitle>
+                      <CardTitle>Vereins-Paket</CardTitle>
                       <CardDescription>Für Sportvereine</CardDescription>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-2 text-sm text-muted-foreground">
                         <li>• Nachwuchsförderung</li>
-                        <li>• Trainerfortbildung</li>
-                        <li>• Vereinsentwicklung</li>
-                        <li>• Langfristige Partnerschaft</li>
+                        <li>• Arbeit mit mehreren Teams</li>
+                        <li>• Neurowissenschaftliche Integration in die Vereinsarbeit</li>
+                        <li>• Langfristige Partnerschaft & Datensicherung</li>
+                        <li>• Einzel- und Teamzugänge der App</li>
+                        <li>• Eingangs- und Abschlussanalyse</li>
                       </ul>
                     </CardContent>
                   </Card>
 
                   <Card>
                     <CardHeader>
-                      <CardTitle>Elite Paket</CardTitle>
-                      <CardDescription>Für Spitzensportler</CardDescription>
+                      <CardTitle>Individual-Paket</CardTitle>
+                      <CardDescription>Let’s talk</CardDescription>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• Ganzheitliche Betreuung</li>
-                        <li>• Dediziertes Expertenteam</li>
-                        <li>• 24/7 Support</li>
-                        <li>• Wettkampfbegleitung</li>
+                        <li>• Flexible Anpassung</li>
+                        <li>• Individuelle Betreuung</li>
+                        <li>• Sportspezifische Schwerpunkte</li>
+                        <li>• App-Zugänge falls gewünscht</li>
                       </ul>
                     </CardContent>
                   </Card>
@@ -180,7 +172,7 @@ export default function SportsPage() {
                   <span className="text-xl font-semibold">Zielgruppe</span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-2">
+              <AccordionContent className="pt-4 pb-6">
                 <div className="space-y-4 text-muted-foreground">
                   <p className="leading-relaxed">
                     Unsere Dienstleistungen richten sich an:
@@ -207,15 +199,15 @@ export default function SportsPage() {
                   <span className="text-xl font-semibold">Science behind PROVOID</span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-2">
+              <AccordionContent className="pt-4 pb-6">
                 <p className="text-muted-foreground leading-relaxed">
                   Unsere Methoden basieren auf aktuellen wissenschaftlichen Erkenntnissen aus den Bereichen 
                   Sportwissenschaft, Trainingslehre, Sportpsychologie und Biomechanik. Wir kombinieren 
                   evidenzbasierte Ansätze mit modernster Technologie und nutzen datengestützte Analysen, 
                   um die Leistung zu optimieren. Durch kontinuierliche Forschung und Zusammenarbeit mit 
-                  führenden Sportinstituten stellen wir sicher, dass unsere Methoden stets dem neuesten 
-                  Stand der Sportwissenschaft entsprechen. Dabei berücksichtigen wir individuelle 
-                  physiologische, psychologische und biomechanische Faktoren.
+                  Experten stellen wir sicher, dass unsere Methoden stets dem neuesten Stand der Sportwissenschaft 
+                  entsprechen. Dabei berücksichtigen wir individuelle physiologische, psychologische und 
+                  biomechanische Faktoren.
                 </p>
               </AccordionContent>
             </AccordionItem>

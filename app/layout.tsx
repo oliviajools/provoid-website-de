@@ -15,13 +15,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PROVOID - Innovative Lösungen für Unternehmen und Sport",
-  description: "PROVOID bietet innovative Lösungen für Unternehmen und Sport. Entdecken Sie PROVOID-Company und PROVOID-Sports.",
+  title: "PROVOID - no brain no gain.",
+  description: "no brain no gain.",
   keywords: ["PROVOID", "Company", "Sports", "Innovation", "Lösungen"],
   authors: [{ name: "PROVOID" }],
   openGraph: {
-    title: "PROVOID - Innovative Lösungen für Unternehmen und Sport",
-    description: "PROVOID bietet innovative Lösungen für Unternehmen und Sport.",
+    title: "PROVOID - no brain no gain.",
+    description: "no brain no gain.",
     type: "website",
     locale: "de_DE",
   },
