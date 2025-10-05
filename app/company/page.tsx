@@ -39,13 +39,12 @@ export default function CompanyPage() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-2">
-                <p className="text-muted-foreground leading-relaxed">
-                  Unser Ziel ist es, Unternehmen dabei zu unterstützen, ihre Prozesse zu optimieren und 
-                  nachhaltiges Wachstum zu erzielen. Wir fokussieren uns auf die Entwicklung individueller 
-                  Strategien, die auf wissenschaftlichen Erkenntnissen basieren und gleichzeitig praktisch 
-                  umsetzbar sind. Durch unsere ganzheitliche Herangehensweise schaffen wir messbare Erfolge 
-                  und langfristige Wettbewerbsvorteile.
-                </p>
+                <div className="text-muted-foreground leading-relaxed space-y-4">
+                  <p>
+                    PROVOID-Company verfolgt das Ziel, Neurowissenschaft in Unternehmenskulturen zu integrieren,
+                    um die neuronale Gesundheit der MitarbeiterInnen sowie die Effizienz ihrer Arbeit zu optimieren.
+                  </p>
+                </div>
               </AccordionContent>
             </AccordionItem>
 
@@ -59,13 +58,12 @@ export default function CompanyPage() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-2">
-                <p className="text-muted-foreground leading-relaxed">
-                  Unsere Vision ist es, der führende Partner für evidenzbasierte Unternehmensberatung zu werden. 
-                  Wir streben danach, Standards in der Branche zu setzen und innovative Ansätze zu entwickeln, 
-                  die Unternehmen dabei helfen, ihr volles Potenzial auszuschöpfen. Dabei legen wir besonderen 
-                  Wert auf Nachhaltigkeit, ethische Geschäftspraktiken und die kontinuierliche Weiterentwicklung 
-                  unserer Methoden.
-                </p>
+                <div className="text-muted-foreground leading-relaxed space-y-4">
+                  <p>
+                    Unsere Vision ist das Verständnis von neuronalen Prozessen als Grundlage für die Arbeit in jeglichen
+                    Unternehmen und Branchen.
+                  </p>
+                </div>
               </AccordionContent>
             </AccordionItem>
 
@@ -79,19 +77,16 @@ export default function CompanyPage() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-2">
-                <div className="space-y-4 text-muted-foreground">
-                  <p className="leading-relaxed">
-                    Wir bieten ein umfassendes Spektrum an Dienstleistungen, die auf die individuellen 
-                    Bedürfnisse Ihres Unternehmens zugeschnitten sind:
+                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                  <p>
+                    PROVOID vereint Dienstleistungen und Software zu einem ganzheitlichen Angebot. In enger Zusammenarbeit
+                    gestalten wir passgenaue Konzepte, die neurowissenschaftliche Erkenntnisse in Prozesse, Entscheidungen
+                    und Zusammenarbeit übertragen.
                   </p>
-                  <ul className="space-y-2 pl-6 list-disc">
-                    <li>Strategische Unternehmensberatung und Prozessoptimierung</li>
-                    <li>Führungskräfteentwicklung und Executive Coaching</li>
-                    <li>Organisationsentwicklung und Change Management</li>
-                    <li>Datenanalyse und evidenzbasierte Entscheidungsfindung</li>
-                    <li>Mitarbeiterentwicklung und Teambuilding</li>
-                    <li>Performance Management und KPI-Systeme</li>
-                  </ul>
+                  <p>
+                    So entstehen messbare Veränderungen und spürbare Effizienzgewinne. Dazu entwickeln und implementieren
+                    wir evidenzbasierte Tools, die Mitarbeitende im Alltag unterstützen.
+                  </p>
                 </div>
               </AccordionContent>
             </AccordionItem>

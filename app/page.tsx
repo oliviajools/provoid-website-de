@@ -25,11 +25,23 @@ export default function Home() {
       <section className="container py-16 md:py-24">
         <div className="mx-auto max-w-4xl space-y-16">
           <Section id="was-ist-provoid" title="Was ist PROVOID?">
-            <p>
-              PROVOID ist eine innovative Plattform, die maßgeschneiderte Lösungen für Unternehmen 
-              und Sportorganisationen bietet. Mit unserem ganzheitlichen Ansatz verbinden wir 
-              wissenschaftliche Erkenntnisse mit praktischer Anwendung, um nachhaltige Erfolge zu erzielen.
-            </p>
+            <div className="space-y-4">
+              <p>
+                <strong>From Insight To Impact.</strong>
+              </p>
+              <p>
+                Wir sind ein Hamburger StartUp, das neurowissenschaftliche Erkenntnisse in anwendbare
+                Lösungen überführt, um einen messbaren positiven Wandel in Organisationen und Gesellschaft zu bewirken.
+              </p>
+              <p>
+                Wir entwickeln evidenzbasierte Tools, Trainings und Interventionen, die Entscheidungen,
+                Zusammenarbeit und Strukturen durch neuronale Fortschritte messbar verbessern.
+              </p>
+              <p>
+                So verfolgen wir das Ziel, Menschen in ihren persönlichen, leistungsorientierten Bereichen ihres Lebens
+                zu unterstützen und ihre neuronale Gesundheit zu verbessern.
+              </p>
+            </div>
           </Section>
 
           <Section id="idee" title="Was ist die Idee hinter PROVOID?">
