@@ -13,7 +13,7 @@ export default function CompanyPage() {
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-primary/10 to-background py-20 md:py-32">
-        <div className="container">
+        <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               <span className="text-primary">PROVOID</span>-Company
@@ -26,7 +26,7 @@ export default function CompanyPage() {
       </section>
 
       {/* Content Section */}
-      <section className="container py-16 md:py-24">
+      <section className="container px-4 md:px-6 lg:px-8 py-16 md:py-24">
         <div className="mx-auto max-w-4xl">
           <Accordion type="single" collapsible className="space-y-4">
             <AccordionItem value="ziel" className="rounded-2xl border bg-card px-6 shadow-sm">

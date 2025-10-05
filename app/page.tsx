@@ -9,7 +9,7 @@ export default function Home() {
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-primary/10 to-background py-20 md:py-32">
-        <div className="container">
+        <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               Willkommen bei <span className="text-primary">PROVOID</span>
@@ -22,7 +22,7 @@ export default function Home() {
       </section>
 
       {/* Content Sections */}
-      <section className="container py-16 md:py-24">
+      <section className="container px-4 md:px-6 lg:px-8 py-16 md:py-24">
         <div className="mx-auto max-w-4xl space-y-16">
           <Section id="was-ist-provoid" title="Was ist PROVOID?">
             <div className="space-y-4">
@@ -81,7 +81,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="border-t bg-muted/50 py-16 md:py-24">
-        <div className="container">
+        <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">
               Entdecken Sie unsere Bereiche
