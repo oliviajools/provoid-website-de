@@ -50,10 +50,10 @@ export function Footer() {
             © {new Date().getFullYear()} PROVOID. Alle Rechte vorbehalten.
           </p>
           <div className="flex gap-4 text-sm">
-            <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+            <Link href="/datenschutz" className="text-muted-foreground hover:text-primary transition-colors">
               Datenschutz
             </Link>
-            <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+            <Link href="/impressum" className="text-muted-foreground hover:text-primary transition-colors">
               Impressum
             </Link>
           </div>
