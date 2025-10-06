@@ -31,6 +31,11 @@ export function Footer() {
                   PROVOID-Sports
                 </Link>
               </li>
+              <li>
+                <Link href="/kontakt" className="text-muted-foreground hover:text-primary transition-colors">
+                  Kontakt
+                </Link>
+              </li>
             </ul>
           </div>
           
@@ -50,6 +55,9 @@ export function Footer() {
             © {new Date().getFullYear()} PROVOID. Alle Rechte vorbehalten.
           </p>
           <div className="flex gap-4 text-sm">
+            <Link href="/kontakt" className="text-muted-foreground hover:text-primary transition-colors">
+              Kontakt
+            </Link>
             <Link href="/datenschutz" className="text-muted-foreground hover:text-primary transition-colors">
               Datenschutz
             </Link>
