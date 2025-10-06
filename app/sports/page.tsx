@@ -20,7 +20,7 @@ export default function SportsPage() {
               <span className="text-primary">PROVOID</span>-Sports
             </h1>
             <p className="text-lg text-muted-foreground md:text-xl">
-              no brain no gain.
+              no brain no gain
             </p>
             <div className="relative mt-2 flex justify-center">
               <div aria-hidden className="pointer-events-none absolute inset-0 mx-auto flex justify-center items-center">
@@ -53,9 +53,11 @@ export default function SportsPage() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
-                <p className="text-muted-foreground leading-relaxed">
-                  Unser Ziel ist es, Sportorganisationen sowie Athletinnen und Athleten durch angewandte Neurowissenschaft zu nachhaltiger Spitzenleistung zu befähigen. Wir wollen Reaktionsfähigkeit, Entscheidungsqualität, Fokus und Selbstregulation stärken und zugleich mentale Stabilität und Wohlbefinden fördern. Leistung soll messbar wachsen und sich im Training, im Wettkampf und in der Teamkultur dauerhaft zeigen.
-                </p>
+                <div className="prose prose-neutral dark:prose-invert max-w-none">
+                  <p>
+                    Unser Ziel ist es, Sportorganisationen sowie Athletinnen und Athleten durch angewandte Neurowissenschaft zu nachhaltiger Spitzenleistung zu befähigen. Wir wollen Reaktionsfähigkeit, Entscheidungsqualität, Fokus und Selbstregulation stärken und zugleich mentale Stabilität und Wohlbefinden fördern. Leistung soll messbar wachsen und sich im Training, im Wettkampf und in der Teamkultur dauerhaft zeigen.
+                  </p>
+                </div>
               </AccordionContent>
             </AccordionItem>
 
@@ -70,9 +72,11 @@ export default function SportsPage() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
-                <p className="text-muted-foreground leading-relaxed">
-                  Unsere Vision ist es, der führende Partner für angewandte Neurowissenschaft im Sport zu sein. Wir wollen neue Standards in Neuroathletik und Neurotech setzen und den Markt verantwortungsvoll mitgestalten. Dafür verbinden wir Forschung und Praxis, machen neuronale Mechanismen verständlich und nutzbar und richten Entwicklung konsequent auf messbare Wirkung aus. So unterstützen wir Athletinnen, Athleten und Teams dabei, Reaktionsfähigkeit, Entscheidungsqualität, Fokus, Selbstregulation und mentale Stabilität nachhaltig zu stärken, mit Blick auf Gesundheit, Fairness und die langfristige Entwicklung von Talenten.
-                </p>
+                <div className="prose prose-neutral dark:prose-invert max-w-none">
+                  <p>
+                    Unsere Vision ist es, der führende Partner für angewandte Neurowissenschaft im Sport zu sein. Wir wollen neue Standards in Neuroathletik und Neurotech setzen und den Markt verantwortungsvoll mitgestalten. Dafür verbinden wir Forschung und Praxis, machen neuronale Mechanismen verständlich und nutzbar und richten Entwicklung konsequent auf messbare Wirkung aus. So unterstützen wir Athletinnen, Athleten und Teams dabei, Reaktionsfähigkeit, Entscheidungsqualität, Fokus, Selbstregulation und mentale Stabilität nachhaltig zu stärken, mit Blick auf Gesundheit, Fairness und die langfristige Entwicklung von Talenten.
+                  </p>
+                </div>
               </AccordionContent>
             </AccordionItem>
 
@@ -87,7 +91,7 @@ export default function SportsPage() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <div className="prose prose-neutral dark:prose-invert max-w-none">
                   <p className="font-semibold">Unsere Leistungen im Sportbereich</p>
                   <ul className="space-y-2 pl-6 list-disc">
                     <li>Neuroathletik Wissensvermittlung für Athletinnen und Athleten, altersgerecht und praxisnah</li>
@@ -187,8 +191,8 @@ export default function SportsPage() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
-                <div className="space-y-4 text-muted-foreground">
-                  <p className="leading-relaxed">
+                <div className="prose prose-neutral dark:prose-invert max-w-none">
+                  <p>
                     Unsere Dienstleistungen richten sich an:
                   </p>
                   <ul className="space-y-2 pl-6 list-disc">
@@ -214,15 +218,17 @@ export default function SportsPage() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
-                <p className="text-muted-foreground leading-relaxed">
-                  Unsere Methoden basieren auf aktuellen wissenschaftlichen Erkenntnissen aus den Bereichen 
-                  Sportwissenschaft, Trainingslehre, Sportpsychologie und Biomechanik. Wir kombinieren 
-                  evidenzbasierte Ansätze mit modernster Technologie und nutzen datengestützte Analysen, 
-                  um die Leistung zu optimieren. Durch kontinuierliche Forschung und Zusammenarbeit mit 
-                  Experten stellen wir sicher, dass unsere Methoden stets dem neuesten Stand der Sportwissenschaft 
-                  entsprechen. Dabei berücksichtigen wir individuelle physiologische, psychologische und 
-                  biomechanische Faktoren.
-                </p>
+                <div className="prose prose-neutral dark:prose-invert max-w-none">
+                  <p>
+                    Unsere Methoden basieren auf aktuellen wissenschaftlichen Erkenntnissen aus den Bereichen 
+                    Sportwissenschaft, Trainingslehre, Sportpsychologie und Biomechanik. Wir kombinieren 
+                    evidenzbasierte Ansätze mit modernster Technologie und nutzen datengestützte Analysen, 
+                    um die Leistung zu optimieren. Durch kontinuierliche Forschung und Zusammenarbeit mit 
+                    Experten stellen wir sicher, dass unsere Methoden stets dem neuesten Stand der Sportwissenschaft 
+                    entsprechen. Dabei berücksichtigen wir individuelle physiologische, psychologische und 
+                    biomechanische Faktoren.
+                  </p>
+                </div>
               </AccordionContent>
             </AccordionItem>
           </Accordion>

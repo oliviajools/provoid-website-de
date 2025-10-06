@@ -21,7 +21,7 @@ export default function CompanyPage() {
               <span className="text-primary">PROVOID</span>-Company
             </h1>
             <p className="text-lg text-muted-foreground md:text-xl">
-              no brain no gain.
+              no brain no gain
             </p>
             <div className="relative mt-2 flex justify-center">
               <div aria-hidden className="pointer-events-none absolute inset-0 mx-auto flex justify-center items-center">
@@ -54,7 +54,7 @@ export default function CompanyPage() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
-                <div className="text-muted-foreground leading-relaxed space-y-4">
+                <div className="prose prose-neutral dark:prose-invert max-w-none">
                   <p>
                     PROVOID-Company verfolgt das Ziel, Neurowissenschaft fest in Unternehmenskulturen zu verankern, damit die neuronale Gesundheit der Mitarbeitenden gestärkt und die Effizienz ihrer Arbeit nachhaltig verbessert wird. Dazu setzen wir auf praxisnahe Interventionen. Gemeinsam entwickeln wit Leitlinien für Fokus, Erholung und Lernfähigkeit und schulen Führungskräfte in neurofreundlicher Leitung und Kommunikation. 
                   </p>
@@ -80,7 +80,7 @@ export default function CompanyPage() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
-                <div className="text-muted-foreground leading-relaxed space-y-4">
+                <div className="prose prose-neutral dark:prose-invert max-w-none">
                   <p>
                     Unsere Vision ist, dass Unternehmen neuronale Prozesse so gut verstehen, dass sie Kultur, Zusammenarbeit und Entscheidungen im Einklang mit der menschlichen Biologie gestalten. PROVOID will dafür als verlässliche Instanz die führende Rolle am Unternehmensmarkt einnehmen und  neurowissenschaftliche Erkenntnisse verständlich machen, Vertrauen schaffen und Maßstäbe für Wirksamkeit und Verantwortung setzen. Wir streben an, der bevorzugte Partner für Vorstände und Führungsteams zu sein und einen Branchenstandard zu prägen, an dem sich messbare Wirkung, wissenschaftliche Qualität und Schutz der Privatsphäre orientieren. So entsteht eine Wirtschaft, in der neuronale Gesundheit  und Leistungsfähigkeit nachhaltig miteinander vereint werden und miteinander wachsen können.
                   </p>
@@ -98,7 +98,7 @@ export default function CompanyPage() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <div className="prose prose-neutral dark:prose-invert max-w-none">
                   <p>
                     PROVOID vereint Dienstleistungen und Software zu einem ganzheitlichen Angebot. In enger Zusammenarbeit
                     gestalten wir passgenaue Konzepte, die neurowissenschaftliche Erkenntnisse in Prozesse, Entscheidungen
@@ -199,8 +199,8 @@ export default function CompanyPage() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
-                <div className="space-y-4 text-muted-foreground">
-                  <p className="leading-relaxed">
+                <div className="prose prose-neutral dark:prose-invert max-w-none">
+                  <p>
                     Unsere Dienstleistungen richten sich an:
                   </p>
                   <ul className="space-y-2 pl-6 list-disc">
@@ -225,9 +225,11 @@ export default function CompanyPage() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
-                <p className="text-muted-foreground leading-relaxed">
-                  Unsere Methoden basieren auf aktuellen wissenschaftlichen Erkenntnissen aus den Bereichen Neurowissenschaft, Organisationspsychologie, Verhaltensökonomie und Managementforschung. Wir stützen uns dabei besonders auf neurowissenschaftliche Evidenz und betreiben eigene Forschung. Unsere Tools werden in EEG Messungen geprüft, um ihre beabsichtigte Wirkung nachweisbar zu erzielen. Wir kombinieren evidenzbasierte Ansätze mit praktischer Erfahrung und nutzen datengestützte Analysen, um messbare Ergebnisse zu erreichen. Durch kontinuierliche Forschung und Entwicklung stellen wir sicher, dass unsere Methoden dem neuesten Stand der Wissenschaft entsprechen. Der Neurotech Markt entwickelt sich rasant und wir möchten ihn aktiv und wissenschaftlich mitgestalten.
-                </p>
+                <div className="prose prose-neutral dark:prose-invert max-w-none">
+                  <p>
+                    Unsere Methoden basieren auf aktuellen wissenschaftlichen Erkenntnissen aus den Bereichen Neurowissenschaft, Organisationspsychologie, Verhaltensökonomie und Managementforschung. Wir stützen uns dabei besonders auf neurowissenschaftliche Evidenz und betreiben eigene Forschung. Unsere Tools werden in EEG Messungen geprüft, um ihre beabsichtigte Wirkung nachweisbar zu erzielen. Wir kombinieren evidenzbasierte Ansätze mit praktischer Erfahrung und nutzen datengestützte Analysen, um messbare Ergebnisse zu erreichen. Durch kontinuierliche Forschung und Entwicklung stellen wir sicher, dass unsere Methoden dem neuesten Stand der Wissenschaft entsprechen. Der Neurotech Markt entwickelt sich rasant und wir möchten ihn aktiv und wissenschaftlich mitgestalten.
+                  </p>
+                </div>
               </AccordionContent>
             </AccordionItem>
 
@@ -241,8 +243,8 @@ export default function CompanyPage() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
-                <div className="space-y-4 text-muted-foreground">
-                  <p className="leading-relaxed">
+                <div className="prose prose-neutral dark:prose-invert max-w-none">
+                  <p>
                     Aktuell bietet PROVOID eine Analyse zum Prokrastinationsverhalten von Mitarbeiterinnen an. Sie stützt sich auf Erkenntnisse der Verhaltenspsychologie und der Neurowissenschaft, umfasst über 90 Fragen und wird automatisiert ausgewertet. Auf Basis der Ergebnisse ordnen wir jede Person einem von vier entwickelten Typen zu. Im Anschluss erhält jeder Typ neurowissenschaftlich angepasste Tools und Empfehlungen, die auf die jeweiligen Mechanismen und Bedürfnisse zugeschnitten sind.
                   </p>
                   <p className="leading-relaxed">

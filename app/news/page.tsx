@@ -5,12 +5,110 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 export const metadata: Metadata = {
   title: "PROVOID-News | Aktuelle Entwicklungen",
-  description: "Die aktuellen Entwicklungen bei PROVOID auf einen Blick - Neuigkeiten, Updates und Meilensteine.",
+  description: "Die aktuellen Entwicklungen bei PROVOID auf einen Blick – Neuigkeiten, Updates und Meilensteine.",
+  alternates: {
+    canonical: "/news",
+  },
+  openGraph: {
+    title: "PROVOID-News | Aktuelle Entwicklungen",
+    description: "Die aktuellen Entwicklungen bei PROVOID auf einen Blick – Neuigkeiten, Updates und Meilensteine.",
+    type: "website",
+    url: "/news",
+    images: [
+      {
+        url: "/logo-provoid-svg.svg",
+        width: 512,
+        height: 512,
+        alt: "PROVOID Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PROVOID-News | Aktuelle Entwicklungen",
+    description: "Die aktuellen Entwicklungen bei PROVOID auf einen Blick – Neuigkeiten, Updates und Meilensteine.",
+    images: ["/logo-provoid-svg.svg"],
+  },
 };
 
 export default function NewsPage() {
   return (
     <div className="flex flex-col">
+      {/* Structured Data (JSON-LD) */}
+      <script
+        type="application/ld+json"
+        // News list (ItemList) with NewsArticle entries and Breadcrumbs
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebPage',
+            name: 'PROVOID-News | Aktuelle Entwicklungen',
+            url: '/news',
+            breadcrumb: {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Home',
+                  item: '/',
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: 'News',
+                  item: '/news',
+                },
+              ],
+            },
+            mainEntity: {
+              '@type': 'ItemList',
+              itemListElement: [
+                {
+                  '@type': 'NewsArticle',
+                  headline: 'Erste erfolgreiche EEG-Messungen',
+                  datePublished: '2025-08-01',
+                  author: { '@type': 'Organization', name: 'PROVOID' },
+                  image: ['/EEG-user1.jpg', '/EEG-user2.jpg'],
+                  video: {
+                    '@type': 'VideoObject',
+                    name: 'EEG-Messungen',
+                    thumbnailUrl: ['/EEG-user1.jpg'],
+                    uploadDate: '2025-08-01',
+                    contentUrl: '/EEG-Messungen.mp4',
+                  },
+                },
+                {
+                  '@type': 'NewsArticle',
+                  headline: 'EEG-Evaluation in Arztpraxis Hamburg – Proband:innen gesucht!',
+                  datePublished: '2025-07-01',
+                  author: { '@type': 'Organization', name: 'PROVOID' },
+                },
+                {
+                  '@type': 'NewsArticle',
+                  headline: 'Kooperation mit SC Victoria Hamburg',
+                  datePublished: '2025-06-30',
+                  author: { '@type': 'Organization', name: 'PROVOID' },
+                  image: ['/Kooperation1.jpg'],
+                },
+                {
+                  '@type': 'NewsArticle',
+                  headline: 'Landesfinale bei Airbus – 2. Platz und Sonderpreis für Jugend-Unternimmt-Summerschool',
+                  datePublished: '2025-04-01',
+                  author: { '@type': 'Organization', name: 'PROVOID' },
+                  image: ['/Landesfinale-airbus.png'],
+                },
+                {
+                  '@type': 'NewsArticle',
+                  headline: 'Regionalwettbewerb Jugend forscht am UKE – PROVOID erreicht Platz 1',
+                  datePublished: '2025-02-01',
+                  author: { '@type': 'Organization', name: 'PROVOID' },
+                },
+              ],
+            },
+          }),
+        }}
+      />
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-primary/20 to-background py-[48px] md:py-[77px]">
         <div className="container px-4 md:px-6 lg:px-8">
@@ -19,7 +117,7 @@ export default function NewsPage() {
               <span className="text-primary">PROVOID</span>-News
             </h1>
             <p className="text-lg text-muted-foreground md:text-xl">
-              no brain no gain.
+              no brain no gain
             </p>
             <div className="relative mt-2 flex justify-center">
               <div aria-hidden className="pointer-events-none absolute inset-0 mx-auto flex justify-center items-center">
@@ -195,6 +293,74 @@ export default function NewsPage() {
                     height={600}
                     className="w-full h-auto object-cover"
                   />
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Fourth News Article */}
+            <Card className="border-2">
+              <CardHeader>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                  <Calendar className="h-4 w-4" />
+                  <time dateTime="2025-04">April 2025</time>
+                </div>
+                <CardTitle className="text-2xl md:text-3xl">
+                  Landesfinale bei Airbus – 2. Platz und Sonderpreis für Jugend-Unternimmt-Summerschool
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="prose prose-sm md:prose-base max-w-none">
+                  <p className="text-muted-foreground leading-relaxed">
+                    Im Hamburger Landesfinale auf dem Airbus-Campus erzielte PROVOID einen zweiten Platz. 
+                    Damit verbunden: die Qualifikation zum Sonderpreis „Jugend Unternimmt – Summer School" 
+                    in Erfurt. Der Wettbewerb war unglaublich vielseitig, abwechslungsreich und inspirierend - 
+                    neben fachlichen Gesprächen, Ideenreichtum und vielen spannenden Projekten gab es ebenso 
+                    einige Pitch-Vorträge - darunter PROVOID!
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Die Summer School findet nun vom 21.–25. Juli im Augustinerkloster statt und bietet 
+                    Workshops, Seminare und Coachings zu Geschäftsmodellentwicklung, Unternehmertum und 
+                    Elevator Pitches. Nun geht es mit der Entwicklung weiter, um so zeitnah wie möglich 
+                    erste Projekte und Zusammenarbeiten in Angriff zu nehmen!
+                  </p>
+                </div>
+
+                {/* Image Section */}
+                <div className="rounded-xl overflow-hidden border-2 max-w-2xl mx-auto">
+                  <Image
+                    src="/Landesfinale-airbus.png"
+                    alt="Landesfinale bei Airbus - PROVOID 2. Platz"
+                    width={800}
+                    height={600}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Fifth News Article */}
+            <Card className="border-2">
+              <CardHeader>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                  <Calendar className="h-4 w-4" />
+                  <time dateTime="2025-02">Februar 2025</time>
+                </div>
+                <CardTitle className="text-2xl md:text-3xl">
+                  Regionalwettbewerb Jugend forscht am UKE – PROVOID erreicht Platz 1
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="prose prose-sm md:prose-base max-w-none">
+                  <p className="text-muted-foreground leading-relaxed">
+                    PROVOID wurde beim Regionalwettbewerb Jugend forscht am UKE mit dem ersten Platz 
+                    ausgezeichnet und ist damit für das Landesfinale auf dem Airbus-Gelände qualifiziert! 
+                    Das Jurygespräch war intensiv und inspirierend: Es gab zahlreiche fachliche Impulse, 
+                    wertvolles Feedback und anerkennende Rückmeldungen zur modularen PROVOID-Tool-Architektur.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Auch die Rückmeldungen der anderen Teilnehmer:innen war wertvoll für die weitere 
+                    Entwicklung von PROVOID. Nun geht es in die Vorbereitung für den Landeswettbewerb!
+                  </p>
                 </div>
               </CardContent>
             </Card>

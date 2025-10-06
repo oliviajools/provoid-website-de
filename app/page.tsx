@@ -16,7 +16,7 @@ export default function Home() {
               Willkommen bei <span className="text-primary">PROVOID</span>
             </h1>
             <p className="mb-8 text-lg text-muted-foreground md:text-xl">
-              no brain no gain.
+              no brain no gain
             </p>
             <div className="relative -mt-6 flex justify-center">
               <div aria-hidden className="pointer-events-none absolute inset-0 mx-auto flex justify-center items-center">
@@ -39,9 +39,9 @@ export default function Home() {
       <section className="container px-4 md:px-6 lg:px-8 py-[38px] md:py-[58px]">
         <div className="mx-auto max-w-4xl space-y-16">
           <Section id="was-ist-provoid" title="Was ist PROVOID?">
-            <div className="space-y-4">
+            <div className="prose prose-neutral dark:prose-invert max-w-none">
               <p>
-                <strong>From Insight To Impact.</strong>
+                <strong>From Insight To Impact</strong>
               </p>
               <p>
                 Wir sind ein Hamburger StartUp, das neurowissenschaftliche Erkenntnisse in anwendbare
@@ -59,7 +59,7 @@ export default function Home() {
           </Section>
 
           <Section id="idee" title="Unsere Idee">
-            <div className="space-y-4">
+            <div className="prose prose-neutral dark:prose-invert max-w-none">
               <p>
                 PROVOID begann als „Jugend forscht“-Projekt zur Prokrastination. Der Name war schnell gefunden:
                 PROVOID – kurz für Procrastination avoid.
@@ -78,22 +78,26 @@ export default function Home() {
           </Section>
 
           <Section id="vision" title="Unsere Vision">
-            <p>
-              Unsere Vision ist eine Gesellschaft, in der jede und jeder neurowissenschaftlichen Fortschritt nutzen kann. Wir machen Erkenntnisse aus der Forschung verständlich und zugänglich, damit Menschen ihre neuronalen Fähigkeiten entfalten und verantwortungsvoll einsetzen. So entstehen bessere Entscheidungen, mehr Fokus, nachhaltiges Lernen und gesunde Zusammenarbeit im Alltag und in Organisationen. Wir wollen wachsen, damit dieser Zugang breit verfügbar wird und die Wirkung für die Gesellschaft stetig zunimmt. Transparenz, Innovation und Qualität leiten unser Handeln. Wir streben danach, Standards zu setzen und innovative Lösungen zu entwickeln, die nachhaltig positive Veränderungen bewirken. So möchten wir der führende Partner für ganzheitliche Entwicklung und Optimierung werden.
-            </p>
+            <div className="prose prose-neutral dark:prose-invert max-w-none">
+              <p>
+                Unsere Vision ist eine Gesellschaft, in der jede und jeder neurowissenschaftlichen Fortschritt nutzen kann. Wir machen Erkenntnisse aus der Forschung verständlich und zugänglich, damit Menschen ihre neuronalen Fähigkeiten entfalten und verantwortungsvoll einsetzen. So entstehen bessere Entscheidungen, mehr Fokus, nachhaltiges Lernen und gesunde Zusammenarbeit im Alltag und in Organisationen. Wir wollen wachsen, damit dieser Zugang breit verfügbar wird und die Wirkung für die Gesellschaft stetig zunimmt. Transparenz, Innovation und Qualität leiten unser Handeln. Wir streben danach, Standards zu setzen und innovative Lösungen zu entwickeln, die nachhaltig positive Veränderungen bewirken. So möchten wir der führende Partner für ganzheitliche Entwicklung und Optimierung werden.
+              </p>
+            </div>
           </Section>
 
           <Section id="geschichte" title="Unsere Geschichte">
-            <p>
-              Das Ursprungsprojekt von PROVOID entstand 2023 und nahm 2024 erstmals erfolgreich bei dem Wettbewerb
-              „Jugend forscht” teil. Im Frühjahr entstand hieraus das Einzelunternehmen und StartUp PROVOID. 2025 war
-              das Projekt Teil der JugendUnternimmt-Summerschool und belegte deutschlandweit den 2. Platz. Im Oktober
-              2025 wurde es nun für den Hamburger-Award „STARTERiN” 2025 nominiert.
-            </p>
+            <div className="prose prose-neutral dark:prose-invert max-w-none">
+              <p>
+                Das Ursprungsprojekt von PROVOID entstand 2023 und nahm 2024 erstmals erfolgreich bei dem Wettbewerb
+                „Jugend forscht” teil. Im Frühjahr entstand hieraus das Einzelunternehmen und StartUp PROVOID. 2025 war
+                das Projekt Teil der JugendUnternimmt-Summerschool und belegte deutschlandweit den 2. Platz. Im Oktober
+                2025 wurde es nun für den Hamburger-Award „STARTERiN” 2025 nominiert.
+              </p>
+            </div>
           </Section>
 
           <Section id="wer-ist-provoid" title="Wer sind Wir?">
-            <div className="space-y-4">
+            <div className="prose prose-neutral dark:prose-invert max-w-none">
               <p>
                 PROVOID wurde im April 2025 von Olivia Bahr gegründet.
               </p>

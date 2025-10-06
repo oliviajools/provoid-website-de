@@ -9,7 +9,7 @@ export function Footer() {
           <div>
             <h3 className="mb-4 text-lg font-semibold text-primary">PROVOID</h3>
             <p className="text-sm text-muted-foreground">
-              no brain no gain.
+              no brain no gain
             </p>
           </div>
           

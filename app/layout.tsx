@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PROVOID - no brain no gain.",
+  title: "PROVOID - no brain no gain",
   description: "no brain no gain.",
   keywords: ["PROVOID", "Company", "Sports", "Innovation", "Lösungen"],
   authors: [{ name: "PROVOID" }],
@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     apple: "/favicon-provoid.png",
   },
   openGraph: {
-    title: "PROVOID - no brain no gain.",
-    description: "no brain no gain.",
+    title: "PROVOID - no brain no gain",
+    description: "no brain no gain",
     type: "website",
     locale: "de_DE",
   },
