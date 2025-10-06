@@ -19,6 +19,11 @@ export const metadata: Metadata = {
   description: "no brain no gain.",
   keywords: ["PROVOID", "Company", "Sports", "Innovation", "Lösungen"],
   authors: [{ name: "PROVOID" }],
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon.ico",
+  },
   openGraph: {
     title: "PROVOID - no brain no gain.",
     description: "no brain no gain.",
