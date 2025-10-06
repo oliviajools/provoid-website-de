@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { Calendar } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "PROVOID-News | Aktuelle Entwicklungen",
@@ -312,10 +312,10 @@ export default function NewsPage() {
                 <div className="prose prose-sm md:prose-base max-w-none">
                   <p className="text-muted-foreground leading-relaxed">
                     Im Hamburger Landesfinale auf dem Airbus-Campus erzielte PROVOID einen zweiten Platz. 
-                    Damit verbunden: die Qualifikation zum Sonderpreis „Jugend Unternimmt – Summer School" 
+                    Damit verbunden: die Qualifikation zum Sonderpreis &ldquo;Jugend Unternimmt – Summer School&rdquo; 
                     in Erfurt. Der Wettbewerb war unglaublich vielseitig, abwechslungsreich und inspirierend - 
                     neben fachlichen Gesprächen, Ideenreichtum und vielen spannenden Projekten gab es ebenso 
-                    einige Pitch-Vorträge - darunter PROVOID!
+                    einige Pitch-Vortr&auml;ge - darunter PROVOID!
                   </p>
                   <p className="text-muted-foreground leading-relaxed">
                     Die Summer School findet nun vom 21.–25. Juli im Augustinerkloster statt und bietet 

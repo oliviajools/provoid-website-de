@@ -174,7 +174,7 @@ export default function CompanyPage() {
                   <Card>
                     <CardHeader>
                       <CardTitle>Individual Paket</CardTitle>
-                      <CardDescription>Let's talk</CardDescription>
+                      <CardDescription>Let&apos;s talk</CardDescription>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-2 text-sm text-muted-foreground">
