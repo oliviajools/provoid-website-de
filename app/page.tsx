@@ -4,13 +4,15 @@ import { Button } from "@/components/ui/button";
 import { Section } from "@/components/Section";
 import { ArrowRight, Building2, Trophy } from "lucide-react";
 import Image from "next/image";
+import { ParticlesBackground } from "@/components/ParticlesBackground";
 
 export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-primary/20 to-background py-[48px] md:py-[77px]">
-        <div className="container px-4 md:px-6 lg:px-8">
+      <section className="relative bg-gradient-to-b from-primary/20 to-background py-[48px] md:py-[77px] overflow-hidden">
+        <ParticlesBackground />
+        <div className="container px-4 md:px-6 lg:px-8 relative z-10">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               Willkommen bei <span className="text-primary">PROVOID</span>
