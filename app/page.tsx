@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/Section";
 import { ArrowRight, Building2, Trophy } from "lucide-react";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -17,6 +18,19 @@ export default function Home() {
             <p className="mb-8 text-lg text-muted-foreground md:text-xl">
               no brain no gain.
             </p>
+            <div className="relative -mt-6 flex justify-center">
+              <div aria-hidden className="pointer-events-none absolute inset-0 mx-auto flex justify-center items-center">
+                <div className="h-48 w-48 md:h-64 md:w-64 lg:h-72 lg:w-72 rounded-full bg-primary/40 blur-[56px] animate-pulse" />
+              </div>
+              <Image
+                src="/brain.png"
+                alt="Gehirn Illustration"
+                width={768}
+                height={768}
+                priority
+                className="relative mx-auto h-auto w-72 md:w-[28rem] lg:w-[32rem] drop-shadow-lg"
+              />
+            </div>
           </div>
         </div>
       </section>

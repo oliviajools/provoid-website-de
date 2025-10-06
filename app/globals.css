@@ -116,7 +116,35 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
+  html, body {
     @apply bg-background text-foreground;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
   }
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+  @media (min-width: 1536px) {
+    .container {
+      max-width: 1536px;
+    }
+  }
+}
+
+@keyframes brain-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.5;
+  }
+}
+
+.animate-brain-pulse {
+  animation: brain-pulse 3s ease-in-out infinite;
 }
