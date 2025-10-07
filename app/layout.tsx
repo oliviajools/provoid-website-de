@@ -39,11 +39,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de" className="scroll-smooth">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex min-h-screen flex-col mx-auto w-full`}
+        suppressHydrationWarning
       >
         <Header />
-        <main className="flex-1 w-full">{children}</main>
+        <main className="flex-1 w-full" style={{ isolation: 'isolate' }}>{children}</main>
         <Footer />
       </body>
     </html>
