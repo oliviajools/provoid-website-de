@@ -118,30 +118,24 @@
     border-color: var(--color-border);
     outline-color: color-mix(in oklch, var(--color-ring) 50%, transparent);
   }
+  
   html {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
   }
+  
   body {
     margin: 0;
     padding: 0;
-    min-height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    position: relative;
-    /* Removed -webkit-overflow-scrolling: touch as it can cause scroll issues */
   }
+  
   .container {
     margin-left: auto;
     margin-right: auto;
     max-width: 100%;
     width: 100%;
   }
+  
   @media (min-width: 1536px) {
     .container {
       max-width: 1536px;

@@ -28,6 +28,8 @@ export default function Home() {
                 width={768}
                 height={768}
                 priority
+                loading="eager"
+                quality={90}
                 className="relative mx-auto h-auto w-72 md:w-[28rem] lg:w-[32rem] drop-shadow-lg"
               />
             </div>
