@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { NavLink } from "./NavLink";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -26,22 +27,16 @@ export function Header() {
         </Link>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6">
-          <Link href="/" className="text-sm font-medium transition-colors hover:text-primary">
-            Home
-          </Link>
-          <Link href="/company" className="text-sm font-medium transition-colors hover:text-primary">
-            Company
-          </Link>
-          <Link href="/sports" className="text-sm font-medium transition-colors hover:text-primary">
-            Sports
-          </Link>
+        <nav className="hidden md:flex items-center gap-3">
+          <NavLink href="/">Home</NavLink>
+          <NavLink href="/company">Company</NavLink>
+          <NavLink href="/sports">Sports</NavLink>
         </nav>
 
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMenu}
-          className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
+          className="md:hidden p-2 text-primary transition-colors active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
           aria-label="Toggle menu"
           aria-expanded={mobileMenuOpen}
         >
@@ -56,28 +51,10 @@ export function Header() {
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
         <nav className="md:hidden border-t bg-background">
-          <div className="container px-4 py-4 flex flex-col gap-4">
-            <Link 
-              href="/" 
-              className="text-base font-medium transition-colors hover:text-primary py-2"
-              onClick={closeMenu}
-            >
-              Home
-            </Link>
-            <Link 
-              href="/company" 
-              className="text-base font-medium transition-colors hover:text-primary py-2"
-              onClick={closeMenu}
-            >
-              Company
-            </Link>
-            <Link 
-              href="/sports" 
-              className="text-base font-medium transition-colors hover:text-primary py-2"
-              onClick={closeMenu}
-            >
-              Sports
-            </Link>
+          <div className="container px-4 py-4 flex flex-col gap-3">
+            <NavLink href="/" className="text-base active:bg-primary/15 active:border-primary/40 rounded-md transition-colors" onClick={closeMenu}>Home</NavLink>
+            <NavLink href="/company" className="text-base active:bg-primary/15 active:border-primary/40 rounded-md transition-colors" onClick={closeMenu}>Company</NavLink>
+            <NavLink href="/sports" className="text-base active:bg-primary/15 active:border-primary/40 rounded-md transition-colors" onClick={closeMenu}>Sports</NavLink>
           </div>
         </nav>
       )}

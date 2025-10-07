@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="relative w-full border-t mt-24 md:mt-32">
       <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-primary/10 to-transparent pointer-events-none" style={{ height: '150%', bottom: 0 }} />
-      <div className="container px-4 md:px-6 lg:px-8 py-8 relative z-10">
+      <div className="container px-4 md:px-6 lg:px-8 pt-6 pb-4 relative z-10">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <div>
             <h3 className="mb-4 text-lg font-semibold text-primary">PROVOID</h3>
@@ -54,7 +54,7 @@ export function Footer() {
           </div>
         </div>
         
-        <Separator className="my-6" />
+        <Separator className="my-4" />
         
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <p className="text-sm text-muted-foreground">
