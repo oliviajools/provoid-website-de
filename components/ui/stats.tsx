@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 export function Stats() {
   return (
-    <section className="py-16 md:py-24 bg-background">
+    <section className="py-12 md:py-16 bg-background">
       <div className="container px-4 md:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8 border border-border rounded-xl p-8 bg-card">

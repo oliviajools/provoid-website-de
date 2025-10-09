@@ -12,7 +12,7 @@ export function FinalCta() {
   ];
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-12 md:py-16">
       <div className="container px-4 md:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           <div className="text-center mb-8 flex justify-center">

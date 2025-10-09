@@ -8,7 +8,7 @@ export function CtaCards() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative bg-background py-16 md:py-24">
+    <section className="relative bg-background py-12 md:py-16">
       <div className="container px-4 md:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center relative z-10">
           <div className="text-center mb-12">

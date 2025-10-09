@@ -61,7 +61,7 @@ export default function Home() {
       <GeminiCta />
 
       {/* Stakes Section (SB7: Help them avoid failure) */}
-      <section className="py-16 md:py-24">
+      <section className="py-12 md:py-16">
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <div className="text-center mb-12">

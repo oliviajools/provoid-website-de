@@ -32,7 +32,7 @@ export function Proof() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-muted/30">
+    <section className="py-12 md:py-16 bg-muted/30">
       <div className="container px-4 md:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-12">

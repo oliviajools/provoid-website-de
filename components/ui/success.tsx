@@ -2,7 +2,7 @@ import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 export function Success() {
     return (
-      <section className="py-16 md:py-24">
+      <section className="py-12 md:py-16">
         <div className="container px-4 md:px-6 lg:px-8">
           <ContainerScroll
             titleComponent={
