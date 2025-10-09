@@ -1,14 +1,15 @@
+import { ContainerScroll } from "@/components/ui/container-scroll-animation";
+
 export function Success() {
     return (
       <section className="py-16 md:py-24">
         <div className="container px-4 md:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-6">Erfolg & Wirkung</h2>
+          <ContainerScroll
+            titleComponent={
               <h3 className="text-3xl md:text-4xl font-bold mb-8">Was Sie mit PROVOID erreichen</h3>
-            </div>
-  
-            <div className="grid md:grid-cols-2 gap-8 mb-16">
+            }
+          >
+            <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
@@ -152,15 +153,18 @@ export function Success() {
                     </svg>
                   </div>
                   <div>
+                    <h4 className="font-semibold mb-2">
+                    Effektiveres Lernen
+                    </h4>
                     <p className="text-muted-foreground">
-                      Wissen wird durch gehirngerechte Methoden schneller aufgenommen und länger behalten.
+                    Wissen wird durch gehirngerechte Methoden schneller aufgenommen und länger behalten.
                     </p>
                   </div>
-                </div>
+              </div>
             </div>
-          </div>
+            </div>
+          </ContainerScroll>
         </div>
-      </div>
-    </section>
-  )
+      </section>
+    )
 }

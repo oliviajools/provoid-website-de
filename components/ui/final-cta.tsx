@@ -7,7 +7,6 @@ export function FinalCta() {
       <div className="container px-4 md:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           <div className="text-center mb-8">
-            <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4">Nächster Schritt</h2>
             <h3 className="text-3xl md:text-4xl font-bold">Bereit für den nächsten Schritt?</h3>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -18,7 +17,6 @@ export function FinalCta() {
               <Button size="lg" variant="outline">Mehr über unseren Ansatz</Button>
             </Link>
           </div>
-          <p className="text-sm text-muted-foreground mt-3">[Optional: Hinweis zu Dauer/Format des Erstgesprächs]</p>
         </div>
       </div>
     </section>

@@ -4,7 +4,6 @@ export function Intro() {
       <div className="container px-4 md:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <div className="text-center mb-12">
-            <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-6">Was ist PROVOID?</h2>
             <h3 className="text-3xl md:text-4xl font-bold mb-8">Wir führen Sie durch Ihr Gehirn</h3>
           </div>
           

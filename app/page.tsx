@@ -57,7 +57,6 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-muted/30">
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4">Ihr Guide</h2>
             <h3 className="text-3xl md:text-4xl font-bold mb-6">Begleitung mit neurowissenschaftlicher Expertise</h3>
             <p className="text-lg text-muted-foreground">
               Wir übersetzen Forschung in anwendbare Schritte und begleiten Sie strukturiert – empathisch, klar und evidenzbasiert.
@@ -78,7 +77,6 @@ export default function Home() {
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <div className="text-center mb-12">
-              <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4">Was steht auf dem Spiel?</h2>
               <h3 className="text-3xl md:text-4xl font-bold">Verpasste Potenziale vermeiden</h3>
             </div>
             <div className="grid md:grid-cols-2 gap-8">
@@ -87,15 +85,20 @@ export default function Home() {
                 <ul className="list-disc ml-5 text-muted-foreground space-y-1">
                   <li>Unklarheit über neuronale Stärken/Schwächen</li>
                   <li>Prokrastination und schwächere Entscheidungen</li>
-                  <li>Unnötige Reibung in Teams und im Alltag</li>
+                  <li>Geringe Entscheidungsfähigkeit</li>
+                  <li>Verbindungen durch fehlende Stimulation</li>
+                  <li>Unterdrücktes oder unentdecktes Potenzial</li>
+
                 </ul>
               </div>
               <div className="bg-card border border-border rounded-lg p-6">
                 <h4 className="text-lg font-semibold mb-2">Mit PROVOID</h4>
                 <ul className="list-disc ml-5 text-muted-foreground space-y-1">
                   <li>Bewusste Nutzung neuronaler Fähigkeiten</li>
-                  <li>Mehr Fokus, klarere Entscheidungen</li>
-                  <li>Gesündere Zusammenarbeit und Lernen</li>
+                  <li>Reduzierung von Prokrastination</li>
+                  <li>Verbesserte Entscheidungsfähigkeit</li>
+                  <li>Aufbau und Erhalt neuronaler Verbindungen durch gezielte Stimulationen</li>
+                  <li>Entdeckung und Entfaltung von verborgenem Potenzial</li>
                 </ul>
               </div>
             </div>

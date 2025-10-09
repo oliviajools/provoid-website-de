@@ -11,7 +11,7 @@ export function Stats() {
             {/* Stat 1: 2023 */}
             <StatCard delay={0.3}>
               <div className="text-5xl md:text-6xl font-bold text-black mb-4">2023</div>
-              <p className="text-sm text-black/70">
+              <p className="text-sm text-black/70 min-h-[2.5rem]">
                 Gründung als Jugend forscht-Projekt
               </p>
             </StatCard>
@@ -19,7 +19,7 @@ export function Stats() {
             {/* Stat 2: 2. Platz */}
             <StatCard delay={0.4}>
               <div className="text-5xl md:text-6xl font-bold text-black mb-4">2. Platz</div>
-              <p className="text-sm text-black/70">
+              <p className="text-sm text-black/70 min-h-[2.5rem]">
                 JugendUnternimmt Summerschool 2025
               </p>
             </StatCard>
@@ -27,7 +27,7 @@ export function Stats() {
             {/* Stat 3: Nominiert */}
             <StatCard delay={0.5}>
               <div className="text-5xl md:text-6xl font-bold text-black mb-4">Nominiert</div>
-              <p className="text-sm text-black/70">
+              <p className="text-sm text-black/70 min-h-[2.5rem]">
                 STARTERiN Award Hamburg 2025
               </p>
             </StatCard>
