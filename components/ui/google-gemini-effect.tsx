@@ -21,10 +21,10 @@ export const GoogleGeminiEffect = ({
 }) => {
   return (
     <div className={cn("sticky top-20", className)}>
-      <p className="text-lg md:text-5xl font-bold pb-4 text-center text-foreground whitespace-pre-line relative" style={{ zIndex: 10 }}>
+      <p className="text-3xl md:text-4xl lg:text-5xl font-bold pb-4 text-center text-foreground whitespace-pre-line relative" style={{ zIndex: 10 }}>
         {title || `Build with Aceternity UI`}
       </p>
-      <p className="text-xs md:text-xl font-normal text-center text-muted-foreground mt-4 max-w-lg mx-auto relative" style={{ zIndex: 10 }}>
+      <p className="text-base md:text-lg lg:text-xl font-normal text-center text-muted-foreground mt-4 max-w-lg mx-auto relative" style={{ zIndex: 10 }}>
         {description ||
           `Scroll this component and see the bottom SVG come to life wow this
         works!`}
@@ -158,12 +158,13 @@ export const GoogleGeminiEffect = ({
         </svg>
 
         {/* Centered CTA (above) */}
-        <div className="absolute left-0 right-0 top-[280px] md:top-[320px] flex items-center justify-center" style={{ zIndex: 10 }}>
+        <div className="absolute left-0 right-0 top-[40%] md:top-[45%] flex items-center justify-center" style={{ zIndex: 10 }}>
           <a
             href="/kontakt"
-            className="font-bold bg-primary text-primary-foreground rounded-full md:px-8 md:py-4 px-6 py-3 md:text-lg text-base hover:bg-primary/90 transition-colors shadow-2xl"
+            className="font-bold bg-primary text-primary-foreground rounded-full md:px-8 md:py-4 px-6 py-3 md:text-lg text-base hover:bg-primary/90 transition-colors shadow-2xl text-center leading-tight"
           >
-            Beratungstermin vereinbaren
+            <span className="md:inline block">Beratungstermin</span>
+            <span className="md:inline block"> vereinbaren</span>
           </a>
         </div>
       </div>

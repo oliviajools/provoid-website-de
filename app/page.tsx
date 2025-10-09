@@ -22,9 +22,9 @@ export default function Home() {
       <section className="relative bg-gradient-to-b from-primary/20 to-background pt-[40px] pb-[120px] md:pt-[80px] md:pb-[180px]">
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-6 text-6xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+            <h1 className="mb-6 text-3xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               <div>Neurowissenschaft für</div>
-              <FlipWords words={words} className="text-6xl font-bold tracking-tight sm:text-5xl md:text-6xl text-primary" />
+              <FlipWords words={words} className="text-3xl font-bold tracking-tight sm:text-5xl md:text-6xl text-primary" />
             </h1>
             <p className="mb-8 text-lg text-muted-foreground md:text-xl">
               no brain no gain
