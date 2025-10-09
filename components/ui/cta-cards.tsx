@@ -22,28 +22,11 @@ export function CtaCards() {
             {/* Company Card */}
             <Link 
               href="/company" 
-              className="relative group block p-2 h-full w-full"
+              className="relative group block h-full w-full"
               onMouseEnter={() => setHoveredIndex(0)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <AnimatePresence>
-                {hoveredIndex === 0 && (
-                  <motion.span
-                    className="absolute inset-0 h-full w-full bg-primary/20 block rounded-3xl z-0"
-                    layoutId="hoverBackground"
-                    initial={{ opacity: 0 }}
-                    animate={{
-                      opacity: 1,
-                      transition: { duration: 0.15 },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      transition: { duration: 0.15, delay: 0.2 },
-                    }}
-                  />
-                )}
-              </AnimatePresence>
-              <div className="rounded-2xl h-full w-full p-6 overflow-hidden bg-card/80 backdrop-blur-sm border border-primary group-hover:border-primary relative z-10">
+              <div className="rounded-xl h-full w-full p-8 bg-gradient-to-br from-primary/5 to-primary/15 border-2 border-primary/30 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_20px_60px_rgb(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
                 <div className="relative z-50">
                   <div className="mb-4 flex justify-center">
                     <div className="rounded-full bg-primary/10 p-4">
@@ -75,28 +58,11 @@ export function CtaCards() {
             {/* Sports Card */}
             <Link 
               href="/sports" 
-              className="relative group block p-2 h-full w-full"
+              className="relative group block h-full w-full"
               onMouseEnter={() => setHoveredIndex(1)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <AnimatePresence>
-                {hoveredIndex === 1 && (
-                  <motion.span
-                    className="absolute inset-0 h-full w-full bg-primary/20 block rounded-3xl z-0"
-                    layoutId="hoverBackground"
-                    initial={{ opacity: 0 }}
-                    animate={{
-                      opacity: 1,
-                      transition: { duration: 0.15 },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      transition: { duration: 0.15, delay: 0.2 },
-                    }}
-                  />
-                )}
-              </AnimatePresence>
-              <div className="rounded-2xl h-full w-full p-6 overflow-hidden bg-card/80 backdrop-blur-sm border border-primary group-hover:border-primary relative z-10">
+              <div className="rounded-xl h-full w-full p-8 bg-gradient-to-br from-primary/5 to-primary/15 border-2 border-primary/30 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_20px_60px_rgb(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
                 <div className="relative z-50">
                   <div className="mb-4 flex justify-center">
                     <div className="rounded-full bg-primary/10 p-4">

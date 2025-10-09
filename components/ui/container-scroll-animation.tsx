@@ -5,9 +5,11 @@ import { useScroll, useTransform, motion, MotionValue } from "motion/react";
 export const ContainerScroll = ({
   titleComponent,
   children,
+  contentRef,
 }: {
   titleComponent: string | React.ReactNode;
   children: React.ReactNode;
+  contentRef?: React.RefObject<HTMLDivElement | null>;
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -49,7 +51,7 @@ export const ContainerScroll = ({
         }}
       >
         <Header translate={headerTranslate} titleComponent={titleComponent} />
-        <Card rotate={rotate} translate={translate} scale={scale}>
+        <Card rotate={rotate} translate={translate} scale={scale} contentRef={contentRef}>
           {children}
         </Card>
       </div>
@@ -74,11 +76,13 @@ export const Card = ({
   rotate,
   scale,
   children,
+  contentRef,
 }: {
   rotate: MotionValue<number>;
   scale: MotionValue<number>;
   translate: MotionValue<number>;
   children: React.ReactNode;
+  contentRef?: React.RefObject<HTMLDivElement | null>;
 }) => {
   const [isMobile, setIsMobile] = React.useState(false);
 
@@ -103,9 +107,12 @@ export const Card = ({
       }}
       className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-primary p-2 md:p-6 bg-primary rounded-[30px] shadow-2xl"
     >
-      <div className={`h-full w-full rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl p-4 md:p-4 ${
-        isMobile ? 'overflow-y-auto' : 'overflow-hidden'
-      }`}>
+      <div 
+        ref={contentRef}
+        className={`h-full w-full rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl p-4 md:p-4 ${
+          isMobile ? 'overflow-y-auto' : 'overflow-hidden'
+        }`}
+      >
         {children}
       </div>
     </motion.div>
