@@ -77,8 +77,10 @@ export default function Home() {
       <section className="py-16 md:py-24">
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4">Was steht auf dem Spiel?</h2>
-            <h3 className="text-3xl md:text-4xl font-bold mb-8">Verpasste Potenziale vermeiden</h3>
+            <div className="text-center mb-12">
+              <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4">Was steht auf dem Spiel?</h2>
+              <h3 className="text-3xl md:text-4xl font-bold">Verpasste Potenziale vermeiden</h3>
+            </div>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-muted/30 border border-border rounded-lg p-6">
                 <h4 className="text-lg font-semibold mb-2">Ohne einen klaren Ansatz</h4>

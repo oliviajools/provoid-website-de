@@ -3,10 +3,13 @@ import { Button } from "@/components/ui/button";
 
 export function FinalCta() {
   return (
-    <section className="py-12">
+    <section className="py-16 md:py-24">
       <div className="container px-4 md:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <h3 className="text-2xl md:text-3xl font-bold mb-6">Bereit für den nächsten Schritt?</h3>
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="text-center mb-8">
+            <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4">Nächster Schritt</h2>
+            <h3 className="text-3xl md:text-4xl font-bold">Bereit für den nächsten Schritt?</h3>
+          </div>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/kontakt">
               <Button size="lg">Kostenloses Gespräch buchen</Button>

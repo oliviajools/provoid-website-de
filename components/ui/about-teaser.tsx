@@ -9,7 +9,7 @@ export function AboutTeaser() {
         <div className="mx-auto max-w-4xl">
           <div className="text-center mb-12">
             <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-3">Über uns</h2>
-            <h3 className="text-3xl md:text-4xl font-bold">Wer wir sind und was wir tun</h3>
+            <h3 className="text-3xl md:text-4xl font-bold">Warum wir tun, was wir tun</h3>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 items-center">

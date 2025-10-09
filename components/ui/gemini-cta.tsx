@@ -24,7 +24,7 @@ export function GeminiCta() {
       ref={ref}
     >
       <GoogleGeminiEffect
-        title="Starten Sie mit einem kostenlosen, unverbindlichen Gespräch"
+        title={`Starten Sie mit einem kostenlosen,\nunverbindlichen Gespräch`}
         description="Klären Sie Ziele und nächste Schritte – in 20 Minuten."
         pathLengths={[
           pathLengthFirst,
