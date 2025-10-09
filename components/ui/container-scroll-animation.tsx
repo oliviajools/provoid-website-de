@@ -39,7 +39,7 @@ export const ContainerScroll = ({
 
   return (
     <div
-      className="h-[44rem] md:h-[60rem] flex items-center justify-center relative p-2 md:p-16"
+      className="h-auto md:h-[60rem] flex items-center justify-center relative p-2 md:p-16"
       ref={containerRef}
     >
       <div
@@ -80,17 +80,32 @@ export const Card = ({
   translate: MotionValue<number>;
   children: React.ReactNode;
 }) => {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
+
   return (
     <motion.div
       style={{
-        rotateX: rotate,
-        scale,
+        rotateX: isMobile ? 0 : rotate,
+        scale: isMobile ? 1 : scale,
         boxShadow:
           "0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003",
       }}
       className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-primary p-2 md:p-6 bg-primary rounded-[30px] shadow-2xl"
     >
-      <div className=" h-full w-full  overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl md:p-4 ">
+      <div className={`h-full w-full rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl p-4 md:p-4 ${
+        isMobile ? 'overflow-y-auto' : 'overflow-hidden'
+      }`}>
         {children}
       </div>
     </motion.div>

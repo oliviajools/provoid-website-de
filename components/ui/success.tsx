@@ -6,10 +6,10 @@ export function Success() {
         <div className="container px-4 md:px-6 lg:px-8">
           <ContainerScroll
             titleComponent={
-              <h3 className="text-3xl md:text-4xl font-bold mb-8">Was Sie mit PROVOID erreichen</h3>
+              <h3 className="text-3xl md:text-4xl font-bold mb-12 md:mb-8">Was Sie mit PROVOID erreichen</h3>
             }
           >
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-8 p-2 md:p-0">
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
