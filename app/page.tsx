@@ -5,11 +5,16 @@ import { Button } from "@/components/ui/button";
 import { AboutTeaser } from "@/components/ui/about-teaser";
 import { Intro } from "@/components/ui/intro";
 import { Success } from "@/components/ui/success";
+import { Stats } from "@/components/ui/stats";
 import { CtaCards } from "@/components/ui/cta-cards";
 import { FinalCta } from "@/components/ui/final-cta";
+import { GeminiCta } from "@/components/ui/gemini-cta";
+import { FlipWords } from "@/components/ui/flip-words";
 import Image from "next/image";
 
 export default function Home() {
+  const words = ["Performance", "Leistung", "Erfolg", "Spitzenleistung"];
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -17,7 +22,8 @@ export default function Home() {
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-6 text-6xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              Neurowissenschaft für Performance
+              <div>Neurowissenschaft für</div>
+              <FlipWords words={words} className="text-6xl font-bold tracking-tight sm:text-5xl md:text-6xl text-primary" />
             </h1>
             <p className="mb-8 text-lg text-muted-foreground md:text-xl">
               no brain no gain
@@ -64,25 +70,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Primary CTA Bar (SB7: Call To Action) */}
-      <section className="py-10">
-        <div className="container px-4 md:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl bg-card border border-border rounded-xl p-6 md:p-8 flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
-            <div>
-              <h4 className="text-xl font-semibold">Starten Sie mit einem kostenlosen, unverbindlichen Gespräch</h4>
-              <p className="text-muted-foreground">Klären Sie Ziele und nächste Schritte – in 20 Minuten.</p>
-            </div>
-            <div className="flex gap-3">
-              <Link href="/kontakt">
-                <Button size="lg">Beratungstermin vereinbaren</Button>
-              </Link>
-              <Link href="/ueber-uns" className="inline-flex">
-                <Button size="lg" variant="outline">Mehr über uns</Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Primary CTA with Gemini Effect */}
+      <GeminiCta />
 
       {/* Stakes Section (SB7: Help them avoid failure) */}
       <section className="py-16 md:py-24">
@@ -117,6 +106,9 @@ export default function Home() {
 
       {/* About teaser (concise) */}
       <AboutTeaser />
+
+      {/* Stats Section with Lamp Effect */}
+      <Stats />
 
       {/* CTA Cards Section (final) */}
       <CtaCards />

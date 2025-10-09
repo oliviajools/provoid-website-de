@@ -152,33 +152,15 @@ export function Success() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2">Nachhaltiges Lernen</h4>
                     <p className="text-muted-foreground">
                       Wissen wird durch gehirngerechte Methoden schneller aufgenommen und länger behalten.
                     </p>
                   </div>
                 </div>
-              </div>
-            </div>
-  
-            <div className="bg-muted/50 p-8 rounded-lg border border-border">
-              <div className="grid md:grid-cols-3 gap-8 text-center">
-                <div>
-                  <div className="text-4xl font-bold text-primary mb-2">2023</div>
-                  <p className="text-sm text-muted-foreground">Gründung als Jugend forscht-Projekt</p>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold text-primary mb-2">2. Platz</div>
-                  <p className="text-sm text-muted-foreground">JugendUnternimmt Summerschool 2025</p>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold text-primary mb-2">Nominiert</div>
-                  <p className="text-sm text-muted-foreground">STARTERiN Award Hamburg 2025</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
-      </section>
-    )
-  }
+      </div>
+    </section>
+  )
+}
