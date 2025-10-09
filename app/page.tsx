@@ -9,6 +9,7 @@ import { Stats } from "@/components/ui/stats";
 import { CtaCards } from "@/components/ui/cta-cards";
 import { FinalCta } from "@/components/ui/final-cta";
 import { GeminiCta } from "@/components/ui/gemini-cta";
+import { Proof } from "@/components/ui/proof";
 import { FlipWords } from "@/components/ui/flip-words";
 import Image from "next/image";
 
@@ -53,21 +54,8 @@ export default function Home() {
       {/* Intro Section */}
       <Intro />
 
-      {/* Guide Section (SB7: The Guide) */}
-      <section className="py-16 md:py-24 bg-muted/30">
-        <div className="container px-4 md:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center">
-            <h3 className="text-3xl md:text-4xl font-bold mb-6">Begleitung mit neurowissenschaftlicher Expertise</h3>
-            <p className="text-lg text-muted-foreground">
-              Wir übersetzen Forschung in anwendbare Schritte und begleiten Sie strukturiert – empathisch, klar und evidenzbasiert.
-            </p>
-            <div className="mt-8 text-sm text-muted-foreground">
-              {/* Platzhalter: Referenzen/Logos/Partnerschaften */}
-              <p>[Platzhalter: Referenzen, Logos/Partnerschaften – hier einfügen]</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Proof Section (SB7: The Guide) */}
+      <Proof />
 
       {/* Primary CTA with Gemini Effect */}
       <GeminiCta />
