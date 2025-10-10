@@ -72,10 +72,11 @@ export default function Home() {
                 <h4 className="text-lg font-semibold mb-2">Ohne einen klaren Ansatz</h4>
                 <ul className="list-disc ml-5 text-muted-foreground space-y-1">
                   <li>Unklarheit über neuronale Stärken/Schwächen</li>
-                  <li>Prokrastination und schwächere Entscheidungen</li>
+                  <li>Prokrastination</li>
                   <li>Geringe Entscheidungsfähigkeit</li>
                   <li>Verbindungen durch fehlende Stimulation</li>
                   <li>Unterdrücktes oder unentdecktes Potenzial</li>
+                  <li>Mangelnde Fokussierung</li>
 
                 </ul>
               </div>
@@ -87,6 +88,7 @@ export default function Home() {
                   <li>Verbesserte Entscheidungsfähigkeit</li>
                   <li>Aufbau und Erhalt neuronaler Verbindungen durch gezielte Stimulationen</li>
                   <li>Entdeckung und Entfaltung von verborgenem Potenzial</li>
+                  <li>Verbesserte Fokussierung</li>
                 </ul>
               </div>
             </div>

@@ -32,10 +32,10 @@ export function FinalCta() {
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="/kontakt" className="w-full sm:w-auto">
+            <Link href="/kontakt" className="w-full sm:w-auto cursor-pointer">
               <Button size="lg" className="w-full sm:w-auto">Gespräch buchen</Button>
             </Link>
-            <Link href="/ueber-uns" className="w-full sm:w-auto">
+            <Link href="/ueber-uns" className="w-full sm:w-auto cursor-pointer">
               <Button size="lg" variant="outline" className="w-full sm:w-auto">Mehr über unseren Ansatz</Button>
             </Link>
           </div>
