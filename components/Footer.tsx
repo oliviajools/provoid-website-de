@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 
 export function Footer() {
@@ -8,7 +9,17 @@ export function Footer() {
       <div className="container px-4 md:px-6 lg:px-8 pt-6 pb-4 relative z-10">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <div>
-            <h3 className="mb-4 text-lg font-semibold text-primary">PROVOID</h3>
+            <div className="flex items-center gap-3 mb-4">
+              <Image
+                src="/logo-provoid-svg.svg"
+                alt="PROVOID Logo"
+                width={48}
+                height={48}
+                className="w-12 h-12"
+                priority
+              />
+              <h3 className="text-lg font-semibold text-primary">PROVOID</h3>
+            </div>
             <p className="text-sm text-muted-foreground">
               no brain no gain
             </p>

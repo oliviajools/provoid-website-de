@@ -1,6 +1,7 @@
 import { Metadata } from "next";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Calendar } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Kontakt | PROVOID",
@@ -20,6 +21,24 @@ export default function KontaktPage() {
             <p className="text-lg text-muted-foreground md:text-xl">
               Wir freuen uns auf Ihre Nachricht
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Calendly Embed Section */}
+      <section className="container px-4 md:px-6 lg:px-8 py-4 md:py-8">
+        <div className="mx-auto max-w-4xl">
+          <div className="rounded-2xl border bg-card p-3 md:p-4 shadow-sm">
+            <div className="w-full h-[calc(100vh-280px)] md:h-[calc(100vh-200px)] rounded-lg overflow-hidden">
+              <iframe
+                src="https://calendly.com/oliviajools/30min"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                title="Calendly Terminbuchung"
+                className="rounded-lg"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -72,6 +91,7 @@ export default function KontaktPage() {
                 </address>
               </CardContent>
             </Card>
+
           </div>
 
           {/* Additional Info Section */}
@@ -81,8 +101,8 @@ export default function KontaktPage() {
             </h2>
             <p className="text-muted-foreground leading-relaxed">
               Haben Sie Fragen zu unseren Dienstleistungen oder möchten Sie mehr über PROVOID erfahren? 
-              Wir stehen Ihnen gerne zur Verfügung. Kontaktieren Sie uns per E-Mail oder Telefon – 
-              wir freuen uns darauf, von Ihnen zu hören und gemeinsam mit Ihnen die besten Lösungen 
+              Buchen Sie direkt einen Termin über Calendly oder kontaktieren Sie uns per E-Mail oder Telefon. 
+              Wir freuen uns darauf, von Ihnen zu hören und gemeinsam mit Ihnen die besten Lösungen 
               für Ihre Bedürfnisse zu entwickeln.
             </p>
           </div>
