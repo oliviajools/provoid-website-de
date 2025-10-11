@@ -224,7 +224,7 @@ export function Success() {
                   <div>
                     <h4 className="font-semibold mb-2">Verbesserte Teamverbindungen</h4>
                     <p className="text-muted-foreground">
-                      Das gegenseitige Verständnis der neuronalen Abläufe und deren Auswirkungen auf Verhaltensweisen verstärkt das gegenseitige Verständnis und Teamgefüge.
+                      Das gegenseitige Verständnis der neuronalen Abläufe und deren Auswirkungen auf Verhaltensweisen verstärkt das Teamgefüge.
                     </p>
                   </div>
                 </div>
