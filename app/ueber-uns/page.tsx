@@ -20,7 +20,7 @@ export default function UeberUnsPage() {
         <Section id="idee" title="Unsere Idee">
           <div className="prose prose-neutral dark:prose-invert max-w-none">
             <p>
-              PROVOID begann als „Jugend forscht“-Projekt zur Prokrastination. Der Name war schnell gefunden: PROVOID – kurz für Procrastination avoid.
+              PROVOID begann als „Jugend forscht“-Projekt zum Thema der Prokrastination. Der Name war schnell gefunden: PROVOID – kurz für Procrastination avoid.
             </p>
             <p>
               Im Verlauf der Arbeit wurde klar, wie stark neurowissenschaftliche Mechanismen Entscheidungen, Arbeitsverhalten und Kognition prägen. PROVOID wuchs – und mit uns die leitende Idee.
