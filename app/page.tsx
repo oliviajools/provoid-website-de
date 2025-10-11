@@ -14,7 +14,7 @@ import { FlipWords } from "@/components/ui/flip-words";
 import Image from "next/image";
 
 export default function Home() {
-  const words = ["Performance", "Leistung", "Erfolg", "Spitzenleistung"];
+  const words = ["Performance", "Gesundheit", "Zufriedenheit"];
 
   return (
     <div className="flex flex-col">
@@ -27,7 +27,7 @@ export default function Home() {
               <FlipWords words={words} className="text-3xl font-bold tracking-tight sm:text-5xl md:text-6xl text-primary" />
             </h1>
             <p className="mb-8 text-lg text-muted-foreground md:text-xl">
-              no brain no gain
+              Wir übersetzen neurowissenschaftliche Forschung in praktische Lösungen
             </p>
             <div className="relative flex justify-center">
               <div aria-hidden className="pointer-events-none absolute inset-0 mx-auto flex justify-center items-center">
@@ -45,7 +45,7 @@ export default function Home() {
               />
             </div>
             <p className="mb-8 text-lg text-muted-foreground md:text-xl">
-              <strong>Wir übersetzen neurowissenschaftliche Forschung in praktische Lösungen für Sportvereine und Unternehmen</strong>
+              <strong>Wir übersetzen Forschung in anwendbare Schritte und begleiten Sie empathisch, strukturiert und evidenzbasiert.</strong>
             </p>
           </div>
         </div>
@@ -69,26 +69,25 @@ export default function Home() {
             </div>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-muted/30 border border-border rounded-lg p-6">
-                <h4 className="text-lg font-semibold mb-2">Ohne einen klaren Ansatz</h4>
+                <h4 className="text-lg font-semibold mb-2">Ohne einen klaren Ansatz:</h4>
                 <ul className="list-disc ml-5 text-muted-foreground space-y-1">
-                  <li>Unklarheit über neuronale Stärken/Schwächen</li>
+                  <li>Unklarheit über neuronale Stärken & Schwächen</li>
+                  <li>Unentdecktes Potenzial</li>
                   <li>Prokrastination</li>
-                  <li>Geringe Entscheidungsfähigkeit</li>
-                  <li>Verbindungen durch fehlende Stimulation</li>
-                  <li>Unterdrücktes oder unentdecktes Potenzial</li>
-                  <li>Mangelnde Fokussierung</li>
-
+                  <li>Unklare Entscheidungen</li>
+                  <li>Unpassende Arbeitsabläufe</li>
                 </ul>
               </div>
               <div className="bg-card border border-border rounded-lg p-6">
-                <h4 className="text-lg font-semibold mb-2">Mit PROVOID</h4>
+                <h4 className="text-lg font-semibold mb-2">Mit PROVOID:</h4>
                 <ul className="list-disc ml-5 text-muted-foreground space-y-1">
                   <li>Bewusste Nutzung neuronaler Fähigkeiten</li>
                   <li>Reduzierung von Prokrastination</li>
+                  <li>Bewusstsein über neuronale Abläufe</li>
                   <li>Verbesserte Entscheidungsfähigkeit</li>
-                  <li>Aufbau und Erhalt neuronaler Verbindungen durch gezielte Stimulationen</li>
-                  <li>Entdeckung und Entfaltung von verborgenem Potenzial</li>
-                  <li>Verbesserte Fokussierung</li>
+                  <li>Aufbau und Erhalt neuronaler Verbindungen</li>
+                  <li>Entfaltung von verborgenem Potenzial</li>
+                  <li>Neurologische und mentale Gesundheit</li>
                 </ul>
               </div>
             </div>

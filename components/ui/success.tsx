@@ -99,7 +99,7 @@ export function Success() {
           <div className="relative">
             <ContainerScroll
               titleComponent={
-                <h3 className="text-3xl md:text-4xl font-bold mb-12 md:mb-8">Was Sie mit PROVOID erreichen</h3>
+                <h3 className="text-3xl md:text-4xl font-bold mb-12 md:mb-8">Wie Sie mit PROVOID wachsen</h3>
               }
               contentRef={contentRef}
             >
@@ -116,10 +116,9 @@ export function Success() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2">Wissenschaftliches Wissen über Neurobereiche</h4>
+                    <h4 className="font-semibold mb-2">Wissenschaftliches Wissen in der Neurowissenschaft</h4>
                     <p className="text-muted-foreground">
-                      Bewusstsein für eigene neuronale Stärken und Schwächen durch Analyse der 6 wichtigsten
-                      Gehirnbereiche.
+                      Bewusstsein für eigene neuronale Stärken und Schwächen durch evidenzbasierte Analysen.
                     </p>
                   </div>
                 </div>
@@ -137,8 +136,7 @@ export function Success() {
                   <div>
                     <h4 className="font-semibold mb-2">Kenntnis über Persönlichkeitstypen</h4>
                     <p className="text-muted-foreground">
-                      Verstehen Sie Ihre vorherrschenden Muster: Perfektionist, Unentschlossen, Überfordert oder
-                      Ablenkbar.
+                      Lernen Sie sich kennen und entdecken Sie Ihre vorherrschenden Muster: perfektionistisch, unentschlossen, überfordert oder ablenkbar?
                     </p>
                   </div>
                 </div>
@@ -154,10 +152,9 @@ export function Success() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2">Prokrastination überwinden</h4>
+                    <h4 className="font-semibold mb-2">Prokrastination endlich überwinden</h4>
                     <p className="text-muted-foreground">
-                      Schrittweise Anleitung, um neuronale Stärken zu fördern und Schwächen zu verbessern. Bessere
-                      Leistung bei Aufgaben.
+                      Entdecken Sie die tiefliegenden Zusammenhänge Ihrer Prokrastination und erhalten Sie wissenschaftliche Lösungsansätze zur Überwindung.
                     </p>
                   </div>
                 </div>
@@ -173,9 +170,9 @@ export function Success() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2">Klarere Entscheidungen</h4>
+                    <h4 className="font-semibold mb-2">Klare Entscheidungen</h4>
                     <p className="text-muted-foreground">
-                      Verständnis kognitiver Mechanismen führt zu fundierteren, nachhaltigeren Entscheidungen im Alltag.
+                      Das Verständnis der kognitiven Mechanismen führt zu fundierteren und nachhaltigen Entscheidungen in Alltag und Beruf.
                     </p>
                   </div>
                 </div>
@@ -195,7 +192,7 @@ export function Success() {
                   <div>
                     <h4 className="font-semibold mb-2">Potenzial entfalten</h4>
                     <p className="text-muted-foreground">
-                      Neue neuronale Verbindungen schaffen und vorhandene Potenziale vollständig nutzen.
+                      Durch neuronale Verbindungen kann das vorhandene Potential vollständig genutzt werden.
                     </p>
                   </div>
                 </div>
@@ -211,9 +208,9 @@ export function Success() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2">Höhere Leistung im Job oder Sport</h4>
+                    <h4 className="font-semibold mb-2">Höhere Leistung in Sport und Beruf</h4>
                     <p className="text-muted-foreground">
-                      Messbare Verbesserung der Leistung durch optimierte neuronale Prozesse und Strukturen.
+                      Optimierte neuronale Prozesse und strukturen führen zu messbarer Leistungsverbesserung.
                     </p>
                   </div>
                 </div>
@@ -231,7 +228,7 @@ export function Success() {
                   <div>
                     <h4 className="font-semibold mb-2">Verbesserte Teamverbindungen</h4>
                     <p className="text-muted-foreground">
-                      Zusätzliches Teamprogramm stärkt die Zusammenarbeit und Kommunikation im gesamten Team.
+                      Das gegenseitige Verständnis der neuronalen Abläufe und deren Auswirkungen auf Verhaltensweisen verstärkt das gegenseitige Verständnis und Teamgefüge.
                     </p>
                   </div>
                 </div>
@@ -247,11 +244,9 @@ export function Success() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2">
-                    Effektiveres Lernen
-                    </h4>
+                    <h4 className="font-semibold mb-2">Effektiveres Lernen</h4>
                     <p className="text-muted-foreground">
-                    Wissen wird durch gehirngerechte Methoden schneller aufgenommen und länger behalten.
+                      Durch die Anpassung der Lernmethoden an die individuelle neuronale Konzeption wird Wissen schneller und nachhaltiger aufgenommen.
                     </p>
                   </div>
               </div>

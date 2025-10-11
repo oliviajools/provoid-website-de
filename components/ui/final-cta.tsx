@@ -4,11 +4,13 @@ import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 
 export function FinalCta() {
   const words = [
-    { text: "Bereit" },
-    { text: "für" },
-    { text: "den" },
-    { text: "nächsten" },
-    { text: "Schritt?", className: "text-primary" },
+    { text: "Klären" },
+    { text: "Sie" },
+    { text: "Ihre" },
+    { text: "Ziele", className: "text-primary" },
+    { text: "in" },
+    { text: "30" },
+    { text: "Minuten.", className: "text-primary" },
   ];
 
   return (
@@ -18,7 +20,7 @@ export function FinalCta() {
           {/* Mobile: Static title */}
           <div className="md:hidden text-center mb-8">
             <h3 className="text-3xl font-bold">
-              Bereit für den nächsten <span className="text-primary">Schritt?</span>
+              Klären Sie Ihre <span className="text-primary">Ziele</span> in <span className="text-primary">30 Minuten.</span>
             </h3>
           </div>
           
