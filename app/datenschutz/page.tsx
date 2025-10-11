@@ -23,7 +23,7 @@ export default function DatenschutzPage() {
         <div className="mx-auto max-w-3xl space-y-8 text-muted-foreground">
           <div className="rounded-2xl border bg-card px-6 py-6 shadow-sm space-y-6">
             <p>
-              Wir nehmen Ihren Datenschutz ernst. Diese Datenschutzerklärung erläutert, welche Daten wir in der
+              Wir nehmen Ihren Datenschutz sehr ernst. Diese Datenschutzerklärung erläutert, welche Daten wir in der
               Provoid-App und PROVOID-Webseite verarbeiten, zu welchen Zwecken und welche Rechte Sie gemäß DSGVO haben.
               Diese Informationen gelten für iOS und Android.
             </p>
