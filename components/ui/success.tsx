@@ -115,7 +115,7 @@ export function Success() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2">Wissenschaftliches Wissen in der Neurowissenschaft</h4>
+                    <h4 className="font-semibold mb-2">Neurologisches Grundwissen</h4>
                     <p className="text-muted-foreground">
                       Bewusstsein für eigene neuronale Stärken und Schwächen durch evidenzbasierte Analysen.
                     </p>
