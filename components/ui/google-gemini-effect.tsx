@@ -5,7 +5,7 @@ import React from "react";
 
 const transition = {
   duration: 0,
-  ease: "linear",
+  ease: [0, 0, 1, 1] as const, // linear easing as cubic-bezier
 };
 
 export const GoogleGeminiEffect = ({
