@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-import path from "path";
 
 const nextConfig: NextConfig = {
   // Allow dev access from mobile devices on local network
@@ -15,10 +14,7 @@ const nextConfig: NextConfig = {
   
   // Enable React strict mode for better performance
   reactStrictMode: true,
-  
-  // Optimize production builds
-  swcMinify: true,
-  
+
   // Improve performance with compiler optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
