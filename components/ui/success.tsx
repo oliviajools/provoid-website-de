@@ -94,17 +94,16 @@ export function Success() {
     }, []);
 
     return (
-      <section className="py-12 md:py-16" ref={sectionRef}>
+      <section className="pt-6 md:pt-8 pb-12 md:pb-16" ref={sectionRef}>
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="relative">
             <ContainerScroll
               titleComponent={
-                <h3 className="text-3xl md:text-4xl font-bold mb-12 md:mb-8">Wie Sie mit PROVOID wachsen</h3>
+                <h3 className="text-3xl md:text-4xl font-bold mb-12 md:mb-16">Wie Sie mit PROVOID wachsen</h3>
               }
               contentRef={contentRef}
             >
-              <div className="grid md:grid-cols-2 gap-8 p-2 md:p-0">
-              <div className="space-y-6">
+              <div className="space-y-6 pt-2 md:pt-4 px-2 md:px-4 pb-6 md:pb-8">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
@@ -176,9 +175,6 @@ export function Success() {
                     </p>
                   </div>
                 </div>
-              </div>
-  
-              <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
@@ -249,9 +245,8 @@ export function Success() {
                       Durch die Anpassung der Lernmethoden an die individuelle neuronale Konzeption wird Wissen schneller und nachhaltiger aufgenommen.
                     </p>
                   </div>
+                </div>
               </div>
-            </div>
-            </div>
             </ContainerScroll>
             
             {/* Scroll indicator - justo encima del borde inferior */}

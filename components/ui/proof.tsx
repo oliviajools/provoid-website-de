@@ -6,28 +6,24 @@ import { FlaskConical, Brain, Trophy, Users, Microscope, BookOpen } from "lucide
 export function Proof() {
   const proofItems = [
     {
-      icon: FlaskConical,
-      text: "Evidenzbasiert",
-    },
-    {
       icon: Brain,
       text: "Neurowissenschaftlich fundiert",
-    },
-    {
-      icon: Trophy,
-      text: "Ausgezeichnete Innovation",
+      description: "Basierend auf aktueller Forschung"
     },
     {
       icon: Users,
       text: "In engem Austausch mit Fachexperten",
+      description: "Kontinuierliche Weiterentwicklung"
     },
     {
       icon: Microscope,
       text: "Angewandte Forschung",
+      description: "Praxisnahe Umsetzung"
     },
     {
       icon: BookOpen,
       text: "Gehirngerechte Methoden",
+      description: "Individuell angepasst"
     },
   ];
 
@@ -40,7 +36,7 @@ export function Proof() {
               Begleitung mit neurowissenschaftlicher Expertise
             </h3>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Wir übersetzen Forschung in anwendbare Schritte und begleiten Sie strukturiert – empathisch, klar und evidenzbasiert.
+              Wir übersetzen Forschung in anwendbare Schritte und begleiten Sie empathisch, strukturiert und evidenzbasiert.
             </p>
           </div>
         </div>
@@ -52,7 +48,7 @@ export function Proof() {
   );
 }
 
-function ProofCarousel({ items }: { items: { icon: React.ElementType; text: string }[] }) {
+function ProofCarousel({ items }: { items: { icon: React.ElementType; text: string; description?: string }[] }) {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
   const [start, setStart] = useState(false);
@@ -106,9 +102,16 @@ function ProofCarousel({ items }: { items: { icon: React.ElementType; text: stri
                 <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
                   <Icon className="w-8 h-8 text-primary" />
                 </div>
-                <span className="text-base font-semibold text-foreground">
-                  {item.text}
-                </span>
+                <div>
+                  <h4 className="text-base font-semibold text-primary mb-2">
+                    {item.text}
+                  </h4>
+                  {item.description && (
+                    <p className="text-sm text-muted-foreground">
+                      {item.description}
+                    </p>
+                  )}
+                </div>
               </div>
             </li>
           );

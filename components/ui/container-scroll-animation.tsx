@@ -109,9 +109,7 @@ export const Card = ({
     >
       <div 
         ref={contentRef}
-        className={`h-full w-full rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl p-4 md:p-4 ${
-          isMobile ? 'overflow-y-auto' : 'overflow-hidden'
-        }`}
+        className={`h-full w-full rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl p-4 md:p-4 overflow-y-auto`}
       >
         {children}
       </div>

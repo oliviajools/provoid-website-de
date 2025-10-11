@@ -158,7 +158,7 @@ export const GoogleGeminiEffect = ({
         </svg>
 
         {/* Centered CTA (above) */}
-        <div className="absolute left-0 right-0 top-[40%] md:top-[45%] flex items-center justify-center" style={{ zIndex: 10 }}>
+        <div className="absolute left-0 right-0 top-[35%] md:top-[40%] flex items-center justify-center" style={{ zIndex: 10 }}>
           <a
             href="/kontakt"
             className="font-bold bg-primary text-primary-foreground rounded-full md:px-8 md:py-4 px-6 py-3 md:text-lg text-base hover:bg-primary/90 transition-colors shadow-2xl text-center leading-tight"

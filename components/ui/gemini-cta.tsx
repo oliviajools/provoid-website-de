@@ -25,7 +25,7 @@ export function GeminiCta() {
     >
       <GoogleGeminiEffect
         title={`Starten Sie mit einem \nunverbindlichen Gespräch`}
-        description="Klären Sie Ziele und nächste Schritte\n– in 20 Minuten."
+        description="Klären Sie Ihre Ziele in 30 Minuten."
         pathLengths={[
           pathLengthFirst,
           pathLengthSecond,

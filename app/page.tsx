@@ -3,7 +3,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/button";
 import { AboutTeaser } from "@/components/ui/about-teaser";
-import { Intro } from "@/components/ui/intro";
 import { Success } from "@/components/ui/success";
 import { Stats } from "@/components/ui/stats";
 import { CtaCards } from "@/components/ui/cta-cards";
@@ -19,7 +18,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-primary/20 to-background pt-[40px] pb-[120px] md:pt-[80px] md:pb-[180px]">
+      <section className="relative bg-gradient-to-b from-primary/20 to-background pt-[40px] pb-[60px] md:pt-[80px] md:pb-[80px]">
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-6 text-3xl font-bold tracking-tight sm:text-5xl md:text-6xl">
@@ -44,15 +43,9 @@ export default function Home() {
                 className="relative mx-auto h-auto w-72 md:w-[28rem] lg:w-[32rem] drop-shadow-lg"
               />
             </div>
-            <p className="mb-8 text-lg text-muted-foreground md:text-xl">
-              <strong>Wir übersetzen Forschung in anwendbare Schritte und begleiten Sie empathisch, strukturiert und evidenzbasiert.</strong>
-            </p>
           </div>
         </div>
       </section>
-
-      {/* Intro Section */}
-      <Intro />
 
       {/* Proof Section (SB7: The Guide) */}
       <Proof />
@@ -61,7 +54,7 @@ export default function Home() {
       <GeminiCta />
 
       {/* Stakes Section (SB7: Help them avoid failure) */}
-      <section className="py-12 md:py-16">
+      <section className="pt-12 md:pt-16 pb-6 md:pb-8">
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <div className="text-center mb-12">
