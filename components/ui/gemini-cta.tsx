@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { useScroll, useTransform, useMotionValue } from "motion/react";
 import { useRef, useEffect, useState } from "react";
 import type { MotionValue } from "motion/react";
@@ -35,19 +33,16 @@ export function GeminiCta() {
 
   // Helper: 0..1 clamp
   const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
-  const mk = (a: number, b: number) =>
-    useTransform(scrollYProgress, [0, 0.8], [clamp01(a), clamp01(b)], {
-      clamp: true,
-    });
 
   // Mobile: konstante Werte, keine Subscription
   const ONE: MotionValue<number> = useMotionValue(1);
 
-  const pathLengthFirst  = isMobile ? ONE : mk(0.2, 1);
-  const pathLengthSecond = isMobile ? ONE : mk(0.15, 1);
-  const pathLengthThird  = isMobile ? ONE : mk(0.1, 1);
-  const pathLengthFourth = isMobile ? ONE : mk(0.05, 1);
-  const pathLengthFifth  = isMobile ? ONE : mk(0, 1);
+  // Desktop: scroll-based animations with clamped values
+  const pathLengthFirst  = isMobile ? ONE : useTransform(scrollYProgress, [0, 0.8], [clamp01(0.2), clamp01(1)], { clamp: true });
+  const pathLengthSecond = isMobile ? ONE : useTransform(scrollYProgress, [0, 0.8], [clamp01(0.15), clamp01(1)], { clamp: true });
+  const pathLengthThird  = isMobile ? ONE : useTransform(scrollYProgress, [0, 0.8], [clamp01(0.1), clamp01(1)], { clamp: true });
+  const pathLengthFourth = isMobile ? ONE : useTransform(scrollYProgress, [0, 0.8], [clamp01(0.05), clamp01(1)], { clamp: true });
+  const pathLengthFifth  = isMobile ? ONE : useTransform(scrollYProgress, [0, 0.8], [clamp01(0), clamp01(1)], { clamp: true });
 
   return (
     <div
