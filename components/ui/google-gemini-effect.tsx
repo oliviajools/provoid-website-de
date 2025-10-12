@@ -13,14 +13,16 @@ export const GoogleGeminiEffect = ({
   title,
   description,
   className,
+  isMobile = false,
 }: {
   pathLengths: MotionValue[];
   title?: string;
   description?: string;
   className?: string;
+  isMobile?: boolean;
 }) => {
   return (
-    <div className={cn("sticky top-20", className)}>
+    <div className={cn(isMobile ? "relative" : "sticky top-20", className)}>
       <p className="text-3xl md:text-4xl lg:text-5xl font-bold pb-4 text-center text-foreground whitespace-pre-line relative" style={{ zIndex: 10 }}>
         {title || `Build with Aceternity UI`}
       </p>
