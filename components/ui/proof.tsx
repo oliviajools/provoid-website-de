@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
-import { FlaskConical, Brain, Trophy, Users, Microscope, BookOpen } from "lucide-react";
+import { Brain, Users, Microscope, BookOpen } from "lucide-react";
 
 export function Proof() {
   const proofItems = [

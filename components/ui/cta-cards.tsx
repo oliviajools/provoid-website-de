@@ -1,11 +1,8 @@
 "use client";
 import Link from "next/link";
 import { ArrowRight, Building2, Trophy } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
 
 export function CtaCards() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <section className="relative bg-background py-12 md:py-16">
@@ -23,8 +20,6 @@ export function CtaCards() {
             <Link 
               href="/company" 
               className="relative group block h-full w-full"
-              onMouseEnter={() => setHoveredIndex(0)}
-              onMouseLeave={() => setHoveredIndex(null)}
             >
               <div className="rounded-xl h-full w-full p-8 bg-gradient-to-br from-primary/5 to-primary/15 border-2 border-primary/30 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_20px_60px_rgb(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
                 <div className="relative z-50">
@@ -59,8 +54,6 @@ export function CtaCards() {
             <Link 
               href="/sports" 
               className="relative group block h-full w-full"
-              onMouseEnter={() => setHoveredIndex(1)}
-              onMouseLeave={() => setHoveredIndex(null)}
             >
               <div className="rounded-xl h-full w-full p-8 bg-gradient-to-br from-primary/5 to-primary/15 border-2 border-primary/30 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_20px_60px_rgb(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
                 <div className="relative z-50">

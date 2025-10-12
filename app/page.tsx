@@ -1,7 +1,3 @@
-import Link from "next/link";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Section } from "@/components/Section";
-import { Button } from "@/components/ui/button";
 import { AboutTeaser } from "@/components/ui/about-teaser";
 import { Success } from "@/components/ui/success";
 import { Stats } from "@/components/ui/stats";

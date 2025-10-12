@@ -1,7 +1,6 @@
 import { Metadata } from "next";
-import { Mail, Phone, MapPin, Calendar } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Kontakt | PROVOID",

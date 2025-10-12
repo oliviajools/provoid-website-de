@@ -25,8 +25,9 @@ export function Success() {
       }
 
       return () => {
-        if (contentRef.current) {
-          contentRef.current.removeEventListener('scroll', handleScroll);
+        const currentContent = contentRef.current;
+        if (currentContent) {
+          currentContent.removeEventListener('scroll', handleScroll);
         }
       };
     }, []);
