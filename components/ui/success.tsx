@@ -6,7 +6,6 @@ import { ChevronDown } from "lucide-react";
 export function Success() {
     const contentRef = useRef<HTMLDivElement>(null);
     const sectionRef = useRef<HTMLElement>(null);
-    const [isScrollLocked, setIsScrollLocked] = useState(false);
     const [showScrollIndicator, setShowScrollIndicator] = useState(true);
     const [isAtBottom, setIsAtBottom] = useState(false);
 
@@ -25,68 +24,7 @@ export function Success() {
         contentRef.current.addEventListener('scroll', handleScroll);
       }
 
-      const handleWheel = (e: WheelEvent) => {
-        if (!contentRef.current || !sectionRef.current) return;
-        
-        const isMobile = window.innerWidth <= 768;
-        if (!isMobile) return; // Solo en móvil
-
-        const rect = sectionRef.current.getBoundingClientRect();
-        // Detectar si la sección está visible en el viewport
-        const isInView = rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2;
-        
-        if (isInView) {
-          const content = contentRef.current;
-          const isAtTop = content.scrollTop === 0;
-          const isAtBottom = Math.abs(content.scrollHeight - content.scrollTop - content.clientHeight) < 2;
-          
-          // Si está en el top y scrollea hacia arriba, permitir scroll de página
-          if (isAtTop && e.deltaY < 0) {
-            return;
-          }
-          
-          // Si está en el bottom y scrollea hacia abajo, permitir scroll de página
-          if (isAtBottom && e.deltaY > 0) {
-            return;
-          }
-          
-          // De lo contrario, bloquear scroll de página y scrollear el contenido
-          e.preventDefault();
-          e.stopPropagation();
-          content.scrollTop += e.deltaY;
-        }
-      };
-
-      const handleTouchMove = (e: TouchEvent) => {
-        if (!contentRef.current || !sectionRef.current) return;
-        
-        const isMobile = window.innerWidth <= 768;
-        if (!isMobile) return;
-
-        const rect = sectionRef.current.getBoundingClientRect();
-        const isInView = rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2;
-        
-        if (isInView) {
-          const content = contentRef.current;
-          const isAtTop = content.scrollTop === 0;
-          const isAtBottom = Math.abs(content.scrollHeight - content.scrollTop - content.clientHeight) < 2;
-          
-          // Permitir scroll de página solo en los bordes
-          if ((isAtTop && content.scrollTop <= 0) || (isAtBottom && content.scrollTop >= content.scrollHeight - content.clientHeight)) {
-            return;
-          }
-          
-          // Bloquear scroll de página
-          e.preventDefault();
-        }
-      };
-
-      window.addEventListener('wheel', handleWheel, { passive: false });
-      window.addEventListener('touchmove', handleTouchMove, { passive: false });
-      
       return () => {
-        window.removeEventListener('wheel', handleWheel);
-        window.removeEventListener('touchmove', handleTouchMove);
         if (contentRef.current) {
           contentRef.current.removeEventListener('scroll', handleScroll);
         }
