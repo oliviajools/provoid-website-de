@@ -37,12 +37,19 @@ export function GeminiCta() {
   // Mobile: konstante Werte, keine Subscription
   const ONE: MotionValue<number> = useMotionValue(1);
 
-  // Desktop: scroll-based animations with clamped values
-  const pathLengthFirst  = isMobile ? ONE : useTransform(scrollYProgress, [0, 0.8], [clamp01(0.2), clamp01(1)], { clamp: true });
-  const pathLengthSecond = isMobile ? ONE : useTransform(scrollYProgress, [0, 0.8], [clamp01(0.15), clamp01(1)], { clamp: true });
-  const pathLengthThird  = isMobile ? ONE : useTransform(scrollYProgress, [0, 0.8], [clamp01(0.1), clamp01(1)], { clamp: true });
-  const pathLengthFourth = isMobile ? ONE : useTransform(scrollYProgress, [0, 0.8], [clamp01(0.05), clamp01(1)], { clamp: true });
-  const pathLengthFifth  = isMobile ? ONE : useTransform(scrollYProgress, [0, 0.8], [clamp01(0), clamp01(1)], { clamp: true });
+  // Always call hooks unconditionally, then use results conditionally
+  const desktopPathLengthFirst = useTransform(scrollYProgress, [0, 0.8], [clamp01(0.2), clamp01(1)], { clamp: true });
+  const desktopPathLengthSecond = useTransform(scrollYProgress, [0, 0.8], [clamp01(0.15), clamp01(1)], { clamp: true });
+  const desktopPathLengthThird = useTransform(scrollYProgress, [0, 0.8], [clamp01(0.1), clamp01(1)], { clamp: true });
+  const desktopPathLengthFourth = useTransform(scrollYProgress, [0, 0.8], [clamp01(0.05), clamp01(1)], { clamp: true });
+  const desktopPathLengthFifth = useTransform(scrollYProgress, [0, 0.8], [clamp01(0), clamp01(1)], { clamp: true });
+
+  // Use mobile or desktop values based on device type
+  const pathLengthFirst = isMobile ? ONE : desktopPathLengthFirst;
+  const pathLengthSecond = isMobile ? ONE : desktopPathLengthSecond;
+  const pathLengthThird = isMobile ? ONE : desktopPathLengthThird;
+  const pathLengthFourth = isMobile ? ONE : desktopPathLengthFourth;
+  const pathLengthFifth = isMobile ? ONE : desktopPathLengthFifth;
 
   return (
     <div
