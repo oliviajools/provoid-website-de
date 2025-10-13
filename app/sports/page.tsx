@@ -7,6 +7,9 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "PROVOID-Sports | Sportlösungen",
   description: "Professionelle Unterstützung für Sportorganisationen und Athleten - wissenschaftlich fundiert und leistungsorientiert.",
+  alternates: {
+    canonical: "/sports",
+  },
 };
 
 export default function SportsPage() {

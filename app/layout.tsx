@@ -15,10 +15,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.provoid.de/"),
   title: "PROVOID - no brain no gain",
   description: "no brain no gain.",
   keywords: ["PROVOID", "Company", "Sports", "Innovation", "Lösungen"],
   authors: [{ name: "PROVOID" }],
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/favicon-provoid.png",
     shortcut: "/favicon-provoid.png",
@@ -29,6 +33,19 @@ export const metadata: Metadata = {
     description: "no brain no gain",
     type: "website",
     locale: "de_DE",
+    url: "/",
+    images: [
+      {
+        url: "/Logo-provoid.png",
+        width: 1200,
+        height: 1200,
+        alt: "PROVOID Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/Logo-provoid.png"],
   },
 };
 

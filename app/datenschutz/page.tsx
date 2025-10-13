@@ -3,6 +3,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Datenschutz | PROVOID",
   description: "Datenschutzerklärung der PROVOID-App und -Webseite gemäß DSGVO.",
+  alternates: {
+    canonical: "/datenschutz",
+  },
 };
 
 export default function DatenschutzPage() {

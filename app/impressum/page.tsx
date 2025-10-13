@@ -3,6 +3,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Impressum | PROVOID",
   description: "Rechtliche Anbieterkennzeichnung und Kontaktinformationen von PROVOID.",
+  alternates: {
+    canonical: "/impressum",
+  },
 };
 
 export default function ImpressumPage() {

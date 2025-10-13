@@ -8,6 +8,9 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "PROVOID-Company | Unternehmenslösungen",
   description: "Maßgeschneiderte Lösungen für Ihr Unternehmen - wissenschaftlich fundiert und praxisorientiert.",
+  alternates: {
+    canonical: "/company",
+  },
 };
 
 export default function CompanyPage() {

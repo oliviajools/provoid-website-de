@@ -3,6 +3,9 @@ import { Section } from "@/components/Section";
 export const metadata = {
   title: "Über uns | PROVOID",
   description: "Unsere Idee, Vision, Geschichte und Team – ausführlich erklärt.",
+  alternates: {
+    canonical: "/ueber-uns",
+  },
 };
 
 export default function UeberUnsPage() {

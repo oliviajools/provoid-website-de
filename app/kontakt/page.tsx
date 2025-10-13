@@ -5,6 +5,9 @@ import { Card, CardContent } from "@/components/ui/card";
 export const metadata: Metadata = {
   title: "Kontakt | PROVOID",
   description: "Kontaktieren Sie PROVOID - Wir freuen uns auf Ihre Nachricht.",
+  alternates: {
+    canonical: "/kontakt",
+  },
 };
 
 export default function KontaktPage() {
