@@ -79,7 +79,7 @@ export function Footer() {
               Datenschutz
             </Link>
             <Link href="/impressum" className="text-muted-foreground hover:text-primary transition-colors">
-              Impressum
+              Impressum TESTING
             </Link>
           </div>
         </div>
