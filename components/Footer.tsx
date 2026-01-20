@@ -59,7 +59,7 @@ export function Footer() {
           <div>
             <h4 className="mb-4 text-sm font-semibold">Kontakt</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>oliviabahr@avoid-procrastination-provoid.com</li>
+              <li>oliviajools@icloud.com</li>
               <li>+49 1744401044</li>
             </ul>
           </div>
