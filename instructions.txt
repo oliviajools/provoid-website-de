@@ -1,0 +1,150 @@
+all the content in german. The code in english.
+
+Goal
+ Build a fully responsive website for PROVOID with two sub-areas (PROVOID-Company and PROVOID-Sports) using Next.js (App Router) + TypeScript + Tailwind CSS + shadcn/ui. Primary brand color: #3DB8DE (name it primary). Keep the design clean, modern, and accessible (WCAG AA). Use semantic HTML, good SEO, and mobile-first layouts.
+Pages & routes
+/ (Landing Page)
+
+
+Sections:
+
+
+“What is PROVOID?” – placeholder text
+
+
+“What is the idea behind PROVOID?” (general) – placeholder text
+
+
+“What is PROVOID’s Vision?” (general) – placeholder text
+
+
+“History of PROVOID” – placeholder text
+
+
+“Who is PROVOID?” – placeholder text
+
+
+Prominent CTA area with two large buttons/cards linking to:
+
+
+PROVOID-Company (/company)
+
+
+PROVOID-Sports (/sports)
+
+
+/company (AREA PROVOID-Company)
+
+
+Sections (each its own anchor and card/accordion):
+
+
+Ziel
+
+
+Vision
+
+
+Leistungen
+
+
+Pakete
+
+
+Zielgruppe
+
+
+Science behind PROVOID
+
+
+Analysis
+
+
+/sports (AREA PROVOID-Sports)
+
+
+Sections (same structure as company, minus Analysis if desired):
+
+
+Ziel
+
+
+Vision
+
+
+Leistungen
+
+
+Pakete
+
+
+Zielgruppe
+
+
+Science behind PROVOID
+
+
+UI/UX requirements
+Use shadcn/ui components (Button, Card, Accordion, Tabs, Separator, NavigationMenu or simple header).
+
+
+Global header with logo/title and simple nav (Home, Company, Sports). Footer with links.
+
+
+Hero on landing with short tagline and the two big CTAs.
+
+
+Smooth scroll to in-page anchors.
+
+
+Consistent spacing scale; readable line length; cards with subtle shadow, rounded-2xl.
+
+
+Tailwind theme extended with primary: '#3DB8DE' and CSS variables for light/dark.
+
+
+Include meta tags, OpenGraph, and favicon.
+
+
+Add a simple Section component for DRY headings + content.
+
+
+Add NextSeo-like tags (or native metadata API).
+
+
+Tech detail
+Next.js 15 App Router (app/), TypeScript strict.
+
+
+Tailwind with shadcn installed and configured.
+
+
+Create components/ui via shadcn generator as needed.
+
+
+Add primary color to Tailwind theme and use bg-primary, text-primary, etc.
+
+
+Include example placeholder content in every section.
+
+
+Lint/format set up.
+
+
+Acceptance criteria
+Running pnpm dev (or npm run dev) launches a responsive site.
+
+
+Landing shows the five info blocks + two big CTAs to /company and /sports.
+
+
+Company/Sports pages show all requested sections using accordions or cards.
+
+
+Color #3DB8DE is consistently used for primary accents.
+
+
+No TypeScript errors; Lighthouse good for accessibility/SEO/perf.
+
+
+
