@@ -1,8 +1,10 @@
 import { Metadata } from "next";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Target, Eye, Briefcase, Package, Users, FlaskConical, ClipboardCheck } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "PROVOID-Sports | Sportlösungen",
@@ -249,9 +251,15 @@ export default function SportsPage() {
               <AccordionContent className="pt-4 pb-6">
                 <div className="prose prose-neutral dark:prose-invert max-w-none">
                   <p>
-                    Neuroathletische Testung – bald verfügbar.
+                    Neuroathletische Testung – Messen Sie Ihre Reaktionsfähigkeit, Fokus, Entscheidungsqualität und Selbstregulation.
                   </p>
-                  {/* Button zur neuroathletischen Testung kommt hier */}
+                  <div className="mt-6">
+                    <Button asChild>
+                      <Link href="/analyse">
+                        Zur Analyse →
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
               </AccordionContent>
             </AccordionItem>
