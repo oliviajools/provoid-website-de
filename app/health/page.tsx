@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Brain, Shield, Activity, Heart } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Brain, Shield, Activity, Heart, Monitor } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Health | PROVOID",
@@ -106,6 +107,43 @@ export default function HealthPage() {
                 </CardDescription>
               </CardContent>
             </Card>
+          </div>
+
+          {/* Klinik-Tool Section */}
+          <div className="mt-12 p-8 rounded-2xl border bg-card">
+            <div className="text-center mb-6">
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <div className="rounded-full bg-primary/10 p-3">
+                  <Monitor className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold">Klinik-Tool</h3>
+              </div>
+              <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
+                Spezialisierte Software für klinische Einrichtungen zur Unterstützung der Patientenorientierung 
+                und des Delir-Managements direkt am Patientenbett.
+              </p>
+            </div>
+            
+            <div className="grid gap-4 md:grid-cols-2 mb-6">
+              <div className="p-4 rounded-lg bg-muted/50">
+                <h4 className="font-semibold mb-2">Bettnutzung</h4>
+                <p className="text-sm text-muted-foreground">
+                  Optimiert für Bettbildschirme und direkte Anwendung am Patientenbett
+                </p>
+              </div>
+              <div className="p-4 rounded-lg bg-muted/50">
+                <h4 className="font-semibold mb-2">Orientierungshilfe</h4>
+                <p className="text-sm text-muted-foreground">
+                  Unterstützt Patienten bei zeitlicher und örtlicher Orientierung
+                </p>
+              </div>
+            </div>
+            
+            <div className="text-center">
+              <Button size="lg" className="px-8">
+                Klinik-Tool starten
+              </Button>
+            </div>
           </div>
 
           {/* CTA Section */}
