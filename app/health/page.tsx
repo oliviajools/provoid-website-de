@@ -140,9 +140,10 @@ export default function HealthPage() {
             </div>
             
             <div className="text-center">
-              <Button size="lg" className="px-8">
+              <a href="https://klinik.provoid.de" 
+                 className="inline-flex items-center justify-center rounded-md text-sm font-medium px-8 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
                 Klinik-Tool starten
-              </Button>
+              </a>
             </div>
           </div>
 
