@@ -31,6 +31,7 @@ export function Header() {
           <NavLink href="/">Home</NavLink>
           <NavLink href="/company">Company</NavLink>
           <NavLink href="/sports">Sports</NavLink>
+          <div className="w-px h-6 bg-border mx-2" />
           <NavLink href="/health">Health</NavLink>
         </nav>
 
