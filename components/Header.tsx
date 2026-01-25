@@ -31,6 +31,7 @@ export function Header() {
           <NavLink href="/">Home</NavLink>
           <NavLink href="/company">Company</NavLink>
           <NavLink href="/sports">Sports</NavLink>
+          <NavLink href="/health">Health</NavLink>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -55,6 +56,7 @@ export function Header() {
             <NavLink href="/" className="text-base active:bg-primary/15 active:border-primary/40 rounded-md transition-colors" onClick={closeMenu}>Home</NavLink>
             <NavLink href="/company" className="text-base active:bg-primary/15 active:border-primary/40 rounded-md transition-colors" onClick={closeMenu}>Company</NavLink>
             <NavLink href="/sports" className="text-base active:bg-primary/15 active:border-primary/40 rounded-md transition-colors" onClick={closeMenu}>Sports</NavLink>
+            <NavLink href="/health" className="text-base active:bg-primary/15 active:border-primary/40 rounded-md transition-colors" onClick={closeMenu}>Health</NavLink>
           </div>
         </nav>
       )}
