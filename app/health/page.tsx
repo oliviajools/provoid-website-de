@@ -31,9 +31,9 @@ export default function HealthPage() {
       <section className="container px-4 md:px-6 lg:px-8 py-[38px] md:py-[58px]">
         <div className="mx-auto max-w-4xl">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Neuroathletische Gesundheitsvorsorge</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Spezialisierte Gesundheitsvorsorge</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Spezialisierte neuroathletische Ansätze zur Prävention von Demenz und effektivem Delir-Management 
+              Spezialisierte Ansätze zur Prävention von Demenz und effektivem Delir-Management 
               durch gezielte kognitive Trainingingsmethoden.
             </p>
           </div>
@@ -50,7 +50,7 @@ export default function HealthPage() {
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  Aktive Förderung der kognitiven Reserve durch neuroathletische Trainingings zur Reduzierung 
+                  Aktive Förderung der kognitiven Reserve durch spezialisierte Trainingings zur Reduzierung 
                   des Demenzrisikos und Erhaltung der Gehirngesundheit.
                 </CardDescription>
               </CardContent>
@@ -67,7 +67,7 @@ export default function HealthPage() {
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  Frühzeitige Erkennung und neuroathletische Intervention bei Delir-Symptomen zur 
+                  Frühzeitige Erkennung und spezialisierte Intervention bei Delir-Symptomen zur 
                   Stabilisierung der kognitiven Funktionen und schnelleren Genesung.
                 </CardDescription>
               </CardContent>
@@ -113,7 +113,7 @@ export default function HealthPage() {
             <h3 className="text-xl font-semibold mb-3">Persönliche Gesundheitsberatung</h3>
             <p className="text-muted-foreground mb-6">
               Kontaktieren Sie uns für eine individuelle Beratung zur Demenz-Prävention und 
-              Delir-Prävention durch neuroathletische Methoden.
+              Delir-Prävention durch spezialisierte Methoden.
             </p>
           </div>
         </div>
