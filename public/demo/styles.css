@@ -281,15 +281,9 @@ input[type="password"]:focus {
     z-index: 50;
 }
 
-.logo-icon {
-    color: var(--primary);
-    font-size: 1.2rem;
-}
-
-.logo-text {
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--text);
+.logo-img {
+    height: 28px;
+    width: auto;
 }
 
 /* Modals */
