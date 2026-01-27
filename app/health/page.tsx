@@ -169,7 +169,7 @@ export default function HealthPage() {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/demo/" 
+              <a href="/demo/index.html" 
                  className="inline-flex items-center justify-center rounded-md text-sm font-medium px-8 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
                 Demo ansehen
               </a>
