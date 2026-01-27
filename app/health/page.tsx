@@ -49,13 +49,16 @@ export default function HealthPage() {
         <div className="mx-auto max-w-4xl">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">Spezialisierte Gesundheitsvorsorge</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Spezialisierte Ansätze zur Prävention von Demenz und effektivem Delir-Management 
-              durch gezielte kognitive Trainingingsmethoden.
+            <p className="text-muted-foreground max-w-2xl mx-auto mb-4">
+              Wir bilden uns aktuell im Bereich Delir-Management und Delir-Prävention weiter, 
+              um zukünftig spezialisierte Ressourcen und Trainingsmethoden anbieten zu können.
             </p>
+            <div className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
+              In Entwicklung
+            </div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2 opacity-75">
             <Card>
               <CardHeader>
                 <div className="flex items-center gap-3">
@@ -126,17 +129,23 @@ export default function HealthPage() {
           </div>
 
           {/* Klinik-Tool Section */}
-          <div className="mt-12 p-8 rounded-2xl border bg-card">
+          <div className="mt-12 p-8 rounded-2xl border-2 border-primary/20 bg-card">
             <div className="text-center mb-6">
+              <div className="inline-block px-4 py-2 rounded-full bg-green-500/10 text-green-600 text-sm font-medium mb-4">
+                Jetzt verfügbar
+              </div>
               <div className="flex items-center justify-center gap-3 mb-4">
                 <div className="rounded-full bg-primary/10 p-3">
                   <Monitor className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-2xl font-bold">Klinik-Tool</h3>
               </div>
-              <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
+              <p className="text-muted-foreground max-w-2xl mx-auto mb-2">
                 Spezialisierte Software für klinische Einrichtungen zur Unterstützung der Patientenorientierung 
                 und des Delir-Managements direkt am Patientenbett.
+              </p>
+              <p className="text-sm text-primary font-medium">
+                Kliniken können ab sofort eine Lizenz für dieses Tool erwerben.
               </p>
             </div>
             
@@ -155,21 +164,29 @@ export default function HealthPage() {
               </div>
             </div>
             
-            <div className="text-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="https://klinik.provoid.de" 
                  className="inline-flex items-center justify-center rounded-md text-sm font-medium px-8 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
-                Klinik-Tool starten
+                Demo ansehen
+              </a>
+              <a href="/kontakt" 
+                 className="inline-flex items-center justify-center rounded-md text-sm font-medium px-8 py-3 border border-primary text-primary hover:bg-primary/10 transition-colors">
+                Lizenz anfragen
               </a>
             </div>
           </div>
 
           {/* CTA Section */}
           <div className="mt-12 text-center p-8 rounded-2xl border bg-card">
-            <h3 className="text-xl font-semibold mb-3">Persönliche Gesundheitsberatung</h3>
+            <h3 className="text-xl font-semibold mb-3">Interesse am Klinik-Tool?</h3>
             <p className="text-muted-foreground mb-6">
-              Kontaktieren Sie uns für eine individuelle Beratung zur Demenz-Prävention und 
-              Delir-Prävention durch spezialisierte Methoden.
+              Kontaktieren Sie uns für weitere Informationen zur Lizenzierung unseres Klinik-Tools 
+              für Ihre Einrichtung.
             </p>
+            <a href="/kontakt" 
+               className="inline-flex items-center justify-center rounded-md text-sm font-medium px-8 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+              Kontakt aufnehmen
+            </a>
           </div>
         </div>
       </section>
