@@ -4,6 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Brain, Shield, Activity, Heart, Monitor } from "lucide-react";
 import Image from "next/image";
 
+// Force dynamic rendering - no caching
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: "Health | PROVOID",
   description: "Demenz-Prävention und Delir-Management durch spezialisierte Methoden.",
