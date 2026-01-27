@@ -266,6 +266,32 @@ input[type="password"]:focus {
     cursor: pointer;
 }
 
+/* Logo Corner */
+.logo-corner {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: white;
+    padding: 8px 14px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 50;
+}
+
+.logo-icon {
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+.logo-text {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text);
+}
+
 /* Modals */
 .modal {
     position: fixed;
