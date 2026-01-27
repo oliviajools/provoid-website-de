@@ -1,0 +1,606 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #1976d2;
+    --primary-dark: #1565c0;
+    --text: #333;
+    --text-secondary: #666;
+    --bg: #f5f7fa;
+    --card-bg: #fff;
+    --border: #e0e0e0;
+    --error: #c62828;
+    --success: #2e7d32;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+.screen {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.screen.hidden {
+    display: none;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.logo {
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+.provoid-logo {
+    height: 40px;
+    width: auto;
+    vertical-align: middle;
+}
+
+.provoid-logo-text {
+    color: var(--primary);
+    font-size: 1.8rem;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+}
+
+.hint {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+}
+
+input[type="password"]:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.btn {
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn.primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn.primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn.secondary {
+    background: #e3f2fd;
+    color: var(--primary);
+}
+
+.btn.secondary:hover {
+    background: #bbdefb;
+}
+
+.btn.outline {
+    background: transparent;
+    border: 2px solid var(--border);
+    color: var(--text-secondary);
+}
+
+.btn.outline:hover {
+    border-color: var(--text-secondary);
+}
+
+.error {
+    color: var(--error);
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Patient View */
+.patient-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+.time-display {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.time {
+    font-size: 4rem;
+    font-weight: 300;
+    color: var(--primary);
+}
+
+.date {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+}
+
+.orientation-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.orientation-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.orientation-card .card-icon {
+    font-size: 2rem;
+    width: 50px;
+    text-align: center;
+}
+
+.orientation-card .card-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.orientation-card .card-content {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.orientation-card .card-detail {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.orientation-card.who { border-left: 4px solid #4caf50; }
+.orientation-card.where { border-left: 4px solid #2196f3; }
+.orientation-card.why { border-left: 4px solid #ff9800; }
+
+.action-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 10px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    font-size: 0.9rem;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.action-btn.calm {
+    background: #e3f2fd;
+}
+
+.btn-icon-large {
+    font-size: 2rem;
+}
+
+.btn-settings {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Modals */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 100;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 450px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin-bottom: 8px;
+}
+
+.modal-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+}
+
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Color Game */
+.game-question {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 12px;
+}
+
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.color-btn {
+    height: 80px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.color-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Counting Game */
+.counting-display {
+    font-size: 3rem;
+    padding: 30px;
+    background: #f5f5f5;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.counting-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.count-btn {
+    padding: 15px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.count-btn:hover {
+    border-color: var(--primary);
+    background: #e3f2fd;
+}
+
+/* Feedback */
+.feedback {
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.feedback.correct {
+    background: #e8f5e9;
+    color: var(--success);
+}
+
+.feedback.wrong {
+    background: #ffebee;
+    color: var(--error);
+}
+
+/* Calm Modal */
+.calm-content {
+    text-align: left;
+}
+
+.calm-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.calm-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.calm-message {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.calm-info {
+    background: #fff8e1;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.calm-info h3 {
+    margin-bottom: 12px;
+}
+
+.calm-info ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.calm-info li {
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.calm-info li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--success);
+}
+
+.breathing-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.breathing-section h3 {
+    margin-bottom: 15px;
+}
+
+.breathing-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #64b5f6, #1976d2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: transform 4s ease-in-out;
+}
+
+.breathing-circle.inhale {
+    transform: scale(1.3);
+}
+
+.breathing-circle.exhale {
+    transform: scale(1);
+}
+
+/* Action buttons grid - now 4 columns */
+.action-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.action-btn.anchor {
+    background: #fce4ec;
+}
+
+/* Memory Anchors */
+.anchors-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.anchor-card {
+    background: #f5f5f5;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: left;
+}
+
+.anchor-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.anchor-card-info {
+    padding: 12px;
+}
+
+.anchor-card-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.anchor-card-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.no-anchors {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-secondary);
+}
+
+.no-anchors-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 10px;
+    opacity: 0.5;
+}
+
+.anchor-photo-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.anchor-photo-preview {
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-size: 3rem;
+    color: #ccc;
+    overflow: hidden;
+}
+
+.anchor-photo-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+@media (max-width: 500px) {
+    .action-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

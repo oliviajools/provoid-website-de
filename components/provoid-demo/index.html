@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROVOID - Delir Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Password Protection Screen -->
+    <div id="password-screen" class="screen hidden">
+        <div class="container">
+            <h1><span class="provoid-logo-text">◆</span> PROVOID</h1>
+            <p class="subtitle">Delir Management</p>
+            
+            <div class="card">
+                <h2>🔒 Geschützter Bereich</h2>
+                <p class="hint">Bitte geben Sie das Passwort ein, um fortzufahren.</p>
+                <input type="password" id="access-password" placeholder="Passwort eingeben">
+                <div id="password-error" class="error hidden">Falsches Passwort</div>
+                <button onclick="checkPassword()" class="btn primary">Zugang freischalten</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Patient View Screen -->
+    <div id="patient-screen" class="screen">
+        <div class="patient-container">
+            <div class="time-display">
+                <div id="current-time" class="time">--:--</div>
+                <div id="current-date" class="date">--. --- ----</div>
+            </div>
+            
+            <div class="orientation-cards">
+                <div class="orientation-card who">
+                    <div class="card-icon">👤</div>
+                    <div class="card-label">Wer bin ich?</div>
+                    <div class="card-content">Maria Müller</div>
+                    <div class="card-detail">78 Jahre</div>
+                </div>
+                
+                <div class="orientation-card where">
+                    <div class="card-icon">📍</div>
+                    <div class="card-label">Wo bin ich?</div>
+                    <div class="card-content">Krankenhaus Hamburg</div>
+                    <div class="card-detail">Zimmer 312</div>
+                </div>
+                
+                <div class="orientation-card why">
+                    <div class="card-icon">❓</div>
+                    <div class="card-label">Warum bin ich hier?</div>
+                    <div class="card-content">Hüftoperation am 15. Januar</div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button onclick="showGame('color')" class="btn action-btn">
+                    <span class="btn-icon-large">🎨</span>
+                    <span>Farben erkennen</span>
+                </button>
+                
+                <button onclick="showGame('counting')" class="btn action-btn">
+                    <span class="btn-icon-large">🔢</span>
+                    <span>Zählen</span>
+                </button>
+                
+                <button onclick="showCalm()" class="btn action-btn calm">
+                    <span class="btn-icon-large">💙</span>
+                    <span>Ich habe Angst</span>
+                </button>
+                
+                <button onclick="showAnchors()" class="btn action-btn anchor">
+                    <span class="btn-icon-large">💝</span>
+                    <span>Erinnerungen</span>
+                </button>
+            </div>
+            
+            <button onclick="logout()" class="btn-settings">⚙️</button>
+        </div>
+    </div>
+
+    <!-- Color Game Modal -->
+    <div id="color-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>🎨 Farben erkennen</h2>
+            <p class="modal-subtitle">Tippen Sie auf die richtige Farbe</p>
+            
+            <div id="color-question" class="game-question"></div>
+            <div id="color-options" class="color-grid"></div>
+            <div id="color-feedback" class="feedback hidden"></div>
+            
+            <div class="modal-buttons">
+                <button onclick="nextColorRound()" class="btn primary" id="color-next">Nächste Runde</button>
+                <button onclick="closeModal('color-modal')" class="btn secondary">Zurück</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Counting Game Modal -->
+    <div id="counting-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>🔢 Zählen</h2>
+            <p class="modal-subtitle">Wie viele Objekte sehen Sie?</p>
+            
+            <div id="counting-objects" class="counting-display"></div>
+            <div id="counting-options" class="counting-grid"></div>
+            <div id="counting-feedback" class="feedback hidden"></div>
+            
+            <div class="modal-buttons">
+                <button onclick="nextCountingRound()" class="btn primary" id="counting-next">Nächste Runde</button>
+                <button onclick="closeModal('counting-modal')" class="btn secondary">Zurück</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Memory Anchors Modal -->
+    <div id="anchor-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>💝 Erinnerungsanker</h2>
+            <p class="modal-subtitle">Fotos und Erinnerungen von Ihren Liebsten</p>
+            
+            <div id="anchors-list" class="anchors-grid">
+                <!-- Anchors will be displayed here -->
+            </div>
+            
+            <div id="no-anchors" class="no-anchors">
+                <span class="no-anchors-icon">📷</span>
+                <p>Noch keine Erinnerungsanker vorhanden.</p>
+            </div>
+            
+            <button onclick="showAddAnchor()" class="btn secondary">+ Neuen Anker hinzufügen</button>
+            <button onclick="closeModal('anchor-modal')" class="btn primary">← Zurück</button>
+        </div>
+    </div>
+
+    <!-- Add Anchor Modal -->
+    <div id="add-anchor-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>📷 Erinnerungsanker erstellen</h2>
+            
+            <div class="anchor-photo-section">
+                <div class="anchor-photo-preview" id="anchor-preview">
+                    <span>📷</span>
+                </div>
+                <input type="file" id="anchor-photo-input" accept="image/*" onchange="handleAnchorPhoto(event)" hidden>
+                <button onclick="document.getElementById('anchor-photo-input').click()" class="btn secondary">Foto auswählen</button>
+            </div>
+            
+            <div class="form-group">
+                <label for="anchor-title">Titel</label>
+                <input type="text" id="anchor-title" placeholder="z.B. Unser Hochzeitstag">
+            </div>
+            
+            <div class="form-group">
+                <label for="anchor-description">Beschreibung (optional)</label>
+                <textarea id="anchor-description" rows="2" placeholder="z.B. Hamburg, 1975"></textarea>
+            </div>
+            
+            <div class="modal-buttons">
+                <button onclick="saveAnchor()" class="btn primary">Speichern</button>
+                <button onclick="closeModal('add-anchor-modal')" class="btn secondary">Abbrechen</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calming Modal -->
+    <div id="calm-modal" class="modal hidden">
+        <div class="modal-content calm-content">
+            <div class="calm-header">
+                <span class="calm-icon">�</span>
+                <h2>Alles ist in Ordnung</h2>
+            </div>
+            
+            <p class="calm-message">
+                <strong>Maria</strong>, Sie sind in Sicherheit.<br>
+                Sie befinden sich im <strong>Krankenhaus</strong>, weil Sie medizinische Hilfe brauchen.
+            </p>
+            
+            <div class="calm-info">
+                <h3>💡 Warum fühle ich mich verwirrt?</h3>
+                <ul>
+                    <li>Das ist <strong>nicht Ihre Schuld</strong></li>
+                    <li>Es ist eine <strong>normale Reaktion</strong> des Körpers</li>
+                    <li>Es wird <strong>wieder besser</strong></li>
+                </ul>
+            </div>
+            
+            <div class="breathing-section">
+                <h3>🌬️ Atmen Sie tief durch</h3>
+                <div class="breathing-circle" id="breathing-circle">
+                    <span id="breathing-text">Start</span>
+                </div>
+                <button onclick="startBreathing()" class="btn secondary" id="breathing-btn">Atemübung starten</button>
+            </div>
+            
+            <button onclick="closeModal('calm-modal')" class="btn primary">✓ Ich fühle mich besser</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
