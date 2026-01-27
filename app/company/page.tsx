@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Target, Eye, Briefcase, Package, Users, FlaskConical, BarChart3 } from "lucide-react";
+import { Target, Eye, Briefcase, Package, Users, FlaskConical, BarChart3, Globe, Smartphone } from "lucide-react";
 
 import Image from "next/image";
 
@@ -112,6 +112,51 @@ export default function CompanyPage() {
                   <p>
                     So entstehen messbare Veränderungen und spürbare Effizienzgewinne. Dazu entwickeln und implementieren
                     wir evidenzbasierte Tools, die Mitarbeitende in ihrem Arbeitsalltag unterstützen.
+                  </p>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="digital" className="rounded-2xl border bg-card px-6 shadow-sm">
+              <AccordionTrigger className="hover:no-underline">
+                <div className="flex items-center gap-4">
+                  <div className="rounded-full bg-primary/10 p-3">
+                    <Globe className="h-6 w-6 text-primary" />
+                  </div>
+                  <span className="text-xl font-semibold">Webseiten & Apps</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="pt-4 pb-6">
+                <div className="prose prose-neutral dark:prose-invert max-w-none">
+                  <p>
+                    PROVOID konzipiert und entwickelt maßgeschneiderte Webseiten und Apps – exakt nach Ihren Wünschen 
+                    und auf Basis wissenschaftlicher Neuromarketing-Prinzipien. Wir verbinden ansprechendes Design mit 
+                    psychologisch fundierter Nutzerführung, um Ihre digitale Präsenz wirkungsvoll zu gestalten.
+                  </p>
+                  <div className="grid gap-4 md:grid-cols-2 mt-6 not-prose">
+                    <div className="p-4 rounded-xl border bg-muted/30">
+                      <div className="flex items-center gap-3 mb-2">
+                        <Globe className="h-5 w-5 text-primary" />
+                        <h4 className="font-semibold">Webseiten</h4>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        Moderne, responsive Websites mit intuitiver Navigation und conversion-optimiertem Aufbau.
+                      </p>
+                    </div>
+                    <div className="p-4 rounded-xl border bg-muted/30">
+                      <div className="flex items-center gap-3 mb-2">
+                        <Smartphone className="h-5 w-5 text-primary" />
+                        <h4 className="font-semibold">Apps</h4>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        Native und Web-Apps mit nutzerzentriertem Design und nahtloser User Experience.
+                      </p>
+                    </div>
+                  </div>
+                  <p className="mt-4">
+                    Durch den Einsatz von Neuromarketing-Erkenntnissen optimieren wir Farbgebung, Typografie, 
+                    Bildsprache und Interaktionselemente, um Aufmerksamkeit zu lenken, Vertrauen aufzubauen und 
+                    Handlungen zu fördern – wissenschaftlich fundiert und individuell auf Ihre Zielgruppe abgestimmt.
                   </p>
                 </div>
               </AccordionContent>
