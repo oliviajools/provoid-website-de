@@ -7,6 +7,7 @@ import { GeminiCta } from "@/components/ui/gemini-cta";
 import { Proof } from "@/components/ui/proof";
 import { FlipWords } from "@/components/ui/flip-words";
 import { NewsTeaser } from "@/components/ui/news-teaser";
+import { BlogTeaser } from "@/components/ui/blog-teaser";
 import Image from "next/image";
 
 export default function Home() {
@@ -87,6 +88,9 @@ export default function Home() {
 
       {/* Success Section */}
       <Success />
+
+      {/* Blog Teaser - Neuro-Welt */}
+      <BlogTeaser />
 
       {/* About teaser (concise) */}
       <AboutTeaser />

@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "slug": "neuroplastizitaet-neue-erkenntnisse-2026",
+      "title": "Neuroplastizität: Neue Erkenntnisse aus 2026",
+      "excerpt": "Aktuelle Studien zeigen, dass das Gehirn auch im Erwachsenenalter weitaus formbarer ist als bisher angenommen. Wir fassen die wichtigsten Ergebnisse zusammen.",
+      "content": "Die neuesten Forschungsergebnisse zur Neuroplastizität revolutionieren unser Verständnis des menschlichen Gehirns. Wissenschaftler der Harvard Medical School haben in einer bahnbrechenden Studie gezeigt, dass neuronale Verbindungen auch im hohen Alter noch aktiv umgebaut werden können.\n\n## Wichtigste Erkenntnisse\n\n- **Lebenslanges Lernen**: Das Gehirn bildet auch nach dem 60. Lebensjahr neue synaptische Verbindungen\n- **Gezielte Stimulation**: Spezifische kognitive Übungen können die Neuroplastizität um bis zu 40% steigern\n- **Schlaf und Regeneration**: Die Konsolidierung neuer neuronaler Pfade findet hauptsächlich im Tiefschlaf statt\n\n## Implikationen für die Praxis\n\nDiese Erkenntnisse haben weitreichende Auswirkungen auf Therapie, Training und Prävention. PROVOID integriert diese Forschungsergebnisse bereits in die Entwicklung neuer Tools.",
+      "image": "/blog/neuroplastizitaet.jpg",
+      "author": "PROVOID Research",
+      "date": "2026-01-28",
+      "category": "Forschung",
+      "tags": ["Neuroplastizität", "Gehirnforschung", "Studien"]
+    },
+    {
+      "id": "2",
+      "slug": "fokus-training-studienergebnisse",
+      "title": "Fokus-Training: Was die Wissenschaft sagt",
+      "excerpt": "Eine Meta-Analyse von über 50 Studien zeigt die effektivsten Methoden zur Verbesserung der Konzentrationsfähigkeit.",
+      "content": "Die Fähigkeit, sich zu konzentrieren, wird in unserer digitalisierten Welt immer wertvoller. Eine neue Meta-Analyse fasst die wissenschaftlichen Erkenntnisse zum Fokus-Training zusammen.\n\n## Die Top 5 evidenzbasierten Methoden\n\n1. **Achtsamkeitsmeditation**: 10-15 Minuten täglich verbessern die Aufmerksamkeitsspanne signifikant\n2. **Intervall-Fokus**: Arbeiten in 25-Minuten-Blöcken mit kurzen Pausen\n3. **Kognitive Stimulation**: Gezielte Gehirntraining-Übungen\n4. **Bewegung**: Aerobes Training steigert die kognitive Leistungsfähigkeit\n5. **Schlafhygiene**: 7-8 Stunden Schlaf sind essenziell für optimale Fokusleistung\n\n## PROVOID-Ansatz\n\nUnsere Tools kombinieren mehrere dieser evidenzbasierten Methoden für maximale Wirksamkeit.",
+      "image": "/blog/fokus-training.jpg",
+      "author": "PROVOID Research",
+      "date": "2026-01-21",
+      "category": "Wissenschaft",
+      "tags": ["Fokus", "Konzentration", "Training"]
+    },
+    {
+      "id": "3",
+      "slug": "eeg-technologie-sport",
+      "title": "EEG-Technologie im Leistungssport",
+      "excerpt": "Wie Profisportler neurowissenschaftliche Methoden nutzen, um ihre Performance zu optimieren.",
+      "content": "Die Integration von EEG-Technologie im Leistungssport nimmt rasant zu. Immer mehr Profi-Teams setzen auf neurowissenschaftliche Methoden.\n\n## Anwendungsbereiche\n\n- **Reaktionszeit-Optimierung**: EEG-Feedback hilft Athleten, ihre Reaktionszeiten zu verbessern\n- **Mentale Vorbereitung**: Visualisierungstechniken werden durch Neurofeedback verstärkt\n- **Regeneration**: Monitoring der Gehirnaktivität zur Optimierung der Erholungsphasen\n\n## Fallstudie: Fußball\n\nMehrere Bundesliga-Vereine testen bereits neuroathletische Trainingsmethoden. Die ersten Ergebnisse sind vielversprechend.",
+      "image": "/blog/eeg-sport.jpg",
+      "author": "PROVOID Sports",
+      "date": "2026-01-14",
+      "category": "Sport",
+      "tags": ["EEG", "Leistungssport", "Neuroathletik"]
+    }
+  ]
+}
