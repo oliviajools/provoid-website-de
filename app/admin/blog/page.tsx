@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Plus, Trash2, Eye, Save, X, Loader2, CheckCircle, Edit } from "lucide-react";
+import { Plus, Trash2, Eye, Save, X, Loader2, CheckCircle, Edit, Upload, ImageIcon } from "lucide-react";
+import { useRef } from "react";
 
 interface BlogPost {
   id: string;
@@ -24,6 +25,9 @@ export default function BlogAdminPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const contentRef = useRef<HTMLTextAreaElement>(null);
   const [currentPost, setCurrentPost] = useState<BlogPost | null>(null);
   const [formData, setFormData] = useState({
     title: "",
@@ -54,6 +58,58 @@ export default function BlogAdminPage() {
   };
 
   const categories = ["Forschung", "Wissenschaft", "Sport", "Gesundheit", "Praxis"];
+
+  const uploadImage = async (file: File): Promise<string | null> => {
+    const formData = new FormData();
+    formData.append("file", file);
+    
+    try {
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const result = await res.json();
+      if (result.success) {
+        return result.url;
+      }
+    } catch (error) {
+      console.error("Upload failed:", error);
+    }
+    return null;
+  };
+
+  const handleImageDrop = useCallback(async (e: React.DragEvent, target: "cover" | "content") => {
+    e.preventDefault();
+    setIsDragging(false);
+    
+    const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith("image/"));
+    if (files.length === 0) return;
+    
+    setIsUploading(true);
+    
+    for (const file of files) {
+      const url = await uploadImage(file);
+      if (url) {
+        if (target === "cover") {
+          setFormData(prev => ({ ...prev, image: url }));
+        } else {
+          const imageMarkdown = `\n![${file.name}](${url})\n`;
+          setFormData(prev => ({ ...prev, content: prev.content + imageMarkdown }));
+        }
+      }
+    }
+    
+    setIsUploading(false);
+  }, []);
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDragging(false);
+  };
 
   const handleNewPost = () => {
     setIsEditing(true);
@@ -231,26 +287,98 @@ export default function BlogAdminPage() {
 
                 <div>
                   <label className="block text-sm font-medium mb-1">Inhalt *</label>
-                  <textarea
-                    value={formData.content}
-                    onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                    className="w-full px-3 py-2 border rounded-md bg-background h-64 font-mono text-sm"
-                    placeholder="Markdown-formatierter Inhalt..."
-                  />
+                  <div className="flex items-center gap-2 mb-2">
+                    <label className="inline-flex items-center gap-1 px-3 py-1.5 text-sm border rounded-md cursor-pointer hover:bg-muted transition-colors">
+                      <ImageIcon className="h-4 w-4" />
+                      Bild einfügen
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={async (e) => {
+                          const file = e.target.files?.[0];
+                          if (file) {
+                            setIsUploading(true);
+                            const url = await uploadImage(file);
+                            if (url) {
+                              const imageMarkdown = `\n![${file.name}](${url})\n`;
+                              setFormData(prev => ({ ...prev, content: prev.content + imageMarkdown }));
+                            }
+                            setIsUploading(false);
+                          }
+                        }}
+                      />
+                    </label>
+                    {isUploading && <Loader2 className="h-4 w-4 animate-spin text-primary" />}
+                  </div>
+                  <div
+                    onDrop={(e) => handleImageDrop(e, "content")}
+                    onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                    className={`relative ${isDragging ? "ring-2 ring-primary" : ""}`}
+                  >
+                    <textarea
+                      ref={contentRef}
+                      value={formData.content}
+                      onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+                      className="w-full px-3 py-2 border rounded-md bg-background h-64 font-mono text-sm"
+                      placeholder="Markdown-formatierter Inhalt... (Bilder per Drag & Drop einfügen)"
+                    />
+                  </div>
                   <p className="text-xs text-muted-foreground mt-1">
-                    Unterstützt Markdown: ## Überschrift, **fett**, - Aufzählung
+                    Unterstützt Markdown: ## Überschrift, **fett**, - Aufzählung, ![alt](url) für Bilder
                   </p>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-1">Bild-URL (optional)</label>
-                  <input
-                    type="text"
-                    value={formData.image}
-                    onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                    className="w-full px-3 py-2 border rounded-md bg-background"
-                    placeholder="/blog/mein-bild.jpg"
-                  />
+                  <label className="block text-sm font-medium mb-1">Titelbild</label>
+                  <div
+                    onDrop={(e) => handleImageDrop(e, "cover")}
+                    onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                    className={`relative border-2 border-dashed rounded-lg p-6 text-center transition-colors ${
+                      isDragging ? "border-primary bg-primary/5" : "border-muted-foreground/25 hover:border-primary/50"
+                    }`}
+                  >
+                    {isUploading ? (
+                      <div className="flex flex-col items-center gap-2">
+                        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                        <p className="text-sm text-muted-foreground">Wird hochgeladen...</p>
+                      </div>
+                    ) : formData.image ? (
+                      <div className="space-y-3">
+                        <img src={formData.image} alt="Titelbild" className="max-h-32 mx-auto rounded" />
+                        <p className="text-xs text-muted-foreground">{formData.image}</p>
+                        <Button variant="outline" size="sm" onClick={() => setFormData({ ...formData, image: "" })}>
+                          <X className="h-4 w-4 mr-1" /> Entfernen
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className="flex flex-col items-center gap-2">
+                        <Upload className="h-8 w-8 text-muted-foreground" />
+                        <p className="text-sm text-muted-foreground">
+                          Bild hierher ziehen oder{" "}
+                          <label className="text-primary cursor-pointer hover:underline">
+                            auswählen
+                            <input
+                              type="file"
+                              accept="image/*"
+                              className="hidden"
+                              onChange={async (e) => {
+                                const file = e.target.files?.[0];
+                                if (file) {
+                                  setIsUploading(true);
+                                  const url = await uploadImage(file);
+                                  if (url) setFormData(prev => ({ ...prev, image: url }));
+                                  setIsUploading(false);
+                                }
+                              }}
+                            />
+                          </label>
+                        </p>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 <div>
