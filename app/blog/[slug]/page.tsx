@@ -3,29 +3,19 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Calendar, User, Tag, ArrowLeft } from "lucide-react";
 import blogData from "@/content/blog-posts.json";
+import { BlogPost, BlogData } from "@/lib/blog-types";
 
-interface BlogPost {
-  id: string;
-  slug: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  image: string;
-  author: string;
-  date: string;
-  category: string;
-  tags: string[];
-}
+const typedBlogData = blogData as BlogData;
 
 export async function generateStaticParams() {
-  return blogData.posts.map((post) => ({
+  return typedBlogData.posts.map((post: BlogPost) => ({
     slug: post.slug,
   }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const post = blogData.posts.find((p) => p.slug === slug);
+  const post = typedBlogData.posts.find((p: BlogPost) => p.slug === slug);
   
   if (!post) {
     return {
@@ -51,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = blogData.posts.find((p) => p.slug === slug);
+  const post = typedBlogData.posts.find((p: BlogPost) => p.slug === slug);
 
   if (!post) {
     notFound();

@@ -4,6 +4,9 @@ import Link from "next/link";
 import { Calendar, User, Tag, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import blogData from "@/content/blog-posts.json";
+import { BlogPost, BlogData } from "@/lib/blog-types";
+
+const typedBlogData = blogData as BlogData;
 
 export const metadata: Metadata = {
   title: "Neuroverse Blog | PROVOID",
@@ -20,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  const posts = blogData.posts;
+  const posts = typedBlogData.posts;
 
   return (
     <div className="flex flex-col">
@@ -29,7 +32,7 @@ export default function BlogPage() {
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              <span className="text-primary">Neuro</span>-Welt
+              <span className="text-primary">Neuro</span>verse
             </h1>
             <p className="text-lg text-muted-foreground md:text-xl">
               Aktuelle Entwicklungen aus der Neurowissenschaft
