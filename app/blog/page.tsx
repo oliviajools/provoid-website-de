@@ -1,10 +1,9 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { Calendar, User, Tag, ArrowRight } from "lucide-react";
+import { Calendar, User, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import blogData from "@/content/blog-posts.json";
-import { BlogPost, BlogData } from "@/lib/blog-types";
+import { BlogData } from "@/lib/blog-types";
 
 const typedBlogData = blogData as BlogData;
 

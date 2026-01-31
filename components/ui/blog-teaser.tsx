@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Calendar, BookOpen } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import blogData from "@/content/blog-posts.json";
-import { BlogPost, BlogData } from "@/lib/blog-types";
+import { BlogData } from "@/lib/blog-types";
 
 const typedBlogData = blogData as BlogData;
 
