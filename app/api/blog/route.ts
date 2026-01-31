@@ -62,6 +62,40 @@ export async function POST(request: NextRequest) {
   }
 }
 
+export async function PUT(request: NextRequest) {
+  try {
+    const updatedPost = await request.json();
+    
+    const fileContent = fs.readFileSync(BLOG_FILE_PATH, "utf-8");
+    const data: BlogData = JSON.parse(fileContent);
+    
+    const index = data.posts.findIndex((post: BlogPost) => post.id === updatedPost.id);
+    
+    if (index === -1) {
+      return NextResponse.json({ success: false, error: "Post not found" }, { status: 404 });
+    }
+    
+    // Update the post while keeping the original date if not changed
+    data.posts[index] = {
+      ...data.posts[index],
+      title: updatedPost.title,
+      slug: updatedPost.slug || data.posts[index].slug,
+      excerpt: updatedPost.excerpt,
+      content: updatedPost.content,
+      image: updatedPost.image || data.posts[index].image,
+      author: updatedPost.author,
+      category: updatedPost.category,
+      tags: updatedPost.tags || [],
+    };
+    
+    fs.writeFileSync(BLOG_FILE_PATH, JSON.stringify(data, null, 2));
+    
+    return NextResponse.json({ success: true, post: data.posts[index] });
+  } catch {
+    return NextResponse.json({ success: false, error: "Failed to update post" }, { status: 500 });
+  }
+}
+
 export async function DELETE(request: NextRequest) {
   try {
     const { id } = await request.json();

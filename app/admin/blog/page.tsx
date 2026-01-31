@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Plus, Trash2, Eye, Save, X, Loader2, CheckCircle } from "lucide-react";
+import { Plus, Trash2, Eye, Save, X, Loader2, CheckCircle, Edit } from "lucide-react";
 
 interface BlogPost {
   id: string;
@@ -70,6 +70,21 @@ export default function BlogAdminPage() {
     });
   };
 
+  const handleEdit = (post: BlogPost) => {
+    setCurrentPost(post);
+    setFormData({
+      title: post.title,
+      slug: post.slug,
+      excerpt: post.excerpt,
+      content: post.content,
+      image: post.image,
+      author: post.author,
+      category: post.category,
+      tags: post.tags.join(", "),
+    });
+    setIsEditing(true);
+  };
+
   const handleSave = async () => {
     setIsSaving(true);
     setMessage(null);
@@ -87,8 +102,9 @@ export default function BlogAdminPage() {
     };
 
     try {
+      const isUpdate = !!currentPost;
       const res = await fetch("/api/blog", {
-        method: "POST",
+        method: isUpdate ? "PUT" : "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(postData),
       });
@@ -96,9 +112,10 @@ export default function BlogAdminPage() {
       const result = await res.json();
 
       if (result.success) {
-        setMessage({ type: "success", text: "Blog-Post erfolgreich gespeichert!" });
+        setMessage({ type: "success", text: isUpdate ? "Beitrag aktualisiert!" : "Blog-Post erfolgreich gespeichert!" });
         await loadPosts();
         setIsEditing(false);
+        setCurrentPost(null);
       } else {
         setMessage({ type: "error", text: "Fehler beim Speichern: " + (result.error || "Unbekannter Fehler") });
       }
@@ -315,6 +332,9 @@ export default function BlogAdminPage() {
                             <p className="text-sm text-muted-foreground line-clamp-2 mt-1">{post.excerpt}</p>
                           </div>
                           <div className="flex items-center gap-2">
+                            <Button variant="outline" size="sm" onClick={() => handleEdit(post)}>
+                              <Edit className="h-4 w-4" />
+                            </Button>
                             <Button variant="outline" size="sm" asChild>
                               <a href={`/blog/${post.slug}`} target="_blank">
                                 <Eye className="h-4 w-4" />
