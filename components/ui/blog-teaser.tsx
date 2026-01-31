@@ -13,7 +13,7 @@ export function BlogTeaser() {
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
               <BookOpen className="h-4 w-4" />
-              Neuro-Welt
+              Neuroverse
             </div>
             <h3 className="text-3xl md:text-4xl font-bold mb-3">
               Aktuelles aus der Neurowissenschaft

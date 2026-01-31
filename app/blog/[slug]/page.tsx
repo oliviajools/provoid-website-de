@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return {
-    title: `${post.title} | Neuro-Welt Blog | PROVOID`,
+    title: `${post.title} | Neuroverse Blog | PROVOID`,
     description: post.excerpt,
     alternates: {
       canonical: `/blog/${post.slug}`,

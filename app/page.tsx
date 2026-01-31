@@ -89,7 +89,7 @@ export default function Home() {
       {/* Success Section */}
       <Success />
 
-      {/* Blog Teaser - Neuro-Welt */}
+      {/* Blog Teaser - Neuroverse */}
       <BlogTeaser />
 
       {/* About teaser (concise) */}

@@ -6,13 +6,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import blogData from "@/content/blog-posts.json";
 
 export const metadata: Metadata = {
-  title: "Neuro-Welt Blog | PROVOID",
+  title: "Neuroverse Blog | PROVOID",
   description: "Aktuelle Entwicklungen aus der Neurowissenschaft – wöchentlich neue Studienergebnisse, Erkenntnisse und Trends.",
   alternates: {
     canonical: "/blog",
   },
   openGraph: {
-    title: "Neuro-Welt Blog | PROVOID",
+    title: "Neuroverse Blog | PROVOID",
     description: "Aktuelle Entwicklungen aus der Neurowissenschaft – wöchentlich neue Studienergebnisse, Erkenntnisse und Trends.",
     type: "website",
     url: "/blog",

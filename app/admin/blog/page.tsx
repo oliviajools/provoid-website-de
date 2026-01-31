@@ -92,7 +92,7 @@ export default function BlogAdminPage() {
             <div>
               <h1 className="text-3xl font-bold">Blog-Verwaltung</h1>
               <p className="text-muted-foreground mt-1">
-                Neuro-Welt Blog-Beiträge erstellen und verwalten
+                Neuroverse Blog-Beiträge erstellen und verwalten
               </p>
             </div>
             {!isEditing && (
@@ -221,7 +221,7 @@ export default function BlogAdminPage() {
                 </div>
                 <h3 className="text-lg font-semibold mb-2">Blog-Verwaltung</h3>
                 <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-                  Erstellen Sie neue Neuro-Welt Beiträge. Die generierten Daten müssen 
+                  Erstellen Sie neue Neuroverse Beiträge. Die generierten Daten müssen 
                   manuell in die blog-posts.json eingefügt werden.
                 </p>
                 <Button onClick={handleNewPost}>
