@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Plus, Edit, Trash2, Eye, Save, X } from "lucide-react";
+import { Plus, Edit, Trash2, Eye, Save, X, Loader2, CheckCircle } from "lucide-react";
 
 interface BlogPost {
   id: string;
@@ -21,6 +21,9 @@ interface BlogPost {
 export default function BlogAdminPage() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [isEditing, setIsEditing] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const [currentPost, setCurrentPost] = useState<BlogPost | null>(null);
   const [formData, setFormData] = useState({
     title: "",
@@ -32,6 +35,23 @@ export default function BlogAdminPage() {
     category: "Forschung",
     tags: "",
   });
+
+  // Load posts on mount
+  useEffect(() => {
+    loadPosts();
+  }, []);
+
+  const loadPosts = async () => {
+    setIsLoading(true);
+    try {
+      const res = await fetch("/api/blog");
+      const data = await res.json();
+      setPosts(data.posts || []);
+    } catch (error) {
+      console.error("Error loading posts:", error);
+    }
+    setIsLoading(false);
+  };
 
   const categories = ["Forschung", "Wissenschaft", "Sport", "Gesundheit", "Praxis"];
 
@@ -50,38 +70,64 @@ export default function BlogAdminPage() {
     });
   };
 
-  const handleSave = () => {
-    const slug = formData.slug || formData.title.toLowerCase()
-      .replace(/ä/g, "ae")
-      .replace(/ö/g, "oe")
-      .replace(/ü/g, "ue")
-      .replace(/ß/g, "ss")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)/g, "");
+  const handleSave = async () => {
+    setIsSaving(true);
+    setMessage(null);
 
-    const newPost: BlogPost = {
-      id: currentPost?.id || Date.now().toString(),
-      slug,
+    const postData = {
+      id: currentPost?.id,
+      slug: formData.slug,
       title: formData.title,
       excerpt: formData.excerpt,
       content: formData.content,
-      image: formData.image || `/blog/${slug}.jpg`,
+      image: formData.image,
       author: formData.author,
-      date: new Date().toISOString().split("T")[0],
       category: formData.category,
       tags: formData.tags.split(",").map((t) => t.trim()).filter(Boolean),
     };
 
-    console.log("Neuer Blog-Post (kopieren Sie dies in blog-posts.json):");
-    console.log(JSON.stringify(newPost, null, 2));
+    try {
+      const res = await fetch("/api/blog", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(postData),
+      });
 
-    alert(
-      "Blog-Post erstellt! Die JSON-Daten wurden in der Konsole ausgegeben.\n\n" +
-      "Fügen Sie den Post manuell zu /content/blog-posts.json hinzu und deployen Sie erneut.\n\n" +
-      "Für eine automatische Lösung kontaktieren Sie uns für die Integration eines Headless CMS."
-    );
+      const result = await res.json();
 
-    setIsEditing(false);
+      if (result.success) {
+        setMessage({ type: "success", text: "Blog-Post erfolgreich gespeichert!" });
+        await loadPosts();
+        setIsEditing(false);
+      } else {
+        setMessage({ type: "error", text: "Fehler beim Speichern: " + (result.error || "Unbekannter Fehler") });
+      }
+    } catch (error) {
+      setMessage({ type: "error", text: "Fehler beim Speichern. Bitte versuchen Sie es erneut." });
+    }
+
+    setIsSaving(false);
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!confirm("Möchten Sie diesen Beitrag wirklich löschen?")) return;
+
+    try {
+      const res = await fetch("/api/blog", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        setMessage({ type: "success", text: "Beitrag gelöscht." });
+        await loadPosts();
+      }
+    } catch (error) {
+      setMessage({ type: "error", text: "Fehler beim Löschen." });
+    }
   };
 
   return (
@@ -102,6 +148,16 @@ export default function BlogAdminPage() {
               </Button>
             )}
           </div>
+
+          {/* Success/Error Message */}
+          {message && (
+            <div className={`mb-6 p-4 rounded-lg flex items-center gap-2 ${
+              message.type === "success" ? "bg-green-500/10 text-green-600" : "bg-red-500/10 text-red-600"
+            }`}>
+              {message.type === "success" && <CheckCircle className="h-5 w-5" />}
+              {message.text}
+            </div>
+          )}
 
           {isEditing ? (
             <Card>
@@ -202,11 +258,15 @@ export default function BlogAdminPage() {
                 </div>
 
                 <div className="flex gap-3 pt-4">
-                  <Button onClick={handleSave} disabled={!formData.title || !formData.excerpt || !formData.content}>
-                    <Save className="h-4 w-4 mr-2" />
-                    Speichern
+                  <Button onClick={handleSave} disabled={!formData.title || !formData.excerpt || !formData.content || isSaving}>
+                    {isSaving ? (
+                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    ) : (
+                      <Save className="h-4 w-4 mr-2" />
+                    )}
+                    {isSaving ? "Wird gespeichert..." : "Speichern"}
                   </Button>
-                  <Button variant="outline" onClick={() => setIsEditing(false)}>
+                  <Button variant="outline" onClick={() => setIsEditing(false)} disabled={isSaving}>
                     <X className="h-4 w-4 mr-2" />
                     Abbrechen
                   </Button>
@@ -214,32 +274,64 @@ export default function BlogAdminPage() {
               </CardContent>
             </Card>
           ) : (
-            <Card>
-              <CardContent className="py-12 text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Plus className="h-8 w-8 text-primary" />
+            <div className="space-y-6">
+              {isLoading ? (
+                <Card>
+                  <CardContent className="py-12 text-center">
+                    <Loader2 className="h-8 w-8 mx-auto animate-spin text-primary" />
+                    <p className="mt-4 text-muted-foreground">Lade Beiträge...</p>
+                  </CardContent>
+                </Card>
+              ) : posts.length === 0 ? (
+                <Card>
+                  <CardContent className="py-12 text-center">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+                      <Plus className="h-8 w-8 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">Noch keine Beiträge</h3>
+                    <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+                      Erstellen Sie Ihren ersten Neuroverse Blog-Beitrag.
+                    </p>
+                    <Button onClick={handleNewPost}>
+                      <Plus className="h-4 w-4 mr-2" />
+                      Ersten Beitrag erstellen
+                    </Button>
+                  </CardContent>
+                </Card>
+              ) : (
+                <div className="space-y-4">
+                  {posts.map((post) => (
+                    <Card key={post.id}>
+                      <CardContent className="py-4">
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-primary/10 text-primary">
+                                {post.category}
+                              </span>
+                              <span className="text-xs text-muted-foreground">{post.date}</span>
+                            </div>
+                            <h3 className="font-semibold truncate">{post.title}</h3>
+                            <p className="text-sm text-muted-foreground line-clamp-2 mt-1">{post.excerpt}</p>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Button variant="outline" size="sm" asChild>
+                              <a href={`/blog/${post.slug}`} target="_blank">
+                                <Eye className="h-4 w-4" />
+                              </a>
+                            </Button>
+                            <Button variant="outline" size="sm" onClick={() => handleDelete(post.id)}>
+                              <Trash2 className="h-4 w-4 text-red-500" />
+                            </Button>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Blog-Verwaltung</h3>
-                <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-                  Erstellen Sie neue Neuroverse Beiträge. Die generierten Daten müssen 
-                  manuell in die blog-posts.json eingefügt werden.
-                </p>
-                <Button onClick={handleNewPost}>
-                  <Plus className="h-4 w-4 mr-2" />
-                  Neuen Beitrag erstellen
-                </Button>
-              </CardContent>
-            </Card>
+              )}
+            </div>
           )}
-
-          <div className="mt-8 p-4 rounded-lg border bg-muted/30">
-            <h4 className="font-semibold mb-2">Hinweis zur Blog-Verwaltung</h4>
-            <p className="text-sm text-muted-foreground">
-              Für eine vollautomatische Blog-Verwaltung mit Bildupload empfehlen wir die 
-              Integration eines Headless CMS wie Sanity, Contentful oder Strapi. 
-              Kontaktieren Sie uns für eine maßgeschneiderte Lösung.
-            </p>
-          </div>
         </div>
       </div>
     </div>
