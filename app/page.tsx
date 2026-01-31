@@ -6,6 +6,7 @@ import { FinalCta } from "@/components/ui/final-cta";
 import { GeminiCta } from "@/components/ui/gemini-cta";
 import { Proof } from "@/components/ui/proof";
 import { FlipWords } from "@/components/ui/flip-words";
+import { NewsTeaser } from "@/components/ui/news-teaser";
 import Image from "next/image";
 
 export default function Home() {
@@ -95,6 +96,9 @@ export default function Home() {
 
       {/* CTA Cards Section (final) */}
       <CtaCards />
+
+      {/* News Teaser Section */}
+      <NewsTeaser />
 
       {/* Final CTA (SB7: Clear next step) */}
       <FinalCta />
