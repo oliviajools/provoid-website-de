@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Plus, Edit, Trash2, Eye, Save, X, Loader2, CheckCircle } from "lucide-react";
+import { Plus, Trash2, Eye, Save, X, Loader2, CheckCircle } from "lucide-react";
 
 interface BlogPost {
   id: string;
@@ -102,7 +102,7 @@ export default function BlogAdminPage() {
       } else {
         setMessage({ type: "error", text: "Fehler beim Speichern: " + (result.error || "Unbekannter Fehler") });
       }
-    } catch (error) {
+    } catch {
       setMessage({ type: "error", text: "Fehler beim Speichern. Bitte versuchen Sie es erneut." });
     }
 
@@ -125,7 +125,7 @@ export default function BlogAdminPage() {
         setMessage({ type: "success", text: "Beitrag gelöscht." });
         await loadPosts();
       }
-    } catch (error) {
+    } catch {
       setMessage({ type: "error", text: "Fehler beim Löschen." });
     }
   };

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { BlogPost, BlogData } from "@/lib/blog-types";
 
 const BLOG_FILE_PATH = path.join(process.cwd(), "content", "blog-posts.json");
 
@@ -9,7 +10,7 @@ export async function GET() {
     const fileContent = fs.readFileSync(BLOG_FILE_PATH, "utf-8");
     const data = JSON.parse(fileContent);
     return NextResponse.json(data);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ posts: [] });
   }
 }
@@ -19,7 +20,7 @@ export async function POST(request: NextRequest) {
     const newPost = await request.json();
     
     // Read existing posts
-    let data = { posts: [] as any[] };
+    let data: BlogData = { posts: [] };
     try {
       const fileContent = fs.readFileSync(BLOG_FILE_PATH, "utf-8");
       data = JSON.parse(fileContent);
@@ -68,12 +69,12 @@ export async function DELETE(request: NextRequest) {
     const fileContent = fs.readFileSync(BLOG_FILE_PATH, "utf-8");
     const data = JSON.parse(fileContent);
     
-    data.posts = data.posts.filter((post: any) => post.id !== id);
+    data.posts = data.posts.filter((post: BlogPost) => post.id !== id);
     
     fs.writeFileSync(BLOG_FILE_PATH, JSON.stringify(data, null, 2));
     
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ success: false, error: "Failed to delete post" }, { status: 500 });
   }
 }
