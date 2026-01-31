@@ -2,20 +2,27 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Calendar, User, Tag, ArrowLeft } from "lucide-react";
-import blogData from "@/content/blog-posts.json";
+import fs from "fs";
+import path from "path";
 import { BlogPost, BlogData } from "@/lib/blog-types";
 
-const typedBlogData = blogData as BlogData;
+// Force dynamic rendering
+export const dynamic = "force-dynamic";
 
-export async function generateStaticParams() {
-  return typedBlogData.posts.map((post: BlogPost) => ({
-    slug: post.slug,
-  }));
+function getBlogData(): BlogData {
+  try {
+    const filePath = path.join(process.cwd(), "content", "blog-posts.json");
+    const fileContent = fs.readFileSync(filePath, "utf-8");
+    return JSON.parse(fileContent) as BlogData;
+  } catch {
+    return { posts: [] };
+  }
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const post = typedBlogData.posts.find((p: BlogPost) => p.slug === slug);
+  const blogData = getBlogData();
+  const post = blogData.posts.find((p: BlogPost) => p.slug === slug);
   
   if (!post) {
     return {
@@ -41,7 +48,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = typedBlogData.posts.find((p: BlogPost) => p.slug === slug);
+  const blogData = getBlogData();
+  const post = blogData.posts.find((p: BlogPost) => p.slug === slug);
 
   if (!post) {
     notFound();

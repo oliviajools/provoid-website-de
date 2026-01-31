@@ -2,10 +2,22 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Calendar, User, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import blogData from "@/content/blog-posts.json";
+import fs from "fs";
+import path from "path";
 import { BlogData } from "@/lib/blog-types";
 
-const typedBlogData = blogData as BlogData;
+// Force dynamic rendering
+export const dynamic = "force-dynamic";
+
+function getBlogData(): BlogData {
+  try {
+    const filePath = path.join(process.cwd(), "content", "blog-posts.json");
+    const fileContent = fs.readFileSync(filePath, "utf-8");
+    return JSON.parse(fileContent) as BlogData;
+  } catch {
+    return { posts: [] };
+  }
+}
 
 export const metadata: Metadata = {
   title: "Neuroverse Blog | PROVOID",
@@ -22,7 +34,8 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  const posts = typedBlogData.posts;
+  const blogData = getBlogData();
+  const posts = blogData.posts;
 
   return (
     <div className="flex flex-col">
