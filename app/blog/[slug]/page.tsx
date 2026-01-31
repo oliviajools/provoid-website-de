@@ -156,6 +156,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <span>{post.author}</span>
               </div>
             </div>
+
+            {/* Titelbild */}
+            {post.image && (
+              <div className="mt-8">
+                <img 
+                  src={post.image} 
+                  alt={post.title} 
+                  className="rounded-lg w-full object-cover max-h-[400px]"
+                />
+              </div>
+            )}
           </div>
         </div>
       </section>
