@@ -58,6 +58,24 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const renderContent = (content: string) => {
     const lines = content.split("\n");
     return lines.map((line, index) => {
+      // Images: ![alt](url)
+      const imageMatch = line.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+      if (imageMatch) {
+        return (
+          <figure key={index} className="my-8">
+            <img 
+              src={imageMatch[2]} 
+              alt={imageMatch[1]} 
+              className="rounded-lg w-full max-w-2xl mx-auto"
+            />
+            {imageMatch[1] && (
+              <figcaption className="text-center text-sm text-muted-foreground mt-2">
+                {imageMatch[1]}
+              </figcaption>
+            )}
+          </figure>
+        );
+      }
       if (line.startsWith("## ")) {
         return (
           <h2 key={index} className="text-2xl font-bold mt-8 mb-4">
