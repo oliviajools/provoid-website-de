@@ -26,31 +26,33 @@ export function BlogTeaser() {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className={`grid gap-6 ${latestPosts.length === 1 ? 'max-w-md mx-auto' : latestPosts.length === 2 ? 'md:grid-cols-2 max-w-2xl mx-auto' : 'md:grid-cols-3'}`}>
             {latestPosts.map((post) => (
-              <Card key={post.id} className="border-2 hover:border-primary/50 transition-colors">
-                <CardHeader className="pb-2">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                    <Calendar className="h-4 w-4" />
-                    <time dateTime={post.date}>
-                      {new Date(post.date).toLocaleDateString("de-DE", {
-                        day: "numeric",
-                        month: "short",
-                        year: "numeric",
-                      })}
-                    </time>
-                  </div>
-                  <span className="inline-block px-2 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary w-fit mb-2">
-                    {post.category}
-                  </span>
-                  <CardTitle className="text-lg leading-tight">{post.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground line-clamp-3">
-                    {post.excerpt}
-                  </p>
-                </CardContent>
-              </Card>
+              <Link key={post.id} href={`/blog/${post.slug}`} className="block">
+                <Card className="border-2 hover:border-primary/50 transition-colors h-full cursor-pointer">
+                  <CardHeader className="pb-2">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                      <Calendar className="h-4 w-4" />
+                      <time dateTime={post.date}>
+                        {new Date(post.date).toLocaleDateString("de-DE", {
+                          day: "numeric",
+                          month: "short",
+                          year: "numeric",
+                        })}
+                      </time>
+                    </div>
+                    <span className="inline-block px-2 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary w-fit mb-2">
+                      {post.category}
+                    </span>
+                    <CardTitle className="text-lg leading-tight">{post.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
 
