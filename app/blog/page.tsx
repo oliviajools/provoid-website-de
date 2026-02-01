@@ -45,7 +45,7 @@ export default function BlogPage() {
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              <span className="text-primary">Neuro</span>verse
+              <span className="text-primary">PROVOID</span>-<span className="text-foreground">Neuroverse</span>
             </h1>
             <p className="text-lg text-muted-foreground md:text-xl">
               Aktuelle Entwicklungen aus der Neurowissenschaft
