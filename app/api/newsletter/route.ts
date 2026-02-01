@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
 
     console.error("Brevo API error:", errorData);
     return NextResponse.json(
-      { success: false, error: "Anmeldung fehlgeschlagen" },
+      { success: false, error: errorData.message || "Anmeldung fehlgeschlagen", details: errorData },
       { status: 500 }
     );
   } catch (error) {
