@@ -62,17 +62,21 @@ export default function BlogPage() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => (
               <Card key={post.id} className="border-2 hover:border-primary/50 transition-colors overflow-hidden flex flex-col">
-                {post.image && (
-                  <div className="relative h-48 w-full bg-muted">
+                <div className="relative h-48 w-full bg-muted">
+                  {post.image ? (
+                    <img 
+                      src={post.image} 
+                      alt={post.title} 
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
                     <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-                      <div className="text-center p-4">
-                        <div className="w-16 h-16 mx-auto mb-2 rounded-full bg-primary/10 flex items-center justify-center">
-                          <span className="text-2xl">🧠</span>
-                        </div>
+                      <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                        <span className="text-2xl">🧠</span>
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
                 <CardHeader className="pb-2">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                     <Calendar className="h-4 w-4" />
