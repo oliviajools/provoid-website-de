@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Calendar, User, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { NewsletterForm } from "@/components/ui/newsletter-form";
 import fs from "fs";
 import path from "path";
 import { BlogData } from "@/lib/blog-types";
@@ -117,19 +118,14 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Newsletter Section */}
       <section className="container px-4 md:px-6 lg:px-8 pb-[58px]">
         <div className="mx-auto max-w-2xl text-center p-8 rounded-2xl border bg-card">
           <h3 className="text-xl font-semibold mb-3">Bleiben Sie informiert</h3>
           <p className="text-muted-foreground mb-6">
             Wir veröffentlichen wöchentlich neue Erkenntnisse aus der Neurowissenschaft.
           </p>
-          <Link 
-            href="/kontakt"
-            className="inline-flex items-center justify-center rounded-md text-sm font-medium px-8 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-          >
-            Newsletter abonnieren
-          </Link>
+          <NewsletterForm />
         </div>
       </section>
     </div>
