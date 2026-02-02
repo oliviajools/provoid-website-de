@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/',  // Nginx entfernt /analyse prefix
+  base: '/analyse/',  // Unterseite auf provoid.de/analyse
   server: {
     port: 5173,
     proxy: {

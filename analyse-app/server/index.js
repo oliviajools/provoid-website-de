@@ -24,8 +24,8 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // Statische Dateien für Produktion (Frontend)
-// Nach Nginx rewrite werden Anfragen ohne /analyse-Prefix empfangen
-app.use(express.static(path.join(__dirname, '../dist')));
+// Unter /analyse ausliefern (entspricht Vite base path)
+app.use('/analyse', express.static(path.join(__dirname, '../dist')));
 
 // Initialize Database
 const db = new Database(path.join(__dirname, 'neuroathletic.db'));
@@ -774,10 +774,10 @@ function generateCode() {
   return code;
 }
 
-// SPA Fallback für React Router (alle nicht-API Routen)
-app.get('*', (req, res, next) => {
+// SPA Fallback für React Router unter /analyse
+app.get('/analyse/*', (req, res, next) => {
   // Skip API routes
-  if (req.path.startsWith('/api/')) {
+  if (req.path.startsWith('/analyse/api/')) {
     return next();
   }
   res.sendFile(path.join(__dirname, '../dist/index.html'));
