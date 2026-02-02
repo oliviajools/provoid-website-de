@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
   
   const navItems = [
     { path: '/', icon: Home, label: 'Dashboard' },
-    { path: '/players', icon: Users, label: 'Spielerinnen' },
+    { path: '/admin/teams', icon: Users, label: 'Spielerinnen' },
     { path: '/new-test', icon: PlayCircle, label: 'Neue Testung' },
   ];
 

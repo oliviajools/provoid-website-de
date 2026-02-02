@@ -636,15 +636,30 @@ app.get('/api/admin/teams', verifyAdmin, (req, res) => {
   res.json(teams);
 });
 
-// Create team
+// Create team with unique code
 app.post('/api/admin/teams', verifyAdmin, (req, res) => {
   const { name, description } = req.body;
   if (!name) return res.status(400).json({ error: 'Name ist erforderlich' });
   
   const id = uuidv4();
-  db.prepare('INSERT INTO teams (id, name, description) VALUES (?, ?, ?)').run(id, name, description || '');
-  logAudit('CREATE', 'teams', id, null, { name, description });
-  res.json({ id, name, description });
+  
+  // Generate unique team code
+  let code;
+  let attempts = 0;
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  do {
+    code = '';
+    for (let i = 0; i < 6; i++) {
+      code += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    const existing = db.prepare('SELECT id FROM teams WHERE code = ?').get(code);
+    if (!existing) break;
+    attempts++;
+  } while (attempts < 10);
+  
+  db.prepare('INSERT INTO teams (id, name, description, code) VALUES (?, ?, ?, ?)').run(id, name, description || '', code);
+  logAudit('CREATE', 'teams', id, null, { name, description, code });
+  res.json({ id, name, description, code });
 });
 
 // Update team

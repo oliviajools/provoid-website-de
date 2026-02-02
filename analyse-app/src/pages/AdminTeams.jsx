@@ -136,7 +136,14 @@ const AdminTeams = () => {
                     <Users className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg">{team.name}</h3>
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-semibold text-lg">{team.name}</h3>
+                      {team.code && (
+                        <span className="text-xs font-mono bg-provoid-500/20 px-2 py-0.5 rounded">
+                          {team.code}
+                        </span>
+                      )}
+                    </div>
                     {team.description && (
                       <p className="text-sm text-gray-400">{team.description}</p>
                     )}
