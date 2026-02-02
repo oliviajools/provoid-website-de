@@ -40,17 +40,26 @@ const db = new Database(path.join(__dirname, 'neuroathletic.db'));
 
 // Create tables with enhanced security
 db.exec(`
+  CREATE TABLE IF NOT EXISTS teams (
+    id TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    description TEXT,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP
+  );
+
   CREATE TABLE IF NOT EXISTS players (
     id TEXT PRIMARY KEY,
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
     birth_date TEXT,
     team TEXT,
+    team_id TEXT,
     position TEXT,
     dominant_hand TEXT DEFAULT 'right',
     dominant_foot TEXT DEFAULT 'right',
     created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-    updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+    updated_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE SET NULL
   );
 
   -- Add player_code column if not exists (for existing databases)
@@ -262,7 +271,7 @@ app.get('/api/players/:id', (req, res) => {
 });
 
 app.post('/api/players', (req, res) => {
-  const { first_name, last_name, birth_date, team, position, dominant_hand, dominant_foot } = req.body;
+  const { first_name, last_name, birth_date, team, team_id, position, dominant_hand, dominant_foot } = req.body;
   const id = uuidv4();
   
   // Generate unique anonymous player code (e.g., "AB3K7X")
@@ -280,11 +289,11 @@ app.post('/api/players', (req, res) => {
   } while (attempts < 10);
   
   db.prepare(`
-    INSERT INTO players (id, first_name, last_name, birth_date, team, position, dominant_hand, dominant_foot, player_code)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `).run(id, first_name, last_name, birth_date, team, position, dominant_hand || 'right', dominant_foot || 'right', player_code);
+    INSERT INTO players (id, first_name, last_name, birth_date, team, team_id, position, dominant_hand, dominant_foot, player_code)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `).run(id, first_name, last_name, birth_date, team, team_id || null, position, dominant_hand || 'right', dominant_foot || 'right', player_code);
   
-  res.json({ id, first_name, last_name, birth_date, team, position, dominant_hand, dominant_foot, player_code });
+  res.json({ id, first_name, last_name, birth_date, team, team_id, position, dominant_hand, dominant_foot, player_code });
 });
 
 app.put('/api/players/:id', (req, res) => {
@@ -612,6 +621,65 @@ app.post('/api/admin/change-password', verifyAdmin, (req, res) => {
   
   logAudit('PASSWORD_CHANGE', 'admin_users', req.admin.id);
   res.json({ success: true });
+});
+
+// ============ TEAM MANAGEMENT (Admin) ============
+
+// Get all teams
+app.get('/api/admin/teams', verifyAdmin, (req, res) => {
+  const teams = db.prepare(`
+    SELECT t.*, 
+      (SELECT COUNT(*) FROM players WHERE team_id = t.id) as player_count
+    FROM teams t
+    ORDER BY t.name
+  `).all();
+  res.json(teams);
+});
+
+// Create team
+app.post('/api/admin/teams', verifyAdmin, (req, res) => {
+  const { name, description } = req.body;
+  if (!name) return res.status(400).json({ error: 'Name ist erforderlich' });
+  
+  const id = uuidv4();
+  db.prepare('INSERT INTO teams (id, name, description) VALUES (?, ?, ?)').run(id, name, description || '');
+  logAudit('CREATE', 'teams', id, null, { name, description });
+  res.json({ id, name, description });
+});
+
+// Update team
+app.put('/api/admin/teams/:id', verifyAdmin, (req, res) => {
+  const { name, description } = req.body;
+  const team = db.prepare('SELECT * FROM teams WHERE id = ?').get(req.params.id);
+  if (!team) return res.status(404).json({ error: 'Team nicht gefunden' });
+  
+  db.prepare('UPDATE teams SET name = ?, description = ? WHERE id = ?').run(name, description, req.params.id);
+  logAudit('UPDATE', 'teams', req.params.id, team, { name, description });
+  res.json({ success: true });
+});
+
+// Delete team
+app.delete('/api/admin/teams/:id', verifyAdmin, (req, res) => {
+  const team = db.prepare('SELECT * FROM teams WHERE id = ?').get(req.params.id);
+  if (!team) return res.status(404).json({ error: 'Team nicht gefunden' });
+  
+  // Set team_id to NULL for all players in this team
+  db.prepare('UPDATE players SET team_id = NULL, team = NULL WHERE team_id = ?').run(req.params.id);
+  db.prepare('DELETE FROM teams WHERE id = ?').run(req.params.id);
+  logAudit('DELETE', 'teams', req.params.id, team);
+  res.json({ success: true });
+});
+
+// Get players by team
+app.get('/api/admin/teams/:id/players', verifyAdmin, (req, res) => {
+  const players = db.prepare(`
+    SELECT p.*, 
+      (SELECT COUNT(*) FROM test_sessions WHERE player_id = p.id AND completed = 1) as test_count
+    FROM players p
+    WHERE p.team_id = ?
+    ORDER BY p.last_name, p.first_name
+  `).all(req.params.id);
+  res.json(players);
 });
 
 // ============ PLAYER CODE SYSTEM ============

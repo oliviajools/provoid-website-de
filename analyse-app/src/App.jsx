@@ -13,6 +13,8 @@ import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminTeamCodes from './pages/AdminTeamCodes';
 import AdminPlayers from './pages/AdminPlayers';
+import AdminTeams from './pages/AdminTeams';
+import AdminTeamDetail from './pages/AdminTeamDetail';
 import PlayerLogin from './pages/PlayerLogin';
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/team-codes" element={<AdminTeamCodes />} />
           <Route path="/admin/players" element={<AdminProtected><AdminPlayers /></AdminProtected>} />
+          <Route path="/admin/teams" element={<AdminProtected><AdminTeams /></AdminProtected>} />
+          <Route path="/admin/teams/:teamId" element={<AdminProtected><AdminTeamDetail /></AdminProtected>} />
         </Routes>
       </Layout>
     </Router>

@@ -124,16 +124,16 @@ const AdminDashboard = () => {
           </div>
         </Link>
         <Link
-          to="/admin/team-codes"
+          to="/admin/teams"
           className="glass-card p-6 hover:border-provoid-400 transition-colors group"
         >
           <div className="flex items-center gap-4">
             <div className="p-3 bg-green-400/20 rounded-xl">
-              <Key className="w-6 h-6 text-green-500" />
+              <Users className="w-6 h-6 text-green-500" />
             </div>
             <div>
-              <h3 className="font-semibold text-gray-800 group-hover:text-green-600">Team-Codes</h3>
-              <p className="text-sm text-gray-500">Codes für Teams erstellen</p>
+              <h3 className="font-semibold text-gray-800 group-hover:text-green-600">Teams</h3>
+              <p className="text-sm text-gray-500">Teams und Spielerinnen verwalten</p>
             </div>
           </div>
         </Link>
