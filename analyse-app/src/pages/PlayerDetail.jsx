@@ -52,7 +52,7 @@ const PlayerDetail = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <img src="/provoid-logo.png" alt="PROVOID" className="h-16 w-auto object-contain animate-pulse" />
+        <img src="/analyse/provoid-logo.png" alt="PROVOID" className="h-16 w-auto object-contain animate-pulse" />
       </div>
     );
   }
@@ -161,7 +161,7 @@ const PlayerDetail = () => {
           to="/new-test" 
           className="flex-1 glass-card p-4 hover:bg-provoid-400/15 transition-colors text-center"
         >
-          <img src="/provoid-logo.png" alt="PROVOID" className="h-8 w-auto object-contain mx-auto mb-2" />
+          <img src="/analyse/provoid-logo.png" alt="PROVOID" className="h-8 w-auto object-contain mx-auto mb-2" />
           <span className="font-medium">Neue Testung</span>
         </Link>
         {sessions.length > 0 && sessions[0].completed && (
@@ -258,7 +258,7 @@ const PlayerDetail = () => {
         </>
       ) : (
         <div className="glass-card p-12 text-center">
-          <img src="/provoid-logo.png" alt="PROVOID" className="h-16 w-auto object-contain mx-auto mb-4 opacity-50" />
+          <img src="/analyse/provoid-logo.png" alt="PROVOID" className="h-16 w-auto object-contain mx-auto mb-4 opacity-50" />
           <h3 className="text-xl font-semibold mb-2">Noch keine Testungen</h3>
           <p className="text-gray-500 mb-6">
             Starte die erste neuroathletische Testung für {player.first_name}

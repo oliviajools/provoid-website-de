@@ -155,7 +155,7 @@ const NewTest = () => {
       <div className="glass-card p-8">
         <div className="flex items-center gap-4 mb-8">
           <div className="p-4 bg-provoid-500/20 rounded-2xl">
-            <img src="/provoid-logo.png" alt="PROVOID" className="h-10 w-auto object-contain" />
+            <img src="/analyse/provoid-logo.png" alt="PROVOID" className="h-10 w-auto object-contain" />
           </div>
           <div>
             <h1 className="text-2xl font-bold">Neue Neuroathletische Testung</h1>

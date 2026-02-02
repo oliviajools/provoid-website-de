@@ -59,7 +59,7 @@ const PrivacyConsent = () => {
         {/* Header */}
         <div className="flex items-center gap-4 mb-8">
           <div className="p-4 bg-provoid-500/20 rounded-2xl">
-            <img src="/provoid-logo.png" alt="PROVOID Logo" className="h-12 w-auto object-contain" />
+            <img src="/analyse/provoid-logo.png" alt="PROVOID Logo" className="h-12 w-auto object-contain" />
           </div>
           <div>
             <h1 className="text-2xl font-bold">Datenschutzerklärung</h1>

@@ -97,49 +97,11 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="glass-card p-6">
-          <div className="flex items-center gap-4">
-            <div className="p-3 bg-provoid-500/20 rounded-xl">
-              <Users className="w-6 h-6 text-provoid-400" />
-            </div>
-            <div>
-              <p className="text-2xl font-bold">{stats.players}</p>
-              <p className="text-sm text-gray-500">Spielerinnen</p>
-            </div>
-          </div>
-        </div>
-        
-        <div className="glass-card p-6">
-          <div className="flex items-center gap-4">
-            <div className="p-3 bg-blue-500/20 rounded-xl">
-              <Activity className="w-6 h-6 text-blue-400" />
-            </div>
-            <div>
-              <p className="text-2xl font-bold">{stats.sessions}</p>
-              <p className="text-sm text-gray-500">Abgeschlossene Tests</p>
-            </div>
-          </div>
-        </div>
-        
-        <div className="glass-card p-6">
-          <div className="flex items-center gap-4">
-            <div className="p-3 bg-green-500/20 rounded-xl">
-              <TrendingUp className="w-6 h-6 text-green-400" />
-            </div>
-            <div>
-              <p className="text-2xl font-bold">{stats.avgScore}%</p>
-              <p className="text-sm text-gray-500">Durchschnittsscore</p>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Test Categories */}
       <div className="glass-card p-6">
         <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-          <img src="/provoid-logo.png" alt="PROVOID" className="h-7 w-auto object-contain" />
+          <img src="/analyse/provoid-logo.png" alt="PROVOID" className="h-7 w-auto object-contain" />
           Testbereiche (Neurowissenschaftliche Grundlage)
         </h2>
         

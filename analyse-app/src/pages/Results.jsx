@@ -32,7 +32,7 @@ const Results = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <img src="/provoid-logo.png" alt="PROVOID" className="h-16 w-auto object-contain animate-pulse" />
+        <img src="/analyse/provoid-logo.png" alt="PROVOID" className="h-16 w-auto object-contain animate-pulse" />
       </div>
     );
   }
@@ -264,7 +264,7 @@ const Results = () => {
       <div className="text-center mb-2">
         <div className="inline-flex items-center gap-3 mb-2">
           <div className="w-10 h-10 rounded-full bg-gradient-to-br from-provoid-400 to-provoid-500 flex items-center justify-center">
-            <img src="/provoid-logo.png" alt="PROVOID" className="h-6 w-auto object-contain" />
+            <img src="/analyse/provoid-logo.png" alt="PROVOID" className="h-6 w-auto object-contain" />
           </div>
           <span className="text-xl font-bold bg-gradient-to-r from-provoid-400 to-provoid-300 bg-clip-text text-transparent">
             PROVOID NeuroAthletic

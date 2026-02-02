@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
           <div className="flex items-center justify-between px-6 py-4">
             <Link to="/" className="flex items-center gap-3">
               <div className="relative">
-                <img src="/provoid-logo.png" alt="PROVOID" className="h-12 w-auto object-contain brain-pulse" />
+                <img src="/analyse/provoid-logo.png" alt="PROVOID" className="h-12 w-auto object-contain brain-pulse" />
                 <div className="absolute inset-0 bg-provoid-500/30 blur-xl rounded-full"></div>
               </div>
               <div>
