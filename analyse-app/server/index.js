@@ -23,6 +23,14 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
+// Rewrite /analyse/api/* zu /api/* für API-Kompatibilität
+app.use((req, res, next) => {
+  if (req.path.startsWith('/analyse/api/')) {
+    req.url = req.url.replace('/analyse/api/', '/api/');
+  }
+  next();
+});
+
 // Statische Dateien für Produktion (Frontend)
 // Unter /analyse ausliefern (entspricht Vite base path)
 app.use('/analyse', express.static(path.join(__dirname, '../dist')));
