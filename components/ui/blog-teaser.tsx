@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Calendar, BookOpen } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import blogData from "@/content/blog-posts.json";
@@ -29,7 +30,17 @@ export function BlogTeaser() {
           <div className={`grid gap-6 ${latestPosts.length === 1 ? 'max-w-md mx-auto' : latestPosts.length === 2 ? 'md:grid-cols-2 max-w-2xl mx-auto' : 'md:grid-cols-3'}`}>
             {latestPosts.map((post) => (
               <Link key={post.id} href={`/blog/${post.slug}`} className="block">
-                <Card className="border-2 hover:border-primary/50 transition-colors h-full cursor-pointer">
+                <Card className="border-2 hover:border-primary/50 transition-colors h-full cursor-pointer overflow-hidden">
+                  {post.image && (
+                    <div className="relative w-full h-48">
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
                   <CardHeader className="pb-2">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                       <Calendar className="h-4 w-4" />
