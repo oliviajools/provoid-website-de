@@ -34,7 +34,7 @@ const NewTest = () => {
         return;
       }
       
-      setVerifiedPlayer(data);
+      setVerifiedPlayer(data.player);
     } catch (error) {
       setCodeError('Verbindungsfehler');
     } finally {
