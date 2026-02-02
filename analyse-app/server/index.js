@@ -775,12 +775,14 @@ function generateCode() {
   return code;
 }
 
-// SPA Fallback für React Router (Produktion)
-if (NODE_ENV === 'production') {
-  app.get('/analyse/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../dist/index.html'));
-  });
-}
+// SPA Fallback für React Router (alle nicht-API Routen)
+app.get('*', (req, res, next) => {
+  // Skip API routes
+  if (req.path.startsWith('/api/')) {
+    return next();
+  }
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
 
 app.listen(PORT, () => {
   console.log(`NeuroAthletic Analysis Server running on port ${PORT} (${NODE_ENV})`);
