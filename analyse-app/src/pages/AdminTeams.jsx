@@ -16,7 +16,10 @@ const AdminTeams = () => {
 
   const fetchTeams = async () => {
     try {
-      const res = await fetch(apiUrl('/api/admin/teams'), { credentials: 'include' });
+      const token = localStorage.getItem('adminToken');
+      const res = await fetch(apiUrl('/api/admin/teams'), { 
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
       if (!res.ok) {
         console.error('Error fetching teams:', res.status);
         setLoading(false);
@@ -34,6 +37,7 @@ const AdminTeams = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const token = localStorage.getItem('adminToken');
       const url = editingTeam 
         ? apiUrl(`/api/admin/teams/${editingTeam.id}`)
         : apiUrl('/api/admin/teams');
@@ -42,8 +46,10 @@ const AdminTeams = () => {
       
       await fetch(url, {
         method,
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify(formData)
       });
       
@@ -58,9 +64,10 @@ const AdminTeams = () => {
     if (!confirm('Team wirklich löschen? Spielerinnen werden nicht gelöscht, nur die Team-Zuordnung entfernt.')) return;
     
     try {
+      const token = localStorage.getItem('adminToken');
       await fetch(apiUrl(`/api/admin/teams/${id}`), { 
         method: 'DELETE',
-        credentials: 'include'
+        headers: { 'Authorization': `Bearer ${token}` }
       });
       fetchTeams();
     } catch (error) {

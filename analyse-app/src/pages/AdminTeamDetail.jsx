@@ -26,9 +26,11 @@ const AdminTeamDetail = () => {
 
   const fetchTeamData = async () => {
     try {
+      const token = localStorage.getItem('adminToken');
+      const headers = { 'Authorization': `Bearer ${token}` };
       const [teamsRes, playersRes] = await Promise.all([
-        fetch(apiUrl('/api/admin/teams'), { credentials: 'include' }),
-        fetch(apiUrl(`/api/admin/teams/${teamId}/players`), { credentials: 'include' })
+        fetch(apiUrl('/api/admin/teams'), { headers }),
+        fetch(apiUrl(`/api/admin/teams/${teamId}/players`), { headers })
       ]);
       
       const teams = await teamsRes.json();
@@ -53,6 +55,7 @@ const AdminTeamDetail = () => {
         team: team?.name
       };
       
+      const token = localStorage.getItem('adminToken');
       const url = editingPlayer 
         ? apiUrl(`/api/players/${editingPlayer.id}`)
         : apiUrl('/api/players');
@@ -61,8 +64,10 @@ const AdminTeamDetail = () => {
       
       await fetch(url, {
         method,
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify(playerData)
       });
       
@@ -77,9 +82,10 @@ const AdminTeamDetail = () => {
     if (!confirm('Spielerin und alle zugehörigen Testergebnisse löschen?')) return;
     
     try {
+      const token = localStorage.getItem('adminToken');
       await fetch(apiUrl(`/api/players/${id}`), { 
         method: 'DELETE',
-        credentials: 'include'
+        headers: { 'Authorization': `Bearer ${token}` }
       });
       fetchTeamData();
     } catch (error) {
