@@ -265,12 +265,24 @@ app.post('/api/players', (req, res) => {
   const { first_name, last_name, birth_date, team, position, dominant_hand, dominant_foot } = req.body;
   const id = uuidv4();
   
-  db.prepare(`
-    INSERT INTO players (id, first_name, last_name, birth_date, team, position, dominant_hand, dominant_foot)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-  `).run(id, first_name, last_name, birth_date, team, position, dominant_hand || 'right', dominant_foot || 'right');
+  // Generate unique player code
+  let player_code;
+  let attempts = 0;
+  do {
+    const prefix = first_name.toUpperCase().slice(0, 4).padEnd(4, 'X');
+    const suffix = Math.floor(1000 + Math.random() * 9000);
+    player_code = `${prefix}${suffix}`;
+    const existing = db.prepare('SELECT id FROM players WHERE player_code = ?').get(player_code);
+    if (!existing) break;
+    attempts++;
+  } while (attempts < 10);
   
-  res.json({ id, first_name, last_name, birth_date, team, position, dominant_hand, dominant_foot });
+  db.prepare(`
+    INSERT INTO players (id, first_name, last_name, birth_date, team, position, dominant_hand, dominant_foot, player_code)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `).run(id, first_name, last_name, birth_date, team, position, dominant_hand || 'right', dominant_foot || 'right', player_code);
+  
+  res.json({ id, first_name, last_name, birth_date, team, position, dominant_hand, dominant_foot, player_code });
 });
 
 app.put('/api/players/:id', (req, res) => {
