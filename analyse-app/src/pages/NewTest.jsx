@@ -121,7 +121,7 @@ const NewTest = () => {
             <div className="bg-green-50 border border-green-200 rounded-xl p-6">
               <div className="flex items-center gap-4">
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-provoid-500 to-blue-500 flex items-center justify-center text-white text-xl font-bold">
-                  {verifiedPlayer.first_name[0]}{verifiedPlayer.last_name[0]}
+                  {verifiedPlayer.first_name?.[0]}{verifiedPlayer.last_name?.[0]}
                 </div>
                 <div>
                   <div className="flex items-center gap-2 text-green-600 mb-1">
