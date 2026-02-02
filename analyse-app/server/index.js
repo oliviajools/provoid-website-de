@@ -24,9 +24,8 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // Statische Dateien für Produktion (Frontend)
-if (NODE_ENV === 'production') {
-  app.use('/analyse', express.static(path.join(__dirname, '../dist')));
-}
+// Nach Nginx rewrite werden Anfragen ohne /analyse-Prefix empfangen
+app.use(express.static(path.join(__dirname, '../dist')));
 
 // Initialize Database
 const db = new Database(path.join(__dirname, 'neuroathletic.db'));
