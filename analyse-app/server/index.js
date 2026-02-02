@@ -156,7 +156,6 @@ db.exec(`
   CREATE INDEX IF NOT EXISTS idx_audit_log_timestamp ON audit_log(timestamp);
   CREATE INDEX IF NOT EXISTS idx_audit_log_table ON audit_log(table_name);
   CREATE INDEX IF NOT EXISTS idx_admin_sessions_token ON admin_sessions(token);
-  CREATE INDEX IF NOT EXISTS idx_players_code ON players(player_code);
 `);
 
 // Add player_code column if it doesn't exist (migration for existing DB)
@@ -165,6 +164,13 @@ try {
   console.log('Added player_code column to players table');
 } catch (e) {
   // Column already exists, ignore
+}
+
+// Create index for player_code (after migration)
+try {
+  db.exec('CREATE INDEX IF NOT EXISTS idx_players_code ON players(player_code)');
+} catch (e) {
+  // Index might already exist
 }
 
 // Enable foreign key constraints
