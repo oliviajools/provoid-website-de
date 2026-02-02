@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ChevronRight, CheckCircle } from 'lucide-react';
+import { ChevronRight, CheckCircle, Brain } from 'lucide-react';
 import { apiUrl } from '../config/api';
 
 // Import test components
