@@ -37,8 +37,8 @@ const Players = () => {
     
     try {
       const url = editingPlayer 
-        ? `/api/players/${editingPlayer.id}`
-        : '/api/players';
+        ? apiUrl(`/api/players/${editingPlayer.id}`)
+        : apiUrl('/api/players');
       
       const method = editingPlayer ? 'PUT' : 'POST';
       
@@ -59,7 +59,7 @@ const Players = () => {
     if (!confirm('Spielerin und alle zugehörigen Testergebnisse löschen?')) return;
     
     try {
-      await fetch(`/api/players/${id}`, { method: 'DELETE' });
+      await fetch(apiUrl(`/api/players/${id}`), { method: 'DELETE' });
       fetchPlayers();
     } catch (error) {
       console.error('Error deleting player:', error);

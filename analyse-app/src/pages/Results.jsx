@@ -3,6 +3,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Download, TrendingUp, AlertTriangle, CheckCircle, Target } from 'lucide-react';
+import { apiUrl } from '../config/api';
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell } from 'recharts';
 import ScoreRing from '../components/ScoreRing';
 
@@ -19,7 +20,7 @@ const Results = () => {
 
   const fetchSession = async () => {
     try {
-      const res = await fetch(`/api/sessions/${sessionId}`);
+      const res = await fetch(apiUrl(`/api/sessions/${sessionId}`));
       const data = await res.json();
       setSession(data);
       setLoading(false);

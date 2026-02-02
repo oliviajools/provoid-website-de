@@ -70,7 +70,7 @@ const TestSession = () => {
 
   const fetchSession = async () => {
     try {
-      const res = await fetch(`/api/sessions/${sessionId}`);
+      const res = await fetch(apiUrl(`/api/sessions/${sessionId}`));
       if (!res.ok) {
         navigate('/');
         return;
@@ -139,7 +139,7 @@ const TestSession = () => {
     // Calculate percentile (simplified - would use normative data in production)
     const percentile = Math.min(99, Math.max(1, Math.round(totalScore)));
     
-    await fetch(`/api/sessions/${sessionId}/complete`, {
+    await fetch(apiUrl(`/api/sessions/${sessionId}/complete`), {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ total_score: totalScore, percentile })

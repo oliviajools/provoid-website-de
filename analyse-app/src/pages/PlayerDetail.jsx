@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Calendar, TrendingUp, ChevronRight } from 'lucide-react';
+import { apiUrl } from '../config/api';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar } from 'recharts';
 import ScoreRing from '../components/ScoreRing';
 
@@ -18,9 +19,9 @@ const PlayerDetail = () => {
   const fetchPlayerData = async () => {
     try {
       const [playerRes, sessionsRes, statsRes] = await Promise.all([
-        fetch(`/api/players/${id}`),
-        fetch(`/api/players/${id}/sessions`),
-        fetch(`/api/stats/player/${id}`)
+        fetch(apiUrl(`/api/players/${id}`)),
+        fetch(apiUrl(`/api/players/${id}/sessions`)),
+        fetch(apiUrl(`/api/stats/player/${id}`))
       ]);
       
       const playerData = await playerRes.json();
