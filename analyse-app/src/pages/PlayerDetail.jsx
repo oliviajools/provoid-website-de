@@ -118,6 +118,11 @@ const PlayerDetail = () => {
           
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-2xl font-bold">{player.first_name} {player.last_name}</h1>
+            {player.player_code && (
+              <div className="mt-1 inline-flex items-center gap-2 bg-provoid-500/20 px-3 py-1 rounded-full">
+                <span className="text-sm font-mono font-bold text-provoid-300">Code: {player.player_code}</span>
+              </div>
+            )}
             <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2 text-gray-500">
               {calculateAge(player.birth_date) && (
                 <span>{calculateAge(player.birth_date)} Jahre</span>
