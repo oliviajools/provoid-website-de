@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Users, Activity, TrendingUp, PlayCircle, ChevronRight } from 'lucide-react';
+import { Users, Activity, TrendingUp, PlayCircle, ChevronRight, User } from 'lucide-react';
 import ScoreRing from '../components/ScoreRing';
 
 const Dashboard = () => {
@@ -87,13 +87,22 @@ const Dashboard = () => {
             für optimale sportliche Leistung. Basierend auf aktueller neurowissenschaftlicher Forschung.
           </p>
           
-          <Link
-            to="/new-test"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-provoid-500 to-provoid-500 rounded-xl font-semibold hover:opacity-90 transition-opacity"
-          >
-            <PlayCircle className="w-5 h-5" />
-            Neue Testung starten
-          </Link>
+          <div className="flex flex-wrap gap-4">
+            <Link
+              to="/login"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-provoid-500 to-provoid-600 text-white rounded-xl font-semibold hover:opacity-90 transition-opacity"
+            >
+              <User className="w-5 h-5" />
+              Mit Code anmelden
+            </Link>
+            <Link
+              to="/new-test"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-provoid-500 text-provoid-600 rounded-xl font-semibold hover:bg-provoid-50 transition-colors"
+            >
+              <PlayCircle className="w-5 h-5" />
+              Team-Code Testung
+            </Link>
+          </div>
         </div>
       </div>
 

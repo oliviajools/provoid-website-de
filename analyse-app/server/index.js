@@ -35,6 +35,7 @@ const db = new Database(path.join(__dirname, 'neuroathletic.db'));
 db.exec(`
   CREATE TABLE IF NOT EXISTS players (
     id TEXT PRIMARY KEY,
+    player_code TEXT UNIQUE,
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
     birth_date TEXT,
@@ -45,6 +46,9 @@ db.exec(`
     created_at TEXT DEFAULT CURRENT_TIMESTAMP,
     updated_at TEXT DEFAULT CURRENT_TIMESTAMP
   );
+
+  -- Add player_code column if not exists (for existing databases)
+  -- This is handled separately below
 
   CREATE TABLE IF NOT EXISTS test_sessions (
     id TEXT PRIMARY KEY,
@@ -152,7 +156,16 @@ db.exec(`
   CREATE INDEX IF NOT EXISTS idx_audit_log_timestamp ON audit_log(timestamp);
   CREATE INDEX IF NOT EXISTS idx_audit_log_table ON audit_log(table_name);
   CREATE INDEX IF NOT EXISTS idx_admin_sessions_token ON admin_sessions(token);
+  CREATE INDEX IF NOT EXISTS idx_players_code ON players(player_code);
 `);
+
+// Add player_code column if it doesn't exist (migration for existing DB)
+try {
+  db.exec('ALTER TABLE players ADD COLUMN player_code TEXT UNIQUE');
+  console.log('Added player_code column to players table');
+} catch (e) {
+  // Column already exists, ignore
+}
 
 // Enable foreign key constraints
 db.pragma('foreign_keys = ON');
@@ -264,6 +277,102 @@ app.delete('/api/players/:id', (req, res) => {
   db.prepare('DELETE FROM test_sessions WHERE player_id = ?').run(req.params.id);
   db.prepare('DELETE FROM players WHERE id = ?').run(req.params.id);
   res.json({ success: true });
+});
+
+// ============ PLAYER CODE SYSTEM ============
+
+// Generate unique player code (e.g., "ANNA2024" or "MAX1234")
+function generatePlayerCode(firstName) {
+  const prefix = firstName.toUpperCase().slice(0, 4).padEnd(4, 'X');
+  const suffix = Math.floor(1000 + Math.random() * 9000);
+  return `${prefix}${suffix}`;
+}
+
+// Generate code for existing player (admin only)
+app.post('/api/admin/players/:id/generate-code', verifyAdmin, (req, res) => {
+  const player = db.prepare('SELECT * FROM players WHERE id = ?').get(req.params.id);
+  if (!player) return res.status(404).json({ error: 'Spielerin nicht gefunden' });
+  
+  let code;
+  let attempts = 0;
+  do {
+    code = generatePlayerCode(player.first_name);
+    const existing = db.prepare('SELECT id FROM players WHERE player_code = ?').get(code);
+    if (!existing) break;
+    attempts++;
+  } while (attempts < 10);
+  
+  db.prepare('UPDATE players SET player_code = ? WHERE id = ?').run(code, req.params.id);
+  logAudit('GENERATE_CODE', 'players', req.params.id, { old_code: player.player_code }, { new_code: code });
+  
+  res.json({ success: true, player_code: code });
+});
+
+// Get all players with their codes and latest results (admin only)
+app.get('/api/admin/players-overview', verifyAdmin, (req, res) => {
+  const players = db.prepare(`
+    SELECT 
+      p.*,
+      (SELECT COUNT(*) FROM test_sessions ts WHERE ts.player_id = p.id AND ts.completed = 1) as completed_tests,
+      (SELECT ts.total_score FROM test_sessions ts WHERE ts.player_id = p.id AND ts.completed = 1 ORDER BY ts.test_date DESC LIMIT 1) as latest_score,
+      (SELECT ts.test_date FROM test_sessions ts WHERE ts.player_id = p.id AND ts.completed = 1 ORDER BY ts.test_date DESC LIMIT 1) as latest_test_date
+    FROM players p
+    ORDER BY p.last_name, p.first_name
+  `).all();
+  res.json(players);
+});
+
+// Bulk generate codes for all players without codes (admin only)
+app.post('/api/admin/generate-all-codes', verifyAdmin, (req, res) => {
+  const playersWithoutCode = db.prepare('SELECT * FROM players WHERE player_code IS NULL').all();
+  const generated = [];
+  
+  for (const player of playersWithoutCode) {
+    let code;
+    let attempts = 0;
+    do {
+      code = generatePlayerCode(player.first_name);
+      const existing = db.prepare('SELECT id FROM players WHERE player_code = ?').get(code);
+      if (!existing) break;
+      attempts++;
+    } while (attempts < 10);
+    
+    db.prepare('UPDATE players SET player_code = ? WHERE id = ?').run(code, player.id);
+    generated.push({ id: player.id, name: `${player.first_name} ${player.last_name}`, code });
+  }
+  
+  res.json({ success: true, generated_count: generated.length, generated });
+});
+
+// Player login with code (public endpoint)
+app.post('/api/player-login', (req, res) => {
+  const { code } = req.body;
+  
+  if (!code) {
+    return res.status(400).json({ error: 'Code erforderlich' });
+  }
+  
+  const player = db.prepare(`
+    SELECT p.*, 
+      (SELECT ts.id FROM test_sessions ts WHERE ts.player_id = p.id AND ts.completed = 0 ORDER BY ts.test_date DESC LIMIT 1) as pending_session_id
+    FROM players p 
+    WHERE p.player_code = ?
+  `).get(code.toUpperCase());
+  
+  if (!player) {
+    return res.status(404).json({ error: 'Ungültiger Code' });
+  }
+  
+  res.json({ 
+    success: true, 
+    player: {
+      id: player.id,
+      first_name: player.first_name,
+      last_name: player.last_name,
+      team: player.team
+    },
+    pending_session_id: player.pending_session_id
+  });
 });
 
 // Test Sessions

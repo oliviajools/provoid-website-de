@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Shield, LogOut, ChevronRight, Calendar, User, Activity, Key } from 'lucide-react';
+import { Shield, LogOut, ChevronRight, Calendar, User, Activity, Key, Users } from 'lucide-react';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -107,18 +107,32 @@ const AdminDashboard = () => {
       </div>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <Link
+          to="/admin/players"
+          className="glass-card p-6 hover:border-provoid-400 transition-colors group"
+        >
+          <div className="flex items-center gap-4">
+            <div className="p-3 bg-provoid-400/20 rounded-xl">
+              <Users className="w-6 h-6 text-provoid-500" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-gray-800 group-hover:text-provoid-600">Spielerinnen & Codes</h3>
+              <p className="text-sm text-gray-500">IDs verwalten und Ergebnisse sehen</p>
+            </div>
+          </div>
+        </Link>
         <Link
           to="/admin/team-codes"
           className="glass-card p-6 hover:border-provoid-400 transition-colors group"
         >
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-provoid-400/20 rounded-xl">
-              <Key className="w-6 h-6 text-provoid-500" />
+            <div className="p-3 bg-green-400/20 rounded-xl">
+              <Key className="w-6 h-6 text-green-500" />
             </div>
             <div>
-              <h3 className="font-semibold text-gray-800 group-hover:text-provoid-600">Team-Codes verwalten</h3>
-              <p className="text-sm text-gray-500">Codes für Teams erstellen und verwalten</p>
+              <h3 className="font-semibold text-gray-800 group-hover:text-green-600">Team-Codes</h3>
+              <p className="text-sm text-gray-500">Codes für Teams erstellen</p>
             </div>
           </div>
         </Link>
@@ -131,8 +145,8 @@ const AdminDashboard = () => {
               <User className="w-6 h-6 text-blue-500" />
             </div>
             <div>
-              <h3 className="font-semibold text-gray-800 group-hover:text-blue-600">Spielerinnen verwalten</h3>
-              <p className="text-sm text-gray-500">Spielerinnen-Datenbank bearbeiten</p>
+              <h3 className="font-semibold text-gray-800 group-hover:text-blue-600">Spielerinnen-Datenbank</h3>
+              <p className="text-sm text-gray-500">Daten bearbeiten</p>
             </div>
           </div>
         </Link>

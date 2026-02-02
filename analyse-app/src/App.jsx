@@ -12,6 +12,8 @@ import PrivacyConsent from './pages/PrivacyConsent';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminTeamCodes from './pages/AdminTeamCodes';
+import AdminPlayers from './pages/AdminPlayers';
+import PlayerLogin from './pages/PlayerLogin';
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Dashboard />} />
+          <Route path="/login" element={<PlayerLogin />} />
           <Route path="/privacy" element={<PrivacyConsent />} />
           <Route path="/players" element={<AdminProtected><Players /></AdminProtected>} />
           <Route path="/players/:id" element={<AdminProtected><PlayerDetail /></AdminProtected>} />
@@ -28,6 +31,7 @@ function App() {
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/team-codes" element={<AdminTeamCodes />} />
+          <Route path="/admin/players" element={<AdminProtected><AdminPlayers /></AdminProtected>} />
         </Routes>
       </Layout>
     </Router>
