@@ -17,8 +17,13 @@ const AdminTeams = () => {
   const fetchTeams = async () => {
     try {
       const res = await fetch(apiUrl('/api/admin/teams'), { credentials: 'include' });
+      if (!res.ok) {
+        console.error('Error fetching teams:', res.status);
+        setLoading(false);
+        return;
+      }
       const data = await res.json();
-      setTeams(data);
+      setTeams(Array.isArray(data) ? data : []);
       setLoading(false);
     } catch (error) {
       console.error('Error fetching teams:', error);
