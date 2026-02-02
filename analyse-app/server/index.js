@@ -265,13 +265,15 @@ app.post('/api/players', (req, res) => {
   const { first_name, last_name, birth_date, team, position, dominant_hand, dominant_foot } = req.body;
   const id = uuidv4();
   
-  // Generate unique player code
+  // Generate unique anonymous player code (e.g., "AB3K7X")
   let player_code;
   let attempts = 0;
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // ohne I, O, 0, 1 (leicht verwechselbar)
   do {
-    const prefix = first_name.toUpperCase().slice(0, 4).padEnd(4, 'X');
-    const suffix = Math.floor(1000 + Math.random() * 9000);
-    player_code = `${prefix}${suffix}`;
+    player_code = '';
+    for (let i = 0; i < 6; i++) {
+      player_code += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
     const existing = db.prepare('SELECT id FROM players WHERE player_code = ?').get(player_code);
     if (!existing) break;
     attempts++;
@@ -614,11 +616,14 @@ app.post('/api/admin/change-password', verifyAdmin, (req, res) => {
 
 // ============ PLAYER CODE SYSTEM ============
 
-// Generate unique player code (e.g., "ANNA2024" or "MAX1234")
-function generatePlayerCode(firstName) {
-  const prefix = firstName.toUpperCase().slice(0, 4).padEnd(4, 'X');
-  const suffix = Math.floor(1000 + Math.random() * 9000);
-  return `${prefix}${suffix}`;
+// Generate unique anonymous player code (e.g., "AB3K7X")
+function generatePlayerCode() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code = '';
+  for (let i = 0; i < 6; i++) {
+    code += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return code;
 }
 
 // Generate code for existing player (admin only)
@@ -629,7 +634,7 @@ app.post('/api/admin/players/:id/generate-code', verifyAdmin, (req, res) => {
   let code;
   let attempts = 0;
   do {
-    code = generatePlayerCode(player.first_name);
+    code = generatePlayerCode();
     const existing = db.prepare('SELECT id FROM players WHERE player_code = ?').get(code);
     if (!existing) break;
     attempts++;
@@ -664,7 +669,7 @@ app.post('/api/admin/generate-all-codes', verifyAdmin, (req, res) => {
     let code;
     let attempts = 0;
     do {
-      code = generatePlayerCode(player.first_name);
+      code = generatePlayerCode();
       const existing = db.prepare('SELECT id FROM players WHERE player_code = ?').get(code);
       if (!existing) break;
       attempts++;
