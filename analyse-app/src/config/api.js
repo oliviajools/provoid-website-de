@@ -1,8 +1,6 @@
 // API-Konfiguration
-// In Produktion: API läuft unter /analyse/api
-// In Entwicklung: Vite Proxy leitet /api weiter
+// Nginx entfernt /analyse prefix, daher einfach relative Pfade verwenden
 
-const isProduction = import.meta.env.PROD;
-export const API_BASE_URL = isProduction ? '/analyse' : '';
+export const API_BASE_URL = '';
 
 export const apiUrl = (path) => `${API_BASE_URL}${path}`;
