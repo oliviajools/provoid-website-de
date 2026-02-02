@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, ArrowRight, AlertCircle } from 'lucide-react';
+import { apiUrl } from '../config/api';
 
 const PlayerLogin = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const PlayerLogin = () => {
     setError('');
 
     try {
-      const res = await fetch('/api/player-login', {
+      const res = await fetch(apiUrl('/api/player-login'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code: code.trim() })

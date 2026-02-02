@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { apiUrl } from '../config/api';
 
 const AdminProtected = ({ children }) => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const AdminProtected = ({ children }) => {
     }
 
     try {
-      const res = await fetch('/api/admin/verify', {
+      const res = await fetch(apiUrl('/api/admin/verify'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Shield, LogOut, ChevronRight, Calendar, User, Activity, Key, Users } from 'lucide-react';
+import { apiUrl } from '../config/api';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const AdminDashboard = () => {
     }
 
     try {
-      const verifyRes = await fetch('/api/admin/verify', {
+      const verifyRes = await fetch(apiUrl('/api/admin/verify'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 
@@ -34,7 +35,7 @@ const AdminDashboard = () => {
       const verifyData = await verifyRes.json();
       setUsername(verifyData.username);
 
-      const sessionsRes = await fetch('/api/admin/all-sessions', {
+      const sessionsRes = await fetch(apiUrl('/api/admin/all-sessions'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 
@@ -52,7 +53,7 @@ const AdminDashboard = () => {
   const handleLogout = async () => {
     const token = localStorage.getItem('adminToken');
     try {
-      await fetch('/api/admin/logout', {
+      await fetch(apiUrl('/api/admin/logout'), {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` }
       });

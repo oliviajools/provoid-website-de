@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Users, Key, RefreshCw, Copy, Check, Calendar, Trophy, Search } from 'lucide-react';
+import { apiUrl } from '../config/api';
 
 const AdminPlayers = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const AdminPlayers = () => {
     }
 
     try {
-      const res = await fetch('/api/admin/players-overview', {
+      const res = await fetch(apiUrl('/api/admin/players-overview'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 
@@ -44,7 +45,7 @@ const AdminPlayers = () => {
     setGenerating(playerId);
 
     try {
-      const res = await fetch(`/api/admin/players/${playerId}/generate-code`, {
+      const res = await fetch(apiUrl(`/api/admin/players/${playerId}/generate-code`), {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -67,7 +68,7 @@ const AdminPlayers = () => {
     setGenerating('all');
 
     try {
-      const res = await fetch('/api/admin/generate-all-codes', {
+      const res = await fetch(apiUrl('/api/admin/generate-all-codes'), {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` }
       });

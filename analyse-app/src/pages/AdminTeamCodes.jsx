@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Key, Plus, Trash2, Edit2, Copy, Check, ArrowLeft, ToggleLeft, ToggleRight } from 'lucide-react';
+import { apiUrl } from '../config/api';
 
 const AdminTeamCodes = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const AdminTeamCodes = () => {
     }
 
     try {
-      const verifyRes = await fetch('/api/admin/verify', {
+      const verifyRes = await fetch(apiUrl('/api/admin/verify'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 
@@ -41,7 +42,7 @@ const AdminTeamCodes = () => {
 
   const fetchCodes = async () => {
     try {
-      const res = await fetch('/api/admin/team-codes', {
+      const res = await fetch(apiUrl('/api/admin/team-codes'), {
         headers: { 'Authorization': `Bearer ${getToken()}` }
       });
       if (res.ok) {
@@ -58,7 +59,7 @@ const AdminTeamCodes = () => {
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('/api/admin/team-codes', {
+      const res = await fetch(apiUrl('/api/admin/team-codes'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +80,7 @@ const AdminTeamCodes = () => {
 
   const toggleActive = async (id, currentState) => {
     try {
-      await fetch(`/api/admin/team-codes/${id}`, {
+      await fetch(apiUrl(`/api/admin/team-codes/${id}`), {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -97,7 +98,7 @@ const AdminTeamCodes = () => {
     if (!confirm('Code wirklich löschen?')) return;
     
     try {
-      await fetch(`/api/admin/team-codes/${id}`, {
+      await fetch(apiUrl(`/api/admin/team-codes/${id}`), {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${getToken()}` }
       });

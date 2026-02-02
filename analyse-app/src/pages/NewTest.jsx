@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { UserPlus, ChevronRight, AlertCircle, Key, CheckCircle } from 'lucide-react';
+import { apiUrl } from '../config/api';
 
 const NewTest = () => {
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ const NewTest = () => {
     setCodeError('');
     
     try {
-      const res = await fetch('/api/verify-code', {
+      const res = await fetch(apiUrl('/api/verify-code'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code: teamCode.trim() })
@@ -74,7 +75,7 @@ const NewTest = () => {
 
   const fetchPlayers = async () => {
     try {
-      const res = await fetch('/api/players');
+      const res = await fetch(apiUrl('/api/players'));
       const data = await res.json();
       setPlayers(data);
     } catch (error) {
@@ -93,7 +94,7 @@ const NewTest = () => {
     
     try {
       // Create the player
-      const playerRes = await fetch('/api/players', {
+      const playerRes = await fetch(apiUrl('/api/players'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -102,7 +103,7 @@ const NewTest = () => {
       const newPlayer = await playerRes.json();
       
       // Immediately start a test session
-      const sessionRes = await fetch('/api/sessions', {
+      const sessionRes = await fetch(apiUrl('/api/sessions'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ player_id: newPlayer.id })
@@ -125,7 +126,7 @@ const NewTest = () => {
     }
     
     try {
-      const res = await fetch('/api/sessions', {
+      const res = await fetch(apiUrl('/api/sessions'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ player_id: selectedPlayer.id })

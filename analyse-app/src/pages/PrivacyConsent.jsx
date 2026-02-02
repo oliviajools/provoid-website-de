@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Shield, CheckCircle, AlertCircle, FileText, Lock, Database, Trash2 } from 'lucide-react';
+import { apiUrl } from '../config/api';
 
 const PrivacyConsent = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const PrivacyConsent = () => {
     if (allConsentsGiven) {
       try {
         // Save consent to database
-        await fetch('/api/consent', {
+        await fetch(apiUrl('/api/consent'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

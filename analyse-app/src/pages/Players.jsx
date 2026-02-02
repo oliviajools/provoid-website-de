@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { UserPlus, Search, ChevronRight, Trash2, Edit2 } from 'lucide-react';
+import { apiUrl } from '../config/api';
 
 const Players = () => {
   const [players, setPlayers] = useState([]);
@@ -23,7 +24,7 @@ const Players = () => {
 
   const fetchPlayers = async () => {
     try {
-      const res = await fetch('/api/players');
+      const res = await fetch(apiUrl('/api/players'));
       const data = await res.json();
       setPlayers(data);
     } catch (error) {

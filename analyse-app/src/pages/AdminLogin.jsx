@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Lock, User, AlertCircle } from 'lucide-react';
+import { apiUrl } from '../config/api';
 
 const AdminLogin = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const AdminLogin = () => {
   useEffect(() => {
     const token = localStorage.getItem('adminToken');
     if (token) {
-      fetch('/api/admin/verify', {
+      fetch(apiUrl('/api/admin/verify'), {
         headers: { 'Authorization': `Bearer ${token}` }
       }).then(res => {
         if (res.ok) {
@@ -30,7 +31,7 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
-      const res = await fetch('/api/admin/login', {
+      const res = await fetch(apiUrl('/api/admin/login'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials)

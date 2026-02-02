@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Users, Activity, TrendingUp, PlayCircle, ChevronRight, User } from 'lucide-react';
+import { apiUrl } from '../config/api';
 import ScoreRing from '../components/ScoreRing';
 
 const Dashboard = () => {
@@ -14,8 +15,8 @@ const Dashboard = () => {
   const fetchStats = async () => {
     try {
       const [playersRes, sessionsRes] = await Promise.all([
-        fetch('/api/players'),
-        fetch('/api/sessions')
+        fetch(apiUrl('/api/players')),
+        fetch(apiUrl('/api/sessions'))
       ]);
       
       const players = await playersRes.json();

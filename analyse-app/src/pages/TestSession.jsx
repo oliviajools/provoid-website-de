@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ChevronRight, CheckCircle } from 'lucide-react';
+import { apiUrl } from '../config/api';
 
 // Import test components
 import MovementPlanningTest from '../tests/MovementPlanningTest';
@@ -106,7 +107,7 @@ const TestSession = () => {
   const handleTestComplete = useCallback(async (category, results) => {
     // Save results to database
     for (const result of results) {
-      await fetch('/api/results', {
+      await fetch(apiUrl('/api/results'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
