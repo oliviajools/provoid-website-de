@@ -1,6 +1,6 @@
 import { Section } from "@/components/Section";
 import Image from "next/image";
-import { Award, GraduationCap, Brain, Rocket, Users, FileText, Download } from "lucide-react";
+import { Award, GraduationCap, Brain, Rocket, Users, Download } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = {
@@ -146,18 +146,18 @@ export default function UeberUnsPage() {
                       Ausbildung & Zertifikate
                     </h4>
                     <div className="grid sm:grid-cols-2 gap-2">
-                      <div className="text-sm p-3 bg-muted/50 rounded-lg">
+                      <Link href="/zertifikate/harvard.pdf" target="_blank" className="text-sm p-3 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
                         <span className="font-medium">Harvard University</span>
                         <p className="text-muted-foreground text-xs">Fundamentals of Neuroscience</p>
-                      </div>
-                      <div className="text-sm p-3 bg-muted/50 rounded-lg">
+                      </Link>
+                      <Link href="/zertifikate/cambridge.pdf" target="_blank" className="text-sm p-3 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
                         <span className="font-medium">University of Cambridge</span>
                         <p className="text-muted-foreground text-xs">Cognitive Psychology & Neuropsychology</p>
-                      </div>
-                      <div className="text-sm p-3 bg-muted/50 rounded-lg">
+                      </Link>
+                      <Link href="/zertifikate/neuromarketing.pdf" target="_blank" className="text-sm p-3 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
                         <span className="font-medium">Copenhagen Business School</span>
                         <p className="text-muted-foreground text-xs">Consumer Neuromarketing</p>
-                      </div>
+                      </Link>
                       <div className="text-sm p-3 bg-muted/50 rounded-lg">
                         <span className="font-medium">Universität Hamburg</span>
                         <p className="text-muted-foreground text-xs">Juniorstudium Physik (B.Sc.)</p>
@@ -179,15 +179,8 @@ export default function UeberUnsPage() {
                     </ul>
                   </div>
 
-                  {/* CV Download Platzhalter */}
+                  {/* CV Download */}
                   <div className="flex flex-wrap gap-3">
-                    <Link 
-                      href="#" 
-                      className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
-                    >
-                      <FileText className="w-4 h-4" />
-                      Zertifikate ansehen
-                    </Link>
                     <Link 
                       href="#" 
                       className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
