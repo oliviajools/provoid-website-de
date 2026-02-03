@@ -38,60 +38,50 @@ export default function UeberUnsPage() {
               <p className="text-muted-foreground">Von der Idee zur Agentur</p>
             </div>
             
-            <div className="relative">
-              <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-px"></div>
-              
-              <div className="space-y-8">
-                <div className="relative flex items-start gap-6 md:gap-0">
-                  <div className="flex-shrink-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center z-10">
+            <div className="max-w-2xl mx-auto">
+              <div className="relative pl-8 border-l-2 border-primary/20 space-y-10">
+                <div className="relative">
+                  <div className="absolute -left-[41px] w-8 h-8 bg-primary rounded-full flex items-center justify-center">
                     <Brain className="w-4 h-4 text-white" />
                   </div>
-                  <div className="md:w-1/2 md:pr-12 md:text-right md:ml-auto pt-1">
-                    <span className="text-sm font-medium text-primary">2023</span>
-                    <h3 className="font-semibold mt-1">Die Idee entsteht</h3>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      PROVOID beginnt als Forschungsprojekt am Schülerforschungszentrum Hamburg. Thema: Wie lässt sich Prokrastination wissenschaftlich verstehen und überwinden?
-                    </p>
-                  </div>
+                  <span className="text-sm font-medium text-primary">2023</span>
+                  <h3 className="font-semibold mt-1">Die Idee entsteht</h3>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    PROVOID beginnt als Forschungsprojekt am Schülerforschungszentrum Hamburg. Thema: Wie lässt sich Prokrastination wissenschaftlich verstehen und überwinden?
+                  </p>
                 </div>
 
-                <div className="relative flex items-start gap-6 md:gap-0">
-                  <div className="flex-shrink-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center z-10 md:order-2 md:ml-auto md:-translate-x-4">
+                <div className="relative">
+                  <div className="absolute -left-[41px] w-8 h-8 bg-primary rounded-full flex items-center justify-center">
                     <Award className="w-4 h-4 text-white" />
                   </div>
-                  <div className="md:w-1/2 md:pl-12 pt-1">
-                    <span className="text-sm font-medium text-primary">2024</span>
-                    <h3 className="font-semibold mt-1">Landespreis Jugend forscht</h3>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      Das Projekt gewinnt den 1. Landespreis bei Jugend forscht im Bereich Arbeitswelt. Die Grundlage für PROVOID ist gelegt.
-                    </p>
-                  </div>
+                  <span className="text-sm font-medium text-primary">2024</span>
+                  <h3 className="font-semibold mt-1">Landespreis Jugend forscht</h3>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    Das Projekt gewinnt den 1. Landespreis bei Jugend forscht im Bereich Arbeitswelt. Die Grundlage für PROVOID ist gelegt.
+                  </p>
                 </div>
 
-                <div className="relative flex items-start gap-6 md:gap-0">
-                  <div className="flex-shrink-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center z-10">
+                <div className="relative">
+                  <div className="absolute -left-[41px] w-8 h-8 bg-primary rounded-full flex items-center justify-center">
                     <Rocket className="w-4 h-4 text-white" />
                   </div>
-                  <div className="md:w-1/2 md:pr-12 md:text-right md:ml-auto pt-1">
-                    <span className="text-sm font-medium text-primary">2025</span>
-                    <h3 className="font-semibold mt-1">Gründung & Auszeichnungen</h3>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      PROVOID wird offiziell gegründet. 2. Platz bundesweit bei der Young-Founders Summer School. Nominierung für den STARTERiN Award Hamburg (Top 6).
-                    </p>
-                  </div>
+                  <span className="text-sm font-medium text-primary">2025</span>
+                  <h3 className="font-semibold mt-1">Gründung & Auszeichnungen</h3>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    PROVOID wird offiziell gegründet. 2. Platz bundesweit bei der Young-Founders Summer School. Nominierung für den STARTERiN Award Hamburg (Top 6).
+                  </p>
                 </div>
 
-                <div className="relative flex items-start gap-6 md:gap-0">
-                  <div className="flex-shrink-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center z-10 md:order-2 md:ml-auto md:-translate-x-4">
+                <div className="relative">
+                  <div className="absolute -left-[41px] w-8 h-8 bg-primary rounded-full flex items-center justify-center">
                     <Users className="w-4 h-4 text-white" />
                   </div>
-                  <div className="md:w-1/2 md:pl-12 pt-1">
-                    <span className="text-sm font-medium text-primary">Heute</span>
-                    <h3 className="font-semibold mt-1">Hamburgs erste Neuromarketing-Agentur</h3>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      Wir betreuen Unternehmen exklusiv, entwickeln eigene EEG-basierte Tools und geben Workshops zu Neuromarketing und angewandter Neurowissenschaft.
-                    </p>
-                  </div>
+                  <span className="text-sm font-medium text-primary">Heute</span>
+                  <h3 className="font-semibold mt-1">Hamburgs erste Neuromarketing-Agentur</h3>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    Wir betreuen Unternehmen exklusiv, entwickeln eigene EEG-basierte Tools und geben Workshops zu Neuromarketing und angewandter Neurowissenschaft.
+                  </p>
                 </div>
               </div>
             </div>
