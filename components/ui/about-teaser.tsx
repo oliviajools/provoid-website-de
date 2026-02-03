@@ -14,13 +14,13 @@ export function AboutTeaser() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="prose prose-neutral dark:prose-invert max-w-none">
               <p>
-                Mit 15 Jahren begann Olivia als Juniorstudentin Physik an der Universität Hamburg zu studieren – nicht weil sie musste, sondern weil sie verstehen wollte, wie die Welt funktioniert. Parallel forschte sie am Schülerforschungszentrum Hamburg und gewann mit ihrem Projekt „PROVOID" den Landespreis bei Jugend forscht.
+                Mit 15 Jahren begann Olivia als Juniorstudentin Physik an der Universität Hamburg zu studieren. Parallel forschte sie am Schülerforschungszentrum Hamburg und gewann mit ihrem Projekt „PROVOID" den Landespreis bei Jugend forscht.
               </p>
               <p>
-                Heute, mit 19 Jahren, führt sie PROVOID als Gründerin und CEO. Ihre Leidenschaft gilt der Frage, wie Menschen wirklich denken, fühlen und entscheiden – und wie Unternehmen dieses Wissen nutzen können. Mit Zertifikaten in Neuroscience (Harvard), Cognitive Psychology und Neuropsychology of Decision-Making (Cambridge) sowie Consumer Neuromarketing (Copenhagen Business School) verbindet sie wissenschaftliche Fundierung mit unternehmerischer Energie.
+                Heute, mit 19 Jahren, führt sie PROVOID als Gründerin und CEO. Ihr Fokus liegt auf der Frage, wie Menschen denken, entscheiden und handeln. Mit Zertifikaten in Neuroscience (Harvard), Cognitive Psychology (Cambridge) und Consumer Neuromarketing (Copenhagen Business School) verbindet sie wissenschaftliche Fundierung mit unternehmerischem Denken.
               </p>
               <p>
-                Was bedeutet das für Ihr Unternehmen? Sie bekommen eine Partnerin, die wissenschaftliche Tiefe mit frischen Perspektiven verbindet – und die Neugier mitbringt, Ihr Business wirklich zu verstehen. Nicht oberflächlich, sondern dort, wo Kaufentscheidungen, Teamdynamiken und Markenbindung entstehen: im Gehirn.
+                Für Ihr Unternehmen bedeutet das: eine Partnerin mit wissenschaftlicher Tiefe und frischen Perspektiven. Jemand, der Ihr Business dort versteht, wo Kaufentscheidungen, Teamdynamiken und Markenbindung entstehen.
               </p>
               <p className="mt-6">
                 <Link href="/company" className="inline-flex items-center font-medium text-primary hover:underline">
