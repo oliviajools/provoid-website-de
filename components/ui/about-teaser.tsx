@@ -14,13 +14,13 @@ export function AboutTeaser() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="prose prose-neutral dark:prose-invert max-w-none">
               <p>
-                Mit 15 Jahren begann Olivia als Juniorstudentin Physik an der Universität Hamburg zu studieren. Parallel forschte sie am Schülerforschungszentrum Hamburg und gewann mit ihrem Projekt PROVOID den Landespreis bei Jugend forscht.
+                95% aller Entscheidungen werden unbewusst getroffen. Trotzdem basieren die meisten Marketing- und Führungsstrategien auf dem, was Menschen sagen, nicht auf dem, wie sie wirklich denken. Neurowissenschaftliche Erkenntnisse existieren seit Jahren, kommen aber kaum in Unternehmen an.
               </p>
               <p>
-                Heute, mit 19 Jahren, führt sie PROVOID als Gründerin und CEO. Ihr Fokus liegt auf der Frage, wie Menschen denken, entscheiden und handeln. Mit Zertifikaten in Neuroscience (Harvard), Cognitive Psychology (Cambridge) und Consumer Neuromarketing (Copenhagen Business School) verbindet sie wissenschaftliche Fundierung mit unternehmerischem Denken.
+                Das wollen wir ändern. PROVOID macht Neurowissenschaft für Unternehmen nutzbar: für besseres Marketing, klarere Kommunikation und stärkere Teams.
               </p>
               <p>
-                Für Ihr Unternehmen bedeutet das: eine Partnerin mit wissenschaftlicher Tiefe und frischen Perspektiven. Jemand, der Ihr Business dort versteht, wo Kaufentscheidungen, Teamdynamiken und Markenbindung entstehen.
+                Dahinter steht Olivia Bahr, zertifiziert in Neuroscience (Harvard), Cognitive Psychology (Cambridge) und Consumer Neuromarketing (Copenhagen Business School). Mit 19 Jahren verbindet sie wissenschaftliche Tiefe mit unternehmerischem Denken.
               </p>
               <p className="mt-6">
                 <Link href="/company" className="inline-flex items-center font-medium text-primary hover:underline">
