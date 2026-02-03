@@ -23,7 +23,7 @@ export function AboutTeaser() {
                 Dahinter steht Olivia Bahr, zertifiziert in Neuroscience (Harvard), Cognitive Psychology (Cambridge) und Consumer Neuromarketing (Copenhagen Business School). Mit 19 Jahren verbindet sie wissenschaftliche Tiefe mit unternehmerischem Denken.
               </p>
               <p className="mt-6">
-                <Link href="/company" className="inline-flex items-center font-medium text-primary hover:underline">
+                <Link href="/ueber-uns" className="inline-flex items-center font-medium text-primary hover:underline">
                   Mehr über uns
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
