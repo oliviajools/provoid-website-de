@@ -33,7 +33,7 @@ export function Success() {
     }, []);
 
     return (
-      <section className="pt-6 md:pt-8 pb-12 md:pb-16" ref={sectionRef}>
+      <section className="pt-16 md:pt-24 pb-12 md:pb-16" ref={sectionRef}>
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="relative">
             <ContainerScroll
