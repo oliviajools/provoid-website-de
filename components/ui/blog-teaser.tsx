@@ -30,7 +30,7 @@ export function BlogTeaser() {
           <div className={`grid gap-6 ${latestPosts.length === 1 ? 'max-w-md mx-auto' : latestPosts.length === 2 ? 'md:grid-cols-2 max-w-2xl mx-auto' : 'md:grid-cols-3'}`}>
             {latestPosts.map((post) => (
               <Link key={post.id} href={`/blog/${post.slug}`} className="block">
-                <Card className="border-2 hover:border-primary/50 transition-colors h-full cursor-pointer overflow-hidden">
+                <Card className="border-2 hover:border-primary/50 transition-colors h-full cursor-pointer overflow-hidden p-0">
                   {post.image && (
                     <div className="relative w-full h-48">
                       <Image
@@ -41,7 +41,7 @@ export function BlogTeaser() {
                       />
                     </div>
                   )}
-                  <CardHeader className="pb-2">
+                  <CardHeader className="pb-2 pt-4 px-6">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                       <Calendar className="h-4 w-4" />
                       <time dateTime={post.date}>
@@ -57,7 +57,7 @@ export function BlogTeaser() {
                     </span>
                     <CardTitle className="text-lg leading-tight">{post.title}</CardTitle>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="px-6 pb-6">
                     <p className="text-sm text-muted-foreground line-clamp-3">
                       {post.excerpt}
                     </p>
