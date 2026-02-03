@@ -55,7 +55,7 @@ export default function CompanyPage() {
                   <div className="rounded-full bg-primary/10 p-3">
                     <Sparkles className="h-6 w-6 text-primary" />
                   </div>
-                  <span className="text-xl font-semibold">Was uns unterscheidet</span>
+                  <span className="text-xl font-semibold">Wer wir sind</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
