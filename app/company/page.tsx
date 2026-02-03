@@ -1,13 +1,13 @@
 import { Metadata } from "next";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Target, Eye, Briefcase, Package, Users, FlaskConical, BarChart3, Globe, Smartphone } from "lucide-react";
+import { Target, Eye, Briefcase, Package, Users, FlaskConical, BarChart3, Globe, Smartphone, Brain, Palette, MousePointer, TrendingUp } from "lucide-react";
 
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "PROVOID-Company | Unternehmenslösungen",
-  description: "Maßgeschneiderte Lösungen für Ihr Unternehmen - wissenschaftlich fundiert und praxisorientiert.",
+  title: "PROVOID-Company | Neuromarketing-Agentur",
+  description: "Neuromarketing-Agentur für wissenschaftlich fundierte Webseiten, Apps und digitale Strategien. Wir nutzen Neurowissenschaft für messbar bessere Conversion.",
   alternates: {
     canonical: "/company",
   },
@@ -21,10 +21,10 @@ export default function CompanyPage() {
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              <span className="text-primary">PROVOID</span>-Company
+              Neuromarketing-Agentur
             </h1>
             <p className="text-lg text-muted-foreground md:text-xl">
-              no brain no gain
+              Wir gestalten digitale Erlebnisse, die das Gehirn versteht
             </p>
             <div className="relative mt-2 flex justify-center">
               <div aria-hidden className="pointer-events-none absolute inset-0 mx-auto flex justify-center items-center">
@@ -49,45 +49,22 @@ export default function CompanyPage() {
       <section className="container px-4 md:px-6 lg:px-8 py-[38px] md:py-[58px]">
         <div className="mx-auto max-w-4xl">
           <Accordion type="single" collapsible className="space-y-4">
-            <AccordionItem value="ziel" className="rounded-2xl border bg-card px-6 shadow-sm">
+            <AccordionItem value="neuromarketing" className="rounded-2xl border bg-card px-6 shadow-sm">
               <AccordionTrigger className="hover:no-underline">
                 <div className="flex items-center gap-4">
                   <div className="rounded-full bg-primary/10 p-3">
-                    <Target className="h-6 w-6 text-primary" />
+                    <Brain className="h-6 w-6 text-primary" />
                   </div>
-                  <span className="text-xl font-semibold">Ziel</span>
+                  <span className="text-xl font-semibold">Was ist Neuromarketing?</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
                 <div className="prose prose-neutral dark:prose-invert max-w-none">
                   <p>
-                    PROVOID-Company verfolgt das Ziel, Neurowissenschaft fest in Unternehmenskulturen zu verankern, damit die neuronale Gesundheit der Mitarbeitenden gestärkt und die Effizienz ihrer Arbeit nachhaltig verbessert wird. Dazu setzen wir auf praxisnahe Interventionen. Gemeinsam entwickeln wit Leitlinien für Fokus, Erholung und Lernfähigkeit und schulen Führungskräfte in neurofreundlicher Leitung und Kommunikation. 
+                    Neuromarketing verbindet Neurowissenschaft mit Marketing und Design. Wir nutzen Erkenntnisse darüber, wie das menschliche Gehirn Informationen verarbeitet, Entscheidungen trifft und auf visuelle Reize reagiert – um digitale Produkte zu schaffen, die intuitiv funktionieren und überzeugen.
                   </p>
                   <p>
-                    Digitale Tools unterstützen den Alltag mit kurzen Übungen, personalisierten Empfehlungen und Feedback.
-                    Wirkung messen wir transparent über klar definierte Ziele und Kennzahlen, immer mit Datenschutz und Ethik als verbindlichem Rahmen.
-
-                  </p>
-                  <p>
-                    So entsteht Schritt für Schritt eine Kultur, die Gesundheit und Leistung gleichermaßen fördert.
-                  </p>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="vision" className="rounded-2xl border bg-card px-6 shadow-sm">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <Eye className="h-6 w-6 text-primary" />
-                  </div>
-                  <span className="text-xl font-semibold">Vision</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-6">
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <p>
-                    Unsere Vision ist, dass Unternehmen neuronale Prozesse so gut verstehen, dass sie Kultur, Zusammenarbeit und Entscheidungen im Einklang mit der menschlichen Biologie gestalten. PROVOID will dafür als verlässliche Instanz die führende Rolle am Unternehmensmarkt einnehmen und  neurowissenschaftliche Erkenntnisse verständlich machen, Vertrauen schaffen und Maßstäbe für Wirksamkeit und Verantwortung setzen. Wir streben an, der bevorzugte Partner für Vorstände und Führungsteams zu sein und einen Branchenstandard zu prägen, an dem sich messbare Wirkung, wissenschaftliche Qualität und Schutz der Privatsphäre orientieren. So entsteht eine Wirtschaft, in der neuronale Gesundheit  und Leistungsfähigkeit nachhaltig miteinander vereint werden und miteinander wachsen können.
+                    95% aller Kaufentscheidungen werden unbewusst getroffen. Neuromarketing macht diese unbewussten Prozesse nutzbar: Durch gezielte Gestaltung von Farben, Formen, Texten und Nutzerführung aktivieren wir die richtigen neuronalen Muster und erhöhen messbar Conversion, Vertrauen und Nutzerbindung.
                   </p>
                 </div>
               </AccordionContent>
@@ -99,48 +76,19 @@ export default function CompanyPage() {
                   <div className="rounded-full bg-primary/10 p-3">
                     <Briefcase className="h-6 w-6 text-primary" />
                   </div>
-                  <span className="text-xl font-semibold">Leistungen</span>
+                  <span className="text-xl font-semibold">Unsere Leistungen</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
                 <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <p>
-                    PROVOID vereint Dienstleistungen und Software zu einem ganzheitlichen Angebot. In enger Zusammenarbeit
-                    gestalten wir passgenaue Konzepte, die neurowissenschaftliche Erkenntnisse in Prozesse, Entscheidungen
-                    und Zusammenarbeit übertragen.
-                  </p>
-                  <p>
-                    So entstehen messbare Veränderungen und spürbare Effizienzgewinne. Dazu entwickeln und implementieren
-                    wir evidenzbasierte Tools, die Mitarbeitende in ihrem Arbeitsalltag unterstützen.
-                  </p>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="digital" className="rounded-2xl border bg-card px-6 shadow-sm">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <Globe className="h-6 w-6 text-primary" />
-                  </div>
-                  <span className="text-xl font-semibold">Webseiten & Apps</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-6">
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <p>
-                    PROVOID konzipiert und entwickelt maßgeschneiderte Webseiten und Apps – exakt nach Ihren Wünschen 
-                    und auf Basis wissenschaftlicher Neuromarketing-Prinzipien. Wir verbinden ansprechendes Design mit 
-                    psychologisch fundierter Nutzerführung, um Ihre digitale Präsenz wirkungsvoll zu gestalten.
-                  </p>
-                  <div className="grid gap-4 md:grid-cols-2 mt-6 not-prose">
+                  <div className="grid gap-4 md:grid-cols-2 not-prose mb-6">
                     <div className="p-4 rounded-xl border bg-muted/30">
                       <div className="flex items-center gap-3 mb-2">
                         <Globe className="h-5 w-5 text-primary" />
                         <h4 className="font-semibold">Webseiten</h4>
                       </div>
                       <p className="text-sm text-muted-foreground">
-                        Moderne, responsive Websites mit intuitiver Navigation und conversion-optimiertem Aufbau.
+                        Conversion-optimierte Websites mit neurowissenschaftlich fundierter Nutzerführung, die Besucher zu Kunden machen.
                       </p>
                     </div>
                     <div className="p-4 rounded-xl border bg-muted/30">
@@ -149,15 +97,79 @@ export default function CompanyPage() {
                         <h4 className="font-semibold">Apps</h4>
                       </div>
                       <p className="text-sm text-muted-foreground">
-                        Native und Web-Apps mit nutzerzentriertem Design und nahtloser User Experience.
+                        Native und Web-Apps mit intuitivem UX-Design, das auf kognitiven Prinzipien basiert.
+                      </p>
+                    </div>
+                    <div className="p-4 rounded-xl border bg-muted/30">
+                      <div className="flex items-center gap-3 mb-2">
+                        <Palette className="h-5 w-5 text-primary" />
+                        <h4 className="font-semibold">Branding & Design</h4>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        Markenidentitäten, die emotional ansprechen und im Gedächtnis bleiben.
+                      </p>
+                    </div>
+                    <div className="p-4 rounded-xl border bg-muted/30">
+                      <div className="flex items-center gap-3 mb-2">
+                        <MousePointer className="h-5 w-5 text-primary" />
+                        <h4 className="font-semibold">UX-Optimierung</h4>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        Analyse und Verbesserung bestehender digitaler Produkte mit Neuromarketing-Methoden.
                       </p>
                     </div>
                   </div>
-                  <p className="mt-4">
-                    Durch den Einsatz von Neuromarketing-Erkenntnissen optimieren wir Farbgebung, Typografie, 
-                    Bildsprache und Interaktionselemente, um Aufmerksamkeit zu lenken, Vertrauen aufzubauen und 
-                    Handlungen zu fördern – wissenschaftlich fundiert und individuell auf Ihre Zielgruppe abgestimmt.
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="methoden" className="rounded-2xl border bg-card px-6 shadow-sm">
+              <AccordionTrigger className="hover:no-underline">
+                <div className="flex items-center gap-4">
+                  <div className="rounded-full bg-primary/10 p-3">
+                    <FlaskConical className="h-6 w-6 text-primary" />
+                  </div>
+                  <span className="text-xl font-semibold">Unsere Methoden</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="pt-4 pb-6">
+                <div className="prose prose-neutral dark:prose-invert max-w-none">
+                  <p>
+                    Wir setzen auf evidenzbasierte Neuromarketing-Prinzipien, die in der Wissenschaft belegt sind:
                   </p>
+                  <ul className="space-y-2 pl-6 list-disc">
+                    <li><strong>Cognitive Load Reduction:</strong> Weniger mentale Anstrengung = höhere Conversion</li>
+                    <li><strong>Emotionale Trigger:</strong> Farben, Bilder und Worte, die das limbische System aktivieren</li>
+                    <li><strong>Aufmerksamkeitssteuerung:</strong> Visuelle Hierarchien, die den Blick lenken</li>
+                    <li><strong>Vertrauenssignale:</strong> Elemente, die das Sicherheitsgefühl stärken</li>
+                    <li><strong>Decision Architecture:</strong> Nutzerführung, die Entscheidungen erleichtert</li>
+                    <li><strong>Social Proof & Autorität:</strong> Psychologische Überzeugungsprinzipien</li>
+                  </ul>
+                  <p className="mt-4">
+                    Unsere Designs werden durch EEG-Messungen und A/B-Tests validiert, um nachweisbare Ergebnisse zu liefern.
+                  </p>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="vorteile" className="rounded-2xl border bg-card px-6 shadow-sm">
+              <AccordionTrigger className="hover:no-underline">
+                <div className="flex items-center gap-4">
+                  <div className="rounded-full bg-primary/10 p-3">
+                    <TrendingUp className="h-6 w-6 text-primary" />
+                  </div>
+                  <span className="text-xl font-semibold">Ihre Vorteile</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="pt-4 pb-6">
+                <div className="prose prose-neutral dark:prose-invert max-w-none">
+                  <ul className="space-y-2 pl-6 list-disc">
+                    <li><strong>Höhere Conversion-Rates:</strong> Durch gehirngerechte Gestaltung steigern wir messbar Ihre Abschlussquoten</li>
+                    <li><strong>Bessere User Experience:</strong> Intuitive Designs, die Nutzer verstehen, ohne nachzudenken</li>
+                    <li><strong>Stärkere Markenbindung:</strong> Emotionale Verbindungen, die Kunden zu Fans machen</li>
+                    <li><strong>Weniger Absprünge:</strong> Optimierte Nutzerführung reduziert Bounce-Rates</li>
+                    <li><strong>Wissenschaftlich fundiert:</strong> Keine Bauchentscheidungen, sondern evidenzbasiertes Design</li>
+                  </ul>
                 </div>
               </AccordionContent>
             </AccordionItem>
@@ -175,63 +187,62 @@ export default function CompanyPage() {
                 <div className="grid gap-4 md:grid-cols-2">
                   <Card>
                     <CardHeader>
-                      <CardTitle>Starter-Paket</CardTitle>
-                      <CardDescription>Für kleine und mittlere Unternehmen</CardDescription>
+                      <CardTitle>Landingpage</CardTitle>
+                      <CardDescription>Perfekt für Kampagnen & Launches</CardDescription>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• Analyse der MitarbeiterInnen</li>
-                        <li>• Strategieentwicklung</li>
-                        <li>• Dreimonatige Begleitung</li>
+                        <li>• Neuromarketing-optimierte Einzelseite</li>
+                        <li>• Conversion-fokussiertes Design</li>
+                        <li>• Responsive & schnell</li>
+                        <li>• A/B-Test-Ready</li>
                       </ul>
                     </CardContent>
                   </Card>
 
                   <Card>
                     <CardHeader>
-                      <CardTitle>Professional Paket</CardTitle>
-                      <CardDescription>Für etablierte Unternehmen</CardDescription>
+                      <CardTitle>Website</CardTitle>
+                      <CardDescription>Ihre komplette Online-Präsenz</CardDescription>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• Analyse der MitarbeiterInnen</li>
-                        <li>• Maßgeschneiderte Strategien</li>
-                        <li>• Intensive sechsmonatige Begleitung</li>
-                        <li>• Softwarezugänge für Mitarbeiterinnen</li>
-                        <li>• Monatliche Reviews und Anpassungen</li>
-                        <li>• Abschlussanalyse</li>
+                        <li>• Mehrseitige Website mit CMS</li>
+                        <li>• Neuromarketing-Konzeption</li>
+                        <li>• SEO-Grundoptimierung</li>
+                        <li>• Kontaktformular & Analytics</li>
+                        <li>• 3 Monate Support</li>
                       </ul>
                     </CardContent>
                   </Card>
 
                   <Card>
                     <CardHeader>
-                      <CardTitle>Enterprise Paket</CardTitle>
-                      <CardDescription>Für große Organisationen</CardDescription>
+                      <CardTitle>E-Commerce</CardTitle>
+                      <CardDescription>Verkaufsoptimierte Online-Shops</CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <ul className="space-y-2 text-sm text-muted-foreground list-disc pl-6">
-                        <li>Ganzheitliche Transformation</li>
-                        <li>Konzeptentwicklung zur neurofreundlichen Entwicklung</li>
-                        <li>12-monatige Begleitung</li>
-                        <li>Kontinuierliche Optimierung</li>
-                        <li>Eingangs- und Abschlussanalyse</li>
-                        <li>Softwarezugänge für Abteilungen und Mitarbeiterinnen</li>
+                      <ul className="space-y-2 text-sm text-muted-foreground">
+                        <li>• Shop mit Neuromarketing-Checkout</li>
+                        <li>• Produktpräsentation nach Kaufpsychologie</li>
+                        <li>• Vertrauens-Elemente & Social Proof</li>
+                        <li>• Payment-Integration</li>
+                        <li>• 6 Monate Betreuung</li>
                       </ul>
                     </CardContent>
                   </Card>
 
                   <Card>
                     <CardHeader>
-                      <CardTitle>Individual Paket</CardTitle>
-                      <CardDescription>Let&apos;s talk</CardDescription>
+                      <CardTitle>App & Individuell</CardTitle>
+                      <CardDescription>Maßgeschneiderte Lösungen</CardDescription>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• Vollständig anpassbar</li>
-                        <li>• Flexible Laufzeit</li>
-                        <li>• Spezifische Module</li>
-                        <li>• On-Demand Support</li>
+                        <li>• Native oder Web-App</li>
+                        <li>• Komplexe Webapplikationen</li>
+                        <li>• UX-Research & Prototyping</li>
+                        <li>• Langfristige Partnerschaft</li>
                       </ul>
                     </CardContent>
                   </Card>
@@ -245,22 +256,45 @@ export default function CompanyPage() {
                   <div className="rounded-full bg-primary/10 p-3">
                     <Users className="h-6 w-6 text-primary" />
                   </div>
-                  <span className="text-xl font-semibold">Zielgruppe</span>
+                  <span className="text-xl font-semibold">Für wen wir arbeiten</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
                 <div className="prose prose-neutral dark:prose-invert max-w-none">
                   <p>
-                    Unsere Dienstleistungen richten sich an:
+                    Unsere Neuromarketing-Dienstleistungen richten sich an:
                   </p>
                   <ul className="space-y-2 pl-6 list-disc">
-                    <li>Start-ups und Scale-ups in der Wachstumsphase</li>
-                    <li>Mittelständische Unternehmen mit Optimierungsbedarf</li>
-                    <li>Große Konzerne in Transformationsprozessen</li>
-                    <li>Familienunternehmen bei Generationswechseln</li>
-                    <li>Führungskräfte und Entscheidungsträger</li>
-                    <li>HR-Abteilungen und Personalentwickler</li>
+                    <li><strong>Start-ups:</strong> Die von Anfang an auf conversion-optimiertes Design setzen wollen</li>
+                    <li><strong>E-Commerce-Unternehmen:</strong> Die ihre Conversion-Rate steigern möchten</li>
+                    <li><strong>SaaS-Anbieter:</strong> Die mehr Nutzer zu zahlenden Kunden konvertieren wollen</li>
+                    <li><strong>Agenturen:</strong> Die ihren Kunden wissenschaftlich fundiertes Design bieten möchten</li>
+                    <li><strong>Etablierte Unternehmen:</strong> Die ihre digitale Präsenz modernisieren wollen</li>
+                    <li><strong>Marketing-Teams:</strong> Die messbare Ergebnisse brauchen</li>
                   </ul>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="prozess" className="rounded-2xl border bg-card px-6 shadow-sm">
+              <AccordionTrigger className="hover:no-underline">
+                <div className="flex items-center gap-4">
+                  <div className="rounded-full bg-primary/10 p-3">
+                    <Target className="h-6 w-6 text-primary" />
+                  </div>
+                  <span className="text-xl font-semibold">Unser Prozess</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="pt-4 pb-6">
+                <div className="prose prose-neutral dark:prose-invert max-w-none">
+                  <ol className="space-y-3 pl-6 list-decimal">
+                    <li><strong>Analyse:</strong> Wir verstehen Ihre Zielgruppe, Ziele und aktuelle Pain Points</li>
+                    <li><strong>Strategie:</strong> Neuromarketing-Konzept basierend auf Ihren spezifischen Anforderungen</li>
+                    <li><strong>Design:</strong> Wireframes und Designs mit wissenschaftlich fundierten Prinzipien</li>
+                    <li><strong>Entwicklung:</strong> Technische Umsetzung mit Fokus auf Performance</li>
+                    <li><strong>Testing:</strong> A/B-Tests und Optimierung basierend auf echten Daten</li>
+                    <li><strong>Launch & Iteration:</strong> Go-Live und kontinuierliche Verbesserung</li>
+                  </ol>
                 </div>
               </AccordionContent>
             </AccordionItem>
@@ -269,47 +303,19 @@ export default function CompanyPage() {
               <AccordionTrigger className="hover:no-underline">
                 <div className="flex items-center gap-4">
                   <div className="rounded-full bg-primary/10 p-3">
-                    <FlaskConical className="h-6 w-6 text-primary" />
-                  </div>
-                  <span className="text-xl font-semibold">Wissenschaftliche Arbeit & Hintergrund</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-6">
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <p>
-                    Unsere Methoden basieren auf aktuellen wissenschaftlichen Erkenntnissen aus den Bereichen Neurowissenschaft, Organisationspsychologie, Verhaltensökonomie und Managementforschung. Wir stützen uns dabei besonders auf neurowissenschaftliche Evidenz und betreiben eigene Forschung. Unsere Tools werden in EEG Messungen geprüft, um ihre beabsichtigte Wirkung nachweisbar zu erzielen. Wir kombinieren evidenzbasierte Ansätze mit praktischer Erfahrung und nutzen datengestützte Analysen, um messbare Ergebnisse zu erreichen. Durch kontinuierliche Forschung und Entwicklung stellen wir sicher, dass unsere Methoden dem neuesten Stand der Wissenschaft entsprechen. Der Neurotech Markt entwickelt sich rasant und wir möchten ihn aktiv und wissenschaftlich mitgestalten.
-                  </p>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="analysis" className="rounded-2xl border bg-card px-6 shadow-sm">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
                     <BarChart3 className="h-6 w-6 text-primary" />
                   </div>
-                  <span className="text-xl font-semibold">Analyse</span>
+                  <span className="text-xl font-semibold">Wissenschaftlicher Hintergrund</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
                 <div className="prose prose-neutral dark:prose-invert max-w-none">
                   <p>
-                    Aktuell bietet PROVOID eine Analyse zum Prokrastinationsverhalten von Mitarbeiterinnen an. Sie stützt sich auf Erkenntnisse der Verhaltenspsychologie und der Neurowissenschaft, umfasst über 90 Fragen und wird automatisiert ausgewertet. Auf Basis der Ergebnisse ordnen wir jede Person einem von vier entwickelten Typen zu. Im Anschluss erhält jeder Typ neurowissenschaftlich angepasste Tools und Empfehlungen, die auf die jeweiligen Mechanismen und Bedürfnisse zugeschnitten sind.
+                    Unsere Arbeit basiert auf aktuellen Erkenntnissen aus Neurowissenschaft, Kognitionspsychologie und Verhaltensökonomie. Wir nutzen Forschungsergebnisse von führenden Institutionen und validieren unsere Designs durch eigene EEG-Messungen.
                   </p>
-                  <p className="leading-relaxed">
-                    Weitere Analysen sind in Arbeit und können unternehmensspezifisch ausgearbeitet werden, damit sie den exakten Bedürfnissen und Zielen entsprechen.
+                  <p>
+                    Durch die Kombination von wissenschaftlicher Evidenz mit praktischer Erfahrung erreichen wir nachweisbare Ergebnisse. Jedes Design-Element hat einen Grund – basierend auf dem, was wir über die Funktionsweise des menschlichen Gehirns wissen.
                   </p>
-                  <div>
-                    <p className="leading-relaxed font-medium mb-2">Unsere Analyse umfasst</p>
-                    <ul className="space-y-2 pl-6 list-disc">
-                      <li>Einen wissenschaftlich fundierten Fragebogen mit über 90 Items aus Verhaltenspsychologie und Neurowissenschaft</li>
-                      <li>Eine automatisierte Auswertung mit individuellem Profil und klaren Handlungshinweisen</li>
-                      <li>Die Zuordnung zu vier Typen mit Beschreibung der zugrunde liegenden Muster</li>
-                      <li>Typenspezifische, neurowissenschaftlich adaptierte Tools und Empfehlungen für den Arbeitsalltag</li>
-                      <li>Die Option, weitere Analysen zu entwickeln und auf die spezifische Unternehmenssituation zuzuschneiden</li>
-                    </ul>
-                  </div>
                 </div>
               </AccordionContent>
             </AccordionItem>
