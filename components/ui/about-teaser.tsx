@@ -14,7 +14,7 @@ export function AboutTeaser() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="prose prose-neutral dark:prose-invert max-w-none">
               <p>
-                Mit 15 Jahren begann Olivia als Juniorstudentin Physik an der Universität Hamburg zu studieren. Parallel forschte sie am Schülerforschungszentrum Hamburg und gewann mit ihrem Projekt „PROVOID" den Landespreis bei Jugend forscht.
+                Mit 15 Jahren begann Olivia als Juniorstudentin Physik an der Universität Hamburg zu studieren. Parallel forschte sie am Schülerforschungszentrum Hamburg und gewann mit ihrem Projekt PROVOID den Landespreis bei Jugend forscht.
               </p>
               <p>
                 Heute, mit 19 Jahren, führt sie PROVOID als Gründerin und CEO. Ihr Fokus liegt auf der Frage, wie Menschen denken, entscheiden und handeln. Mit Zertifikaten in Neuroscience (Harvard), Cognitive Psychology (Cambridge) und Consumer Neuromarketing (Copenhagen Business School) verbindet sie wissenschaftliche Fundierung mit unternehmerischem Denken.
