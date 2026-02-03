@@ -56,29 +56,54 @@ export default function Home() {
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <div className="text-center mb-12">
-              <h3 className="text-3xl md:text-4xl font-bold">Verpasste Potenziale vermeiden</h3>
+              <h3 className="text-3xl md:text-4xl font-bold">Die Lücke schließen</h3>
+              <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">
+                Zwischen dem, was Kunden sagen, und dem, was sie wirklich bewegt, liegt eine Lücke.
+              </p>
             </div>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-muted/30 border border-border rounded-lg p-6">
-                <h4 className="text-lg font-semibold mb-2">Ohne einen klaren Ansatz:</h4>
-                <ul className="list-disc ml-5 text-muted-foreground space-y-1">
-                  <li>Unklarheit über neuronale Stärken & Schwächen</li>
-                  <li>Unentdecktes Potenzial</li>
-                  <li>Prokrastination</li>
-                  <li>Unklare Entscheidungen</li>
-                  <li>Unpassende Arbeitsabläufe</li>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="relative p-8 rounded-xl border border-border/50 bg-gradient-to-br from-muted/30 to-transparent">
+                <div className="absolute top-4 right-4 text-xs font-medium text-muted-foreground/60 uppercase tracking-wider">Ohne Neuromarketing</div>
+                <h4 className="text-lg font-semibold mb-4 mt-2">Status Quo</h4>
+                <ul className="space-y-3 text-muted-foreground">
+                  <li className="flex items-start gap-3">
+                    <span className="text-muted-foreground/40 mt-1">—</span>
+                    <span>Marketing basiert auf Annahmen, nicht auf Daten</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-muted-foreground/40 mt-1">—</span>
+                    <span>Kaufentscheidungen bleiben undurchsichtig</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-muted-foreground/40 mt-1">—</span>
+                    <span>Teamdynamiken werden nicht verstanden</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-muted-foreground/40 mt-1">—</span>
+                    <span>Conversion bleibt unter dem Potenzial</span>
+                  </li>
                 </ul>
               </div>
-              <div className="bg-card border border-border rounded-lg p-6">
-                <h4 className="text-lg font-semibold mb-2">Mit PROVOID:</h4>
-                <ul className="list-disc ml-5 text-muted-foreground space-y-1">
-                  <li>Bewusste Nutzung neuronaler Fähigkeiten</li>
-                  <li>Reduzierung von Prokrastination</li>
-                  <li>Bewusstsein über neuronale Abläufe</li>
-                  <li>Verbesserte Entscheidungsfähigkeit</li>
-                  <li>Aufbau und Erhalt neuronaler Verbindungen</li>
-                  <li>Entfaltung von verborgenem Potenzial</li>
-                  <li>Neurologische und mentale Gesundheit</li>
+              <div className="relative p-8 rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
+                <div className="absolute top-4 right-4 text-xs font-medium text-primary/60 uppercase tracking-wider">Mit PROVOID</div>
+                <h4 className="text-lg font-semibold mb-4 mt-2">Der Unterschied</h4>
+                <ul className="space-y-3 text-muted-foreground">
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary mt-1">+</span>
+                    <span>Entscheidungen verstehen, wo sie entstehen</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary mt-1">+</span>
+                    <span>Käufer- und Mitarbeiteridentität klarifizieren</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary mt-1">+</span>
+                    <span>Wissenschaftlich fundierte Strategien</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary mt-1">+</span>
+                    <span>Messbare Ergebnisse durch Neuromarketing</span>
+                  </li>
                 </ul>
               </div>
             </div>
