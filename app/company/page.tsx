@@ -64,7 +64,28 @@ export default function CompanyPage() {
                     PROVOID ist Hamburgs erste Neuromarketing-Agentur. Wir nutzen neurowissenschaftliche Erkenntnisse als Fundament unserer Arbeit – gehen aber weit darüber hinaus. Anders als klassische Agenturen arbeiten wir nicht von außen, sondern werden Teil Ihres Teams.
                   </p>
                   <p>
-                    Wir kommen zu Ihnen ins Unternehmen, arbeiten uns tief in Ihre Branche ein und verstehen Ihre internen und externen Prozesse. So entstehen Lösungen, die wirklich zu Ihnen passen – keine Templates, keine Standardkonzepte.
+                    Was uns auszeichnet: Wir sind junge Unternehmerinnen, die sich mit Kreativität, Expertise und Neugier in jeden Kunden einarbeiten, um das Maximum zu erreichen. Wir kommen zu Ihnen ins Unternehmen, arbeiten uns tief in Ihre Branche ein und verstehen Ihre internen und externen Prozesse. So entstehen Lösungen, die wirklich zu Ihnen passen – keine Templates, keine Standardkonzepte.
+                  </p>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="ansatz" className="rounded-2xl border bg-card px-6 shadow-sm">
+              <AccordionTrigger className="hover:no-underline">
+                <div className="flex items-center gap-4">
+                  <div className="rounded-full bg-primary/10 p-3">
+                    <Brain className="h-6 w-6 text-primary" />
+                  </div>
+                  <span className="text-xl font-semibold">Unser Ansatz</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="pt-4 pb-6">
+                <div className="prose prose-neutral dark:prose-invert max-w-none">
+                  <p>
+                    Wir arbeiten auf Basis einer zentralen Grundannahme: Ein Großteil aller Prozesse – ob Kaufentscheidungen, Teamdynamiken oder Markenwahrnehmung – läuft unterbewusst ab. Diese verborgenen Mechanismen möchten wir aufdecken und nutzbar machen.
+                  </p>
+                  <p>
+                    Unsere Arbeit hilft dabei, die Identität des Käufers und des Mitarbeiters zu klarifizieren. Wer sind Ihre Kunden wirklich? Was treibt Ihre Mitarbeitenden an? Durch neurowissenschaftliche Methoden machen wir sichtbar, was sonst im Verborgenen bleibt – und schaffen so die Basis für authentische Kommunikation und echte Verbindung.
                   </p>
                 </div>
               </AccordionContent>
