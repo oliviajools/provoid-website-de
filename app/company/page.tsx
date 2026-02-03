@@ -189,6 +189,27 @@ export default function CompanyPage() {
               </AccordionContent>
             </AccordionItem>
 
+            <AccordionItem value="forschung" className="rounded-2xl border bg-card px-6 shadow-sm">
+              <AccordionTrigger className="hover:no-underline">
+                <div className="flex items-center gap-4">
+                  <div className="rounded-full bg-primary/10 p-3">
+                    <FlaskConical className="h-6 w-6 text-primary" />
+                  </div>
+                  <span className="text-xl font-semibold">Forschung & Entwicklung</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="pt-4 pb-6">
+                <div className="prose prose-neutral dark:prose-invert max-w-none">
+                  <p>
+                    Wir sind nicht nur Anwender, sondern forschen kontinuierlich selbst. Unser Ziel: immer auf dem neuesten Stand der Neurowissenschaft zu sein und dieses Wissen direkt in unsere Arbeit einfließen zu lassen.
+                  </p>
+                  <p>
+                    Wir entwickeln eigene Programme und Tools auf Basis von EEG-Messungen, um Erkenntnisse über kognitive Prozesse messbar und nutzbar zu machen. So verbinden wir wissenschaftliche Tiefe mit praktischer Anwendung.
+                  </p>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
             <AccordionItem value="diskretion" className="rounded-2xl border bg-card px-6 shadow-sm">
               <AccordionTrigger className="hover:no-underline">
                 <div className="flex items-center gap-4">
