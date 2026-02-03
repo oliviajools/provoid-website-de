@@ -42,114 +42,100 @@ export function Success() {
               }
               contentRef={contentRef}
             >
-              <div className="grid gap-4 pt-2 md:pt-4 px-2 md:px-4 pb-6 md:pb-8">
-                <div className="group p-4 rounded-xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+              <div className="grid gap-3 pt-2 md:pt-4 px-2 md:px-4 pb-6 md:pb-8">
+                <div className="group p-4 rounded-md bg-card border border-border/50 hover:border-primary/30 hover:shadow-md transition-all duration-300">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-white font-bold text-sm">01</span>
+                    <div className="w-8 h-8 bg-primary/10 text-primary rounded flex items-center justify-center flex-shrink-0 font-semibold text-sm">
+                      01
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">Individuelle neurologische Konzeption</h4>
+                      <h4 className="font-semibold text-foreground mb-1">Unterbewusste Prozesse verstehen</h4>
                       <p className="text-sm text-muted-foreground leading-relaxed">
-                        Bewusstsein für eigene neuronale Stärken und Schwächen durch evidenzbasierte Analysen.
+                        Wir decken auf, was im Verborgenen liegt – bei Ihren Kunden, Mitarbeitenden und in Ihren Prozessen.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="group p-4 rounded-xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+                <div className="group p-4 rounded-md bg-card border border-border/50 hover:border-primary/30 hover:shadow-md transition-all duration-300">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-white font-bold text-sm">02</span>
+                    <div className="w-8 h-8 bg-primary/10 text-primary rounded flex items-center justify-center flex-shrink-0 font-semibold text-sm">
+                      02
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">Kenntnis über Persönlichkeitstypen</h4>
+                      <h4 className="font-semibold text-foreground mb-1">Käufer- und Mitarbeiter-Identität klären</h4>
                       <p className="text-sm text-muted-foreground leading-relaxed">
-                        Lernen Sie sich kennen und entdecken Sie Ihre vorherrschenden Muster: perfektionistisch, unentschlossen, überfordert oder ablenkbar?
+                        Wer sind Ihre Kunden wirklich? Was treibt Ihr Team an? Wir schaffen Klarheit für authentische Kommunikation.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="group p-4 rounded-xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+                <div className="group p-4 rounded-md bg-card border border-border/50 hover:border-primary/30 hover:shadow-md transition-all duration-300">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-white font-bold text-sm">03</span>
+                    <div className="w-8 h-8 bg-primary/10 text-primary rounded flex items-center justify-center flex-shrink-0 font-semibold text-sm">
+                      03
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">Prokrastination endlich überwinden</h4>
+                      <h4 className="font-semibold text-foreground mb-1">Conversion steigern</h4>
                       <p className="text-sm text-muted-foreground leading-relaxed">
-                        Entdecken Sie die tiefliegenden Zusammenhänge Ihrer Prokrastination und erhalten Sie wissenschaftliche Lösungsansätze zur Überwindung.
+                        Neurowissenschaftlich optimierte Touchpoints führen zu messbarer Steigerung Ihrer Conversion-Rates.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="group p-4 rounded-xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+                <div className="group p-4 rounded-md bg-card border border-border/50 hover:border-primary/30 hover:shadow-md transition-all duration-300">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-white font-bold text-sm">04</span>
+                    <div className="w-8 h-8 bg-primary/10 text-primary rounded flex items-center justify-center flex-shrink-0 font-semibold text-sm">
+                      04
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">Klare Entscheidungen</h4>
+                      <h4 className="font-semibold text-foreground mb-1">Entscheidungen fundieren</h4>
                       <p className="text-sm text-muted-foreground leading-relaxed">
-                        Das Verständnis der kognitiven Mechanismen führt zu fundierteren und nachhaltigen Entscheidungen in Alltag und Beruf.
+                        Das Verständnis kognitiver Mechanismen führt zu besseren Entscheidungen in Marketing, Führung und Strategie.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="group p-4 rounded-xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+                <div className="group p-4 rounded-md bg-card border border-border/50 hover:border-primary/30 hover:shadow-md transition-all duration-300">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-white font-bold text-sm">05</span>
+                    <div className="w-8 h-8 bg-primary/10 text-primary rounded flex items-center justify-center flex-shrink-0 font-semibold text-sm">
+                      05
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">Potenzial entfalten</h4>
+                      <h4 className="font-semibold text-foreground mb-1">Teamdynamik stärken</h4>
                       <p className="text-sm text-muted-foreground leading-relaxed">
-                        Durch neuronale Verbindungen kann das vorhandene Potential vollständig genutzt werden.
+                        Das Verständnis neuronaler Muster verbessert Zusammenarbeit, Kommunikation und Teamgefüge.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="group p-4 rounded-xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+                <div className="group p-4 rounded-md bg-card border border-border/50 hover:border-primary/30 hover:shadow-md transition-all duration-300">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-white font-bold text-sm">06</span>
+                    <div className="w-8 h-8 bg-primary/10 text-primary rounded flex items-center justify-center flex-shrink-0 font-semibold text-sm">
+                      06
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">Höhere Leistung in Sport und Beruf</h4>
+                      <h4 className="font-semibold text-foreground mb-1">Leistung maximieren</h4>
                       <p className="text-sm text-muted-foreground leading-relaxed">
-                        Optimierte neuronale Prozesse und strukturen führen zu messbarer Leistungsverbesserung.
+                        Optimierte Prozesse und Strukturen führen zu messbarer Leistungssteigerung – im Sport wie im Business.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="group p-4 rounded-xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+                <div className="group p-4 rounded-md bg-card border border-border/50 hover:border-primary/30 hover:shadow-md transition-all duration-300">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-white font-bold text-sm">07</span>
+                    <div className="w-8 h-8 bg-primary/10 text-primary rounded flex items-center justify-center flex-shrink-0 font-semibold text-sm">
+                      07
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">Verbesserte Teamverbindungen</h4>
+                      <h4 className="font-semibold text-foreground mb-1">Wissen nachhaltig verankern</h4>
                       <p className="text-sm text-muted-foreground leading-relaxed">
-                        Das gegenseitige Verständnis der neuronalen Abläufe und deren Auswirkungen auf Verhaltensweisen verstärkt das Teamgefüge.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="group p-4 rounded-xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-white font-bold text-sm">08</span>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">Effektiveres Lernen</h4>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        Durch die Anpassung der Lernmethoden an die individuelle neuronale Konzeption wird Wissen schneller und nachhaltiger aufgenommen.
+                        Durch unsere Workshops und Seminare wird neurowissenschaftliches Know-how in Ihrem Team verankert.
                       </p>
                     </div>
                   </div>
