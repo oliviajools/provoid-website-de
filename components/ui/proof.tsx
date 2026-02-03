@@ -28,7 +28,7 @@ export function Proof() {
   ];
 
   return (
-    <section className="py-12 md:py-16 bg-muted/30">
+    <section className="py-16 md:py-20 bg-muted/30">
       <div className="container px-4 md:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-12">
@@ -95,7 +95,7 @@ function ProofCarousel({ items }: { items: { icon: React.ElementType; text: stri
           const Icon = item.icon;
           return (
             <li
-              className="relative w-[280px] max-w-full shrink-0 rounded-2xl border border-primary/20 bg-card px-6 py-8 shadow-sm hover:shadow-md transition-shadow"
+              className="relative w-[280px] max-w-full shrink-0 rounded-xl border border-border bg-card px-6 py-8 hover:border-primary/30 hover:shadow-sm transition-all"
               key={`${item.text}-${idx}`}
             >
               <div className="flex flex-col items-center text-center gap-4">

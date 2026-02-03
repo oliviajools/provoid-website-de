@@ -25,9 +25,9 @@ const newsItems = [
 
 export function NewsTeaser() {
   return (
-    <section className="py-12 md:py-16 bg-muted/30">
+    <section className="py-16 md:py-20 bg-muted/30">
       <div className="container px-4 md:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-5xl">
           <div className="text-center mb-10">
             <h3 className="text-3xl md:text-4xl font-bold mb-3">Aktuelles</h3>
             <p className="text-muted-foreground">
@@ -37,7 +37,7 @@ export function NewsTeaser() {
 
           <div className="grid gap-6 md:grid-cols-3">
             {newsItems.map((item, index) => (
-              <Card key={index} className="border-2 hover:border-primary/50 transition-colors">
+              <Card key={index} className="border border-border hover:border-primary/30 transition-all hover:shadow-sm">
                 <CardHeader className="pb-2">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                     <Calendar className="h-4 w-4" />

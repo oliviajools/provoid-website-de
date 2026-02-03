@@ -3,10 +3,10 @@ import { motion } from "motion/react";
 
 export function Stats() {
   return (
-    <section className="py-12 md:py-16 bg-background">
+    <section className="py-16 md:py-20 bg-background">
       <div className="container px-4 md:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 border border-border rounded-xl p-8 bg-card">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 border border-border rounded-xl p-6 md:p-8 bg-card">
             {/* Stat 1: 2023 */}
             <StatCard delay={0.3}>
               <div className="text-5xl md:text-6xl font-bold text-black mb-4">2023</div>

@@ -5,9 +5,9 @@ import { ArrowRight, Building2, Trophy } from "lucide-react";
 export function CtaCards() {
 
   return (
-    <section className="relative bg-background py-12 md:py-16">
+    <section className="relative bg-background py-16 md:py-20">
       <div className="container px-4 md:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center relative z-10">
+        <div className="mx-auto max-w-5xl text-center relative z-10">
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-bold">Entdecken Sie unsere Bereiche</h3>
             <p className="mt-4 text-lg text-muted-foreground">
@@ -21,7 +21,7 @@ export function CtaCards() {
               href="/company" 
               className="relative group block h-full w-full"
             >
-              <div className="rounded-xl h-full w-full p-8 bg-gradient-to-br from-primary/5 to-primary/15 border-2 border-primary/30 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_20px_60px_rgb(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
+              <div className="rounded-xl h-full w-full p-8 bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 hover:border-primary/40 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
                 <div className="relative z-50">
                   <div className="mb-4 flex justify-center">
                     <div className="rounded-full bg-primary/10 p-4">
@@ -55,7 +55,7 @@ export function CtaCards() {
               href="/sports" 
               className="relative group block h-full w-full"
             >
-              <div className="rounded-xl h-full w-full p-8 bg-gradient-to-br from-primary/5 to-primary/15 border-2 border-primary/30 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_20px_60px_rgb(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
+              <div className="rounded-xl h-full w-full p-8 bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 hover:border-primary/40 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
                 <div className="relative z-50">
                   <div className="mb-4 flex justify-center">
                     <div className="rounded-full bg-primary/10 p-4">

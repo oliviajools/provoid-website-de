@@ -11,7 +11,7 @@ export function BlogTeaser() {
   const latestPosts = typedBlogData.posts.slice(0, 3);
 
   return (
-    <section className="py-12 md:py-16">
+    <section className="py-16 md:py-20">
       <div className="container px-4 md:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
           <div className="text-center mb-10">
@@ -30,7 +30,7 @@ export function BlogTeaser() {
           <div className={`grid gap-6 ${latestPosts.length === 1 ? 'max-w-md mx-auto' : latestPosts.length === 2 ? 'md:grid-cols-2 max-w-2xl mx-auto' : 'md:grid-cols-3'}`}>
             {latestPosts.map((post) => (
               <Link key={post.id} href={`/blog/${post.slug}`} className="block">
-                <Card className="border-2 hover:border-primary/50 transition-colors h-full cursor-pointer overflow-hidden p-0">
+                <Card className="border border-border hover:border-primary/30 transition-all h-full cursor-pointer overflow-hidden p-0 hover:shadow-sm">
                   {post.image && (
                     <div className="relative w-full h-48">
                       <Image

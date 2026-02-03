@@ -12,9 +12,9 @@ export function FinalCta() {
   ];
 
   return (
-    <section className="py-12 md:py-16">
+    <section className="py-16 md:py-20">
       <div className="container px-4 md:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
+        <div className="mx-auto max-w-5xl text-center">
           {/* Mobile: Static title */}
           <div className="md:hidden text-center mb-8">
             <h3 className="text-3xl font-bold">

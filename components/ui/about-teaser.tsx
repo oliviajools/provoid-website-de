@@ -4,9 +4,9 @@ import { ArrowRight } from "lucide-react";
 
 export function AboutTeaser() {
   return (
-    <section className="py-12 md:py-16">
+    <section className="py-16 md:py-20">
       <div className="container px-4 md:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-5xl">
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-bold">Warum wir tun, was wir tun</h3>
           </div>

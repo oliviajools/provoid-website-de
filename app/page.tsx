@@ -52,9 +52,9 @@ export default function Home() {
       <GeminiCta />
 
       {/* Stakes Section (SB7: Help them avoid failure) */}
-      <section className="pt-12 md:pt-16 pb-6 md:pb-8">
+      <section className="py-16 md:py-20">
         <div className="container px-4 md:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto max-w-5xl">
             <div className="text-center mb-12">
               <h3 className="text-3xl md:text-4xl font-bold">Die Lücke schließen</h3>
               <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">
