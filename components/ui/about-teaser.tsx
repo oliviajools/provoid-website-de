@@ -14,15 +14,16 @@ export function AboutTeaser() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="prose prose-neutral dark:prose-invert max-w-none">
               <p>
-                In Hamburg geboren – aus Neugier, Leidenschaft und dem Wunsch, das Gehirn besser zu verstehen.
-                PROVOID begann als Jugend-forscht-Projekt und wurde zu einer Bewegung, die neurowissenschaftliche Erkenntnisse greifbar macht. Wir glauben an eine Zukunft, in der jeder Mensch sein neuronales Potenzial kennt und nutzt – für mehr Klarheit, Fokus und echte Verbindung im Denken und Handeln.
+                Mit 15 begann Olivia als Juniorstudentin Physik an der Universität Hamburg zu studieren. Parallel forschte sie am Schülerforschungszentrum – und gewann mit ihrem Projekt den Landespreis bei Jugend forscht. Heute, mit 19, führt sie PROVOID als CEO.
               </p>
               <p>
-                Unsere Arbeit ist evidenzbasiert und wirkungsorientiert: Tools, Trainings und Interventionen, die
-                Entscheidungen, Zusammenarbeit und Strukturen messbar verbessern.
+                Ihr Antrieb: verstehen, wie Menschen wirklich denken und entscheiden. Zertifiziert in Neuroscience (Harvard), Cognitive Psychology (Cambridge) und Consumer Neuromarketing (Copenhagen Business School) – kombiniert mit echtem Unternehmergeist.
+              </p>
+              <p>
+                Was bedeutet das für Sie? Wissenschaftliche Tiefe, frische Perspektiven und die Energie, Ihr Unternehmen wirklich zu verstehen – nicht nur oberflächlich, sondern dort, wo Entscheidungen entstehen: im Gehirn.
               </p>
               <p className="mt-6">
-                <Link href="/ueber-uns" className="inline-flex items-center font-medium text-primary hover:underline">
+                <Link href="/company" className="inline-flex items-center font-medium text-primary hover:underline">
                   Mehr über uns
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
