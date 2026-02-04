@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Brain, Sparkles, ArrowRight, Lightbulb, Target, Zap } from "lucide-react";
 import { Brain3DRealistic } from "@/components/ui/brain-3d-realistic";
+import { NeuroChatbot } from "@/components/ui/neuro-chatbot";
 
 export default function KnowledgeV2Page() {
 
@@ -154,6 +155,9 @@ export default function KnowledgeV2Page() {
           </div>
         </div>
       </section>
+
+      {/* Neuro Chatbot */}
+      <NeuroChatbot />
     </div>
   );
 }
