@@ -77,7 +77,7 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "occipital-lobe",
-    meshNames: ["Object_13"],
+    meshNames: [],
     name: "Occipital Lobe",
     germanName: "Okzipitallappen",
     color: "#22d3ee",
@@ -92,7 +92,7 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "visual-cortex",
-    meshNames: [],
+    meshNames: ["Object_13"],
     name: "Visual Cortex",
     germanName: "Visueller Cortex",
     color: "#22d3ee",
