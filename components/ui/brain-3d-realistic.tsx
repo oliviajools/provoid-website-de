@@ -35,7 +35,7 @@ const brainRegionsData: BrainRegionInfo[] = [
     meshNames: ["Object_9"],
     name: "Frontal Lobe",
     germanName: "Frontallappen",
-    color: "#22d3ee",
+    color: "#818cf8",
     description: "Der Frontallappen ist das Kontrollzentrum des Gehirns. Er ist zuständig für Planung, Entscheidungsfindung, Persönlichkeit und die Steuerung von Impulsen.",
     businessRelevance: [
       "Strategische Entscheidungsfindung in Führungspositionen",
@@ -50,7 +50,7 @@ const brainRegionsData: BrainRegionInfo[] = [
     meshNames: ["Object_15"],
     name: "Parietal Lobe",
     germanName: "Parietallappen",
-    color: "#22d3ee",
+    color: "#a855f7",
     description: "Der Parietallappen integriert sensorische Informationen und ist entscheidend für räumliche Orientierung, Aufmerksamkeit und die Verarbeitung von Berührungen.",
     businessRelevance: [
       "Räumliches Design und UX-Gestaltung",
@@ -65,7 +65,7 @@ const brainRegionsData: BrainRegionInfo[] = [
     meshNames: ["Object_17"],
     name: "Temporal Lobe",
     germanName: "Temporallappen",
-    color: "#22d3ee",
+    color: "#7c3aed",
     description: "Der Temporallappen verarbeitet auditive Informationen, Sprache und ist am Gedächtnis sowie der emotionalen Verarbeitung beteiligt. Enthält den Auditory Cortex.",
     businessRelevance: [
       "Sprachverarbeitung in Werbebotschaften",
@@ -80,7 +80,7 @@ const brainRegionsData: BrainRegionInfo[] = [
     meshNames: ["Object_13"],
     name: "Visual Cortex",
     germanName: "Visueller Kortex & Okzipitallappen",
-    color: "#22d3ee",
+    color: "#c084fc",
     description: "Der visuelle Cortex im Okzipitallappen verarbeitet alle visuellen Informationen. Er ist für die Erkennung von Formen, Farben und Bewegungen zuständig.",
     businessRelevance: [
       "Visuelle Wahrnehmung in Werbung",
@@ -95,7 +95,7 @@ const brainRegionsData: BrainRegionInfo[] = [
     meshNames: [],
     name: "Auditory Cortex",
     germanName: "Auditorischer Cortex",
-    color: "#22d3ee",
+    color: "#7c3aed",
     description: "Der auditorische Cortex im Temporallappen verarbeitet alle akustischen Informationen – Sprache, Musik, Geräusche.",
     businessRelevance: [
       "Audiobranding und Jingles",
@@ -110,7 +110,7 @@ const brainRegionsData: BrainRegionInfo[] = [
     meshNames: ["Object_7"],
     name: "Cerebellum",
     germanName: "Kleinhirn",
-    color: "#22d3ee",
+    color: "#9333ea",
     description: "Das Kleinhirn koordiniert Bewegungen und ist für Gleichgewicht, Feinmotorik und motorisches Lernen zuständig.",
     businessRelevance: [
       "Automatisierte Verhaltensweisen",
@@ -125,7 +125,7 @@ const brainRegionsData: BrainRegionInfo[] = [
     meshNames: ["Object_5"],
     name: "Brainstem & Spinal Cord",
     germanName: "Hirnstamm & Rückenmark",
-    color: "#22d3ee",
+    color: "#6366f1",
     description: "Der Hirnstamm (inkl. Pons) und das Rückenmark steuern lebenswichtige Funktionen wie Atmung, Herzschlag und grundlegende Reflexe. Hier befinden sich auch Olfactory Bulb und Optic Nerve.",
     businessRelevance: [
       "Grundlegende Bedürfnisse und Instinkte",
@@ -162,13 +162,13 @@ function BrainModelLoader({
 
   // Hide labels (Object_11) and apply PROVOID colors
   useEffect(() => {
-    // Cyan to Purple gradient palette (like neural network visualization)
+    // Purple/Violet gradient palette
     const meshColors: Record<string, string> = {
-      "Object_9": "#00d4ff",   // Frontallappen - Bright Cyan
-      "Object_15": "#7c3aed",  // Parietallappen - Purple
-      "Object_17": "#3b82f6",  // Temporallappen - Blue
-      "Object_13": "#a855f7",  // Visueller Kortex - Violet
-      "Object_7": "#8b5cf6",   // Kleinhirn - Purple
+      "Object_9": "#818cf8",   // Frontallappen - Light Indigo
+      "Object_15": "#a855f7",  // Parietallappen - Violet
+      "Object_17": "#7c3aed",  // Temporallappen - Purple
+      "Object_13": "#c084fc",  // Visueller Kortex - Light Purple
+      "Object_7": "#9333ea",   // Kleinhirn - Dark Purple
       "Object_5": "#6366f1",   // Hirnstamm - Indigo
     };
 
