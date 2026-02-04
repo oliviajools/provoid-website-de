@@ -26,11 +26,13 @@ interface BrainRegionInfo {
 // Material.006 -> Occipital Lobe (pink/magenta)
 // Material.003 -> Corpus Callosum (schwarz)
 
-// Mesh-Namen für brain_diagram.glb basierend auf sichtbaren Labels im Modell
+// Korrekte Zuordnung basierend auf Farben im 3D-Modell:
+// Object_5 (Grau) = Brainstem, Object_7 (Gelb) = Parietal, Object_9 (Rosa) = Frontal
+// Object_13 = Cerebellum, Object_15 (Lila) = Occipital, Object_17 (Grün) = Temporal
 const brainRegionsData: BrainRegionInfo[] = [
   {
     id: "frontal-lobe",
-    meshNames: ["Object_5"],
+    meshNames: ["Object_9"],
     name: "Frontal Lobe",
     germanName: "Frontallappen",
     color: "#22d3ee",
@@ -60,7 +62,7 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "temporal-lobe",
-    meshNames: ["Object_9"],
+    meshNames: ["Object_17"],
     name: "Temporal Lobe",
     germanName: "Temporallappen",
     color: "#22d3ee",
@@ -75,7 +77,7 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "occipital-lobe",
-    meshNames: ["Object_13"],
+    meshNames: ["Object_15"],
     name: "Occipital Lobe",
     germanName: "Okzipitallappen",
     color: "#22d3ee",
@@ -90,7 +92,7 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "cerebellum",
-    meshNames: ["Object_15"],
+    meshNames: ["Object_13"],
     name: "Cerebellum",
     germanName: "Kleinhirn",
     color: "#22d3ee",
@@ -105,7 +107,7 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "brainstem",
-    meshNames: ["Object_17"],
+    meshNames: ["Object_5"],
     name: "Brainstem & Spinal Cord",
     germanName: "Hirnstamm & Rückenmark",
     color: "#22d3ee",
