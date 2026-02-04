@@ -38,7 +38,7 @@ export function Success() {
           <div className="relative">
             <ContainerScroll
               titleComponent={
-                <h3 className="text-3xl md:text-4xl font-bold mb-20 md:mb-24 text-white">Wie Sie mit PROVOID wachsen</h3>
+                <h3 className="text-3xl md:text-4xl font-bold mb-20 md:mb-24">Wie Sie mit PROVOID wachsen</h3>
               }
               contentRef={contentRef}
             >
