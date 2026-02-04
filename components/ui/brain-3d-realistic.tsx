@@ -149,6 +149,106 @@ const brainRegionsData: BrainRegionInfo[] = [
   }
 ];
 
+// Helper function to match mesh name to region
+function matchMeshToRegion(meshName: string): BrainRegionInfo | null {
+  const baseName = meshName.replace(/_Material[^_]*_\d+$/, '');
+  for (const region of brainRegionsData) {
+    const matchesMesh = region.meshNames.some(name => {
+      return baseName === name || 
+             baseName.startsWith(name + '.') || 
+             baseName.startsWith(name + '_') ||
+             name.startsWith(baseName + '.') ||
+             name.startsWith(baseName + '_');
+    });
+    if (matchesMesh) return region;
+  }
+  return null;
+}
+
+// Individual mesh component with its own event handlers
+function InteractiveMesh({ 
+  mesh, 
+  selectedRegion, 
+  hoveredRegion,
+  onSelectRegion,
+  onHoverRegion
+}: {
+  mesh: THREE.Mesh;
+  selectedRegion: string | null;
+  hoveredRegion: string | null;
+  onSelectRegion: (id: string | null) => void;
+  onHoverRegion: (id: string | null) => void;
+}) {
+  const region = useMemo(() => matchMeshToRegion(mesh.name), [mesh.name]);
+  
+  const material = useMemo(() => {
+    const mat = (mesh.material as THREE.MeshStandardMaterial).clone();
+    if (region) {
+      mat.color = new THREE.Color(region.color);
+    }
+    return mat;
+  }, [mesh.material, region]);
+
+  useEffect(() => {
+    if (!region) return;
+    
+    if (region.id === selectedRegion) {
+      material.emissive = new THREE.Color("#22d3ee");
+      material.emissiveIntensity = 0.5;
+      material.opacity = 1;
+      material.transparent = false;
+    } else if (region.id === hoveredRegion) {
+      material.emissive = new THREE.Color("#22d3ee");
+      material.emissiveIntensity = 0.3;
+      material.opacity = 1;
+      material.transparent = false;
+    } else if (selectedRegion) {
+      material.emissive = new THREE.Color("#000000");
+      material.emissiveIntensity = 0;
+      material.opacity = 0.3;
+      material.transparent = true;
+    } else {
+      material.emissive = new THREE.Color("#000000");
+      material.emissiveIntensity = 0;
+      material.opacity = 1;
+      material.transparent = false;
+    }
+  }, [material, region, selectedRegion, hoveredRegion]);
+
+  const handleClick = (event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
+    if (region) {
+      onSelectRegion(selectedRegion === region.id ? null : region.id);
+    }
+  };
+
+  const handlePointerOver = (event: ThreeEvent<PointerEvent>) => {
+    event.stopPropagation();
+    document.body.style.cursor = "pointer";
+    if (region) {
+      onHoverRegion(region.id);
+    }
+  };
+
+  const handlePointerOut = () => {
+    document.body.style.cursor = "default";
+    onHoverRegion(null);
+  };
+
+  return (
+    <mesh
+      geometry={mesh.geometry}
+      material={material}
+      position={mesh.position}
+      rotation={mesh.rotation}
+      scale={mesh.scale}
+      onClick={handleClick}
+      onPointerOver={handlePointerOver}
+      onPointerOut={handlePointerOut}
+    />
+  );
+}
+
 function BrainModelLoader({ 
   selectedRegion, 
   hoveredRegion,
@@ -161,157 +261,31 @@ function BrainModelLoader({
   onHoverRegion: (id: string | null) => void;
 }) {
   const { scene } = useGLTF("/models/color_coded_labeled_major_lobes_of_the_brain_old.glb");
-  const groupRef = useRef<THREE.Group>(null);
-
-  useEffect(() => {
+  
+  // Extract all meshes from the scene
+  const meshes = useMemo(() => {
+    const result: THREE.Mesh[] = [];
     scene.traverse((child) => {
       if (child instanceof THREE.Mesh) {
-        child.castShadow = true;
-        child.receiveShadow = true;
-        
-        // Apply PROVOID colors based on mesh name
-        // Mesh names in GLB: "Frontal Lobe_Material.007_0" -> extract base name
-        const fullMeshName = child.name;
-        // Remove "_Material.XXX_0" suffix and also handle "_MaterialX_0" format
-        const baseName = fullMeshName.replace(/_Material[^_]*_\d+$/, '');
-        let newColor: string | null = null;
-        
-        for (const region of brainRegionsData) {
-          const matchesMesh = region.meshNames.some(name => {
-            // Exact match or starts with name followed by . or _
-            return baseName === name || 
-                   baseName.startsWith(name + '.') || 
-                   baseName.startsWith(name + '_') ||
-                   name.startsWith(baseName + '.') ||
-                   name.startsWith(baseName + '_');
-          });
-          if (matchesMesh) {
-            newColor = region.color;
-            break;
-          }
-        }
-        
-        if (newColor && child.material) {
-          const material = child.material as THREE.MeshStandardMaterial;
-          material.color = new THREE.Color(newColor);
-        }
-        
-        // Store original material
-        if (!child.userData.originalMaterial) {
-          child.userData.originalMaterial = child.material.clone();
-        }
+        result.push(child);
       }
     });
+    return result;
   }, [scene]);
-
-  useEffect(() => {
-    scene.traverse((child) => {
-      if (child instanceof THREE.Mesh) {
-        const fullMeshName = child.name;
-        const baseName = fullMeshName.replace(/_Material[^_]*_\d+$/, '');
-        let isPartOfSelected = false;
-        let isPartOfHovered = false;
-
-        // Check if this mesh belongs to any region
-        for (const region of brainRegionsData) {
-          const matchesMesh = region.meshNames.some(name => {
-            return baseName === name || 
-                   baseName.startsWith(name + '.') || 
-                   baseName.startsWith(name + '_') ||
-                   name.startsWith(baseName + '.') ||
-                   name.startsWith(baseName + '_');
-          });
-          
-          if (matchesMesh) {
-            if (region.id === selectedRegion) isPartOfSelected = true;
-            if (region.id === hoveredRegion) isPartOfHovered = true;
-          }
-        }
-
-        const material = child.material as THREE.MeshStandardMaterial;
-        
-        if (isPartOfSelected) {
-          material.emissive = new THREE.Color("#22d3ee");
-          material.emissiveIntensity = 0.5;
-          material.opacity = 1;
-        } else if (isPartOfHovered) {
-          material.emissive = new THREE.Color("#22d3ee");
-          material.emissiveIntensity = 0.3;
-          material.opacity = 1;
-        } else if (selectedRegion) {
-          material.emissive = new THREE.Color("#000000");
-          material.emissiveIntensity = 0;
-          material.opacity = 0.3;
-          material.transparent = true;
-        } else {
-          material.emissive = new THREE.Color("#000000");
-          material.emissiveIntensity = 0;
-          material.opacity = 1;
-          material.transparent = false;
-        }
-      }
-    });
-  }, [scene, selectedRegion, hoveredRegion]);
-
-  const handleClick = (event: ThreeEvent<MouseEvent>) => {
-    event.stopPropagation();
-    const mesh = event.object as THREE.Mesh;
-    const fullMeshName = mesh.name;
-    const baseName = fullMeshName.replace(/_Material[^_]*_\d+$/, '');
-
-    for (const region of brainRegionsData) {
-      const matchesMesh = region.meshNames.some(name => {
-        return baseName === name || 
-               baseName.startsWith(name + '.') || 
-               baseName.startsWith(name + '_') ||
-               name.startsWith(baseName + '.') ||
-               name.startsWith(baseName + '_');
-      });
-      if (matchesMesh) {
-        onSelectRegion(selectedRegion === region.id ? null : region.id);
-        return;
-      }
-    }
-  };
-
-  const handlePointerOver = (event: ThreeEvent<PointerEvent>) => {
-    event.stopPropagation();
-    const mesh = event.object as THREE.Mesh;
-    const fullMeshName = mesh.name;
-    const baseName = fullMeshName.replace(/_Material[^_]*_\d+$/, '');
-    document.body.style.cursor = "pointer";
-
-    for (const region of brainRegionsData) {
-      const matchesMesh = region.meshNames.some(name => {
-        return baseName === name || 
-               baseName.startsWith(name + '.') || 
-               baseName.startsWith(name + '_') ||
-               name.startsWith(baseName + '.') ||
-               name.startsWith(baseName + '_');
-      });
-      if (matchesMesh) {
-        onHoverRegion(region.id);
-        return;
-      }
-    }
-  };
-
-  const handlePointerOut = () => {
-    document.body.style.cursor = "default";
-    onHoverRegion(null);
-  };
 
   return (
     <Center>
-      <group 
-        ref={groupRef} 
-        scale={0.002} 
-        rotation={[0, Math.PI, 0]}
-        onClick={handleClick}
-        onPointerOver={handlePointerOver}
-        onPointerOut={handlePointerOut}
-      >
-        <primitive object={scene} />
+      <group scale={0.002} rotation={[0, Math.PI, 0]}>
+        {meshes.map((mesh, index) => (
+          <InteractiveMesh
+            key={`${mesh.name}-${index}`}
+            mesh={mesh}
+            selectedRegion={selectedRegion}
+            hoveredRegion={hoveredRegion}
+            onSelectRegion={onSelectRegion}
+            onHoverRegion={onHoverRegion}
+          />
+        ))}
       </group>
     </Center>
   );
