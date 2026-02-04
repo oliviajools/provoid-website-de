@@ -160,7 +160,7 @@ function BrainModelLoader({
   onSelectRegion: (id: string | null) => void;
   onHoverRegion: (id: string | null) => void;
 }) {
-  const { scene } = useGLTF("/models/color_coded_labeled_major_lobes_of_the_brain.glb");
+  const { scene } = useGLTF("/models/color_coded_labeled_major_lobes_of_the_brain_old.glb");
   const groupRef = useRef<THREE.Group>(null);
 
   useEffect(() => {
