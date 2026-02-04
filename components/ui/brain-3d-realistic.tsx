@@ -180,15 +180,19 @@ function BrainModelLoader({
           return;
         }
         
-        // Apply custom colors
+        // Apply custom colors - clone material to override
         const customColor = meshColors[child.name];
         if (customColor && child.material) {
           const materials = Array.isArray(child.material) ? child.material : [child.material];
-          materials.forEach((mat) => {
+          const newMaterials = materials.map((mat) => {
             if (mat && 'color' in mat) {
-              (mat as THREE.MeshStandardMaterial).color = new THREE.Color(customColor);
+              const clonedMat = (mat as THREE.MeshStandardMaterial).clone();
+              clonedMat.color = new THREE.Color(customColor);
+              return clonedMat;
             }
+            return mat;
           });
+          child.material = Array.isArray(child.material) ? newMaterials : newMaterials[0];
         }
       }
     });
