@@ -19,7 +19,7 @@ interface BrainRegionInfo {
 const brainRegionsData: BrainRegionInfo[] = [
   {
     id: "frontal",
-    meshNames: ["Frontal", "Frontal2", "Frontal.001", "Frontal2.001"],
+    meshNames: ["Frontal"],
     name: "Frontal Lobe",
     germanName: "Frontallappen",
     color: "#22d3ee",
@@ -34,10 +34,10 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "parietal",
-    meshNames: ["Parietal", "Parietal Lobe", "Parietal.001", "Parietal Lobe.001"],
+    meshNames: ["Parietal"],
     name: "Parietal Lobe",
     germanName: "Parietallappen",
-    color: "#0ea5e9",
+    color: "#a855f7",
     description: "Der Parietallappen integriert sensorische Informationen und ist entscheidend für räumliche Orientierung, Aufmerksamkeit und die Verarbeitung von Berührungen.",
     businessRelevance: [
       "Räumliches Design und UX-Gestaltung",
@@ -49,10 +49,10 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "temporal",
-    meshNames: ["Temporal", "Temporal Limbic", "Temporal.001", "Temporal Limbic.001"],
+    meshNames: ["Temporal"],
     name: "Temporal Lobe",
     germanName: "Temporallappen",
-    color: "#06b6d4",
+    color: "#f97316",
     description: "Der Temporallappen verarbeitet auditive Informationen, Sprache und ist am Gedächtnis sowie der emotionalen Verarbeitung beteiligt.",
     businessRelevance: [
       "Sprachverarbeitung in Werbebotschaften",
@@ -64,10 +64,10 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "occipital",
-    meshNames: ["Occipital", "Occipital2", "Occipital.001", "Occipital2.001"],
+    meshNames: ["Occipital"],
     name: "Occipital Lobe",
     germanName: "Okzipitallappen",
-    color: "#0891b2",
+    color: "#ec4899",
     description: "Der Okzipitallappen ist das visuelle Verarbeitungszentrum des Gehirns. Er interpretiert alles, was wir sehen – Farben, Formen, Bewegungen.",
     businessRelevance: [
       "Visuelles Marketing und Grafikdesign",
@@ -79,10 +79,10 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "limbic",
-    meshNames: ["Limbic", "Cingulate", "Insula"],
+    meshNames: ["Limbic", "Cingulate", "Insula", "Gyrus"],
     name: "Limbic System",
     germanName: "Limbisches System",
-    color: "#14b8a6",
+    color: "#10b981",
     description: "Das limbische System ist das emotionale Zentrum des Gehirns. Es steuert Emotionen, Motivation, Gedächtnis und das Belohnungssystem.",
     businessRelevance: [
       "Emotionale Kaufentscheidungen verstehen",
@@ -94,10 +94,10 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "cerebellum",
-    meshNames: ["Cerebellum", "Cerebellum.001"],
+    meshNames: ["Cerebellum"],
     name: "Cerebellum",
     germanName: "Kleinhirn",
-    color: "#0d9488",
+    color: "#eab308",
     description: "Das Kleinhirn koordiniert Bewegungen, Gleichgewicht und ist an motorischem Lernen sowie der Automatisierung von Verhaltensweisen beteiligt.",
     businessRelevance: [
       "Gewohnheitsbildung bei Kunden",
@@ -109,10 +109,10 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "brainstem",
-    meshNames: ["Brainstem", "Brain Stem", "Medulla"],
+    meshNames: ["Brainstem", "Brain Stem", "Medulla", "Stem"],
     name: "Brainstem",
     germanName: "Hirnstamm",
-    color: "#115e59",
+    color: "#78716c",
     description: "Der Hirnstamm steuert lebenswichtige Funktionen wie Atmung, Herzschlag und grundlegende Aufmerksamkeit. Er ist die Brücke zwischen Gehirn und Körper.",
     businessRelevance: [
       "Stressreaktionen in Verhandlungen verstehen",
