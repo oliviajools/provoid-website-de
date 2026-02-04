@@ -236,7 +236,7 @@ function BrainModelLoader({
 
   return (
     <Center>
-      <group ref={groupRef} scale={0.005} rotation={[0, Math.PI, 0]}>
+      <group ref={groupRef} scale={0.002} rotation={[0, Math.PI, 0]}>
         <primitive 
           object={scene} 
           onClick={handleClick}
@@ -404,7 +404,7 @@ export function Brain3DRealistic() {
 
         {/* Canvas */}
         <Canvas
-          camera={{ position: [0, 0, 10], fov: 45 }}
+          camera={{ position: [0, 0, 5], fov: 50 }}
           gl={{ antialias: true, alpha: true }}
           onCreated={() => setIsLoading(false)}
         >
@@ -423,8 +423,8 @@ export function Brain3DRealistic() {
             
             <OrbitControls
               enablePan={false}
-              minDistance={4}
-              maxDistance={20}
+              minDistance={2}
+              maxDistance={15}
               autoRotate={!selectedRegion && !hoveredRegion}
               autoRotateSpeed={0.5}
             />
