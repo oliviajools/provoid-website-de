@@ -87,6 +87,9 @@ export default function CompanyPage() {
                   <p>
                     Unsere Arbeit hilft dabei, die Identität des Käufers und des Mitarbeiters zu klarifizieren. Wer sind Ihre Kunden wirklich? Was treibt Ihre Mitarbeitenden an? Durch neurowissenschaftliche Methoden machen wir sichtbar, was sonst im Verborgenen bleibt – und schaffen so die Basis für authentische Kommunikation und echte Verbindung.
                   </p>
+                  <p>
+                    In der Neurowissenschaft existieren unzählige Erkenntnisse, die bisher kaum in der Praxis ankommen. Dieses Potenzial wollen wir erschließen: durch fundiertes Wissen, kontinuierliche Weiterbildung und selbst entwickelte Tools, die neurowissenschaftliche Forschung für Unternehmen zugänglich und anwendbar machen.
+                  </p>
                 </div>
               </AccordionContent>
             </AccordionItem>
