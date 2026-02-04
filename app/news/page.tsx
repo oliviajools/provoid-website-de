@@ -184,10 +184,10 @@ export default function NewsPage() {
                   <p className="text-muted-foreground leading-relaxed">
                     Der Neuro-Atlas mit KI-Assistent ist ab sofort unter{" "}
                     <a 
-                      href="/neuro-atlas" 
+                      href="/knowledge" 
                       className="text-primary hover:underline font-medium"
                     >
-                      provoid.de/neuro-atlas
+                      provoid.de/knowledge
                     </a>
                     {" "}verfügbar.
                   </p>
