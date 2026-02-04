@@ -236,7 +236,7 @@ function BrainModelLoader({
 
   return (
     <Center>
-      <group ref={groupRef} scale={0.015} rotation={[0, Math.PI, 0]}>
+      <group ref={groupRef} scale={0.005} rotation={[0, Math.PI, 0]}>
         <primitive 
           object={scene} 
           onClick={handleClick}
