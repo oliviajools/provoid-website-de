@@ -94,7 +94,7 @@ const brainRegionsData: BrainRegionInfo[] = [
     id: "visual-cortex",
     meshNames: ["Object_13"],
     name: "Visual Cortex",
-    germanName: "Visueller Cortex",
+    germanName: "Visueller Kortex & Okzipitallappen",
     color: "#22d3ee",
     description: "Der visuelle Cortex im Okzipitallappen verarbeitet alle visuellen Informationen. Er ist für die Erkennung von Formen, Farben und Bewegungen zuständig.",
     businessRelevance: [
