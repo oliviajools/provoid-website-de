@@ -425,8 +425,7 @@ export function Brain3DRealistic() {
               enablePan={false}
               minDistance={2}
               maxDistance={15}
-              autoRotate={!selectedRegion && !hoveredRegion}
-              autoRotateSpeed={0.5}
+              autoRotate={false}
             />
           </Suspense>
         </Canvas>
