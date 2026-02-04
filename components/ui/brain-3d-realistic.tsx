@@ -47,7 +47,7 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "parietal-lobe",
-    meshNames: ["Object_7", "Object_15"],
+    meshNames: ["Object_15"],
     name: "Parietal Lobe",
     germanName: "Parietallappen",
     color: "#22d3ee",
@@ -92,7 +92,7 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "cerebellum",
-    meshNames: ["Object_13"],
+    meshNames: ["Object_7"],
     name: "Cerebellum",
     germanName: "Kleinhirn",
     color: "#22d3ee",
