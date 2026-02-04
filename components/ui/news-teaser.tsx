@@ -4,6 +4,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const newsItems = [
   {
+    date: "Februar 2026",
+    dateTime: "2026-02",
+    title: "Neuro-Atlas mit KI-Assistent",
+    excerpt: "Der interaktive Neuro-Atlas erhält einen KI-gestützten Assistenten – Neurowissenschaft trifft künstliche Intelligenz in Echtzeit.",
+  },
+  {
     date: "August 2025",
     dateTime: "2025-08",
     title: "Erste erfolgreiche EEG-Messungen",
@@ -14,12 +20,6 @@ const newsItems = [
     dateTime: "2025-07",
     title: "EEG-Evaluation in Arztpraxis Hamburg",
     excerpt: "PROVOID darf in einer Hamburger Arztpraxis EEG-Messungen zur Evaluation unserer Tools durchführen. Proband:innen gesucht!",
-  },
-  {
-    date: "Juni 2025",
-    dateTime: "2025-06",
-    title: "Kooperation mit SC Victoria Hamburg",
-    excerpt: "PROVOID-Sports geht eine partnerschaftliche Kooperation mit dem SC Victoria Hamburg ein – Neuroathletik trifft Mädchenfußball.",
   },
 ];
 

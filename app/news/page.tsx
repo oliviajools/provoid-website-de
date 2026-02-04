@@ -66,6 +66,13 @@ export default function NewsPage() {
               itemListElement: [
                 {
                   '@type': 'NewsArticle',
+                  headline: 'Neuro-Atlas mit KI-Assistent: Neurowissenschaft trifft künstliche Intelligenz',
+                  datePublished: '2026-02-04',
+                  author: { '@type': 'Organization', name: 'PROVOID' },
+                  image: ['/neuro-atlas-ki.png'],
+                },
+                {
+                  '@type': 'NewsArticle',
                   headline: 'Erste erfolgreiche EEG-Messungen',
                   datePublished: '2025-08-01',
                   author: { '@type': 'Organization', name: 'PROVOID' },
@@ -145,6 +152,60 @@ export default function NewsPage() {
 
           {/* News Article */}
           <article className="space-y-6">
+            {/* Neuro-Atlas KI Article */}
+            <Card className="border-2">
+              <CardHeader>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                  <Calendar className="h-4 w-4" />
+                  <time dateTime="2026-02">Februar 2026</time>
+                </div>
+                <CardTitle className="text-2xl md:text-3xl">
+                  Neuro-Atlas mit KI-Assistent: Neurowissenschaft trifft künstliche Intelligenz
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="prose prose-sm md:prose-base max-w-none">
+                  <p className="text-muted-foreground leading-relaxed">
+                    PROVOID präsentiert ein neues Feature: Der interaktive Neuro-Atlas erhält einen 
+                    KI-gestützten Assistenten. Der <strong>Neuro-Assistent</strong> beantwortet Fragen zu 
+                    Hirnarealen und deren Funktionen in Echtzeit – direkt neben dem 3D-Gehirnmodell.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Das Besondere: Die KI erklärt nicht nur abstrakte Neuroanatomie, sondern übersetzt 
+                    komplexe Zusammenhänge in alltagsrelevante Situationen. Ob Kaufentscheidungen, 
+                    Führungsverhalten oder kreatives Denken – der Neuro-Assistent zeigt, welche 
+                    Hirnareale dabei aktiv sind und was das für Unternehmen bedeutet.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Ein Beispiel: &bdquo;Was passiert im Gehirn, wenn ich mir Laufschuhe hole?&ldquo; – 
+                    Der Assistent erklärt, wie Frontallappen für Planung und Entscheidungsfindung, 
+                    Parietallappen für sensorische Integration und weitere Areale zusammenwirken.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Der Neuro-Atlas mit KI-Assistent ist ab sofort unter{" "}
+                    <a 
+                      href="/neuro-atlas" 
+                      className="text-primary hover:underline font-medium"
+                    >
+                      provoid.de/neuro-atlas
+                    </a>
+                    {" "}verfügbar.
+                  </p>
+                </div>
+
+                {/* Image Section */}
+                <div className="rounded-xl overflow-hidden border-2 max-w-3xl mx-auto">
+                  <Image
+                    src="/neuro-atlas-ki.png"
+                    alt="Neuro-Atlas mit KI-Assistent - 3D-Gehirnmodell mit Chat-Interface"
+                    width={1024}
+                    height={600}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </CardContent>
+            </Card>
+
             <Card className="border-2">
               <CardHeader>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
