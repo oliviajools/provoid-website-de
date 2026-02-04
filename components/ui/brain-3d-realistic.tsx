@@ -59,7 +59,7 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "parietal",
-    meshNames: ["Parietal Lobe"],
+    meshNames: ["Parietal Lobe", "Parietal Lobe.001"],
     name: "Parietal Lobe",
     germanName: "Parietallappen",
     color: "#0dcc00",
@@ -74,7 +74,7 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "parietal-limbic",
-    meshNames: ["Parietal2", "Parietal3", "Parietal Limbic"],
+    meshNames: ["Parietal2", "Parietal3", "Parietal Limbic", "Parietal3_Material1"],
     name: "Parietal Limbic",
     germanName: "Parietales Limbisches System",
     color: "#6bff2c",
@@ -170,15 +170,21 @@ function BrainModelLoader({
         child.receiveShadow = true;
         
         // Apply PROVOID colors based on mesh name
-        // Mesh names in GLB: "Frontal Lobe_Material.007_0" -> extract base name before "_Material"
+        // Mesh names in GLB: "Frontal Lobe_Material.007_0" -> extract base name
         const fullMeshName = child.name;
-        const baseName = fullMeshName.split('_Material')[0];
+        // Remove "_Material.XXX_0" suffix and also handle "_MaterialX_0" format
+        const baseName = fullMeshName.replace(/_Material[^_]*_\d+$/, '');
         let newColor: string | null = null;
         
         for (const region of brainRegionsData) {
-          const matchesMesh = region.meshNames.some(name => 
-            baseName === name || baseName.startsWith(name + '_') || baseName.startsWith(name + '.')
-          );
+          const matchesMesh = region.meshNames.some(name => {
+            // Exact match or starts with name followed by . or _
+            return baseName === name || 
+                   baseName.startsWith(name + '.') || 
+                   baseName.startsWith(name + '_') ||
+                   name.startsWith(baseName + '.') ||
+                   name.startsWith(baseName + '_');
+          });
           if (matchesMesh) {
             newColor = region.color;
             break;
@@ -202,15 +208,19 @@ function BrainModelLoader({
     scene.traverse((child) => {
       if (child instanceof THREE.Mesh) {
         const fullMeshName = child.name;
-        const baseName = fullMeshName.split('_Material')[0];
+        const baseName = fullMeshName.replace(/_Material[^_]*_\d+$/, '');
         let isPartOfSelected = false;
         let isPartOfHovered = false;
 
         // Check if this mesh belongs to any region
         for (const region of brainRegionsData) {
-          const matchesMesh = region.meshNames.some(name => 
-            baseName === name || baseName.startsWith(name + '_') || baseName.startsWith(name + '.')
-          );
+          const matchesMesh = region.meshNames.some(name => {
+            return baseName === name || 
+                   baseName.startsWith(name + '.') || 
+                   baseName.startsWith(name + '_') ||
+                   name.startsWith(baseName + '.') ||
+                   name.startsWith(baseName + '_');
+          });
           
           if (matchesMesh) {
             if (region.id === selectedRegion) isPartOfSelected = true;
@@ -247,12 +257,16 @@ function BrainModelLoader({
     event.stopPropagation();
     const mesh = event.object as THREE.Mesh;
     const fullMeshName = mesh.name;
-    const baseName = fullMeshName.split('_Material')[0];
+    const baseName = fullMeshName.replace(/_Material[^_]*_\d+$/, '');
 
     for (const region of brainRegionsData) {
-      const matchesMesh = region.meshNames.some(name => 
-        baseName === name || baseName.startsWith(name + '_') || baseName.startsWith(name + '.')
-      );
+      const matchesMesh = region.meshNames.some(name => {
+        return baseName === name || 
+               baseName.startsWith(name + '.') || 
+               baseName.startsWith(name + '_') ||
+               name.startsWith(baseName + '.') ||
+               name.startsWith(baseName + '_');
+      });
       if (matchesMesh) {
         onSelectRegion(selectedRegion === region.id ? null : region.id);
         return;
@@ -264,13 +278,17 @@ function BrainModelLoader({
     event.stopPropagation();
     const mesh = event.object as THREE.Mesh;
     const fullMeshName = mesh.name;
-    const baseName = fullMeshName.split('_Material')[0];
+    const baseName = fullMeshName.replace(/_Material[^_]*_\d+$/, '');
     document.body.style.cursor = "pointer";
 
     for (const region of brainRegionsData) {
-      const matchesMesh = region.meshNames.some(name => 
-        baseName === name || baseName.startsWith(name + '_') || baseName.startsWith(name + '.')
-      );
+      const matchesMesh = region.meshNames.some(name => {
+        return baseName === name || 
+               baseName.startsWith(name + '.') || 
+               baseName.startsWith(name + '_') ||
+               name.startsWith(baseName + '.') ||
+               name.startsWith(baseName + '_');
+      });
       if (matchesMesh) {
         onHoverRegion(region.id);
         return;
