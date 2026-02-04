@@ -160,11 +160,36 @@ function BrainModelLoader({
 }) {
   const { scene } = useGLTF("/models/brain_diagram.glb");
 
-  // Hide labels (Object_11)
+  // Hide labels (Object_11) and apply PROVOID colors
   useEffect(() => {
+    // PROVOID color variations (cyan/teal palette)
+    const meshColors: Record<string, string> = {
+      "Object_9": "#22d3ee",   // Frontallappen - Cyan
+      "Object_15": "#06b6d4",  // Parietallappen - Darker Cyan
+      "Object_17": "#14b8a6",  // Temporallappen - Teal
+      "Object_13": "#0891b2",  // Visueller Kortex - Dark Cyan
+      "Object_7": "#0d9488",   // Kleinhirn - Dark Teal
+      "Object_5": "#475569",   // Hirnstamm - Slate Gray
+    };
+
     scene.traverse((child) => {
-      if (child instanceof THREE.Mesh && child.name === "Object_11") {
-        child.visible = false;
+      if (child instanceof THREE.Mesh) {
+        // Hide labels
+        if (child.name === "Object_11") {
+          child.visible = false;
+          return;
+        }
+        
+        // Apply custom colors
+        const customColor = meshColors[child.name];
+        if (customColor && child.material) {
+          const materials = Array.isArray(child.material) ? child.material : [child.material];
+          materials.forEach((mat) => {
+            if (mat && 'color' in mat) {
+              (mat as THREE.MeshStandardMaterial).color = new THREE.Color(customColor);
+            }
+          });
+        }
       }
     });
   }, [scene]);
