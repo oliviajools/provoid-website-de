@@ -74,19 +74,6 @@ const brainRegionsData: BrainRegionInfo[] = [
     ]
   },
   {
-    id: "labels",
-    meshNames: ["Object_11"],
-    name: "Labels",
-    germanName: "Beschriftungen",
-    color: "#22d3ee",
-    description: "Die anatomischen Beschriftungen des Gehirnmodells helfen bei der Orientierung und Identifikation der verschiedenen Hirnareale.",
-    businessRelevance: [
-      "Visuelle Orientierung und Navigation",
-      "Informationsarchitektur",
-      "Klare Kommunikation komplexer Inhalte"
-    ]
-  },
-  {
     id: "occipital-lobe",
     meshNames: ["Object_13"],
     name: "Occipital Lobe",
