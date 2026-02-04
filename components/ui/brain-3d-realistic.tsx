@@ -186,20 +186,34 @@ function BrainModelLoader({
 
   const handleClick = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    const mesh = event.object as THREE.Mesh;
-    const region = matchMeshToRegion(mesh.name);
-    if (region) {
-      onSelectRegion(selectedRegion === region.id ? null : region.id);
+    
+    // Find first non-label intersection (skip Object_11 which is text labels)
+    for (const intersection of event.intersections) {
+      const mesh = intersection.object as THREE.Mesh;
+      if (mesh.name === "Object_11") continue; // Skip labels
+      
+      const region = matchMeshToRegion(mesh.name);
+      if (region) {
+        onSelectRegion(selectedRegion === region.id ? null : region.id);
+        return;
+      }
     }
   };
 
   const handlePointerOver = (event: ThreeEvent<PointerEvent>) => {
     event.stopPropagation();
-    const mesh = event.object as THREE.Mesh;
-    const region = matchMeshToRegion(mesh.name);
     document.body.style.cursor = "pointer";
-    if (region) {
-      onHoverRegion(region.id);
+    
+    // Find first non-label intersection
+    for (const intersection of event.intersections) {
+      const mesh = intersection.object as THREE.Mesh;
+      if (mesh.name === "Object_11") continue; // Skip labels
+      
+      const region = matchMeshToRegion(mesh.name);
+      if (region) {
+        onHoverRegion(region.id);
+        return;
+      }
     }
   };
 
