@@ -28,7 +28,7 @@ export function Proof() {
   ];
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <section className="py-16 md:py-20 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
       <div className="container px-4 md:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-12">

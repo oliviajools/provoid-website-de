@@ -4,7 +4,7 @@ import { Award, Rocket, Trophy } from "lucide-react";
 
 export function Stats() {
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <section className="py-20 md:py-28 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
       <div className="container px-4 md:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
