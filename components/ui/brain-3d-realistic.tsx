@@ -192,6 +192,9 @@ function BrainModelLoader({
       const mesh = intersection.object as THREE.Mesh;
       if (mesh.name === "Object_11") continue; // Skip labels
       
+      // DEBUG: Log mesh name to console
+      console.log("Clicked mesh:", mesh.name);
+      
       const region = matchMeshToRegion(mesh.name);
       if (region) {
         onSelectRegion(selectedRegion === region.id ? null : region.id);
