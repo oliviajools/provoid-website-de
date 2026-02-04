@@ -77,17 +77,77 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "occipital-lobe",
-    meshNames: [],
+    meshNames: ["Object_13"],
     name: "Occipital Lobe",
     germanName: "Okzipitallappen",
     color: "#22d3ee",
-    description: "Der Okzipitallappen ist das visuelle Verarbeitungszentrum des Gehirns (Visual Cortex). Er interpretiert alles, was wir sehen – Farben, Formen, Bewegungen.",
+    description: "Der Okzipitallappen ist das visuelle Verarbeitungszentrum des Gehirns. Er interpretiert alles, was wir sehen – Farben, Formen, Bewegungen.",
     businessRelevance: [
       "Visuelles Marketing und Grafikdesign",
       "Farbpsychologie in Branding",
       "Logo-Gestaltung und Wiedererkennung",
       "Eye-Tracking-Optimierung",
       "Visuelle Hierarchie auf Websites"
+    ]
+  },
+  {
+    id: "visual-cortex",
+    meshNames: [],
+    name: "Visual Cortex",
+    germanName: "Visueller Cortex",
+    color: "#22d3ee",
+    description: "Der visuelle Cortex im Okzipitallappen verarbeitet alle visuellen Informationen. Er ist für die Erkennung von Formen, Farben und Bewegungen zuständig.",
+    businessRelevance: [
+      "Visuelle Wahrnehmung in Werbung",
+      "Bildverarbeitung und Design",
+      "Farbpsychologie",
+      "Bewegtbild und Video-Marketing",
+      "Visuelle Aufmerksamkeit steuern"
+    ]
+  },
+  {
+    id: "auditory-cortex",
+    meshNames: [],
+    name: "Auditory Cortex",
+    germanName: "Auditorischer Cortex",
+    color: "#22d3ee",
+    description: "Der auditorische Cortex im Temporallappen verarbeitet alle akustischen Informationen – Sprache, Musik, Geräusche.",
+    businessRelevance: [
+      "Audiobranding und Jingles",
+      "Podcast- und Voice-Marketing",
+      "Sounddesign in Werbung",
+      "Sprachverarbeitung",
+      "Musik und Emotionen"
+    ]
+  },
+  {
+    id: "olfactory-bulb",
+    meshNames: [],
+    name: "Olfactory Bulb",
+    germanName: "Riechkolben",
+    color: "#22d3ee",
+    description: "Der Riechkolben verarbeitet Geruchsinformationen und ist direkt mit dem limbischen System verbunden – daher die starke emotionale Wirkung von Düften.",
+    businessRelevance: [
+      "Duftmarketing im Retail",
+      "Geruchsbasierte Markenerlebnisse",
+      "Emotionale Trigger durch Düfte",
+      "Erinnerungen durch Gerüche aktivieren",
+      "Multisensorisches Branding"
+    ]
+  },
+  {
+    id: "optic-nerve",
+    meshNames: [],
+    name: "Optic Nerve",
+    germanName: "Sehnerv",
+    color: "#22d3ee",
+    description: "Der Sehnerv leitet visuelle Informationen von der Netzhaut zum Gehirn. Er ist der erste Schritt in der visuellen Verarbeitung.",
+    businessRelevance: [
+      "Erste visuelle Eindrücke",
+      "Aufmerksamkeit und Blickführung",
+      "Schnelle visuelle Verarbeitung",
+      "Eye-Tracking-Optimierung",
+      "Above-the-fold-Design"
     ]
   },
   {
