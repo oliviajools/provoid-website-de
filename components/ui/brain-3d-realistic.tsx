@@ -22,7 +22,7 @@ const brainRegionsData: BrainRegionInfo[] = [
     meshNames: ["Frontal", "Frontal2", "Frontal.001", "Frontal2.001"],
     name: "Frontal Lobe",
     germanName: "Frontallappen",
-    color: "#4CAF50",
+    color: "#22d3ee",
     description: "Der Frontallappen ist das Kontrollzentrum des Gehirns. Er ist zuständig für Planung, Entscheidungsfindung, Persönlichkeit und die Steuerung von Impulsen.",
     businessRelevance: [
       "Strategische Entscheidungsfindung in Führungspositionen",
@@ -37,7 +37,7 @@ const brainRegionsData: BrainRegionInfo[] = [
     meshNames: ["Parietal", "Parietal Lobe", "Parietal.001", "Parietal Lobe.001"],
     name: "Parietal Lobe",
     germanName: "Parietallappen",
-    color: "#2196F3",
+    color: "#0ea5e9",
     description: "Der Parietallappen integriert sensorische Informationen und ist entscheidend für räumliche Orientierung, Aufmerksamkeit und die Verarbeitung von Berührungen.",
     businessRelevance: [
       "Räumliches Design und UX-Gestaltung",
@@ -52,7 +52,7 @@ const brainRegionsData: BrainRegionInfo[] = [
     meshNames: ["Temporal", "Temporal Limbic", "Temporal.001", "Temporal Limbic.001"],
     name: "Temporal Lobe",
     germanName: "Temporallappen",
-    color: "#FF9800",
+    color: "#06b6d4",
     description: "Der Temporallappen verarbeitet auditive Informationen, Sprache und ist am Gedächtnis sowie der emotionalen Verarbeitung beteiligt.",
     businessRelevance: [
       "Sprachverarbeitung in Werbebotschaften",
@@ -67,7 +67,7 @@ const brainRegionsData: BrainRegionInfo[] = [
     meshNames: ["Occipital", "Occipital2", "Occipital.001", "Occipital2.001"],
     name: "Occipital Lobe",
     germanName: "Okzipitallappen",
-    color: "#9C27B0",
+    color: "#0891b2",
     description: "Der Okzipitallappen ist das visuelle Verarbeitungszentrum des Gehirns. Er interpretiert alles, was wir sehen – Farben, Formen, Bewegungen.",
     businessRelevance: [
       "Visuelles Marketing und Grafikdesign",
@@ -82,7 +82,7 @@ const brainRegionsData: BrainRegionInfo[] = [
     meshNames: ["Limbic", "Cingulate", "Insula"],
     name: "Limbic System",
     germanName: "Limbisches System",
-    color: "#E91E63",
+    color: "#14b8a6",
     description: "Das limbische System ist das emotionale Zentrum des Gehirns. Es steuert Emotionen, Motivation, Gedächtnis und das Belohnungssystem.",
     businessRelevance: [
       "Emotionale Kaufentscheidungen verstehen",
@@ -97,7 +97,7 @@ const brainRegionsData: BrainRegionInfo[] = [
     meshNames: ["Cerebellum", "Cerebellum.001"],
     name: "Cerebellum",
     germanName: "Kleinhirn",
-    color: "#00BCD4",
+    color: "#0d9488",
     description: "Das Kleinhirn koordiniert Bewegungen, Gleichgewicht und ist an motorischem Lernen sowie der Automatisierung von Verhaltensweisen beteiligt.",
     businessRelevance: [
       "Gewohnheitsbildung bei Kunden",
@@ -112,7 +112,7 @@ const brainRegionsData: BrainRegionInfo[] = [
     meshNames: ["Brainstem", "Brain Stem", "Medulla"],
     name: "Brainstem",
     germanName: "Hirnstamm",
-    color: "#795548",
+    color: "#115e59",
     description: "Der Hirnstamm steuert lebenswichtige Funktionen wie Atmung, Herzschlag und grundlegende Aufmerksamkeit. Er ist die Brücke zwischen Gehirn und Körper.",
     businessRelevance: [
       "Stressreaktionen in Verhandlungen verstehen",
@@ -404,7 +404,7 @@ export function Brain3DRealistic() {
 
         {/* Canvas */}
         <Canvas
-          camera={{ position: [0, 0, 5], fov: 50 }}
+          camera={{ position: [0, 0, 8], fov: 50 }}
           gl={{ antialias: true, alpha: true }}
           onCreated={() => setIsLoading(false)}
         >
@@ -423,8 +423,8 @@ export function Brain3DRealistic() {
             
             <OrbitControls
               enablePan={false}
-              minDistance={2}
-              maxDistance={15}
+              minDistance={1}
+              maxDistance={50}
               autoRotate={false}
             />
           </Suspense>
