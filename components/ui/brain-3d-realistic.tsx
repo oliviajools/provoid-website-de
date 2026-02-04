@@ -152,16 +152,23 @@ const brainRegionsData: BrainRegionInfo[] = [
 // Helper function to match mesh name to region
 function matchMeshToRegion(meshName: string): BrainRegionInfo | null {
   const baseName = meshName.replace(/_Material[^_]*_\d+$/, '');
+  
+  // First pass: exact matches only (more specific)
+  for (const region of brainRegionsData) {
+    if (region.meshNames.includes(baseName)) {
+      return region;
+    }
+  }
+  
+  // Second pass: partial matches (less specific)
   for (const region of brainRegionsData) {
     const matchesMesh = region.meshNames.some(name => {
-      return baseName === name || 
-             baseName.startsWith(name + '.') || 
-             baseName.startsWith(name + '_') ||
-             name.startsWith(baseName + '.') ||
-             name.startsWith(baseName + '_');
+      return baseName.startsWith(name + '.') || 
+             baseName.startsWith(name + '_');
     });
     if (matchesMesh) return region;
   }
+  
   return null;
 }
 
