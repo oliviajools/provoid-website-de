@@ -205,6 +205,15 @@ function BrainModelLoader({
 }) {
   const { scene } = useGLTF("/models/brain_diagram.glb");
 
+  // Hide labels (Object_11)
+  useEffect(() => {
+    scene.traverse((child) => {
+      if (child instanceof THREE.Mesh && child.name === "Object_11") {
+        child.visible = false;
+      }
+    });
+  }, [scene]);
+
   // Apply highlighting based on selection/hover
   useEffect(() => {
     scene.traverse((child) => {
