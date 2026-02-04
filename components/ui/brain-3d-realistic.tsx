@@ -144,6 +144,25 @@ function BrainModelLoader({
         child.castShadow = true;
         child.receiveShadow = true;
         
+        // Apply PROVOID colors based on mesh name
+        const meshName = child.name.toLowerCase();
+        let newColor: string | null = null;
+        
+        for (const region of brainRegionsData) {
+          const matchesMesh = region.meshNames.some(name => 
+            meshName.includes(name.toLowerCase())
+          );
+          if (matchesMesh) {
+            newColor = region.color;
+            break;
+          }
+        }
+        
+        if (newColor && child.material) {
+          const material = child.material as THREE.MeshStandardMaterial;
+          material.color = new THREE.Color(newColor);
+        }
+        
         // Store original material
         if (!child.userData.originalMaterial) {
           child.userData.originalMaterial = child.material.clone();
