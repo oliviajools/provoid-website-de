@@ -16,21 +16,23 @@ interface BrainRegionInfo {
   businessRelevance: string[];
 }
 
-// Mesh-Namen exakt wie im Original-Modell:
-// Frontal Lobe, Frontal2, Frontal3, Frontal2.001
-// Parietal Lobe, Parietal Lobe.001, Parietal2, Parietal3
-// Parietal Limbic, Temporal Limbic
-// Temporal Lobe
-// Occipital Lobe, Occipital2
-// Corpus Callosum, Corpus Callosum 2
+// Original-Farben aus dem GLB-Modell beibehalten
+// Material.007 -> Frontal Lobe (dunkel-lila)
+// Material.011 -> Frontal2, Frontal3 (lila)
+// Material.004 -> Parietal Lobe (grün)
+// Material.009 -> Parietal2, Parietal Limbic (hellgrün)
+// Material.008 -> Temporal Lobe (orange/gelb)
+// Material.013 -> Temporal Limbic (beige/gelb)
+// Material.006 -> Occipital Lobe (pink/magenta)
+// Material.003 -> Corpus Callosum (schwarz)
 
 const brainRegionsData: BrainRegionInfo[] = [
   {
     id: "frontal",
-    meshNames: ["Frontal Lobe", "Frontal2", "Frontal3", "Frontal2.001"],
+    meshNames: ["Frontal Lobe"],
     name: "Frontal Lobe",
     germanName: "Frontallappen",
-    color: "#22c55e",
+    color: "#5700cc",
     description: "Der Frontallappen ist das Kontrollzentrum des Gehirns. Er ist zuständig für Planung, Entscheidungsfindung, Persönlichkeit und die Steuerung von Impulsen.",
     businessRelevance: [
       "Strategische Entscheidungsfindung in Führungspositionen",
@@ -41,11 +43,26 @@ const brainRegionsData: BrainRegionInfo[] = [
     ]
   },
   {
+    id: "frontal2",
+    meshNames: ["Frontal2", "Frontal3"],
+    name: "Prefrontal Cortex",
+    germanName: "Präfrontaler Cortex",
+    color: "#8d37cc",
+    description: "Der präfrontale Cortex ist für höhere kognitive Funktionen verantwortlich: Arbeitsgedächtnis, Aufmerksamkeit und komplexe Planung.",
+    businessRelevance: [
+      "Komplexe Problemlösung",
+      "Arbeitsgedächtnis und Multitasking",
+      "Impulskontrolle und Selbstregulation",
+      "Zukunftsplanung und Zielsetzung",
+      "Kognitive Flexibilität"
+    ]
+  },
+  {
     id: "parietal",
-    meshNames: ["Parietal Lobe", "Parietal Lobe.001", "Parietal2", "Parietal3"],
+    meshNames: ["Parietal Lobe"],
     name: "Parietal Lobe",
     germanName: "Parietallappen",
-    color: "#a855f7",
+    color: "#0dcc00",
     description: "Der Parietallappen integriert sensorische Informationen und ist entscheidend für räumliche Orientierung, Aufmerksamkeit und die Verarbeitung von Berührungen.",
     businessRelevance: [
       "Räumliches Design und UX-Gestaltung",
@@ -56,11 +73,26 @@ const brainRegionsData: BrainRegionInfo[] = [
     ]
   },
   {
+    id: "parietal-limbic",
+    meshNames: ["Parietal2", "Parietal3", "Parietal Limbic"],
+    name: "Parietal Limbic",
+    germanName: "Parietales Limbisches System",
+    color: "#6bff2c",
+    description: "Die parietalen limbischen Areale verbinden sensorische Verarbeitung mit emotionaler Bewertung und Aufmerksamkeitssteuerung.",
+    businessRelevance: [
+      "Emotionale Aufmerksamkeitssteuerung",
+      "Sensorische Markenerlebnisse",
+      "Körperwahrnehmung und Embodiment",
+      "Intuitive Entscheidungsfindung",
+      "Räumliche Orientierung im Marketing"
+    ]
+  },
+  {
     id: "temporal",
     meshNames: ["Temporal Lobe"],
     name: "Temporal Lobe",
     germanName: "Temporallappen",
-    color: "#f97316",
+    color: "#ccb000",
     description: "Der Temporallappen verarbeitet auditive Informationen, Sprache und ist am Gedächtnis sowie der emotionalen Verarbeitung beteiligt.",
     businessRelevance: [
       "Sprachverarbeitung in Werbebotschaften",
@@ -71,11 +103,26 @@ const brainRegionsData: BrainRegionInfo[] = [
     ]
   },
   {
+    id: "temporal-limbic",
+    meshNames: ["Temporal Limbic"],
+    name: "Temporal Limbic",
+    germanName: "Temporales Limbisches System",
+    color: "#cccb42",
+    description: "Das temporale limbische System ist zentral für emotionale Gedächtnisbildung und die Verarbeitung emotionaler Reize.",
+    businessRelevance: [
+      "Emotionales Gedächtnis und Markenbindung",
+      "Storytelling und emotionale Narrative",
+      "Musik und emotionale Reaktionen",
+      "Gesichtserkennung und Vertrauen",
+      "Langzeitgedächtnis für Marken"
+    ]
+  },
+  {
     id: "occipital",
     meshNames: ["Occipital Lobe", "Occipital2"],
     name: "Occipital Lobe",
     germanName: "Okzipitallappen",
-    color: "#ec4899",
+    color: "#cc008f",
     description: "Der Okzipitallappen ist das visuelle Verarbeitungszentrum des Gehirns. Er interpretiert alles, was wir sehen – Farben, Formen, Bewegungen.",
     businessRelevance: [
       "Visuelles Marketing und Grafikdesign",
@@ -86,26 +133,11 @@ const brainRegionsData: BrainRegionInfo[] = [
     ]
   },
   {
-    id: "limbic",
-    meshNames: ["Parietal Limbic", "Temporal Limbic"],
-    name: "Limbic System",
-    germanName: "Limbisches System",
-    color: "#f0abfc",
-    description: "Das limbische System ist das emotionale Zentrum des Gehirns. Es steuert Emotionen, Motivation, Gedächtnis und das Belohnungssystem.",
-    businessRelevance: [
-      "Emotionale Kaufentscheidungen verstehen",
-      "Markenvertrauen und Loyalität aufbauen",
-      "Belohnungsbasiertes Marketing",
-      "Kundenbindung durch emotionale Erlebnisse",
-      "Mitarbeitermotivation und Engagement"
-    ]
-  },
-  {
     id: "corpus-callosum",
-    meshNames: ["Corpus Callosum", "Corpus Callosum 2"],
+    meshNames: ["Corpus Callosum", "Corpus Callosum 2", "Frontal2.001"],
     name: "Corpus Callosum",
     germanName: "Corpus Callosum",
-    color: "#1e293b",
+    color: "#000000",
     description: "Der Balken verbindet die beiden Gehirnhälften und ermöglicht den Informationsaustausch zwischen ihnen.",
     businessRelevance: [
       "Integration von analytischem und kreativem Denken",
