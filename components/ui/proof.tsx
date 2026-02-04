@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
-import { Brain, Users, Microscope, BookOpen } from "lucide-react";
+import { Brain, Users, Microscope, BookOpen, LucideIcon } from "lucide-react";
 
 export function Proof() {
   const proofItems = [
@@ -48,7 +48,7 @@ export function Proof() {
   );
 }
 
-function ProofCarousel({ items }: { items: { icon: React.ElementType; text: string; description?: string }[] }) {
+function ProofCarousel({ items }: { items: { icon: LucideIcon; text: string; description?: string }[] }) {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
   const [start, setStart] = useState(false);

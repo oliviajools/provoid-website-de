@@ -1,4 +1,4 @@
-import { Brain3D } from "@/components/ui/brain-3d";
+import { Brain3DRealistic } from "@/components/ui/brain-3d-realistic";
 import { Brain, Lightbulb, Target } from "lucide-react";
 
 export const metadata = {
@@ -35,7 +35,7 @@ export default function KnowledgePage() {
       <section className="py-8 md:py-12">
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <Brain3D />
+            <Brain3DRealistic />
           </div>
         </div>
       </section>

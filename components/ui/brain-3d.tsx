@@ -1,8 +1,8 @@
 "use client";
 
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Html, Environment } from "@react-three/drei";
-import { useState, useRef, Suspense } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { OrbitControls, useGLTF, Html, Environment, Center } from "@react-three/drei";
+import { useState, useRef, Suspense, useEffect } from "react";
 import * as THREE from "three";
 
 interface BrainRegion {
