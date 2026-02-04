@@ -8,93 +8,6 @@ interface Message {
   id: string;
   role: "user" | "assistant";
   content: string;
-  brainRegions?: string[];
-}
-
-interface BrainRegionMatch {
-  id: string;
-  name: string;
-  relevance: string;
-}
-
-// Knowledge base for brain region mapping
-const brainKnowledge = {
-  frontal: {
-    id: "frontal-lobe",
-    name: "Frontallappen",
-    keywords: ["entscheidung", "planung", "strategie", "führung", "kontrolle", "willenskraft", "konzentration", "problemlösung", "kreativ", "denken", "logik", "urteil", "persönlichkeit", "motivation", "ziel", "fokus", "aufmerksamkeit", "selbstkontrolle", "impuls"],
-    description: "Zuständig für Planung, Entscheidungsfindung und Impulskontrolle"
-  },
-  parietal: {
-    id: "parietal-lobe",
-    name: "Parietallappen", 
-    keywords: ["raum", "orientierung", "berührung", "haptik", "position", "bewegung", "körper", "tasten", "fühlen", "sensorisch", "navigation", "rechnen", "mathematik", "größe", "form"],
-    description: "Verarbeitet räumliche Informationen und Berührungsreize"
-  },
-  temporal: {
-    id: "temporal-lobe",
-    name: "Temporallappen",
-    keywords: ["sprache", "hören", "musik", "gedächtnis", "erinnerung", "wort", "sprechen", "verstehen", "zuhören", "audio", "klang", "ton", "stimme", "erzählung", "story", "geschichte", "gesicht", "erkennen"],
-    description: "Verarbeitet Sprache, Hören und Gedächtnis"
-  },
-  visual: {
-    id: "visual-cortex",
-    name: "Visueller Kortex",
-    keywords: ["sehen", "bild", "farbe", "form", "visuell", "design", "grafik", "video", "film", "lesen", "text", "logo", "aussehen", "optik", "beobachten", "schauen", "blick", "auge"],
-    description: "Verarbeitet alle visuellen Informationen"
-  },
-  auditory: {
-    id: "auditory-cortex",
-    name: "Auditorischer Cortex",
-    keywords: ["hören", "musik", "sound", "klang", "ton", "stimme", "laut", "geräusch", "podcast", "radio", "jingle", "melodie", "rhythmus"],
-    description: "Verarbeitet akustische Informationen"
-  },
-  cerebellum: {
-    id: "cerebellum",
-    name: "Kleinhirn",
-    keywords: ["bewegung", "koordination", "balance", "gleichgewicht", "motorik", "sport", "geschicklichkeit", "timing", "routine", "gewohnheit", "automatisch", "lernen", "übung", "training"],
-    description: "Koordiniert Bewegungen und motorisches Lernen"
-  },
-  brainstem: {
-    id: "brainstem",
-    name: "Hirnstamm",
-    keywords: ["instinkt", "überleben", "angst", "flucht", "kampf", "stress", "adrenalin", "gefahr", "alarm", "reflex", "atmung", "herzschlag", "basic", "grundlegend", "unbewusst"],
-    description: "Steuert lebenswichtige Funktionen und Urinstinkte"
-  }
-};
-
-function analyzeInput(input: string): BrainRegionMatch[] {
-  const lowerInput = input.toLowerCase();
-  const matches: BrainRegionMatch[] = [];
-  
-  for (const [key, region] of Object.entries(brainKnowledge)) {
-    const matchedKeywords = region.keywords.filter(kw => lowerInput.includes(kw));
-    if (matchedKeywords.length > 0) {
-      matches.push({
-        id: region.id,
-        name: region.name,
-        relevance: region.description
-      });
-    }
-  }
-  
-  return matches;
-}
-
-function generateResponse(input: string, matches: BrainRegionMatch[]): string {
-  if (matches.length === 0) {
-    return "Interessante Frage! Könnten Sie mir mehr Details geben? Beschreiben Sie die Situation, Aufgabe oder das Verhalten genauer, damit ich die relevanten Hirnareale identifizieren kann.\n\nBeispiele:\n• \"Wie treffe ich bessere Kaufentscheidungen?\"\n• \"Warum reagiere ich emotional auf Werbung?\"\n• \"Welches Hirnareal ist beim Lesen aktiv?\"";
-  }
-  
-  let response = "**Basierend auf Ihrer Anfrage sind folgende Hirnareale relevant:**\n\n";
-  
-  matches.forEach((match, index) => {
-    response += `🧠 **${match.name}**\n${match.relevance}\n\n`;
-  });
-  
-  response += "---\n*Klicken Sie auf ein Areal im 3D-Modell oben, um mehr über die Business-Relevanz zu erfahren.*";
-  
-  return response;
 }
 
 export function NeuroChatbot() {
@@ -103,7 +16,7 @@ export function NeuroChatbot() {
     {
       id: "welcome",
       role: "assistant",
-      content: "👋 Hallo! Ich bin der **Neuro-Assistent**.\n\nBeschreiben Sie mir eine Situation, Aufgabe oder ein Verhalten, und ich sage Ihnen, welche Hirnareale dabei aktiv sind.\n\n**Beispiele:**\n• \"Was passiert im Gehirn bei einer Kaufentscheidung?\"\n• \"Welche Areale sind beim Musikhören aktiv?\"\n• \"Warum erinnere ich mich an manche Werbung?\""
+      content: "👋 Hallo! Ich bin der **Neuro-Assistent** von PROVOID.\n\nFragen Sie mich alles über Hirnareale und deren Rolle im Marketing!\n\n**Beispiele:**\n• \"Was passiert im Gehirn bei einer Kaufentscheidung?\"\n• \"Wie funktioniert emotionale Werbung?\"\n• \"Warum wirken bestimmte Farben besser?\""
     }
   ]);
   const [input, setInput] = useState("");
@@ -128,24 +41,40 @@ export function NeuroChatbot() {
       content: input
     };
 
-    setMessages(prev => [...prev, userMessage]);
+    const newMessages = [...messages, userMessage];
+    setMessages(newMessages);
     setInput("");
     setIsTyping(true);
 
-    // Simulate AI thinking
-    await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 1000));
+    try {
+      const response = await fetch("/api/neuro-chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: newMessages.filter(m => m.id !== "welcome").map(m => ({
+            role: m.role,
+            content: m.content
+          }))
+        })
+      });
 
-    const matches = analyzeInput(input);
-    const response = generateResponse(input, matches);
+      const data = await response.json();
+      
+      const assistantMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        role: "assistant",
+        content: data.response || data.error || "Entschuldigung, es gab einen Fehler."
+      };
 
-    const assistantMessage: Message = {
-      id: (Date.now() + 1).toString(),
-      role: "assistant",
-      content: response,
-      brainRegions: matches.map(m => m.id)
-    };
-
-    setMessages(prev => [...prev, assistantMessage]);
+      setMessages(prev => [...prev, assistantMessage]);
+    } catch (error) {
+      setMessages(prev => [...prev, {
+        id: (Date.now() + 1).toString(),
+        role: "assistant",
+        content: "Entschuldigung, ich konnte keine Verbindung herstellen. Bitte versuchen Sie es erneut."
+      }]);
+    }
+    
     setIsTyping(false);
   };
 
