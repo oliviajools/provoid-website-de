@@ -16,40 +16,18 @@ interface BrainRegionInfo {
   businessRelevance: string[];
 }
 
+// Mesh-Namen exakt wie im Original-Modell:
+// Frontal Lobe, Frontal2, Frontal3, Frontal2.001
+// Parietal Lobe, Parietal Lobe.001, Parietal2, Parietal3
+// Parietal Limbic, Temporal Limbic
+// Temporal Lobe
+// Occipital Lobe, Occipital2
+// Corpus Callosum, Corpus Callosum 2
+
 const brainRegionsData: BrainRegionInfo[] = [
   {
-    id: "corpus-callosum",
-    meshNames: ["Corpus Callosum"],
-    name: "Corpus Callosum",
-    germanName: "Corpus Callosum",
-    color: "#1e293b",
-    description: "Der Balken verbindet die beiden Gehirnhälften und ermöglicht den Informationsaustausch zwischen ihnen.",
-    businessRelevance: [
-      "Integration von analytischem und kreativem Denken",
-      "Ganzheitliche Entscheidungsfindung",
-      "Zusammenarbeit zwischen Abteilungen",
-      "Verbindung von Logik und Intuition",
-      "Synergien in Teams nutzen"
-    ]
-  },
-  {
-    id: "limbic",
-    meshNames: ["Parietal Limbic", "Temporal Limbic"],
-    name: "Limbic System",
-    germanName: "Limbisches System",
-    color: "#f0abfc",
-    description: "Das limbische System ist das emotionale Zentrum des Gehirns. Es steuert Emotionen, Motivation, Gedächtnis und das Belohnungssystem.",
-    businessRelevance: [
-      "Emotionale Kaufentscheidungen verstehen",
-      "Markenvertrauen und Loyalität aufbauen",
-      "Belohnungsbasiertes Marketing",
-      "Kundenbindung durch emotionale Erlebnisse",
-      "Mitarbeitermotivation und Engagement"
-    ]
-  },
-  {
     id: "frontal",
-    meshNames: ["Frontal Lobe", "Frontal2", "Frontal3"],
+    meshNames: ["Frontal Lobe", "Frontal2", "Frontal3", "Frontal2.001"],
     name: "Frontal Lobe",
     germanName: "Frontallappen",
     color: "#22c55e",
@@ -64,7 +42,7 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "parietal",
-    meshNames: ["Parietal Lobe", "Parietal2"],
+    meshNames: ["Parietal Lobe", "Parietal Lobe.001", "Parietal2", "Parietal3"],
     name: "Parietal Lobe",
     germanName: "Parietallappen",
     color: "#a855f7",
@@ -108,33 +86,33 @@ const brainRegionsData: BrainRegionInfo[] = [
     ]
   },
   {
-    id: "cerebellum",
-    meshNames: ["Cerebellum"],
-    name: "Cerebellum",
-    germanName: "Kleinhirn",
-    color: "#eab308",
-    description: "Das Kleinhirn koordiniert Bewegungen, Gleichgewicht und ist an motorischem Lernen sowie der Automatisierung von Verhaltensweisen beteiligt.",
+    id: "limbic",
+    meshNames: ["Parietal Limbic", "Temporal Limbic"],
+    name: "Limbic System",
+    germanName: "Limbisches System",
+    color: "#f0abfc",
+    description: "Das limbische System ist das emotionale Zentrum des Gehirns. Es steuert Emotionen, Motivation, Gedächtnis und das Belohnungssystem.",
     businessRelevance: [
-      "Gewohnheitsbildung bei Kunden",
-      "Automatisierte Verhaltensweisen nutzen",
-      "Motorisches Lernen in Training",
-      "Timing und Rhythmus in Kommunikation",
-      "Konsistenz in Markenerlebnissen"
+      "Emotionale Kaufentscheidungen verstehen",
+      "Markenvertrauen und Loyalität aufbauen",
+      "Belohnungsbasiertes Marketing",
+      "Kundenbindung durch emotionale Erlebnisse",
+      "Mitarbeitermotivation und Engagement"
     ]
   },
   {
-    id: "brainstem",
-    meshNames: ["Brainstem", "Brain Stem", "Medulla", "Stem"],
-    name: "Brainstem",
-    germanName: "Hirnstamm",
-    color: "#78716c",
-    description: "Der Hirnstamm steuert lebenswichtige Funktionen wie Atmung, Herzschlag und grundlegende Aufmerksamkeit. Er ist die Brücke zwischen Gehirn und Körper.",
+    id: "corpus-callosum",
+    meshNames: ["Corpus Callosum", "Corpus Callosum 2"],
+    name: "Corpus Callosum",
+    germanName: "Corpus Callosum",
+    color: "#1e293b",
+    description: "Der Balken verbindet die beiden Gehirnhälften und ermöglicht den Informationsaustausch zwischen ihnen.",
     businessRelevance: [
-      "Stressreaktionen in Verhandlungen verstehen",
-      "Fight-or-Flight-Reaktionen erkennen",
-      "Grundlegende Aufmerksamkeit wecken",
-      "Arousal und Aktivierung steuern",
-      "Instinktive Reaktionen auf Marketing"
+      "Integration von analytischem und kreativem Denken",
+      "Ganzheitliche Entscheidungsfindung",
+      "Zusammenarbeit zwischen Abteilungen",
+      "Verbindung von Logik und Intuition",
+      "Synergien in Teams nutzen"
     ]
   }
 ];
@@ -160,12 +138,14 @@ function BrainModelLoader({
         child.receiveShadow = true;
         
         // Apply PROVOID colors based on mesh name
-        const meshName = child.name.toLowerCase();
+        // Mesh names in GLB: "Frontal Lobe_Material.007_0" -> extract base name before "_Material"
+        const fullMeshName = child.name;
+        const baseName = fullMeshName.split('_Material')[0];
         let newColor: string | null = null;
         
         for (const region of brainRegionsData) {
           const matchesMesh = region.meshNames.some(name => 
-            meshName.includes(name.toLowerCase())
+            baseName === name || baseName.startsWith(name + '_') || baseName.startsWith(name + '.')
           );
           if (matchesMesh) {
             newColor = region.color;
@@ -189,14 +169,15 @@ function BrainModelLoader({
   useEffect(() => {
     scene.traverse((child) => {
       if (child instanceof THREE.Mesh) {
-        const meshName = child.name.toLowerCase();
+        const fullMeshName = child.name;
+        const baseName = fullMeshName.split('_Material')[0];
         let isPartOfSelected = false;
         let isPartOfHovered = false;
 
         // Check if this mesh belongs to any region
         for (const region of brainRegionsData) {
           const matchesMesh = region.meshNames.some(name => 
-            meshName.includes(name.toLowerCase())
+            baseName === name || baseName.startsWith(name + '_') || baseName.startsWith(name + '.')
           );
           
           if (matchesMesh) {
@@ -233,11 +214,12 @@ function BrainModelLoader({
   const handleClick = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
     const mesh = event.object as THREE.Mesh;
-    const meshName = mesh.name.toLowerCase();
+    const fullMeshName = mesh.name;
+    const baseName = fullMeshName.split('_Material')[0];
 
     for (const region of brainRegionsData) {
       const matchesMesh = region.meshNames.some(name => 
-        meshName.includes(name.toLowerCase())
+        baseName === name || baseName.startsWith(name + '_') || baseName.startsWith(name + '.')
       );
       if (matchesMesh) {
         onSelectRegion(selectedRegion === region.id ? null : region.id);
@@ -249,12 +231,13 @@ function BrainModelLoader({
   const handlePointerOver = (event: ThreeEvent<PointerEvent>) => {
     event.stopPropagation();
     const mesh = event.object as THREE.Mesh;
-    const meshName = mesh.name.toLowerCase();
+    const fullMeshName = mesh.name;
+    const baseName = fullMeshName.split('_Material')[0];
     document.body.style.cursor = "pointer";
 
     for (const region of brainRegionsData) {
       const matchesMesh = region.meshNames.some(name => 
-        meshName.includes(name.toLowerCase())
+        baseName === name || baseName.startsWith(name + '_') || baseName.startsWith(name + '.')
       );
       if (matchesMesh) {
         onHoverRegion(region.id);
