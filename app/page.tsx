@@ -1,3 +1,5 @@
+"use client";
+
 import { AboutTeaser } from "@/components/ui/about-teaser";
 import { Success } from "@/components/ui/success";
 import { Stats } from "@/components/ui/stats";
@@ -8,6 +10,8 @@ import { Proof } from "@/components/ui/proof";
 import { FlipWords } from "@/components/ui/flip-words";
 import { NewsTeaser } from "@/components/ui/news-teaser";
 import { BlogTeaser } from "@/components/ui/blog-teaser";
+import { NeuroAtlasTeaser } from "@/components/ui/neuro-atlas-teaser";
+import { NeuroChatbot } from "@/components/ui/neuro-chatbot";
 import Image from "next/image";
 
 export default function Home() {
@@ -117,6 +121,9 @@ export default function Home() {
       {/* Blog Teaser - Neuroverse */}
       <BlogTeaser />
 
+      {/* Neuro-Atlas Interactive Section */}
+      <NeuroAtlasTeaser />
+
       {/* About teaser (concise) */}
       <AboutTeaser />
 
@@ -131,6 +138,9 @@ export default function Home() {
 
       {/* Final CTA (SB7: Clear next step) */}
       <FinalCta />
+
+      {/* Neuro Chatbot */}
+      <NeuroChatbot />
     </div>
   );
 }
