@@ -2,7 +2,7 @@
 
 import { Canvas, ThreeEvent } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Center } from "@react-three/drei";
-import { useState, useRef, Suspense, useEffect } from "react";
+import { useState, useRef, Suspense, useEffect, useMemo } from "react";
 import * as THREE from "three";
 import { Brain, ChevronRight, X, RotateCcw, ZoomIn, Mouse } from "lucide-react";
 
@@ -301,15 +301,29 @@ function BrainModelLoader({
     onHoverRegion(null);
   };
 
+  // Clone scene once and make all meshes interactive
+  const clonedScene = useMemo(() => {
+    const clone = scene.clone(true);
+    clone.traverse((child) => {
+      if (child instanceof THREE.Mesh) {
+        // Make mesh raycastable
+        child.raycast = THREE.Mesh.prototype.raycast;
+      }
+    });
+    return clone;
+  }, [scene]);
+
   return (
     <Center>
-      <group ref={groupRef} scale={0.002} rotation={[0, Math.PI, 0]}>
-        <primitive 
-          object={scene} 
-          onClick={handleClick}
-          onPointerOver={handlePointerOver}
-          onPointerOut={handlePointerOut}
-        />
+      <group 
+        ref={groupRef} 
+        scale={0.002} 
+        rotation={[0, Math.PI, 0]}
+        onClick={handleClick}
+        onPointerOver={handlePointerOver}
+        onPointerOut={handlePointerOut}
+      >
+        <primitive object={clonedScene} />
       </group>
     </Center>
   );
