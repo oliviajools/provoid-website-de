@@ -18,6 +18,21 @@ interface BrainRegionInfo {
 
 const brainRegionsData: BrainRegionInfo[] = [
   {
+    id: "limbic",
+    meshNames: ["Limbic", "Cingulate", "Insula", "Gyrus"],
+    name: "Limbic System",
+    germanName: "Limbisches System",
+    color: "#10b981",
+    description: "Das limbische System ist das emotionale Zentrum des Gehirns. Es steuert Emotionen, Motivation, Gedächtnis und das Belohnungssystem.",
+    businessRelevance: [
+      "Emotionale Kaufentscheidungen verstehen",
+      "Markenvertrauen und Loyalität aufbauen",
+      "Belohnungsbasiertes Marketing",
+      "Kundenbindung durch emotionale Erlebnisse",
+      "Mitarbeitermotivation und Engagement"
+    ]
+  },
+  {
     id: "frontal",
     meshNames: ["Frontal"],
     name: "Frontal Lobe",
@@ -75,21 +90,6 @@ const brainRegionsData: BrainRegionInfo[] = [
       "Logo-Gestaltung und Wiedererkennung",
       "Eye-Tracking-Optimierung",
       "Visuelle Hierarchie auf Websites"
-    ]
-  },
-  {
-    id: "limbic",
-    meshNames: ["Limbic", "Cingulate", "Insula", "Gyrus"],
-    name: "Limbic System",
-    germanName: "Limbisches System",
-    color: "#10b981",
-    description: "Das limbische System ist das emotionale Zentrum des Gehirns. Es steuert Emotionen, Motivation, Gedächtnis und das Belohnungssystem.",
-    businessRelevance: [
-      "Emotionale Kaufentscheidungen verstehen",
-      "Markenvertrauen und Loyalität aufbauen",
-      "Belohnungsbasiertes Marketing",
-      "Kundenbindung durch emotionale Erlebnisse",
-      "Mitarbeitermotivation und Engagement"
     ]
   },
   {
