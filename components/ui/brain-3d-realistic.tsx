@@ -183,7 +183,7 @@ function BrainModelLoader({
   onSelectRegion: (id: string | null) => void;
   onHoverRegion: (id: string | null) => void;
 }) {
-  const { scene } = useGLTF("/models/color_coded_labeled_major_lobes_of_the_brain_old.glb");
+  const { scene } = useGLTF("/models/brain_diagram.glb");
 
   // Apply highlighting based on selection/hover
   useEffect(() => {
@@ -245,7 +245,7 @@ function BrainModelLoader({
 
   return (
     <Center>
-      <group scale={0.002} rotation={[0, Math.PI, 0]}>
+      <group scale={1} rotation={[0, Math.PI, 0]}>
         <primitive 
           object={scene} 
           onClick={handleClick}
@@ -444,4 +444,4 @@ export function Brain3DRealistic() {
 }
 
 // Preload the model
-useGLTF.preload("/models/color_coded_labeled_major_lobes_of_the_brain.glb");
+useGLTF.preload("/models/brain_diagram.glb");
