@@ -162,14 +162,14 @@ function BrainModelLoader({
 
   // Hide labels (Object_11) and apply PROVOID colors
   useEffect(() => {
-    // PROVOID color variations (cyan/teal palette)
+    // Cyan to Purple gradient palette (like neural network visualization)
     const meshColors: Record<string, string> = {
-      "Object_9": "#22d3ee",   // Frontallappen - Cyan
-      "Object_15": "#06b6d4",  // Parietallappen - Darker Cyan
-      "Object_17": "#14b8a6",  // Temporallappen - Teal
-      "Object_13": "#0891b2",  // Visueller Kortex - Dark Cyan
-      "Object_7": "#0d9488",   // Kleinhirn - Dark Teal
-      "Object_5": "#475569",   // Hirnstamm - Slate Gray
+      "Object_9": "#00d4ff",   // Frontallappen - Bright Cyan
+      "Object_15": "#7c3aed",  // Parietallappen - Purple
+      "Object_17": "#3b82f6",  // Temporallappen - Blue
+      "Object_13": "#a855f7",  // Visueller Kortex - Violet
+      "Object_7": "#8b5cf6",   // Kleinhirn - Purple
+      "Object_5": "#6366f1",   // Hirnstamm - Indigo
     };
 
     scene.traverse((child) => {
