@@ -106,36 +106,6 @@ const brainRegionsData: BrainRegionInfo[] = [
     ]
   },
   {
-    id: "olfactory-bulb",
-    meshNames: [],
-    name: "Olfactory Bulb",
-    germanName: "Riechkolben",
-    color: "#22d3ee",
-    description: "Der Riechkolben verarbeitet Geruchsinformationen und ist direkt mit dem limbischen System verbunden – daher die starke emotionale Wirkung von Düften.",
-    businessRelevance: [
-      "Duftmarketing im Retail",
-      "Geruchsbasierte Markenerlebnisse",
-      "Emotionale Trigger durch Düfte",
-      "Erinnerungen durch Gerüche aktivieren",
-      "Multisensorisches Branding"
-    ]
-  },
-  {
-    id: "optic-nerve",
-    meshNames: [],
-    name: "Optic Nerve",
-    germanName: "Sehnerv",
-    color: "#22d3ee",
-    description: "Der Sehnerv leitet visuelle Informationen von der Netzhaut zum Gehirn. Er ist der erste Schritt in der visuellen Verarbeitung.",
-    businessRelevance: [
-      "Erste visuelle Eindrücke",
-      "Aufmerksamkeit und Blickführung",
-      "Schnelle visuelle Verarbeitung",
-      "Eye-Tracking-Optimierung",
-      "Above-the-fold-Design"
-    ]
-  },
-  {
     id: "cerebellum",
     meshNames: ["Object_7"],
     name: "Cerebellum",
