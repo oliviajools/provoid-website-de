@@ -301,18 +301,6 @@ function BrainModelLoader({
     onHoverRegion(null);
   };
 
-  // Clone scene once and make all meshes interactive
-  const clonedScene = useMemo(() => {
-    const clone = scene.clone(true);
-    clone.traverse((child) => {
-      if (child instanceof THREE.Mesh) {
-        // Make mesh raycastable
-        child.raycast = THREE.Mesh.prototype.raycast;
-      }
-    });
-    return clone;
-  }, [scene]);
-
   return (
     <Center>
       <group 
@@ -323,7 +311,7 @@ function BrainModelLoader({
         onPointerOver={handlePointerOver}
         onPointerOut={handlePointerOut}
       >
-        <primitive object={clonedScene} />
+        <primitive object={scene} />
       </group>
     </Center>
   );
