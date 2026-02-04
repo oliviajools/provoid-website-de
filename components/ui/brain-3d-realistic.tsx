@@ -165,90 +165,6 @@ function matchMeshToRegion(meshName: string): BrainRegionInfo | null {
   return null;
 }
 
-// Individual mesh component with its own event handlers
-function InteractiveMesh({ 
-  mesh, 
-  selectedRegion, 
-  hoveredRegion,
-  onSelectRegion,
-  onHoverRegion
-}: {
-  mesh: THREE.Mesh;
-  selectedRegion: string | null;
-  hoveredRegion: string | null;
-  onSelectRegion: (id: string | null) => void;
-  onHoverRegion: (id: string | null) => void;
-}) {
-  const region = useMemo(() => matchMeshToRegion(mesh.name), [mesh.name]);
-  
-  const material = useMemo(() => {
-    const mat = (mesh.material as THREE.MeshStandardMaterial).clone();
-    if (region) {
-      mat.color = new THREE.Color(region.color);
-    }
-    return mat;
-  }, [mesh.material, region]);
-
-  useEffect(() => {
-    if (!region) return;
-    
-    if (region.id === selectedRegion) {
-      material.emissive = new THREE.Color("#22d3ee");
-      material.emissiveIntensity = 0.5;
-      material.opacity = 1;
-      material.transparent = false;
-    } else if (region.id === hoveredRegion) {
-      material.emissive = new THREE.Color("#22d3ee");
-      material.emissiveIntensity = 0.3;
-      material.opacity = 1;
-      material.transparent = false;
-    } else if (selectedRegion) {
-      material.emissive = new THREE.Color("#000000");
-      material.emissiveIntensity = 0;
-      material.opacity = 0.3;
-      material.transparent = true;
-    } else {
-      material.emissive = new THREE.Color("#000000");
-      material.emissiveIntensity = 0;
-      material.opacity = 1;
-      material.transparent = false;
-    }
-  }, [material, region, selectedRegion, hoveredRegion]);
-
-  const handleClick = (event: ThreeEvent<MouseEvent>) => {
-    event.stopPropagation();
-    if (region) {
-      onSelectRegion(selectedRegion === region.id ? null : region.id);
-    }
-  };
-
-  const handlePointerOver = (event: ThreeEvent<PointerEvent>) => {
-    event.stopPropagation();
-    document.body.style.cursor = "pointer";
-    if (region) {
-      onHoverRegion(region.id);
-    }
-  };
-
-  const handlePointerOut = () => {
-    document.body.style.cursor = "default";
-    onHoverRegion(null);
-  };
-
-  return (
-    <mesh
-      geometry={mesh.geometry}
-      material={material}
-      position={mesh.position}
-      rotation={mesh.rotation}
-      scale={mesh.scale}
-      onClick={handleClick}
-      onPointerOver={handlePointerOver}
-      onPointerOut={handlePointerOut}
-    />
-  );
-}
-
 function BrainModelLoader({ 
   selectedRegion, 
   hoveredRegion,
@@ -261,31 +177,74 @@ function BrainModelLoader({
   onHoverRegion: (id: string | null) => void;
 }) {
   const { scene } = useGLTF("/models/color_coded_labeled_major_lobes_of_the_brain_old.glb");
-  
-  // Extract all meshes from the scene
-  const meshes = useMemo(() => {
-    const result: THREE.Mesh[] = [];
+
+  // Apply highlighting based on selection/hover
+  useEffect(() => {
     scene.traverse((child) => {
       if (child instanceof THREE.Mesh) {
-        result.push(child);
+        const region = matchMeshToRegion(child.name);
+        if (!region) return;
+        
+        const material = child.material as THREE.MeshStandardMaterial;
+        
+        if (region.id === selectedRegion) {
+          material.emissive = new THREE.Color("#22d3ee");
+          material.emissiveIntensity = 0.5;
+          material.opacity = 1;
+          material.transparent = false;
+        } else if (region.id === hoveredRegion) {
+          material.emissive = new THREE.Color("#22d3ee");
+          material.emissiveIntensity = 0.3;
+          material.opacity = 1;
+          material.transparent = false;
+        } else if (selectedRegion) {
+          material.emissive = new THREE.Color("#000000");
+          material.emissiveIntensity = 0;
+          material.opacity = 0.3;
+          material.transparent = true;
+        } else {
+          material.emissive = new THREE.Color("#000000");
+          material.emissiveIntensity = 0;
+          material.opacity = 1;
+          material.transparent = false;
+        }
       }
     });
-    return result;
-  }, [scene]);
+  }, [scene, selectedRegion, hoveredRegion]);
+
+  const handleClick = (event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
+    const mesh = event.object as THREE.Mesh;
+    const region = matchMeshToRegion(mesh.name);
+    if (region) {
+      onSelectRegion(selectedRegion === region.id ? null : region.id);
+    }
+  };
+
+  const handlePointerOver = (event: ThreeEvent<PointerEvent>) => {
+    event.stopPropagation();
+    const mesh = event.object as THREE.Mesh;
+    const region = matchMeshToRegion(mesh.name);
+    document.body.style.cursor = "pointer";
+    if (region) {
+      onHoverRegion(region.id);
+    }
+  };
+
+  const handlePointerOut = () => {
+    document.body.style.cursor = "default";
+    onHoverRegion(null);
+  };
 
   return (
     <Center>
       <group scale={0.002} rotation={[0, Math.PI, 0]}>
-        {meshes.map((mesh, index) => (
-          <InteractiveMesh
-            key={`${mesh.name}-${index}`}
-            mesh={mesh}
-            selectedRegion={selectedRegion}
-            hoveredRegion={hoveredRegion}
-            onSelectRegion={onSelectRegion}
-            onHoverRegion={onHoverRegion}
-          />
-        ))}
+        <primitive 
+          object={scene} 
+          onClick={handleClick}
+          onPointerOver={handlePointerOver}
+          onPointerOut={handlePointerOut}
+        />
       </group>
     </Center>
   );
