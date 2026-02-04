@@ -159,33 +159,40 @@ function BrainModelLoader({
   // Apply highlighting based on selection/hover
   useEffect(() => {
     scene.traverse((child) => {
-      if (child instanceof THREE.Mesh) {
+      if (child instanceof THREE.Mesh && child.material) {
         const region = matchMeshToRegion(child.name);
         if (!region) return;
         
-        const material = child.material as THREE.MeshStandardMaterial;
+        // Handle both single material and material array
+        const materials = Array.isArray(child.material) ? child.material : [child.material];
         
-        if (region.id === selectedRegion) {
-          material.emissive = new THREE.Color("#22d3ee");
-          material.emissiveIntensity = 0.5;
-          material.opacity = 1;
-          material.transparent = false;
-        } else if (region.id === hoveredRegion) {
-          material.emissive = new THREE.Color("#22d3ee");
-          material.emissiveIntensity = 0.3;
-          material.opacity = 1;
-          material.transparent = false;
-        } else if (selectedRegion) {
-          material.emissive = new THREE.Color("#000000");
-          material.emissiveIntensity = 0;
-          material.opacity = 0.3;
-          material.transparent = true;
-        } else {
-          material.emissive = new THREE.Color("#000000");
-          material.emissiveIntensity = 0;
-          material.opacity = 1;
-          material.transparent = false;
-        }
+        materials.forEach((mat) => {
+          if (mat && 'emissive' in mat) {
+            const material = mat as THREE.MeshStandardMaterial;
+            
+            if (region.id === selectedRegion) {
+              material.emissive = new THREE.Color("#22d3ee");
+              material.emissiveIntensity = 0.5;
+              material.opacity = 1;
+              material.transparent = false;
+            } else if (region.id === hoveredRegion) {
+              material.emissive = new THREE.Color("#22d3ee");
+              material.emissiveIntensity = 0.3;
+              material.opacity = 1;
+              material.transparent = false;
+            } else if (selectedRegion) {
+              material.emissive = new THREE.Color("#000000");
+              material.emissiveIntensity = 0;
+              material.opacity = 0.3;
+              material.transparent = true;
+            } else {
+              material.emissive = new THREE.Color("#000000");
+              material.emissiveIntensity = 0;
+              material.opacity = 1;
+              material.transparent = false;
+            }
+          }
+        });
       }
     });
   }, [scene, selectedRegion, hoveredRegion]);
