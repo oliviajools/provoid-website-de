@@ -404,7 +404,7 @@ export function Brain3DRealistic() {
 
         {/* Canvas */}
         <Canvas
-          camera={{ position: [0, 0, 4], fov: 45 }}
+          camera={{ position: [0, 0, 6], fov: 45 }}
           gl={{ antialias: true, alpha: true }}
           onCreated={() => setIsLoading(false)}
         >
@@ -423,8 +423,8 @@ export function Brain3DRealistic() {
             
             <OrbitControls
               enablePan={false}
-              minDistance={2}
-              maxDistance={6}
+              minDistance={3}
+              maxDistance={12}
               autoRotate={!selectedRegion && !hoveredRegion}
               autoRotateSpeed={0.5}
             />
