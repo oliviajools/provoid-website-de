@@ -26,13 +26,14 @@ interface BrainRegionInfo {
 // Material.006 -> Occipital Lobe (pink/magenta)
 // Material.003 -> Corpus Callosum (schwarz)
 
+// Neue Mesh-Namen für brain_diagram.glb: Object_5, Object_7, Object_9, Object_11, Object_13, Object_15, Object_17
 const brainRegionsData: BrainRegionInfo[] = [
   {
-    id: "frontal",
-    meshNames: ["Frontal Lobe"],
+    id: "region-1",
+    meshNames: ["Object_5"],
     name: "Frontal Lobe",
     germanName: "Frontallappen",
-    color: "#5700cc",
+    color: "#22d3ee",
     description: "Der Frontallappen ist das Kontrollzentrum des Gehirns. Er ist zuständig für Planung, Entscheidungsfindung, Persönlichkeit und die Steuerung von Impulsen.",
     businessRelevance: [
       "Strategische Entscheidungsfindung in Führungspositionen",
@@ -43,26 +44,11 @@ const brainRegionsData: BrainRegionInfo[] = [
     ]
   },
   {
-    id: "frontal2",
-    meshNames: ["Frontal2", "Frontal3"],
-    name: "Prefrontal Cortex",
-    germanName: "Präfrontaler Cortex",
-    color: "#8d37cc",
-    description: "Der präfrontale Cortex ist für höhere kognitive Funktionen verantwortlich: Arbeitsgedächtnis, Aufmerksamkeit und komplexe Planung.",
-    businessRelevance: [
-      "Komplexe Problemlösung",
-      "Arbeitsgedächtnis und Multitasking",
-      "Impulskontrolle und Selbstregulation",
-      "Zukunftsplanung und Zielsetzung",
-      "Kognitive Flexibilität"
-    ]
-  },
-  {
-    id: "parietal",
-    meshNames: ["Parietal Lobe", "Parietal Lobe.001"],
+    id: "region-2",
+    meshNames: ["Object_7"],
     name: "Parietal Lobe",
     germanName: "Parietallappen",
-    color: "#0dcc00",
+    color: "#22d3ee",
     description: "Der Parietallappen integriert sensorische Informationen und ist entscheidend für räumliche Orientierung, Aufmerksamkeit und die Verarbeitung von Berührungen.",
     businessRelevance: [
       "Räumliches Design und UX-Gestaltung",
@@ -73,26 +59,11 @@ const brainRegionsData: BrainRegionInfo[] = [
     ]
   },
   {
-    id: "parietal-limbic",
-    meshNames: ["Parietal2", "Parietal3", "Parietal Limbic", "Parietal3_Material1"],
-    name: "Parietal Limbic",
-    germanName: "Parietales Limbisches System",
-    color: "#6bff2c",
-    description: "Die parietalen limbischen Areale verbinden sensorische Verarbeitung mit emotionaler Bewertung und Aufmerksamkeitssteuerung.",
-    businessRelevance: [
-      "Emotionale Aufmerksamkeitssteuerung",
-      "Sensorische Markenerlebnisse",
-      "Körperwahrnehmung und Embodiment",
-      "Intuitive Entscheidungsfindung",
-      "Räumliche Orientierung im Marketing"
-    ]
-  },
-  {
-    id: "temporal",
-    meshNames: ["Temporal Lobe"],
+    id: "region-3",
+    meshNames: ["Object_9"],
     name: "Temporal Lobe",
     germanName: "Temporallappen",
-    color: "#ccb000",
+    color: "#22d3ee",
     description: "Der Temporallappen verarbeitet auditive Informationen, Sprache und ist am Gedächtnis sowie der emotionalen Verarbeitung beteiligt.",
     businessRelevance: [
       "Sprachverarbeitung in Werbebotschaften",
@@ -103,26 +74,24 @@ const brainRegionsData: BrainRegionInfo[] = [
     ]
   },
   {
-    id: "temporal-limbic",
-    meshNames: ["Temporal Limbic"],
-    name: "Temporal Limbic",
-    germanName: "Temporales Limbisches System",
-    color: "#cccb42",
-    description: "Das temporale limbische System ist zentral für emotionale Gedächtnisbildung und die Verarbeitung emotionaler Reize.",
+    id: "region-4",
+    meshNames: ["Object_11"],
+    name: "Labels",
+    germanName: "Beschriftungen",
+    color: "#22d3ee",
+    description: "Beschriftungen und Markierungen des Gehirnmodells.",
     businessRelevance: [
-      "Emotionales Gedächtnis und Markenbindung",
-      "Storytelling und emotionale Narrative",
-      "Musik und emotionale Reaktionen",
-      "Gesichtserkennung und Vertrauen",
-      "Langzeitgedächtnis für Marken"
+      "Orientierung und Navigation",
+      "Visuelle Kommunikation",
+      "Informationsarchitektur"
     ]
   },
   {
-    id: "occipital",
-    meshNames: ["Occipital Lobe", "Occipital2"],
+    id: "region-5",
+    meshNames: ["Object_13"],
     name: "Occipital Lobe",
     germanName: "Okzipitallappen",
-    color: "#cc008f",
+    color: "#22d3ee",
     description: "Der Okzipitallappen ist das visuelle Verarbeitungszentrum des Gehirns. Er interpretiert alles, was wir sehen – Farben, Formen, Bewegungen.",
     businessRelevance: [
       "Visuelles Marketing und Grafikdesign",
@@ -133,42 +102,44 @@ const brainRegionsData: BrainRegionInfo[] = [
     ]
   },
   {
-    id: "corpus-callosum",
-    meshNames: ["Corpus Callosum", "Corpus Callosum 2", "Frontal2.001"],
-    name: "Corpus Callosum",
-    germanName: "Corpus Callosum",
-    color: "#000000",
-    description: "Der Balken verbindet die beiden Gehirnhälften und ermöglicht den Informationsaustausch zwischen ihnen.",
+    id: "region-6",
+    meshNames: ["Object_15"],
+    name: "Cerebellum",
+    germanName: "Kleinhirn",
+    color: "#22d3ee",
+    description: "Das Kleinhirn koordiniert Bewegungen und ist für Gleichgewicht, Feinmotorik und motorisches Lernen zuständig.",
     businessRelevance: [
-      "Integration von analytischem und kreativem Denken",
-      "Ganzheitliche Entscheidungsfindung",
-      "Zusammenarbeit zwischen Abteilungen",
-      "Verbindung von Logik und Intuition",
-      "Synergien in Teams nutzen"
+      "Automatisierte Verhaltensweisen",
+      "Gewohnheitsbildung bei Kunden",
+      "Motorisches Lernen und Training",
+      "Koordination von Abläufen",
+      "Feinabstimmung von Prozessen"
+    ]
+  },
+  {
+    id: "region-7",
+    meshNames: ["Object_17"],
+    name: "Brainstem",
+    germanName: "Hirnstamm",
+    color: "#22d3ee",
+    description: "Der Hirnstamm steuert lebenswichtige Funktionen wie Atmung, Herzschlag und grundlegende Reflexe.",
+    businessRelevance: [
+      "Grundlegende Bedürfnisse und Instinkte",
+      "Fight-or-Flight-Reaktionen",
+      "Unbewusste Entscheidungsprozesse",
+      "Stressreaktionen verstehen",
+      "Basisemotionen im Marketing"
     ]
   }
 ];
 
 // Helper function to match mesh name to region
 function matchMeshToRegion(meshName: string): BrainRegionInfo | null {
-  const baseName = meshName.replace(/_Material[^_]*_\d+$/, '');
-  
-  // First pass: exact matches only (more specific)
   for (const region of brainRegionsData) {
-    if (region.meshNames.includes(baseName)) {
+    if (region.meshNames.includes(meshName)) {
       return region;
     }
   }
-  
-  // Second pass: partial matches (less specific)
-  for (const region of brainRegionsData) {
-    const matchesMesh = region.meshNames.some(name => {
-      return baseName.startsWith(name + '.') || 
-             baseName.startsWith(name + '_');
-    });
-    if (matchesMesh) return region;
-  }
-  
   return null;
 }
 
