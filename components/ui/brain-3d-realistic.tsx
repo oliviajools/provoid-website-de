@@ -18,11 +18,26 @@ interface BrainRegionInfo {
 
 const brainRegionsData: BrainRegionInfo[] = [
   {
+    id: "corpus-callosum",
+    meshNames: ["Corpus Callosum"],
+    name: "Corpus Callosum",
+    germanName: "Corpus Callosum",
+    color: "#1e293b",
+    description: "Der Balken verbindet die beiden Gehirnhälften und ermöglicht den Informationsaustausch zwischen ihnen.",
+    businessRelevance: [
+      "Integration von analytischem und kreativem Denken",
+      "Ganzheitliche Entscheidungsfindung",
+      "Zusammenarbeit zwischen Abteilungen",
+      "Verbindung von Logik und Intuition",
+      "Synergien in Teams nutzen"
+    ]
+  },
+  {
     id: "limbic",
-    meshNames: ["Limbic", "Cingulate", "Insula", "Gyrus"],
+    meshNames: ["Parietal Limbic", "Temporal Limbic"],
     name: "Limbic System",
     germanName: "Limbisches System",
-    color: "#10b981",
+    color: "#f0abfc",
     description: "Das limbische System ist das emotionale Zentrum des Gehirns. Es steuert Emotionen, Motivation, Gedächtnis und das Belohnungssystem.",
     businessRelevance: [
       "Emotionale Kaufentscheidungen verstehen",
@@ -34,10 +49,10 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "frontal",
-    meshNames: ["Frontal"],
+    meshNames: ["Frontal Lobe", "Frontal2", "Frontal3"],
     name: "Frontal Lobe",
     germanName: "Frontallappen",
-    color: "#22d3ee",
+    color: "#22c55e",
     description: "Der Frontallappen ist das Kontrollzentrum des Gehirns. Er ist zuständig für Planung, Entscheidungsfindung, Persönlichkeit und die Steuerung von Impulsen.",
     businessRelevance: [
       "Strategische Entscheidungsfindung in Führungspositionen",
@@ -49,7 +64,7 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "parietal",
-    meshNames: ["Parietal"],
+    meshNames: ["Parietal Lobe", "Parietal2"],
     name: "Parietal Lobe",
     germanName: "Parietallappen",
     color: "#a855f7",
@@ -64,7 +79,7 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "temporal",
-    meshNames: ["Temporal"],
+    meshNames: ["Temporal Lobe"],
     name: "Temporal Lobe",
     germanName: "Temporallappen",
     color: "#f97316",
@@ -79,7 +94,7 @@ const brainRegionsData: BrainRegionInfo[] = [
   },
   {
     id: "occipital",
-    meshNames: ["Occipital"],
+    meshNames: ["Occipital Lobe", "Occipital2"],
     name: "Occipital Lobe",
     germanName: "Okzipitallappen",
     color: "#ec4899",
