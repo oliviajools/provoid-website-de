@@ -85,7 +85,7 @@ export function NeuroChatbot() {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full shadow-lg shadow-cyan-500/30 flex items-center justify-center hover:scale-110 transition-transform"
+        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 w-14 h-14 md:w-16 md:h-16 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full shadow-lg shadow-cyan-500/30 flex items-center justify-center hover:scale-110 transition-transform"
       >
         {isOpen ? (
           <X className="w-7 h-7 text-white" />
@@ -102,7 +102,7 @@ export function NeuroChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-24 right-6 z-50 w-[400px] max-w-[calc(100vw-3rem)] bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden"
+            className="fixed bottom-20 md:bottom-24 right-2 md:right-6 z-50 w-[calc(100vw-1rem)] md:w-[400px] max-w-[400px] bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-cyan-600 to-blue-700 p-4">
@@ -119,7 +119,7 @@ export function NeuroChatbot() {
             </div>
 
             {/* Messages */}
-            <div className="h-[400px] overflow-y-auto p-4 space-y-4">
+            <div className="h-[300px] md:h-[400px] overflow-y-auto p-3 md:p-4 space-y-3 md:space-y-4">
               {messages.map((message) => (
                 <motion.div
                   key={message.id}

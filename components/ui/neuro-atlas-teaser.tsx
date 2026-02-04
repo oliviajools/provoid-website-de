@@ -9,7 +9,7 @@ export function NeuroAtlasTeaser() {
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
       <div className="container px-4 md:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -74,7 +74,7 @@ export function NeuroAtlasTeaser() {
             className="relative"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-600/20 blur-[100px] rounded-full" />
-            <div className="relative bg-slate-800/30 backdrop-blur-sm rounded-2xl border border-slate-700/50 overflow-hidden h-[500px]">
+            <div className="relative bg-slate-800/30 backdrop-blur-sm rounded-2xl border border-slate-700/50 overflow-hidden h-[350px] md:h-[450px] lg:h-[500px]">
               <Brain3DRealistic />
             </div>
           </motion.div>
