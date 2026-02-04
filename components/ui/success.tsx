@@ -33,12 +33,12 @@ export function Success() {
     }, []);
 
     return (
-      <section className="py-16 md:py-20" ref={sectionRef}>
+      <section className="py-8 md:py-12" ref={sectionRef}>
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="relative">
             <ContainerScroll
               titleComponent={
-                <h3 className="text-3xl md:text-4xl font-bold mb-12 md:mb-16">Wie Sie mit PROVOID wachsen</h3>
+                <h3 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8">Wie Sie mit PROVOID wachsen</h3>
               }
               contentRef={contentRef}
             >
