@@ -26,10 +26,10 @@ interface BrainRegionInfo {
 // Material.006 -> Occipital Lobe (pink/magenta)
 // Material.003 -> Corpus Callosum (schwarz)
 
-// Neue Mesh-Namen für brain_diagram.glb: Object_5, Object_7, Object_9, Object_11, Object_13, Object_15, Object_17
+// Mesh-Namen für brain_diagram.glb basierend auf sichtbaren Labels im Modell
 const brainRegionsData: BrainRegionInfo[] = [
   {
-    id: "region-1",
+    id: "frontal-lobe",
     meshNames: ["Object_5"],
     name: "Frontal Lobe",
     germanName: "Frontallappen",
@@ -44,7 +44,7 @@ const brainRegionsData: BrainRegionInfo[] = [
     ]
   },
   {
-    id: "region-2",
+    id: "parietal-lobe",
     meshNames: ["Object_7"],
     name: "Parietal Lobe",
     germanName: "Parietallappen",
@@ -59,12 +59,12 @@ const brainRegionsData: BrainRegionInfo[] = [
     ]
   },
   {
-    id: "region-3",
+    id: "temporal-lobe",
     meshNames: ["Object_9"],
     name: "Temporal Lobe",
     germanName: "Temporallappen",
     color: "#22d3ee",
-    description: "Der Temporallappen verarbeitet auditive Informationen, Sprache und ist am Gedächtnis sowie der emotionalen Verarbeitung beteiligt.",
+    description: "Der Temporallappen verarbeitet auditive Informationen, Sprache und ist am Gedächtnis sowie der emotionalen Verarbeitung beteiligt. Enthält den Auditory Cortex.",
     businessRelevance: [
       "Sprachverarbeitung in Werbebotschaften",
       "Audiobranding und Sounddesign",
@@ -74,25 +74,12 @@ const brainRegionsData: BrainRegionInfo[] = [
     ]
   },
   {
-    id: "region-4",
-    meshNames: ["Object_11"],
-    name: "Labels",
-    germanName: "Beschriftungen",
-    color: "#22d3ee",
-    description: "Beschriftungen und Markierungen des Gehirnmodells.",
-    businessRelevance: [
-      "Orientierung und Navigation",
-      "Visuelle Kommunikation",
-      "Informationsarchitektur"
-    ]
-  },
-  {
-    id: "region-5",
+    id: "occipital-lobe",
     meshNames: ["Object_13"],
     name: "Occipital Lobe",
     germanName: "Okzipitallappen",
     color: "#22d3ee",
-    description: "Der Okzipitallappen ist das visuelle Verarbeitungszentrum des Gehirns. Er interpretiert alles, was wir sehen – Farben, Formen, Bewegungen.",
+    description: "Der Okzipitallappen ist das visuelle Verarbeitungszentrum des Gehirns (Visual Cortex). Er interpretiert alles, was wir sehen – Farben, Formen, Bewegungen.",
     businessRelevance: [
       "Visuelles Marketing und Grafikdesign",
       "Farbpsychologie in Branding",
@@ -102,7 +89,7 @@ const brainRegionsData: BrainRegionInfo[] = [
     ]
   },
   {
-    id: "region-6",
+    id: "cerebellum",
     meshNames: ["Object_15"],
     name: "Cerebellum",
     germanName: "Kleinhirn",
@@ -117,12 +104,12 @@ const brainRegionsData: BrainRegionInfo[] = [
     ]
   },
   {
-    id: "region-7",
+    id: "brainstem",
     meshNames: ["Object_17"],
-    name: "Brainstem",
-    germanName: "Hirnstamm",
+    name: "Brainstem & Spinal Cord",
+    germanName: "Hirnstamm & Rückenmark",
     color: "#22d3ee",
-    description: "Der Hirnstamm steuert lebenswichtige Funktionen wie Atmung, Herzschlag und grundlegende Reflexe.",
+    description: "Der Hirnstamm (inkl. Pons) und das Rückenmark steuern lebenswichtige Funktionen wie Atmung, Herzschlag und grundlegende Reflexe. Hier befinden sich auch Olfactory Bulb und Optic Nerve.",
     businessRelevance: [
       "Grundlegende Bedürfnisse und Instinkte",
       "Fight-or-Flight-Reaktionen",
