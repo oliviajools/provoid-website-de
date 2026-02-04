@@ -56,56 +56,56 @@ export default function Home() {
       <GeminiCta />
 
       {/* Stakes Section (SB7: Help them avoid failure) */}
-      <section className="py-12 md:py-14 pb-4 md:pb-6">
+      <section className="py-16 md:py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <div className="text-center mb-12">
-              <h3 className="text-3xl md:text-4xl font-bold">Die Lücke schließen</h3>
-              <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">
+              <h3 className="text-3xl md:text-4xl font-bold text-white">Die Lücke schließen</h3>
+              <p className="text-slate-400 mt-3 max-w-2xl mx-auto">
                 Zwischen dem, was Kunden sagen, und dem, was sie wirklich bewegt, liegt eine Lücke.
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="relative p-8 rounded-xl border border-border/50 bg-gradient-to-br from-muted/30 to-transparent">
-                <div className="absolute top-4 right-4 text-xs font-medium text-muted-foreground/60 uppercase tracking-wider">Ohne Neuromarketing</div>
-                <h4 className="text-lg font-semibold mb-4 mt-2">Status Quo</h4>
-                <ul className="space-y-3 text-muted-foreground">
+              <div className="relative p-8 rounded-2xl border border-slate-700/50 bg-slate-800/50 backdrop-blur-sm">
+                <div className="absolute top-4 right-4 text-xs font-medium text-slate-500 uppercase tracking-wider">Ohne Neuromarketing</div>
+                <h4 className="text-lg font-semibold mb-4 mt-2 text-white">Status Quo</h4>
+                <ul className="space-y-3 text-slate-400">
                   <li className="flex items-start gap-3">
-                    <span className="text-muted-foreground/40 mt-1">—</span>
+                    <span className="text-slate-600 mt-1">—</span>
                     <span>Marketing basiert auf Annahmen, nicht auf Daten</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-muted-foreground/40 mt-1">—</span>
+                    <span className="text-slate-600 mt-1">—</span>
                     <span>Kaufentscheidungen bleiben undurchsichtig</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-muted-foreground/40 mt-1">—</span>
+                    <span className="text-slate-600 mt-1">—</span>
                     <span>Teamdynamiken werden nicht verstanden</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-muted-foreground/40 mt-1">—</span>
+                    <span className="text-slate-600 mt-1">—</span>
                     <span>Conversion bleibt unter dem Potenzial</span>
                   </li>
                 </ul>
               </div>
-              <div className="relative p-8 rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
-                <div className="absolute top-4 right-4 text-xs font-medium text-primary/60 uppercase tracking-wider">Mit PROVOID</div>
-                <h4 className="text-lg font-semibold mb-4 mt-2">Der Unterschied</h4>
-                <ul className="space-y-3 text-muted-foreground">
+              <div className="relative p-8 rounded-2xl border border-cyan-500/30 bg-slate-800/50 backdrop-blur-sm">
+                <div className="absolute top-4 right-4 text-xs font-medium text-cyan-400 uppercase tracking-wider">Mit PROVOID</div>
+                <h4 className="text-lg font-semibold mb-4 mt-2 text-white">Der Unterschied</h4>
+                <ul className="space-y-3 text-slate-300">
                   <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1">+</span>
+                    <span className="text-cyan-400 mt-1">+</span>
                     <span>Entscheidungen verstehen, wo sie entstehen</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1">+</span>
+                    <span className="text-cyan-400 mt-1">+</span>
                     <span>Käufer- und Mitarbeiteridentität klarifizieren</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1">+</span>
+                    <span className="text-cyan-400 mt-1">+</span>
                     <span>Wissenschaftlich fundierte Strategien</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1">+</span>
+                    <span className="text-cyan-400 mt-1">+</span>
                     <span>Messbare Ergebnisse durch Neuromarketing</span>
                   </li>
                 </ul>
