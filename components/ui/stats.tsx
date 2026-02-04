@@ -1,32 +1,55 @@
 "use client";
 import { motion } from "motion/react";
+import { Award, Rocket, Trophy } from "lucide-react";
 
 export function Stats() {
   return (
-    <section className="py-16 md:py-20 bg-background">
+    <section className="py-20 md:py-28 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       <div className="container px-4 md:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-6 border border-border rounded-xl p-6 md:p-8 bg-card">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <p className="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-3">
+              Unsere Erfolge
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
+              Ausgezeichnet & Anerkannt
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6">
             {/* Stat 1: 2023 */}
-            <StatCard delay={0.3}>
-              <div className="text-5xl md:text-6xl font-bold text-black mb-4">2023</div>
-              <p className="text-sm text-black/70 min-h-[2.5rem]">
+            <StatCard delay={0.1} icon={<Rocket className="w-6 h-6" />}>
+              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent mb-3">
+                2023
+              </div>
+              <p className="text-slate-400 text-sm leading-relaxed">
                 Gründung als Jugend forscht-Projekt
               </p>
             </StatCard>
 
             {/* Stat 2: 2. Platz */}
-            <StatCard delay={0.4}>
-              <div className="text-5xl md:text-6xl font-bold text-black mb-4">2. Platz</div>
-              <p className="text-sm text-black/70 min-h-[2.5rem]">
+            <StatCard delay={0.2} icon={<Trophy className="w-6 h-6" />}>
+              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent mb-3">
+                2. Platz
+              </div>
+              <p className="text-slate-400 text-sm leading-relaxed">
                 JugendUnternimmt Summerschool 2025
               </p>
             </StatCard>
 
             {/* Stat 3: Nominiert */}
-            <StatCard delay={0.5}>
-              <div className="text-5xl md:text-6xl font-bold text-black mb-4">Nominiert</div>
-              <p className="text-sm text-black/70 min-h-[2.5rem]">
+            <StatCard delay={0.3} icon={<Award className="w-6 h-6" />}>
+              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent mb-3">
+                Nominiert
+              </div>
+              <p className="text-slate-400 text-sm leading-relaxed">
                 STARTERiN Award Hamburg 2025
               </p>
             </StatCard>
@@ -37,84 +60,33 @@ export function Stats() {
   );
 }
 
-function StatCard({ children, delay }: { children: React.ReactNode; delay: number }) {
+function StatCard({ children, delay, icon }: { children: React.ReactNode; delay: number; icon: React.ReactNode }) {
   return (
-    <div className="relative flex min-h-[400px] flex-col items-center justify-center overflow-hidden bg-card rounded-xl">
-      {/* Lamp effect background */}
-      <div className="relative flex w-full flex-1 scale-y-125 items-center justify-center isolate z-0">
-        <motion.div
-          initial={{ opacity: 0.5, width: "15rem" }}
-          whileInView={{ opacity: 1, width: "30rem" }}
-          transition={{
-            delay,
-            duration: 0.8,
-            ease: "easeInOut",
-          }}
-          style={{
-            backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
-          }}
-          className="absolute inset-auto right-1/2 h-56 overflow-visible w-[30rem] bg-gradient-conic from-primary via-transparent to-transparent text-white [--conic-position:from_70deg_at_center_top]"
-        >
-          <div className="absolute w-[100%] left-0 bg-card h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
-          <div className="absolute w-40 h-[100%] left-0 bg-card bottom-0 z-20 [mask-image:linear-gradient(to_right,white,transparent)]" />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0.5, width: "15rem" }}
-          whileInView={{ opacity: 1, width: "30rem" }}
-          transition={{
-            delay,
-            duration: 0.8,
-            ease: "easeInOut",
-          }}
-          style={{
-            backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
-          }}
-          className="absolute inset-auto left-1/2 h-56 w-[30rem] bg-gradient-conic from-transparent via-transparent to-primary text-white [--conic-position:from_290deg_at_center_top]"
-        >
-          <div className="absolute w-40 h-[100%] right-0 bg-card bottom-0 z-20 [mask-image:linear-gradient(to_left,white,transparent)]" />
-          <div className="absolute w-[100%] right-0 bg-card h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
-        </motion.div>
-        <div className="absolute top-1/2 h-48 w-full translate-y-12 scale-x-150 bg-card blur-2xl"></div>
-        <div className="absolute top-1/2 z-50 h-48 w-full bg-transparent opacity-10 backdrop-blur-md"></div>
-        <div className="absolute inset-auto z-50 h-36 w-[28rem] -translate-y-1/2 rounded-full bg-primary opacity-50 blur-3xl"></div>
-        <motion.div
-          initial={{ width: "8rem" }}
-          whileInView={{ width: "16rem" }}
-          transition={{
-            delay,
-            duration: 0.8,
-            ease: "easeInOut",
-          }}
-          className="absolute inset-auto z-30 h-36 w-64 -translate-y-[6rem] rounded-full bg-primary blur-2xl"
-        ></motion.div>
-        <motion.div
-          initial={{ width: "15rem" }}
-          whileInView={{ width: "30rem" }}
-          transition={{
-            delay,
-            duration: 0.8,
-            ease: "easeInOut",
-          }}
-          className="absolute inset-auto z-50 h-0.5 w-[30rem] -translate-y-[7rem] bg-primary"
-        ></motion.div>
-        <div className="absolute inset-auto z-40 h-44 w-full -translate-y-[12.5rem] bg-card"></div>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-50 flex -translate-y-32 flex-col items-center px-5">
-        <motion.div
-          initial={{ opacity: 0.5, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            delay,
-            duration: 0.8,
-            ease: "easeInOut",
-          }}
-          className="text-center"
-        >
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay }}
+      viewport={{ once: true }}
+      className="group relative"
+    >
+      {/* Glow effect on hover */}
+      <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-all duration-500" />
+      
+      {/* Card */}
+      <div className="relative flex flex-col items-center justify-center p-8 md:p-10 rounded-2xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 hover:border-cyan-500/30 transition-all duration-300 h-full">
+        {/* Icon */}
+        <div className="mb-6 p-3 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-600/20 text-cyan-400 ring-1 ring-cyan-500/20">
+          {icon}
+        </div>
+        
+        {/* Content */}
+        <div className="text-center">
           {children}
-        </motion.div>
+        </div>
+
+        {/* Subtle shine effect */}
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       </div>
-    </div>
+    </motion.div>
   );
 }
