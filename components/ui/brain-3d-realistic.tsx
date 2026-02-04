@@ -76,21 +76,6 @@ const brainRegionsData: BrainRegionInfo[] = [
     ]
   },
   {
-    id: "occipital-lobe",
-    meshNames: [],
-    name: "Occipital Lobe",
-    germanName: "Okzipitallappen",
-    color: "#22d3ee",
-    description: "Der Okzipitallappen ist das visuelle Verarbeitungszentrum des Gehirns. Er interpretiert alles, was wir sehen – Farben, Formen, Bewegungen.",
-    businessRelevance: [
-      "Visuelles Marketing und Grafikdesign",
-      "Farbpsychologie in Branding",
-      "Logo-Gestaltung und Wiedererkennung",
-      "Eye-Tracking-Optimierung",
-      "Visuelle Hierarchie auf Websites"
-    ]
-  },
-  {
     id: "visual-cortex",
     meshNames: ["Object_13"],
     name: "Visual Cortex",
