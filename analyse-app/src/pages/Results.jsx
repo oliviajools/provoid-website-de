@@ -151,9 +151,10 @@ const Results = () => {
   const totalScore = session.total_score || 0;
   const interpretation = getScoreInterpretation(totalScore);
 
-  // Identify strengths and weaknesses
+  // Identify strengths, middle, and weaknesses (sorted by score)
   const sortedCategories = [...categoryScores].sort((a, b) => b.score - a.score);
   const strengths = sortedCategories.slice(0, 2);
+  const middle = sortedCategories.length >= 3 ? [sortedCategories[2]] : [];
   const weaknesses = sortedCategories.slice(-2).reverse();
 
   // Generate recommendations
@@ -396,47 +397,99 @@ const Results = () => {
         </div>
       </div>
 
-      {/* Strengths & Weaknesses */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Strengths */}
-        <div className="glass-card p-6 border-l-4 border-green-500">
-          <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
-            <CheckCircle className="w-5 h-5 text-green-400" />
-            Stärken
-          </h2>
-          <div className="space-y-3">
-            {strengths.map(s => (
-              <div key={s.category} className="p-3 bg-green-500/10 rounded-xl">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-medium">{s.label}</span>
-                  <span className="text-green-400">{Math.round(s.score)}%</span>
-                </div>
-                <p className="text-sm text-gray-500">
-                  {categoryDescriptions[s.category]?.relevance}
-                </p>
+      {/* Leistungsübersicht: Stärken, Mittel, Schwächen */}
+      <div className="glass-card p-6">
+        <h2 className="text-lg font-semibold mb-6 text-center">Leistungsübersicht</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* Stärken (Top 2) */}
+          <div className="rounded-2xl border-2 border-green-500/50 bg-green-500/5 p-4">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
+                <CheckCircle className="w-5 h-5 text-green-400" />
               </div>
-            ))}
+              <div>
+                <h3 className="font-semibold text-green-400">Stärken</h3>
+                <p className="text-xs text-gray-500">Top 2 Bereiche</p>
+              </div>
+            </div>
+            <div className="space-y-3">
+              {strengths.map((s, idx) => (
+                <div key={s.category} className="p-3 bg-green-500/10 rounded-xl">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="w-5 h-5 rounded-full bg-green-500 text-white text-xs flex items-center justify-center font-bold">{idx + 1}</span>
+                    <span className="font-medium text-sm">{s.label}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1 h-2 bg-gray-700 rounded-full mr-3">
+                      <div className="h-2 bg-green-500 rounded-full" style={{ width: `${s.score}%` }} />
+                    </div>
+                    <span className="text-green-400 font-bold text-sm">{Math.round(s.score)}%</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Areas for Improvement */}
-        <div className="glass-card p-6 border-l-4 border-orange-500">
-          <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
-            <Target className="w-5 h-5 text-orange-400" />
-            Entwicklungsfelder
-          </h2>
-          <div className="space-y-3">
-            {weaknesses.map(w => (
-              <div key={w.category} className="p-3 bg-orange-500/10 rounded-xl">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-medium">{w.label}</span>
-                  <span className="text-orange-400">{Math.round(w.score)}%</span>
-                </div>
-                <p className="text-sm text-gray-500">
-                  {categoryDescriptions[w.category]?.relevance}
-                </p>
+          {/* Mittlere Bereiche */}
+          <div className="rounded-2xl border-2 border-blue-500/50 bg-blue-500/5 p-4">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+                <Target className="w-5 h-5 text-blue-400" />
               </div>
-            ))}
+              <div>
+                <h3 className="font-semibold text-blue-400">Mittelfeld</h3>
+                <p className="text-xs text-gray-500">Solide Basis</p>
+              </div>
+            </div>
+            <div className="space-y-3">
+              {middle.map((m, idx) => (
+                <div key={m.category} className="p-3 bg-blue-500/10 rounded-xl">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="w-5 h-5 rounded-full bg-blue-500 text-white text-xs flex items-center justify-center font-bold">{idx + 3}</span>
+                    <span className="font-medium text-sm">{m.label}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1 h-2 bg-gray-700 rounded-full mr-3">
+                      <div className="h-2 bg-blue-500 rounded-full" style={{ width: `${m.score}%` }} />
+                    </div>
+                    <span className="text-blue-400 font-bold text-sm">{Math.round(m.score)}%</span>
+                  </div>
+                </div>
+              ))}
+              {middle.length === 0 && (
+                <p className="text-sm text-gray-500 text-center py-4">Keine mittleren Bereiche</p>
+              )}
+            </div>
+          </div>
+
+          {/* Entwicklungsfelder (Bottom 2) */}
+          <div className="rounded-2xl border-2 border-orange-500/50 bg-orange-500/5 p-4">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center">
+                <TrendingUp className="w-5 h-5 text-orange-400" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-orange-400">Entwicklungsfelder</h3>
+                <p className="text-xs text-gray-500">Fokus für Training</p>
+              </div>
+            </div>
+            <div className="space-y-3">
+              {weaknesses.map((w, idx) => (
+                <div key={w.category} className="p-3 bg-orange-500/10 rounded-xl">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="w-5 h-5 rounded-full bg-orange-500 text-white text-xs flex items-center justify-center font-bold">{idx + 4}</span>
+                    <span className="font-medium text-sm">{w.label}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1 h-2 bg-gray-700 rounded-full mr-3">
+                      <div className="h-2 bg-orange-500 rounded-full" style={{ width: `${w.score}%` }} />
+                    </div>
+                    <span className="text-orange-400 font-bold text-sm">{Math.round(w.score)}%</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
