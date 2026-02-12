@@ -18,10 +18,13 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
   const [stressLevel, setStressLevel] = useState(50);
   
   // Heart Rate Variability simulation (breathing coherence)
-  const [breathPhase, setBreathPhase] = useState('inhale');
+  const [breathPhase, setBreathPhase] = useState('ready'); // ready, breathing, done
   const [breathScore, setBreathScore] = useState(0);
-  const [breathTarget, setBreathTarget] = useState(0);
-  const [userBreathTiming, setUserBreathTiming] = useState([]);
+  const [isBreathing, setIsBreathing] = useState(false); // true = einatmen (gedrückt)
+  const [breathCycles, setBreathCycles] = useState([]); // Array von {inhaleStart, inhaleEnd, exhaleEnd}
+  const [breathTimeLeft, setBreathTimeLeft] = useState(45); // 45 Sekunden
+  const [currentCycleStart, setCurrentCycleStart] = useState(null);
+  const [currentInhaleEnd, setCurrentInhaleEnd] = useState(null);
   
   const timeoutRef = useRef(null);
   const intervalRef = useRef(null);
@@ -320,116 +323,129 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
   };
 
   // Breathing/Self-Regulation Test
+  const BREATH_DURATION = 45; // Sekunden
+  
   const startBreathTest = useCallback(() => {
     setPhase('breath');
-    setTrial(0);
-    breathTrialRef.current = 0;
-    trialDataRef.current = [];
-    setBreathScore(0);
-    runBreathCycle();
+    setBreathPhase('breathing');
+    setBreathCycles([]);
+    setBreathTimeLeft(BREATH_DURATION);
+    setIsBreathing(false);
+    setCurrentCycleStart(null);
+    setCurrentInhaleEnd(null);
+    setFeedback(null);
+    
+    // Start countdown
+    intervalRef.current = setInterval(() => {
+      setBreathTimeLeft(prev => {
+        if (prev <= 1) {
+          clearInterval(intervalRef.current);
+          finishBreathTest();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
   }, []);
 
-  const BREATH_CYCLES = 6;
-  const INHALE_TIME = 4000;
-  const EXHALE_TIME = 6000;
-
-  const runBreathCycle = () => {
-    setFeedback(null);
-    setUserBreathTiming([]);
-    setBreathPhase('prepare');
-    
-    // Small pause before starting
-    timeoutRef.current = setTimeout(() => {
-      // Inhale phase
-      setBreathPhase('inhale');
-      setBreathTarget(0);
-      stimulusStartRef.current = performance.now();
-      
-      let progress = 0;
-      intervalRef.current = setInterval(() => {
-        progress += 50;
-        setBreathTarget(progress / INHALE_TIME * 100);
-        
-        if (progress >= INHALE_TIME) {
-          clearInterval(intervalRef.current);
-          
-          // Exhale phase
-          setBreathPhase('exhale');
-          stimulusStartRef.current = performance.now();
-          
-          progress = 0;
-          intervalRef.current = setInterval(() => {
-            progress += 50;
-            setBreathTarget(100 - (progress / EXHALE_TIME * 100));
-            
-            if (progress >= EXHALE_TIME) {
-              clearInterval(intervalRef.current);
-              evaluateBreathCycle();
-            }
-          }, 50);
-        }
-      }, 50);
-    }, 1000);
-  };
-
   const handleBreathInput = (isPressed) => {
-    trialDataRef.current.push({
-      time: performance.now() - stimulusStartRef.current,
-      phase: breathPhase,
-      isPressed
-    });
+    if (breathPhase !== 'breathing') return;
+    
+    const now = performance.now();
+    
+    if (isPressed && !isBreathing) {
+      // Start einatmen
+      setIsBreathing(true);
+      setCurrentCycleStart(now);
+      setCurrentInhaleEnd(null);
+    } else if (!isPressed && isBreathing) {
+      // Start ausatmen (Einatmen beendet)
+      setIsBreathing(false);
+      setCurrentInhaleEnd(now);
+      
+      // Wenn wir einen kompletten Zyklus haben, speichern wir ihn
+      if (currentCycleStart) {
+        const inhaleDuration = now - currentCycleStart;
+        setBreathCycles(prev => [...prev, {
+          inhaleStart: currentCycleStart,
+          inhaleDuration: inhaleDuration,
+          timestamp: now
+        }]);
+      }
+    }
   };
 
-  const evaluateBreathCycle = () => {
-    // Calculate coherence score based on timing accuracy
-    // This is a simplified version - real HRV would require sensor data
-    const timings = trialDataRef.current.slice(-10); // Use recent inputs from this cycle
+  const calculateCoherence = (cycles) => {
+    if (cycles.length < 3) return 0;
     
-    let coherenceScore = 60; // Base score - more forgiving
+    // Berechne die Standardabweichung der Einatmungszeiten
+    const inhaleDurations = cycles.map(c => c.inhaleDuration);
+    const avgDuration = inhaleDurations.reduce((a, b) => a + b, 0) / inhaleDurations.length;
     
-    // Award points for any interaction during the cycle
-    if (timings.length > 0) {
-      coherenceScore += Math.min(30, timings.length * 10);
+    // Zeitabstände zwischen Zyklen
+    const intervals = [];
+    for (let i = 1; i < cycles.length; i++) {
+      intervals.push(cycles[i].timestamp - cycles[i-1].timestamp);
+    }
+    const avgInterval = intervals.length > 0 ? intervals.reduce((a, b) => a + b, 0) / intervals.length : 0;
+    
+    // Standardabweichung der Intervalle (niedrig = kohärent)
+    const variance = intervals.length > 0 
+      ? intervals.reduce((sum, int) => sum + Math.pow(int - avgInterval, 2), 0) / intervals.length 
+      : 0;
+    const stdDev = Math.sqrt(variance);
+    
+    // Kohärenz: Je niedriger die Standardabweichung relativ zum Durchschnitt, desto besser
+    // Coefficient of Variation (CV) - niedriger ist besser
+    const cv = avgInterval > 0 ? (stdDev / avgInterval) * 100 : 100;
+    
+    // Umrechnung in Score (0-100): CV von 0 = 100 Punkte, CV von 50+ = 0 Punkte
+    const coherenceScore = Math.max(0, Math.min(100, 100 - (cv * 2)));
+    
+    // Bonus für optimale Atemfrequenz (4-7 Atemzüge pro Minute = ideal für HRV)
+    const breathsPerMinute = (cycles.length / BREATH_DURATION) * 60;
+    let frequencyBonus = 0;
+    if (breathsPerMinute >= 4 && breathsPerMinute <= 7) {
+      frequencyBonus = 15; // Optimaler Bereich
+    } else if (breathsPerMinute >= 3 && breathsPerMinute <= 10) {
+      frequencyBonus = 8; // Akzeptabler Bereich
     }
     
-    coherenceScore = Math.min(100, coherenceScore);
-    
-    setBreathScore(prev => prev + coherenceScore);
-    
-    setFeedback({ 
-      type: coherenceScore >= 70 ? 'success' : 'neutral', 
-      message: `Kohärenz: ${coherenceScore}%` 
-    });
-    
-    breathTrialRef.current += 1;
-    const nextTrial = breathTrialRef.current;
-    setTrial(nextTrial);
-    
-    // Clear timing data for next cycle
-    trialDataRef.current = [];
-    
-    if (nextTrial >= BREATH_CYCLES) {
-      setTimeout(finishBreathTest, 1500);
-    } else {
-      setTimeout(runBreathCycle, 1500);
-    }
+    return Math.min(100, coherenceScore + frequencyBonus);
   };
 
   const finishBreathTest = () => {
-    const avgCoherence = breathScore / BREATH_CYCLES;
-    const normalizedScore = Math.min(100, avgCoherence + 10);
+    if (intervalRef.current) clearInterval(intervalRef.current);
     
-    setResults(prev => [...prev, {
-      test_name: 'stress_response',
-      subcategory: 'Atemkohärenz & Selbstregulation',
-      raw_score: avgCoherence,
-      normalized_score: normalizedScore,
-      accuracy_percent: avgCoherence,
-      trials_completed: BREATH_CYCLES,
-      errors: trialDataRef.current.filter(t => t.coherenceScore < 50).length
-    }]);
+    setBreathPhase('done');
     
-    setPhase('complete');
+    // Berechne Kohärenz basierend auf den aufgezeichneten Zyklen
+    const coherenceScore = calculateCoherence(breathCycles);
+    setBreathScore(coherenceScore);
+    
+    const breathsPerMinute = (breathCycles.length / BREATH_DURATION) * 60;
+    
+    setFeedback({
+      type: coherenceScore >= 60 ? 'success' : 'neutral',
+      message: `${breathCycles.length} Atemzüge • ${breathsPerMinute.toFixed(1)}/min • Kohärenz: ${Math.round(coherenceScore)}%`
+    });
+    
+    setTimeout(() => {
+      setResults(prev => [...prev, {
+        test_name: 'breathing_coherence',
+        subcategory: 'Atemkohärenz & Selbstregulation',
+        raw_score: coherenceScore,
+        normalized_score: Math.min(100, coherenceScore + 5),
+        accuracy_percent: coherenceScore,
+        trials_completed: breathCycles.length,
+        metadata: { 
+          breathsPerMinute: breathsPerMinute.toFixed(1),
+          totalCycles: breathCycles.length
+        }
+      }]);
+      
+      setPhase('complete');
+    }, 3000);
   };
 
   useEffect(() => {
@@ -594,19 +610,36 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
       {/* Breath Intro */}
       {phase === 'breath_intro' && (
         <div className="text-center py-8">
-          <h3 className="text-xl font-semibold mb-4">Test 3: Atemkohärenz</h3>
-          <p className="text-gray-500 mb-6 max-w-md mx-auto">
-            Folge dem Atemrhythmus: Halte beim Einatmen die Taste/Klick gedrückt, 
-            lasse beim Ausatmen los.
-          </p>
-          <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-xl mb-6 max-w-md mx-auto">
+          <h3 className="text-2xl font-bold mb-6 text-white">Test 3: Atemkohärenz</h3>
+          
+          <div className="bg-gray-800/50 rounded-2xl p-6 mb-6 max-w-lg mx-auto text-left">
+            <h4 className="font-semibold text-provoid-400 mb-3 text-lg">So funktioniert der Test:</h4>
+            <ol className="space-y-3 text-gray-300">
+              <li className="flex gap-3">
+                <span className="bg-provoid-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+                <span><strong className="text-blue-400">Drücke und halte</strong> den Button, während du <strong className="text-blue-400">einatmest</strong>.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="bg-provoid-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+                <span><strong className="text-provoid-300">Lasse los</strong>, während du <strong className="text-provoid-300">ausatmest</strong>.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="bg-provoid-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+                <span>Atme <strong className="text-yellow-400">ruhig und gleichmäßig</strong> für 45 Sekunden.</span>
+              </li>
+            </ol>
+            <p className="mt-4 text-amber-400 text-sm">🎯 Ziel: 4-7 Atemzüge pro Minute für optimale HRV-Kohärenz</p>
+          </div>
+          
+          <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-xl mb-6 max-w-lg mx-auto">
             <p className="text-sm text-blue-300">
-              <strong>Neurowissenschaft:</strong> Atemkohärenz beeinflusst die 
-              Herzratenvariabilität (HRV) und reguliert das autonome Nervensystem über den Vagusnerv.
+              <strong>Neurowissenschaft:</strong> Langsame, gleichmäßige Atmung aktiviert den 
+              Parasympathikus und verbessert die Herzratenvariabilität (HRV) über den Vagusnerv.
             </p>
           </div>
-          <button onClick={startBreathTest} className="px-6 py-3 bg-provoid-600 hover:bg-cyan-700 rounded-xl font-semibold">
-            Weiter
+          
+          <button onClick={startBreathTest} className="px-8 py-4 bg-provoid-600 hover:bg-provoid-500 rounded-xl font-semibold text-lg transition-all hover:scale-105">
+            Test starten
           </button>
         </div>
       )}
@@ -614,53 +647,53 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
       {/* Breath Test */}
       {phase === 'breath' && (
         <div className="flex flex-col items-center py-8">
-          {/* Breathing circle */}
+          {/* Timer */}
+          <div className="mb-6 text-center">
+            <div className="text-5xl font-bold mb-2">{breathTimeLeft}s</div>
+            <div className="w-64 h-2 bg-gray-700 rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-provoid-500 transition-all duration-1000"
+                style={{ width: `${(breathTimeLeft / BREATH_DURATION) * 100}%` }}
+              />
+            </div>
+          </div>
+          
+          {/* Breathing circle - interactive */}
           <div 
-            className={`relative w-48 h-48 rounded-full border-4 transition-all duration-300 cursor-pointer ${
-              breathPhase === 'inhale' ? 'border-blue-500 scale-110' :
-              breathPhase === 'exhale' ? 'border-provoid-500 scale-90' :
-              'border-gray-600'
+            className={`relative w-56 h-56 rounded-full border-4 transition-all duration-200 cursor-pointer select-none ${
+              isBreathing ? 'border-blue-500 scale-110 bg-blue-500/20' : 'border-provoid-500 scale-90 bg-provoid-500/10'
             }`}
             onMouseDown={() => handleBreathInput(true)}
             onMouseUp={() => handleBreathInput(false)}
-            onTouchStart={() => handleBreathInput(true)}
-            onTouchEnd={() => handleBreathInput(false)}
+            onMouseLeave={() => isBreathing && handleBreathInput(false)}
+            onTouchStart={(e) => { e.preventDefault(); handleBreathInput(true); }}
+            onTouchEnd={(e) => { e.preventDefault(); handleBreathInput(false); }}
           >
-            <div 
-              className={`absolute inset-4 rounded-full transition-all duration-500 ${
-                breathPhase === 'inhale' ? 'bg-blue-500/30' :
-                breathPhase === 'exhale' ? 'bg-provoid-500/30' :
-                'bg-gray-700'
-              }`}
-              style={{ 
-                transform: `scale(${0.3 + (breathTarget / 100) * 0.7})` 
-              }}
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <span className="text-3xl mb-2">{isBreathing ? '💨' : '🌬️'}</span>
               <span className="text-xl font-semibold">
-                {breathPhase === 'prepare' ? 'Bereit...' :
-                 breathPhase === 'inhale' ? 'Einatmen' : 'Ausatmen'}
+                {isBreathing ? 'Einatmen...' : 'Ausatmen...'}
               </span>
             </div>
           </div>
           
-          <p className="mt-6 text-gray-500 text-sm text-center">
-            {breathPhase === 'inhale' 
-              ? 'Halte gedrückt beim Einatmen' 
-              : breathPhase === 'exhale' 
-              ? 'Loslassen beim Ausatmen' 
-              : 'Gleich geht es los...'}
+          <p className="mt-6 text-gray-400 text-center max-w-xs">
+            {isBreathing 
+              ? <span className="text-blue-400 font-semibold">Halte gedrückt – atme langsam ein</span>
+              : <span className="text-provoid-400 font-semibold">Losgelassen – atme langsam aus</span>
+            }
           </p>
           
-          <div className="mt-4 text-2xl font-bold">
-            Zyklus {trial + 1} / {BREATH_CYCLES}
+          <div className="mt-4 text-lg">
+            <span className="text-gray-500">Atemzüge: </span>
+            <span className="font-bold text-white">{breathCycles.length}</span>
           </div>
           
-          {feedback && (
-            <div className={`mt-4 px-4 py-2 rounded-lg ${
-              feedback.type === 'success' ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-500'
+          {breathPhase === 'done' && feedback && (
+            <div className={`mt-6 px-6 py-4 rounded-xl text-center ${
+              feedback.type === 'success' ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-400'
             }`}>
-              {feedback.message}
+              <div className="text-lg font-semibold">{feedback.message}</div>
             </div>
           )}
         </div>

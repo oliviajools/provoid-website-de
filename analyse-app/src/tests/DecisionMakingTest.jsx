@@ -248,29 +248,47 @@ const DecisionMakingTest = ({ onComplete, onCancel }) => {
     setOccluded(false);
     occludedRef.current = false;
     
-    // Random trajectory
-    const startX = 10 + Math.random() * 30;
-    const startY = 20 + Math.random() * 60;
-    const targetZone = Math.floor(Math.random() * 3); // 0, 1, 2 for left, center, right
-    const endX = 20 + targetZone * 30;
-    const endY = 85 + Math.random() * 10;
+    // 5 Zielzonen statt 3 für höhere Schwierigkeit
+    const targetZone = Math.floor(Math.random() * 5); // 0-4
     
-    setMovingObject({ x: startX, y: startY, targetX: endX, targetY: endY });
+    // Verschiedene Startpositionen (auch von rechts oder Mitte)
+    const startSide = Math.random();
+    let startX, startY;
+    if (startSide < 0.4) {
+      startX = 5 + Math.random() * 15; // Links
+      startY = 10 + Math.random() * 30;
+    } else if (startSide < 0.8) {
+      startX = 80 + Math.random() * 15; // Rechts
+      startY = 10 + Math.random() * 30;
+    } else {
+      startX = 40 + Math.random() * 20; // Mitte-oben
+      startY = 5 + Math.random() * 15;
+    }
+    
+    // Zielpositionen basierend auf Zone
+    const endX = 10 + targetZone * 20; // 10, 30, 50, 70, 90
+    const endY = 88 + Math.random() * 8;
+    
+    // Kurvenfaktor für nicht-lineare Bahnen
+    const curveStrength = (Math.random() - 0.5) * 40;
+    
+    setMovingObject({ x: startX, y: startY, targetX: endX, targetY: endY, curveStrength, targetZone });
     setTargetZones([
-      { id: 0, label: 'Links', x: 15 },
-      { id: 1, label: 'Mitte', x: 50 },
-      { id: 2, label: 'Rechts', x: 85 }
+      { id: 0, label: '1', x: 10 },
+      { id: 1, label: '2', x: 30 },
+      { id: 2, label: '3', x: 50 },
+      { id: 3, label: '4', x: 70 },
+      { id: 4, label: '5', x: 90 }
     ]);
     
-    // Animate object
+    // Animate object - schneller und frühere Verdeckung
     let progress = 0;
-    const duration = 1500;
-    const occlusionPoint = 0.4 + Math.random() * 0.2; // Occlude at 40-60%
+    const duration = 1000 + Math.random() * 400; // 1.0-1.4s (schneller)
+    const occlusionPoint = 0.25 + Math.random() * 0.15; // Verdeckung bei 25-40% (früher)
     
     intervalRef.current = setInterval(() => {
-      progress += 50 / duration;
+      progress += 40 / duration; // Schnellere Updates
       
-      // Use ref to avoid stale closure
       if (progress >= occlusionPoint && !occludedRef.current) {
         occludedRef.current = true;
         setOccluded(true);
@@ -280,25 +298,32 @@ const DecisionMakingTest = ({ onComplete, onCancel }) => {
       }
       
       if (progress < 1 && !occludedRef.current) {
+        // Kurvige Flugbahn mit Bezier-ähnlicher Interpolation
+        const linearX = startX + (endX - startX) * progress;
+        const curveOffset = Math.sin(progress * Math.PI) * curveStrength;
+        
         setMovingObject(prev => ({
           ...prev,
-          x: startX + (endX - startX) * progress,
+          x: linearX + curveOffset,
           y: startY + (endY - startY) * progress
         }));
       }
-    }, 50);
+    }, 40);
   };
 
   const handleAnticipationResponse = (zoneId) => {
     if (!occluded) return;
     
     const responseTime = performance.now() - stimulusStartRef.current;
-    const correctZone = Math.round((movingObject.targetX - 20) / 30);
+    const correctZone = movingObject.targetZone;
     const correct = zoneId === correctZone;
     
     trialDataRef.current.push({ correct, responseTime });
     
-    setFeedback({ type: correct ? 'success' : 'error', message: correct ? 'Richtig!' : 'Falsch!' });
+    setFeedback({ 
+      type: correct ? 'success' : 'error', 
+      message: correct ? 'Richtig!' : `Falsch! Zone ${correctZone + 1}` 
+    });
     
     const nextTrial = trial + 1;
     setTrial(nextTrial);
@@ -481,15 +506,17 @@ const DecisionMakingTest = ({ onComplete, onCancel }) => {
               </div>
             )}
             
-            {/* Target zones */}
-            <div className="absolute bottom-0 left-0 right-0 flex justify-around p-2">
+            {/* Target zones - 5 Zonen */}
+            <div className="absolute bottom-0 left-0 right-0 flex justify-between px-1 py-2">
               {targetZones.map(zone => (
                 <button
                   key={zone.id}
                   onClick={() => handleAnticipationResponse(zone.id)}
                   disabled={!occluded}
-                  className={`px-6 py-3 rounded-lg transition-colors ${
-                    occluded ? 'bg-provoid-600 hover:bg-cyan-700' : 'bg-gray-600 cursor-not-allowed'
+                  className={`w-14 h-10 rounded-lg transition-all text-sm font-bold ${
+                    occluded 
+                      ? 'bg-provoid-600 hover:bg-provoid-500 hover:scale-110' 
+                      : 'bg-gray-600/50 cursor-not-allowed'
                   }`}
                 >
                   {zone.label}
