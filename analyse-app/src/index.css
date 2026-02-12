@@ -9,6 +9,14 @@ body {
   color: #1e293b;
 }
 
+/* Ensure buttons with dark backgrounds have light text */
+button.bg-gray-700,
+button.bg-gray-800,
+.bg-gray-700 button,
+.bg-gray-800 button {
+  color: #ffffff;
+}
+
 @layer utilities {
   .glass-card {
     background: #ffffff;
