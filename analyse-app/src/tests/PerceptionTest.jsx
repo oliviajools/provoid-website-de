@@ -11,6 +11,8 @@ const PerceptionTest = ({ onComplete, onCancel }) => {
   const [targetBall, setTargetBall] = useState(0);
   const [balls, setBalls] = useState([]);
   const [trackingPhase, setTrackingPhase] = useState('show'); // show, track, respond
+  const [remainingTargets, setRemainingTargets] = useState(0);
+  const responseTimeoutRef = useRef(null);
   
   // Spatial awareness state
   const [gridItems, setGridItems] = useState([]);
@@ -33,6 +35,7 @@ const PerceptionTest = ({ onComplete, onCancel }) => {
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
       if (intervalRef.current) clearInterval(intervalRef.current);
+      if (responseTimeoutRef.current) clearTimeout(responseTimeoutRef.current);
     };
   }, []);
 
@@ -87,7 +90,23 @@ const PerceptionTest = ({ onComplete, onCancel }) => {
       timeoutRef.current = setTimeout(() => {
         clearInterval(intervalRef.current);
         setTrackingPhase('respond');
+        setRemainingTargets(numTargets);
         stimulusStartRef.current = performance.now();
+        
+        // Auto-advance after 10 seconds if no response
+        responseTimeoutRef.current = setTimeout(() => {
+          const nextTrial = trial + 1;
+          setTrial(nextTrial);
+          setFeedback({ type: 'error', message: 'Zeit abgelaufen!' });
+          
+          setTimeout(() => {
+            if (nextTrial >= TRIALS_PER_TEST) {
+              finishTrackingTest();
+            } else {
+              runTrackingTrial();
+            }
+          }, 1500);
+        }, 10000);
       }, 4000);
     }, 2000);
   };
@@ -107,17 +126,21 @@ const PerceptionTest = ({ onComplete, onCancel }) => {
     );
     setBalls(updatedBalls);
     
-    setFeedback({ type: correct ? 'success' : 'error', message: correct ? 'Richtig!' : 'Falsch!' });
-    
     // Check if all targets found or too many errors
     const selectedTargets = updatedBalls.filter(b => b.selected && b.isTarget).length;
     const errors = updatedBalls.filter(b => b.selected && !b.isTarget).length;
+    const remaining = targetBall - selectedTargets;
+    setRemainingTargets(Math.max(0, remaining));
+    
+    setFeedback({ type: correct ? 'success' : 'error', message: correct ? `Richtig! Noch ${remaining} Ziel(e)` : 'Falsch!' });
     
     if (selectedTargets >= targetBall || errors >= 2) {
+      // Clear response timeout
+      if (responseTimeoutRef.current) clearTimeout(responseTimeoutRef.current);
+      
       setTimeout(() => {
         const nextTrial = trial + 1;
         setTrial(nextTrial);
-        trialDataRef.current = [];
         
         if (nextTrial >= TRIALS_PER_TEST) {
           finishTrackingTest();
@@ -363,7 +386,7 @@ const PerceptionTest = ({ onComplete, onCancel }) => {
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center">
             {trackingPhase === 'show' && <p className="text-provoid-400">Merke dir die markierten Bälle!</p>}
             {trackingPhase === 'track' && <p className="text-gray-500">Verfolge sie mit den Augen...</p>}
-            {trackingPhase === 'respond' && <p className="text-green-400">Klicke auf die Ziel-Bälle!</p>}
+            {trackingPhase === 'respond' && <p className="text-green-400">Klicke auf {remainingTargets} Ziel-Ball{remainingTargets !== 1 ? 'e' : ''}!</p>}
           </div>
         </div>
       )}
