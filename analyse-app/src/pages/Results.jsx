@@ -159,30 +159,50 @@ const Results = () => {
   // Generate recommendations
   const getRecommendations = (category, score) => {
     const recommendations = {
-      movement_planning: [
-        'Koordinationsübungen mit wechselnden Bewegungsmustern',
-        'Reaktionstraining mit visuellen und akustischen Reizen',
-        'Sequenzlernen: Komplexe Bewegungsfolgen automatisieren'
+      movement_planning: score < 50 ? [
+        'Grundlegende Koordinationsübungen täglich 10 Min.',
+        'Reaktionstraining mit Lichtreizen (z.B. BlazePod)',
+        'Einfache Bewegungssequenzen wiederholen und automatisieren'
+      ] : [
+        'Komplexe Koordinationsübungen mit Störfaktoren',
+        'Multi-direktionales Reaktionstraining unter Zeitdruck',
+        'Sequenzlernen: Lange Bewegungsfolgen automatisieren'
       ],
-      perception: [
-        'Peripheres Sehtraining mit erweiterten Blickwinkeln',
+      perception: score < 50 ? [
+        'Peripheres Sehtraining: Blickfeld bewusst erweitern',
+        'Gleichgewichtsübungen mit geschlossenen Augen',
+        'Ball-Tracking Übungen mit langsamen Bewegungen'
+      ] : [
+        'Multiple Object Tracking mit 4+ Objekten',
         'Gleichgewichtsübungen mit visueller Ablenkung',
-        'Multiple Object Tracking Übungen'
+        'Räumliche Orientierung unter Belastung trainieren'
       ],
-      decision_making: [
+      decision_making: score < 50 ? [
+        'Vereinfachte Spielsituationen analysieren',
+        'Taktik-Videos ansehen und Entscheidungen nachvollziehen',
+        'Langsame Entscheidungsfindung mit Feedback üben'
+      ] : [
         'Spielformtraining mit Überzahl/Unterzahl-Situationen',
-        'Video-Analyse von Spielsituationen',
-        'Mustererkennung durch taktische Schulung'
+        'Schnelle Entscheidungen unter Zeitdruck trainieren',
+        'Komplexe Muster erkennen und antizipieren'
       ],
-      attention: [
-        'Meditations- und Achtsamkeitsübungen',
-        'Dual-Task Training (zwei Aufgaben gleichzeitig)',
-        'Konzentrationsspiele mit zunehmender Dauer'
+      attention: score < 50 ? [
+        'Kurze Achtsamkeitsübungen (5 Min. täglich)',
+        'Einfache Konzentrationsspiele ohne Ablenkung',
+        'Fokus-Training: Eine Aufgabe bewusst ausführen'
+      ] : [
+        'Meditations- und Achtsamkeitsübungen (15+ Min.)',
+        'Dual-Task Training mit steigender Komplexität',
+        'Konzentration über längere Zeiträume (30+ Min.) halten'
       ],
-      self_regulation: [
-        'Atemtechniken für Stressregulation',
-        'Visualisierungsübungen vor dem Wettkampf',
-        'Progressive Muskelentspannung'
+      self_regulation: score < 50 ? [
+        'Box-Atmung: 4 Sek. ein, 4 halten, 4 aus, 4 halten',
+        'Körperwahrnehmung: Anspannung bewusst erkennen',
+        'Einfache Visualisierungen von Erfolgsmomenten'
+      ] : [
+        'Fortgeschrittene Atemtechniken (4-7-8 Methode)',
+        'Mentales Training vor Wettkämpfen (10 Min.)',
+        'Biofeedback-Training zur HRV-Optimierung'
       ]
     };
     
@@ -198,7 +218,9 @@ const Results = () => {
         scale: 2,
         backgroundColor: '#0f172a',
         useCORS: true,
-        logging: false
+        logging: false,
+        allowTaint: true,
+        windowWidth: 1200
       });
       
       const imgData = canvas.toDataURL('image/png');
@@ -232,7 +254,8 @@ const Results = () => {
         heightLeft -= pdfHeight;
       }
       
-      const fileName = `NeuroAthletic_${session.first_name}_${session.last_name}_${new Date(session.test_date).toISOString().split('T')[0]}.pdf`;
+      const testDate = new Date(session.test_date).toISOString().split('T')[0];
+      const fileName = `PROVOID_NeuroAnalyse_${session.first_name}_${session.last_name}_${testDate}.pdf`;
       pdf.save(fileName);
     } catch (error) {
       console.error('PDF Export error:', error);
@@ -246,7 +269,7 @@ const Results = () => {
     <div className="max-w-6xl mx-auto space-y-6" ref={reportRef}>
       {/* Header */}
       <div className="flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 text-gray-500 hover:text-gray-800 transition-colors">
+        <Link to="/" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
           <ArrowLeft className="w-5 h-5" />
           Zurück
         </Link>
@@ -461,7 +484,7 @@ const Results = () => {
               {/* Neuroscience explanation */}
               <div className="p-3 bg-provoid-500/10 rounded-xl text-sm">
                 <strong className="text-provoid-400">Funktion:</strong>
-                <span className="text-gray-600 ml-2">{categoryDescriptions[cs.category]?.function}</span>
+                <span className="text-gray-400 ml-2">{categoryDescriptions[cs.category]?.function}</span>
               </div>
             </div>
           ))}
@@ -481,7 +504,7 @@ const Results = () => {
               <h3 className="font-medium text-provoid-300">{w.label} verbessern:</h3>
               <ul className="space-y-2">
                 {getRecommendations(w.category, w.score).map((rec, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
+                  <li key={idx} className="flex items-start gap-2 text-sm text-gray-400">
                     <span className="text-provoid-400 mt-1">•</span>
                     {rec}
                   </li>
@@ -496,7 +519,7 @@ const Results = () => {
       <div className="glass-card p-4 border border-blue-500/30">
         <div className="flex items-start gap-3">
           <AlertTriangle className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-gray-400">
             <strong className="text-blue-400">Wissenschaftlicher Hinweis:</strong> Diese Testbatterie 
             basiert auf etablierten neurowissenschaftlichen Paradigmen (CPT, Stroop, Go/No-Go, MOT) 
             und dient der Leistungsdiagnostik. Die Ergebnisse sollten im Kontext des Trainingsalters, 
@@ -504,6 +527,30 @@ const Results = () => {
             ist eine fachärztliche Konsultation erforderlich.
           </div>
         </div>
+      </div>
+
+      {/* Retest Recommendation */}
+      <div className="glass-card p-4 border border-provoid-500/30">
+        <div className="flex items-start gap-3">
+          <Target className="w-5 h-5 text-provoid-400 flex-shrink-0 mt-0.5" />
+          <div className="text-sm text-gray-400">
+            <strong className="text-provoid-400">Empfehlung:</strong> Eine Wiederholungstestung nach 
+            4-6 Wochen gezieltem Training ermöglicht die Messung des Trainingsfortschritts. 
+            Regelmäßige Testungen unterstützen die individuelle Leistungsentwicklung.
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="text-center text-xs text-gray-600 py-4">
+        <p>© {new Date().getFullYear()} PROVOID • Neuroathletische Leistungsdiagnostik</p>
+        <p className="mt-1">Erstellt am {new Date().toLocaleDateString('de-DE', { 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        })}</p>
       </div>
     </div>
   );
