@@ -298,34 +298,21 @@ const Results = () => {
         <p className="text-gray-500 text-sm">Evidenzbasierte Leistungsdiagnostik</p>
       </div>
 
-      {/* Main Score Card */}
-      <div className="glass-card p-8 border border-gray-700/50">
-        <div className="flex flex-col md:flex-row items-center gap-8">
-          <ScoreRing score={totalScore} size={180} strokeWidth={12} label="Gesamtscore" textSize="text-4xl" />
-          
-          <div className="flex-1 text-center md:text-left">
-            <p className="text-provoid-400 text-sm font-medium mb-1">Neuroathletisches Profil</p>
-            <h1 className="text-2xl font-bold mb-1">
-              {session.first_name} {session.last_name}
-            </h1>
-            <p className="text-gray-500 mb-4">
-              {new Date(session.test_date).toLocaleDateString('de-DE', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-              })}
-              {session.team && ` • ${session.team}`}
-            </p>
-            
-            <div className={`inline-flex flex-col items-start gap-1 px-4 py-3 rounded-xl border ${interpretation.bg} ${interpretation.border}`}>
-              <span className={`font-semibold ${interpretation.color}`}>
-                {interpretation.label}
-              </span>
-              <span className="text-xs text-gray-500">
-                {interpretation.sublabel}
-              </span>
-            </div>
-          </div>
+      {/* Header Card - ohne Gesamtscore */}
+      <div className="glass-card p-6 border border-gray-700/50">
+        <div className="text-center md:text-left">
+          <p className="text-provoid-400 text-sm font-medium mb-1">Neuroathletisches Profil</p>
+          <h1 className="text-2xl font-bold mb-1">
+            {session.first_name} {session.last_name}
+          </h1>
+          <p className="text-gray-500">
+            {new Date(session.test_date).toLocaleDateString('de-DE', { 
+              year: 'numeric', 
+              month: 'long', 
+              day: 'numeric' 
+            })}
+            {session.team && ` • ${session.team}`}
+          </p>
         </div>
       </div>
 
