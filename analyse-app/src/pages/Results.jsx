@@ -301,7 +301,7 @@ const Results = () => {
       {/* Main Score Card */}
       <div className="glass-card p-8 border border-gray-700/50">
         <div className="flex flex-col md:flex-row items-center gap-8">
-          <ScoreRing score={totalScore} size={180} strokeWidth={12} label="Gesamtscore" />
+          <ScoreRing score={totalScore} size={180} strokeWidth={12} label="Gesamtscore" textSize="text-4xl" />
           
           <div className="flex-1 text-center md:text-left">
             <p className="text-provoid-400 text-sm font-medium mb-1">Neuroathletisches Profil</p>

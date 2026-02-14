@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ScoreRing = ({ score, size = 120, strokeWidth = 8, label, color = 'cyan' }) => {
+const ScoreRing = ({ score, size = 120, strokeWidth = 8, label, color = 'cyan', textSize = 'text-2xl' }) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = radius * 2 * Math.PI;
   const offset = circumference - (score / 100) * circumference;
@@ -48,7 +48,7 @@ const ScoreRing = ({ score, size = 120, strokeWidth = 8, label, color = 'cyan' }
         />
       </svg>
       <div className="absolute flex flex-col items-center justify-center">
-        <span className="text-2xl font-bold">{Math.round(score)}</span>
+        <span className={`${textSize} font-bold text-white`}>{Math.round(score)}</span>
         {label && <span className="text-xs text-gray-400 text-center max-w-[80px]">{label}</span>}
       </div>
     </div>
