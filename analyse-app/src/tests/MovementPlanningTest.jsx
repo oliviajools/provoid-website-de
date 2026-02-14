@@ -172,8 +172,8 @@ const MovementPlanningTest = ({ onComplete, onCancel }) => {
     generateAndShowSequence();
   }, []);
 
-  const generateAndShowSequence = () => {
-    const length = SEQUENCE_LENGTH + Math.floor(trial / 2);
+  const generateAndShowSequence = (currentTrial = trial) => {
+    const length = SEQUENCE_LENGTH + Math.floor(currentTrial / 2);
     const pattern = Array.from({ length }, () => Math.floor(Math.random() * 4));
     setSequencePattern(pattern);
     setUserSequence([]);
@@ -223,9 +223,9 @@ const MovementPlanningTest = ({ onComplete, onCancel }) => {
       setTrial(nextTrial);
       
       if (nextTrial >= TRIALS_PER_TEST) {
-        finishSequenceTest();
+        setTimeout(finishSequenceTest, 1500);
       } else {
-        setTimeout(generateAndShowSequence, 1500);
+        setTimeout(() => generateAndShowSequence(nextTrial), 1500);
       }
       return;
     }
@@ -246,9 +246,9 @@ const MovementPlanningTest = ({ onComplete, onCancel }) => {
       setTrial(nextTrial);
       
       if (nextTrial >= TRIALS_PER_TEST) {
-        finishSequenceTest();
+        setTimeout(finishSequenceTest, 1500);
       } else {
-        setTimeout(generateAndShowSequence, 1500);
+        setTimeout(() => generateAndShowSequence(nextTrial), 1500);
       }
     }
   };
