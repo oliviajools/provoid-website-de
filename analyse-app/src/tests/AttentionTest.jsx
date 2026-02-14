@@ -398,7 +398,7 @@ const AttentionTest = ({ onComplete, onCancel }) => {
           tabIndex={0}
         >
           <div className="w-32 h-32 bg-gray-800 rounded-2xl flex items-center justify-center mb-8">
-            <span className="text-6xl font-bold">{currentLetter}</span>
+            <span className="text-6xl font-bold text-white">{currentLetter}</span>
           </div>
           
           <p className="text-gray-500">Klicke oder drücke Leertaste bei "X"</p>

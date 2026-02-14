@@ -448,7 +448,7 @@ const DecisionMakingTest = ({ onComplete, onCancel }) => {
       {phase === 'tactical' && (
         <div className="py-4">
           <div className="bg-gray-800 p-4 rounded-xl mb-6">
-            <p className="text-lg">{scenario}</p>
+            <p className="text-lg text-white">{scenario}</p>
           </div>
           
           <div className="space-y-3">
@@ -456,7 +456,8 @@ const DecisionMakingTest = ({ onComplete, onCancel }) => {
               <button
                 key={i}
                 onClick={() => handleTacticalDecision(opt)}
-                className="w-full p-4 bg-gray-700 hover:bg-gray-600 rounded-xl text-left transition-colors text-white"
+                className="w-full p-4 bg-gray-700 hover:bg-gray-600 rounded-xl text-left transition-colors"
+                style={{ color: '#ffffff' }}
               >
                 {opt.text}
               </button>
