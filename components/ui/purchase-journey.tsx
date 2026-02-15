@@ -186,19 +186,19 @@ export function PurchaseJourney() {
             </div>
 
             {/* Navigation */}
-            <div className="flex items-center justify-center gap-6 mt-10">
+            <div className="flex items-center justify-center gap-4 mt-8">
               <button
                 onClick={() => setActiveStep(Math.max(0, activeStep - 1))}
                 disabled={activeStep === 0 || isAutoPlaying}
-                className="w-11 h-11 rounded-full bg-card/80 border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/20 hover:bg-card disabled:opacity-20 disabled:cursor-not-allowed transition-all duration-300"
+                className="w-12 h-12 rounded-full bg-white dark:bg-card border-2 border-border shadow-md flex items-center justify-center text-foreground hover:border-primary hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300"
               >
-                <ChevronUp className="w-4 h-4" />
+                <ChevronUp className="w-5 h-5" />
               </button>
               
               <button
                 onClick={startAutoPlay}
                 disabled={isAutoPlaying}
-                className="px-8 py-3 text-sm font-medium bg-primary/90 text-white rounded-full hover:bg-primary transition-all duration-300 disabled:opacity-50"
+                className="px-8 py-3.5 text-sm font-semibold bg-primary text-white rounded-full hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50"
               >
                 {isAutoPlaying ? "Läuft..." : "Reise starten"}
               </button>
@@ -206,25 +206,25 @@ export function PurchaseJourney() {
               <button
                 onClick={() => setActiveStep(Math.min(journeySteps.length - 1, activeStep + 1))}
                 disabled={activeStep === journeySteps.length - 1 || isAutoPlaying}
-                className="w-11 h-11 rounded-full bg-card/80 border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/20 hover:bg-card disabled:opacity-20 disabled:cursor-not-allowed transition-all duration-300"
+                className="w-12 h-12 rounded-full bg-white dark:bg-card border-2 border-border shadow-md flex items-center justify-center text-foreground hover:border-primary hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300"
               >
-                <ChevronDown className="w-4 h-4" />
+                <ChevronDown className="w-5 h-5" />
               </button>
             </div>
 
             {/* Progress Dots */}
-            <div className="flex justify-center gap-2.5 mt-8">
+            <div className="flex justify-center gap-3 mt-6">
               {journeySteps.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => !isAutoPlaying && setActiveStep(index)}
                   disabled={isAutoPlaying}
-                  className={`h-1.5 rounded-full transition-all duration-700 ease-out ${
+                  className={`h-2.5 rounded-full transition-all duration-500 ease-out cursor-pointer hover:scale-110 ${
                     index === activeStep 
-                      ? "bg-primary w-8" 
+                      ? "bg-primary w-10" 
                       : index < activeStep 
-                        ? "bg-primary/30 w-1.5" 
-                        : "bg-muted/50 w-1.5"
+                        ? "bg-primary/40 w-2.5" 
+                        : "bg-border w-2.5 hover:bg-muted-foreground/50"
                   }`}
                 />
               ))}
