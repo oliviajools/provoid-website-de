@@ -88,7 +88,7 @@ export function PurchaseJourney() {
           {/* 3D Depth Stage */}
           <div className="relative" style={{ perspective: "1200px" }}>
             {/* Background Steps (fading into distance) */}
-            <div className="relative h-[440px] md:h-[400px]">
+            <div className="relative h-[400px] md:h-[380px] overflow-hidden">
               {journeySteps.map((step, index) => {
                 const Icon = step.icon;
                 const distance = index - activeStep;
@@ -186,7 +186,7 @@ export function PurchaseJourney() {
             </div>
 
             {/* Navigation */}
-            <div className="flex items-center justify-center gap-4 mt-8">
+            <div className="relative z-50 flex items-center justify-center gap-4 mt-8">
               <button
                 onClick={() => setActiveStep(Math.max(0, activeStep - 1))}
                 disabled={activeStep === 0 || isAutoPlaying}
