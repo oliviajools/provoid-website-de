@@ -122,7 +122,7 @@ const AttentionTest = ({ onComplete, onCancel }) => {
     
     // d' approximation (sensitivity)
     const dPrime = Math.min(3, Math.max(-3, hitRate - falseAlarmRate)) + 1.5;
-    const normalizedScore = Math.min(100, (dPrime / 3) * 100);
+    const normalizedScore = Math.max(0, Math.min(100, (dPrime / 3) * 100));
     
     const avgRT = hits.length > 0 
       ? hits.reduce((sum, t) => sum + t.responseTime, 0) / hits.length 

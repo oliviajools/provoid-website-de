@@ -105,7 +105,7 @@ export default function AnalysePage() {
           </div>
 
           {/* Coming Soon Notice */}
-          <div className="mt-12 text-center p-8 rounded-2xl border bg-card">
+          <div className="mt-12 text-center p-8 rounded-2xl border bg-card text-card-foreground">
             <h3 className="text-xl font-semibold mb-3">Testung bald verfügbar</h3>
             <p className="text-muted-foreground">
               Die interaktive neuroathletische Testung wird in Kürze freigeschaltet. 

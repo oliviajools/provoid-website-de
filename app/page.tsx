@@ -67,7 +67,7 @@ export default function Home() {
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="relative p-8 rounded-2xl border border-border bg-card">
+              <div className="relative p-8 rounded-2xl border border-border bg-card text-card-foreground">
                 <div className="absolute top-4 right-4 text-xs font-medium text-muted-foreground uppercase tracking-wider">Ohne Neuromarketing</div>
                 <h4 className="text-lg font-semibold mb-4 mt-2">Status Quo</h4>
                 <ul className="space-y-3 text-muted-foreground">
@@ -89,7 +89,7 @@ export default function Home() {
                   </li>
                 </ul>
               </div>
-              <div className="relative p-8 rounded-2xl border border-primary/30 bg-card">
+              <div className="relative p-8 rounded-2xl border border-primary/30 bg-card text-card-foreground">
                 <div className="absolute top-4 right-4 text-xs font-medium text-primary uppercase tracking-wider">Mit PROVOID</div>
                 <h4 className="text-lg font-semibold mb-4 mt-2">Der Unterschied</h4>
                 <ul className="space-y-3 text-foreground">

@@ -300,7 +300,9 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
     // Calculate stress regulation score
     // Lower final stress + high accuracy = good regulation
     const stressRegulation = 100 - stressLevel;
-    const normalizedScore = (accuracy * 50) + (stressRegulation * 0.5);
+    // stressLevel ranges 20-100, so stressRegulation is 0-80
+    // Scale stressRegulation to 0-50 range: (stressRegulation / 80) * 50
+    const normalizedScore = Math.max(0, Math.min(100, (accuracy * 50) + (stressRegulation / 80 * 50)));
     
     const avgRT = correctTrials.length > 0 
       ? correctTrials.filter(t => t.responseTime).reduce((sum, t) => sum + t.responseTime, 0) / correctTrials.length 

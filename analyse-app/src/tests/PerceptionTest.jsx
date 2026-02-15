@@ -153,8 +153,9 @@ const PerceptionTest = ({ onComplete, onCancel }) => {
 
   const finishTrackingTest = () => {
     const correctResponses = trialDataRef.current.filter(t => t.correct).length;
-    const accuracy = correctResponses / trialDataRef.current.length;
-    const normalizedScore = Math.min(100, accuracy * 100 + 10);
+    const totalResponses = trialDataRef.current.length;
+    const accuracy = totalResponses > 0 ? correctResponses / totalResponses : 0;
+    const normalizedScore = Math.max(0, Math.min(100, accuracy * 100));
     
     setResults(prev => [...prev, {
       test_name: 'visual_tracking',
@@ -237,8 +238,11 @@ const PerceptionTest = ({ onComplete, onCancel }) => {
   };
 
   const finishSpatialTest = () => {
-    const avgAccuracy = trialDataRef.current.reduce((sum, t) => sum + t.accuracy, 0) / trialDataRef.current.length;
-    const normalizedScore = avgAccuracy * 100;
+    const totalTrials = trialDataRef.current.length;
+    const avgAccuracy = totalTrials > 0 
+      ? trialDataRef.current.reduce((sum, t) => sum + t.accuracy, 0) / totalTrials 
+      : 0;
+    const normalizedScore = Math.max(0, Math.min(100, avgAccuracy * 100));
     
     setResults(prev => [...prev, {
       test_name: 'spatial_awareness',
