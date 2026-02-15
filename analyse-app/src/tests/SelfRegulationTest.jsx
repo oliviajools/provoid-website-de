@@ -335,6 +335,8 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
     setIsBreathing(false);
     setCurrentCycleStart(null);
     setCurrentInhaleEnd(null);
+    setExpectedPhase('inhale');
+    setLastActionTime(null);
     setFeedback(null);
     
     // Start countdown
@@ -350,39 +352,56 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
     }, 1000);
   }, []);
 
-  const handleBreathInput = (isPressed) => {
+  // expectedPhase: 'inhale' oder 'exhale' - welcher Button gedrückt werden soll
+  const [expectedPhase, setExpectedPhase] = useState('inhale');
+  const [lastActionTime, setLastActionTime] = useState(null);
+  
+  const handleBreathButton = (buttonType) => {
     if (breathPhase !== 'breathing') return;
     
     const now = performance.now();
+    const isCorrect = buttonType === expectedPhase;
     
-    if (isPressed && !isBreathing) {
-      // Start einatmen
-      setIsBreathing(true);
-      setCurrentCycleStart(now);
-      setCurrentInhaleEnd(null);
-    } else if (!isPressed && isBreathing) {
-      // Start ausatmen (Einatmen beendet)
-      setIsBreathing(false);
-      setCurrentInhaleEnd(now);
-      
-      // Wenn wir einen kompletten Zyklus haben, speichern wir ihn
-      if (currentCycleStart) {
-        const inhaleDuration = now - currentCycleStart;
-        setBreathCycles(prev => [...prev, {
-          inhaleStart: currentCycleStart,
-          inhaleDuration: inhaleDuration,
-          timestamp: now
-        }]);
+    if (isCorrect) {
+      // Korrekte Taste gedrückt
+      if (buttonType === 'inhale') {
+        // Einatmen gestartet
+        setIsBreathing(true);
+        setCurrentCycleStart(now);
+        setExpectedPhase('exhale');
+      } else {
+        // Ausatmen (Zyklus abgeschlossen)
+        setIsBreathing(false);
+        setExpectedPhase('inhale');
+        
+        // Speichere den Zyklus
+        if (currentCycleStart) {
+          const cycleDuration = now - currentCycleStart;
+          setBreathCycles(prev => [...prev, {
+            cycleStart: currentCycleStart,
+            cycleDuration: cycleDuration,
+            timestamp: now,
+            correct: true
+          }]);
+        }
       }
+      setLastActionTime(now);
+      setFeedback({ type: 'success', message: '✓' });
+    } else {
+      // Falsche Taste - kurzes Feedback
+      setFeedback({ type: 'error', message: '✗' });
     }
+    
+    // Feedback nach kurzer Zeit ausblenden
+    setTimeout(() => setFeedback(null), 300);
   };
 
   const calculateCoherence = (cycles) => {
     if (cycles.length < 3) return 0;
     
-    // Berechne die Standardabweichung der Einatmungszeiten
-    const inhaleDurations = cycles.map(c => c.inhaleDuration);
-    const avgDuration = inhaleDurations.reduce((a, b) => a + b, 0) / inhaleDurations.length;
+    // Berechne die Standardabweichung der Zyklusdauern
+    const cycleDurations = cycles.map(c => c.cycleDuration);
+    const avgDuration = cycleDurations.reduce((a, b) => a + b, 0) / cycleDurations.length;
     
     // Zeitabstände zwischen Zyklen
     const intervals = [];
@@ -650,8 +669,8 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
       {phase === 'breath' && (
         <div className="flex flex-col items-center py-8">
           {/* Timer */}
-          <div className="mb-6 text-center">
-            <div className="text-5xl font-bold mb-2">{breathTimeLeft}s</div>
+          <div className="mb-8 text-center">
+            <div className="text-5xl font-bold mb-2 text-white">{breathTimeLeft}s</div>
             <div className="w-64 h-2 bg-gray-700 rounded-full overflow-hidden">
               <div 
                 className="h-full bg-provoid-500 transition-all duration-1000"
@@ -660,44 +679,62 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
             </div>
           </div>
           
-          {/* Breathing circle - interactive */}
-          <div 
-            className={`relative w-56 h-56 rounded-full border-4 transition-all duration-200 cursor-pointer select-none ${
-              isBreathing ? 'border-blue-500 scale-110 bg-blue-500/20' : 'border-provoid-500 scale-90 bg-provoid-500/10'
-            }`}
-            onMouseDown={() => handleBreathInput(true)}
-            onMouseUp={() => handleBreathInput(false)}
-            onMouseLeave={() => isBreathing && handleBreathInput(false)}
-            onTouchStart={(e) => { e.preventDefault(); handleBreathInput(true); }}
-            onTouchEnd={(e) => { e.preventDefault(); handleBreathInput(false); }}
-          >
-            <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <span className="text-3xl mb-2">{isBreathing ? '💨' : '🌬️'}</span>
-              <span className="text-xl font-semibold">
-                {isBreathing ? 'Einatmen...' : 'Ausatmen...'}
+          {/* Feedback indicator */}
+          <div className="h-12 mb-4 flex items-center justify-center">
+            {feedback && (
+              <span className={`text-4xl ${
+                feedback.type === 'success' ? 'text-green-400' : 'text-red-400'
+              }`}>
+                {feedback.message}
               </span>
-            </div>
+            )}
           </div>
           
-          <p className="mt-6 text-gray-400 text-center max-w-xs">
-            {isBreathing 
-              ? <span className="text-blue-400 font-semibold">Halte gedrückt – atme langsam ein</span>
-              : <span className="text-provoid-400 font-semibold">Losgelassen – atme langsam aus</span>
-            }
+          {/* Current phase indicator */}
+          <div className="mb-6 text-center">
+            <p className="text-lg text-gray-400 mb-2">Drücke jetzt:</p>
+            <p className={`text-2xl font-bold ${
+              expectedPhase === 'inhale' ? 'text-blue-400' : 'text-orange-400'
+            }`}>
+              {expectedPhase === 'inhale' ? '⬆️ Einatmen' : '⬇️ Ausatmen'}
+            </p>
+          </div>
+          
+          {/* Two buttons for breathing */}
+          <div className="flex gap-6">
+            <button
+              onClick={() => handleBreathButton('inhale')}
+              className={`w-36 h-36 rounded-2xl border-4 transition-all duration-200 flex flex-col items-center justify-center ${
+                expectedPhase === 'inhale'
+                  ? 'border-blue-500 bg-blue-500/20 scale-105 shadow-lg shadow-blue-500/30'
+                  : 'border-gray-600 bg-gray-800/50 opacity-60'
+              }`}
+            >
+              <span className="text-4xl mb-2">⬆️</span>
+              <span className="text-lg font-semibold text-white">Einatmen</span>
+            </button>
+            
+            <button
+              onClick={() => handleBreathButton('exhale')}
+              className={`w-36 h-36 rounded-2xl border-4 transition-all duration-200 flex flex-col items-center justify-center ${
+                expectedPhase === 'exhale'
+                  ? 'border-orange-500 bg-orange-500/20 scale-105 shadow-lg shadow-orange-500/30'
+                  : 'border-gray-600 bg-gray-800/50 opacity-60'
+              }`}
+            >
+              <span className="text-4xl mb-2">⬇️</span>
+              <span className="text-lg font-semibold text-white">Ausatmen</span>
+            </button>
+          </div>
+          
+          <p className="mt-8 text-gray-500 text-center max-w-sm">
+            Atme ruhig und gleichmäßig. Drücke den jeweiligen Button während du ein- bzw. ausatmest.
           </p>
           
           <div className="mt-4 text-lg">
-            <span className="text-gray-500">Atemzüge: </span>
+            <span className="text-gray-500">Atemzyklen: </span>
             <span className="font-bold text-white">{breathCycles.length}</span>
           </div>
-          
-          {breathPhase === 'done' && feedback && (
-            <div className={`mt-6 px-6 py-4 rounded-xl text-center ${
-              feedback.type === 'success' ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-400'
-            }`}>
-              <div className="text-lg font-semibold">{feedback.message}</div>
-            </div>
-          )}
         </div>
       )}
 
