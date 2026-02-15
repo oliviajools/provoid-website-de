@@ -27,6 +27,8 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
   const [currentInhaleEnd, setCurrentInhaleEnd] = useState(null);
   const [expectedPhase, setExpectedPhase] = useState('inhale');
   const [lastActionTime, setLastActionTime] = useState(null);
+  const [activeButton, setActiveButton] = useState(null); // 'inhale' or 'exhale' when pressed
+  const [pressStartTime, setPressStartTime] = useState(null);
   
   const timeoutRef = useRef(null);
   const intervalRef = useRef(null);
@@ -362,44 +364,64 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
     }, 1000);
   };
 
-  const handleBreathButton = (buttonType) => {
+  const handleBreathStart = (buttonType) => {
     if (breathPhase !== 'breathing') return;
+    if (activeButton) return; // Already pressing a button
     
     const now = performance.now();
     const isCorrect = buttonType === expectedPhase;
     
     if (isCorrect) {
-      // Korrekte Taste gedrückt
+      setActiveButton(buttonType);
+      setPressStartTime(now);
+      
       if (buttonType === 'inhale') {
-        // Einatmen gestartet
         setIsBreathing(true);
         setCurrentCycleStart(now);
-        setExpectedPhase('exhale');
-      } else {
-        // Ausatmen (Zyklus abgeschlossen)
-        setIsBreathing(false);
-        setExpectedPhase('inhale');
-        
-        // Speichere den Zyklus
-        if (currentCycleStart) {
-          const cycleDuration = now - currentCycleStart;
-          setBreathCycles(prev => [...prev, {
-            cycleStart: currentCycleStart,
-            cycleDuration: cycleDuration,
-            timestamp: now,
-            correct: true
-          }]);
-        }
       }
-      setLastActionTime(now);
-      setFeedback({ type: 'success', message: '✓' });
+      setFeedback({ type: 'success', message: buttonType === 'inhale' ? '⬆️ Einatmen...' : '⬇️ Ausatmen...' });
     } else {
-      // Falsche Taste - kurzes Feedback
-      setFeedback({ type: 'error', message: '✗' });
+      setFeedback({ type: 'error', message: '✗ Falsche Reihenfolge' });
+      setTimeout(() => setFeedback(null), 500);
+    }
+  };
+  
+  const handleBreathEnd = (buttonType) => {
+    if (breathPhase !== 'breathing') return;
+    if (activeButton !== buttonType) return;
+    
+    const now = performance.now();
+    const pressDuration = now - pressStartTime;
+    
+    if (buttonType === 'inhale') {
+      // Einatmen beendet - speichere Dauer
+      setCurrentInhaleEnd(now);
+      setExpectedPhase('exhale');
+      setFeedback({ type: 'success', message: `Einatmen: ${(pressDuration/1000).toFixed(1)}s` });
+    } else {
+      // Ausatmen beendet - Zyklus komplett
+      setIsBreathing(false);
+      setExpectedPhase('inhale');
+      
+      if (currentCycleStart && currentInhaleEnd) {
+        const inhaleDuration = currentInhaleEnd - currentCycleStart;
+        const exhaleDuration = pressDuration;
+        const cycleDuration = now - currentCycleStart;
+        
+        setBreathCycles(prev => [...prev, {
+          inhaleDuration,
+          exhaleDuration,
+          cycleDuration,
+          timestamp: now
+        }]);
+        setFeedback({ type: 'success', message: `Ausatmen: ${(pressDuration/1000).toFixed(1)}s` });
+      }
     }
     
-    // Feedback nach kurzer Zeit ausblenden
-    setTimeout(() => setFeedback(null), 300);
+    setActiveButton(null);
+    setPressStartTime(null);
+    setLastActionTime(now);
+    setTimeout(() => setFeedback(null), 800);
   };
 
   const calculateCoherence = (cycles) => {
@@ -647,11 +669,11 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
             <ol className="space-y-3 text-gray-300">
               <li className="flex gap-3">
                 <span className="bg-provoid-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
-                <span>Drücke <strong className="text-blue-400">⬆️ Einatmen</strong> während du einatmest.</span>
+                <span><strong className="text-blue-400">Halte ⬆️ Einatmen gedrückt</strong> während du einatmest.</span>
               </li>
               <li className="flex gap-3">
                 <span className="bg-provoid-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
-                <span>Drücke <strong className="text-orange-400">⬇️ Ausatmen</strong> während du ausatmest.</span>
+                <span><strong className="text-orange-400">Halte ⬇️ Ausatmen gedrückt</strong> während du ausatmest.</span>
               </li>
               <li className="flex gap-3">
                 <span className="bg-provoid-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
@@ -709,30 +731,44 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
             </p>
           </div>
           
-          {/* Two buttons for breathing */}
+          {/* Two buttons for breathing - press and hold */}
           <div className="flex gap-6">
             <button
-              onClick={() => handleBreathButton('inhale')}
-              className={`w-36 h-36 rounded-2xl border-4 transition-all duration-200 flex flex-col items-center justify-center ${
-                expectedPhase === 'inhale'
-                  ? 'border-blue-500 bg-blue-500/20 scale-105 shadow-lg shadow-blue-500/30'
-                  : 'border-gray-600 bg-gray-800/50 opacity-60'
+              onMouseDown={() => handleBreathStart('inhale')}
+              onMouseUp={() => handleBreathEnd('inhale')}
+              onMouseLeave={() => activeButton === 'inhale' && handleBreathEnd('inhale')}
+              onTouchStart={() => handleBreathStart('inhale')}
+              onTouchEnd={() => handleBreathEnd('inhale')}
+              className={`w-36 h-36 rounded-2xl border-4 transition-all duration-200 flex flex-col items-center justify-center select-none ${
+                activeButton === 'inhale'
+                  ? 'border-blue-400 bg-blue-500/40 scale-110 shadow-xl shadow-blue-500/50'
+                  : expectedPhase === 'inhale'
+                    ? 'border-blue-500 bg-blue-500/20 scale-105 shadow-lg shadow-blue-500/30'
+                    : 'border-gray-600 bg-gray-800/50 opacity-60'
               }`}
             >
               <span className="text-4xl mb-2">⬆️</span>
               <span className="text-lg font-semibold text-white">Einatmen</span>
+              <span className="text-xs text-gray-400 mt-1">gedrückt halten</span>
             </button>
             
             <button
-              onClick={() => handleBreathButton('exhale')}
-              className={`w-36 h-36 rounded-2xl border-4 transition-all duration-200 flex flex-col items-center justify-center ${
-                expectedPhase === 'exhale'
-                  ? 'border-orange-500 bg-orange-500/20 scale-105 shadow-lg shadow-orange-500/30'
-                  : 'border-gray-600 bg-gray-800/50 opacity-60'
+              onMouseDown={() => handleBreathStart('exhale')}
+              onMouseUp={() => handleBreathEnd('exhale')}
+              onMouseLeave={() => activeButton === 'exhale' && handleBreathEnd('exhale')}
+              onTouchStart={() => handleBreathStart('exhale')}
+              onTouchEnd={() => handleBreathEnd('exhale')}
+              className={`w-36 h-36 rounded-2xl border-4 transition-all duration-200 flex flex-col items-center justify-center select-none ${
+                activeButton === 'exhale'
+                  ? 'border-orange-400 bg-orange-500/40 scale-110 shadow-xl shadow-orange-500/50'
+                  : expectedPhase === 'exhale'
+                    ? 'border-orange-500 bg-orange-500/20 scale-105 shadow-lg shadow-orange-500/30'
+                    : 'border-gray-600 bg-gray-800/50 opacity-60'
               }`}
             >
               <span className="text-4xl mb-2">⬇️</span>
               <span className="text-lg font-semibold text-white">Ausatmen</span>
+              <span className="text-xs text-gray-400 mt-1">gedrückt halten</span>
             </button>
           </div>
           

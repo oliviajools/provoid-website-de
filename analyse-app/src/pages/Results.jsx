@@ -498,12 +498,7 @@ const Results = () => {
                         {Math.round(r.normalized_score)}%
                       </span>
                     </div>
-                    {r.reaction_time_ms && (
-                      <p className="text-xs text-gray-500">RT: {Math.round(r.reaction_time_ms)} ms</p>
-                    )}
-                    {r.accuracy_percent !== undefined && (
-                      <p className="text-xs text-gray-500">Genauigkeit: {Math.round(r.accuracy_percent)}%</p>
-                    )}
+                    {/* RT und Genauigkeit ausgeblendet für sauberere Darstellung */}
                   </div>
                 ))}
               </div>
