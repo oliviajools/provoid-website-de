@@ -238,10 +238,10 @@ const DecisionMakingTest = ({ onComplete, onCancel }) => {
       { id: 2, label: 'Rechts', x: 80 }
     ]);
     
-    // Animate object - langsamer und spätere Verdeckung für bessere Sichtbarkeit
+    // Animate object - schnellerer Ball, frühere Verdeckung für mehr Herausforderung
     let progress = 0;
-    const duration = 1500 + Math.random() * 500; // 1.5-2.0s (langsamer)
-    const occlusionPoint = 0.50 + Math.random() * 0.15; // Verdeckung bei 50-65% (später)
+    const duration = 1000 + Math.random() * 400; // 1.0-1.4s (schneller)
+    const occlusionPoint = 0.35 + Math.random() * 0.15; // Verdeckung bei 35-50% (früher)
     
     intervalRef.current = setInterval(() => {
       progress += 40 / duration; // Schnellere Updates

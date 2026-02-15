@@ -51,15 +51,16 @@ const PerceptionTest = ({ onComplete, onCancel }) => {
     setFeedback(null);
     setTrackingPhase('show');
     
-    // Create balls
-    const numBalls = 4 + Math.floor(trial / 2);
-    const numTargets = 2;
+    // Create balls - mehr Bälle und schnellere Bewegung
+    const numBalls = 6 + Math.floor(trial / 2); // Start mit 6 statt 4
+    const numTargets = 2 + Math.floor(trial / 3); // Mehr Targets bei späteren Trials
+    const speed = 2.5 + trial * 0.3; // Schnellere Bewegung
     const newBalls = Array.from({ length: numBalls }, (_, i) => ({
       id: i,
       x: 10 + Math.random() * 80,
       y: 10 + Math.random() * 80,
-      vx: (Math.random() - 0.5) * 2,
-      vy: (Math.random() - 0.5) * 2,
+      vx: (Math.random() - 0.5) * speed,
+      vy: (Math.random() - 0.5) * speed,
       isTarget: i < numTargets
     }));
     
@@ -183,8 +184,8 @@ const PerceptionTest = ({ onComplete, onCancel }) => {
     setFeedback(null);
     setUserSelections([]);
     
-    // Create grid with highlighted positions
-    const numPositions = 3 + Math.floor(trial / 2);
+    // Create grid with highlighted positions - mehr Positionen, kürzere Anzeigezeit
+    const numPositions = 4 + Math.floor(trial / 2); // Start mit 4 statt 3
     const positions = [];
     while (positions.length < numPositions) {
       const pos = Math.floor(Math.random() * 16);
@@ -194,11 +195,12 @@ const PerceptionTest = ({ onComplete, onCancel }) => {
     setCorrectPositions(positions);
     setGridItems(positions);
     
-    // Show for 2 seconds then hide
+    // Show for 1.5 seconds then hide (kürzer)
+    const displayTime = Math.max(1000, 1500 - trial * 100); // Wird kürzer pro Trial
     timeoutRef.current = setTimeout(() => {
       setGridItems([]);
       stimulusStartRef.current = performance.now();
-    }, 2000);
+    }, displayTime);
   };
 
   const handleGridClick = (pos) => {
