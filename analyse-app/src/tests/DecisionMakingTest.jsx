@@ -115,144 +115,89 @@ const DecisionMakingTest = ({ onComplete, onCancel }) => {
     setPhase('tactical_intro');
   };
 
-  // Tactical Decision Test
-  const startTacticalTest = useCallback(() => {
-    setPhase('tactical');
+  // Flanker Task (Eriksen Flanker - established cognitive paradigm)
+  const [flankerStimulus, setFlankerStimulus] = useState(null);
+  const [flankerTarget, setFlankerTarget] = useState(null); // 'left' or 'right'
+  
+  const startFlankerTest = useCallback(() => {
+    setPhase('flanker');
     setTrial(0);
     trialDataRef.current = [];
-    runTacticalTrial();
+    runFlankerTrial();
   }, []);
 
-  const allScenarios = [
-    {
-      situation: 'Kontersituation: 3 gegen 2. Du führst den Ball zentral, links und rechts je eine Mitspielerin.',
-      options: [
-        { text: 'Weiterdribbeln und Schuss', score: 50 },
-        { text: 'Kurzer Pass nach links, dann Doppelpass', score: 85 },
-        { text: 'Langer Ball nach rechts', score: 60 },
-        { text: 'Abbremsen und auf Unterstützung warten', score: 20 }
-      ]
-    },
-    {
-      situation: 'Du verteidigst 1-gegen-1. Die Angreiferin dribbelt auf dich zu und hat Tempo.',
-      options: [
-        { text: 'Sofort in den Zweikampf gehen', score: 40 },
-        { text: 'Rückwärts laufen und den Winkel zumachen', score: 85 },
-        { text: 'Stehen bleiben und abwarten', score: 30 },
-        { text: 'Zur Seite ausweichen', score: 50 }
-      ]
-    },
-    {
-      situation: 'Freistoß 25 Meter vor dem Tor. Die Mauer steht, die Torhüterin positioniert sich.',
-      options: [
-        { text: 'Direkter Schuss über die Mauer', score: 60 },
-        { text: 'Flacher Schuss um die Mauer', score: 70 },
-        { text: 'Kurz abspielen und Nachschuss', score: 80 },
-        { text: 'Hoher Ball in den Strafraum', score: 55 }
-      ]
-    },
-    {
-      situation: 'Letzte Minute, ihr liegt 1 Tor zurück. Euer Team hat Eckball.',
-      options: [
-        { text: 'Kurz spielen und kombinieren', score: 50 },
-        { text: 'Hoher Ball auf die Torhüterin', score: 85 },
-        { text: 'Flacher Ball auf den kurzen Pfosten', score: 70 },
-        { text: 'Ball halten und Zeit gewinnen', score: 20 }
-      ]
-    },
-    {
-      situation: 'Du bist Torhüterin. Angreiferin kommt allein auf dich zu, noch 15 Meter entfernt.',
-      options: [
-        { text: 'Auf der Linie bleiben', score: 40 },
-        { text: 'Langsam herauslaufen und Winkel verkürzen', score: 85 },
-        { text: 'Schnell herausstürmen', score: 55 },
-        { text: 'Nach links oder rechts bewegen', score: 35 }
-      ]
-    },
-    {
-      situation: 'Du hast den Ball im Mittelfeld. Zwei Gegner kommen auf dich zu, eine Mitspielerin bietet sich an.',
-      options: [
-        { text: 'Schnell zur freien Mitspielerin passen', score: 85 },
-        { text: 'Versuch, beide zu umdribbeln', score: 30 },
-        { text: 'Rückpass zum Torwart', score: 60 },
-        { text: 'Ball lang nach vorne schlagen', score: 45 }
-      ]
-    },
-    {
-      situation: 'Elfmeter für dein Team. Du bist die Schützin. Die Torhüterin bewegt sich früh.',
-      options: [
-        { text: 'Sicher in die Mitte schießen', score: 70 },
-        { text: 'Warten und in die Ecke schießen, die sie freigibt', score: 85 },
-        { text: 'Hart in eine Ecke schießen', score: 65 },
-        { text: 'Lupfer versuchen', score: 40 }
-      ]
-    },
-    {
-      situation: 'Anstoß nach einem Gegentor. Noch 5 Minuten zu spielen, Spielstand unentschieden.',
-      options: [
-        { text: 'Ruhig aufbauen und Ballbesitz halten', score: 75 },
-        { text: 'Sofort nach vorne spielen', score: 60 },
-        { text: 'Langer Ball in die Spitze', score: 50 },
-        { text: 'Ball in der eigenen Hälfte zirkulieren lassen', score: 85 }
-      ]
-    }
+  const flankerTypes = [
+    { arrows: ['←', '←', '←', '←', '←'], target: 'left', type: 'congruent' },
+    { arrows: ['→', '→', '→', '→', '→'], target: 'right', type: 'congruent' },
+    { arrows: ['→', '→', '←', '→', '→'], target: 'left', type: 'incongruent' },
+    { arrows: ['←', '←', '→', '←', '←'], target: 'right', type: 'incongruent' },
+    { arrows: ['—', '—', '←', '—', '—'], target: 'left', type: 'neutral' },
+    { arrows: ['—', '—', '→', '—', '—'], target: 'right', type: 'neutral' },
   ];
-  
-  // Shuffle scenarios at component level to avoid duplicates
-  const [scenarios] = useState(() => 
-    [...allScenarios].sort(() => Math.random() - 0.5).slice(0, TRIALS_PER_TEST)
-  );
 
-  const runTacticalTrial = () => {
+  const runFlankerTrial = () => {
     setFeedback(null);
+    setFlankerStimulus(null);
     
-    const currentScenario = scenarios[trial];
+    const delay = 800 + Math.random() * 800;
     
-    setScenario(currentScenario.situation);
-    setDecisionOptions(currentScenario.options.sort(() => Math.random() - 0.5));
-    
-    stimulusStartRef.current = performance.now();
+    timeoutRef.current = setTimeout(() => {
+      const stimulus = flankerTypes[Math.floor(Math.random() * flankerTypes.length)];
+      setFlankerStimulus(stimulus);
+      setFlankerTarget(stimulus.target);
+      stimulusStartRef.current = performance.now();
+    }, delay);
   };
 
-  const handleTacticalDecision = (option) => {
+  const handleFlankerResponse = (response) => {
+    if (!flankerStimulus) return;
+    
     const responseTime = performance.now() - stimulusStartRef.current;
-    const score = option.score;
+    const correct = response === flankerTarget;
+    const stimulusType = flankerStimulus.type;
     
-    trialDataRef.current.push({ score, responseTime });
+    trialDataRef.current.push({ correct, responseTime, stimulusType });
     
-    const isGood = score >= 70;
     setFeedback({ 
-      type: isGood ? 'success' : 'error', 
-      message: isGood ? `Gute Entscheidung! (${score}%)` : `Suboptimal (${score}%)` 
+      type: correct ? 'success' : 'error', 
+      message: correct ? `${Math.round(responseTime)} ms` : 'Falsch!' 
     });
+    setFlankerStimulus(null);
     
     const nextTrial = trial + 1;
     setTrial(nextTrial);
     
     if (nextTrial >= TRIALS_PER_TEST) {
-      setTimeout(finishTacticalTest, 1500);
+      setTimeout(finishFlankerTest, 1500);
     } else {
-      setTimeout(runTacticalTrial, 1500);
+      setTimeout(runFlankerTrial, 1500);
     }
   };
 
-  const finishTacticalTest = () => {
-    const avgScore = trialDataRef.current.reduce((sum, t) => sum + t.score, 0) / TRIALS_PER_TEST;
-    const avgRT = trialDataRef.current.reduce((sum, t) => sum + t.responseTime, 0) / TRIALS_PER_TEST;
+  const finishFlankerTest = () => {
+    const correctTrials = trialDataRef.current.filter(t => t.correct);
+    const accuracy = correctTrials.length / TRIALS_PER_TEST;
+    const avgRT = correctTrials.length > 0 
+      ? correctTrials.reduce((sum, t) => sum + t.responseTime, 0) / correctTrials.length 
+      : 800;
     
-    // Normalize: avg score already 0-100, add small bonus for fast decisions
-    const rtBonus = Math.max(0, Math.min(10, 10 - ((avgRT - 3000) / 1000)));
-    const normalizedScore = Math.min(100, avgScore + rtBonus);
+    // Calculate conflict effect (incongruent vs congruent RT difference)
+    const congruentTrials = trialDataRef.current.filter(t => t.correct && t.stimulusType === 'congruent');
+    const incongruentTrials = trialDataRef.current.filter(t => t.correct && t.stimulusType === 'incongruent');
+    
+    // Normalize: 300ms = 100%, 500ms = 70%, 800ms = 30%
+    const rtScore = Math.max(0, Math.min(100, 130 - (avgRT / 5)));
+    const normalizedScore = (rtScore * 0.6) + (accuracy * 100 * 0.4);
     
     setResults(prev => [...prev, {
-      test_name: 'tactical_decision',
-      subcategory: 'Taktische Entscheidungsfindung',
-      raw_score: avgScore,
-      normalized_score: normalizedScore,
+      test_name: 'flanker_task',
+      subcategory: 'Konfliktverarbeitung (Flanker)',
+      raw_score: avgRT,
+      normalized_score: Math.min(100, normalizedScore),
       reaction_time_ms: avgRT,
-      accuracy_percent: avgScore,
+      accuracy_percent: accuracy * 100,
       trials_completed: TRIALS_PER_TEST,
-      errors: trialDataRef.current.filter(t => t.score < 70).length
+      errors: TRIALS_PER_TEST - correctTrials.length
     }]);
     
     trialDataRef.current = [];
@@ -386,7 +331,7 @@ const DecisionMakingTest = ({ onComplete, onCancel }) => {
         <span>Situationsanalyse & Entscheidungsfindung</span>
         <span>
           {phase === 'pattern' && `Muster: ${trial}/${TRIALS_PER_TEST}`}
-          {phase === 'tactical' && `Taktik: ${trial}/${TRIALS_PER_TEST}`}
+          {phase === 'flanker' && `Flanker: ${trial}/${TRIALS_PER_TEST}`}
           {phase === 'anticipation' && `Antizipation: ${trial}/${TRIALS_PER_TEST}`}
         </span>
       </div>
@@ -440,43 +385,83 @@ const DecisionMakingTest = ({ onComplete, onCancel }) => {
         </div>
       )}
 
-      {/* Tactical Intro */}
+      {/* Flanker Intro */}
       {phase === 'tactical_intro' && (
         <div className="text-center py-8">
-          <h3 className="text-xl font-semibold mb-4">Test 2: Taktische Entscheidungsfindung</h3>
-          <p className="text-gray-500 mb-6 max-w-md mx-auto">
-            Lies die Spielsituation und wähle die beste Entscheidung.
-          </p>
+          <h3 className="text-xl font-semibold mb-4">Test 2: Konfliktverarbeitung (Flanker-Aufgabe)</h3>
+          <div className="bg-gray-800/50 rounded-2xl p-6 mb-6 max-w-lg mx-auto text-left">
+            <h4 className="font-semibold text-provoid-400 mb-3">So funktioniert der Test:</h4>
+            <ol className="space-y-2 text-gray-300">
+              <li className="flex gap-3">
+                <span className="bg-provoid-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+                <span>Du siehst <strong className="text-white">5 Pfeile</strong> in einer Reihe.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="bg-provoid-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+                <span>Reagiere nur auf den <strong className="text-yellow-400">mittleren Pfeil</strong>!</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="bg-provoid-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+                <span>Drücke <strong className="text-green-400">← Links</strong> oder <strong className="text-green-400">Rechts →</strong> je nach Richtung.</span>
+              </li>
+            </ol>
+          </div>
           <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-xl mb-6 max-w-md mx-auto">
             <p className="text-sm text-blue-300">
-              <strong>Neurowissenschaft:</strong> Taktische Entscheidungen erfordern 
-              Integration im dorsolateralen präfrontalen Kortex und orbitofrontalen Kortex.
+              <strong>Neurowissenschaft:</strong> Die Flanker-Aufgabe misst Konfliktverarbeitung 
+              im anterioren cingulären Kortex (ACC) und selektive Aufmerksamkeit.
             </p>
           </div>
-          <button onClick={startTacticalTest} className="px-6 py-3 bg-provoid-600 hover:bg-cyan-700 rounded-xl font-semibold">
+          <button onClick={startFlankerTest} className="px-6 py-3 bg-provoid-600 hover:bg-cyan-700 rounded-xl font-semibold">
             Weiter
           </button>
         </div>
       )}
 
-      {/* Tactical Test */}
-      {phase === 'tactical' && (
-        <div className="py-4">
-          <div className="bg-gray-800 p-4 rounded-xl mb-6">
-            <p className="text-lg text-white">{scenario}</p>
+      {/* Flanker Test */}
+      {phase === 'flanker' && (
+        <div className="flex flex-col items-center py-8">
+          <div className="w-full max-w-md h-32 bg-gray-800 rounded-2xl flex items-center justify-center mb-8">
+            {flankerStimulus ? (
+              <div className="flex gap-2">
+                {flankerStimulus.arrows.map((arrow, i) => (
+                  <span 
+                    key={i} 
+                    className={`text-5xl font-bold ${i === 2 ? 'text-yellow-400' : 'text-white'}`}
+                  >
+                    {arrow}
+                  </span>
+                ))}
+              </div>
+            ) : (
+              <span className="text-4xl text-gray-600">+</span>
+            )}
           </div>
           
-          <div className="space-y-3">
-            {decisionOptions.map((opt, i) => (
-              <button
-                key={i}
-                onClick={() => handleTacticalDecision(opt)}
-                className="w-full p-4 bg-gray-700 hover:bg-gray-600 rounded-xl text-left transition-colors text-white"
-              >
-                {opt.text}
-              </button>
-            ))}
+          <div className="flex gap-6">
+            <button
+              onClick={() => handleFlankerResponse('left')}
+              className="w-24 h-24 bg-gray-700 hover:bg-gray-600 active:scale-95 rounded-2xl text-4xl transition-all"
+            >
+              ←
+            </button>
+            <button
+              onClick={() => handleFlankerResponse('right')}
+              className="w-24 h-24 bg-gray-700 hover:bg-gray-600 active:scale-95 rounded-2xl text-4xl transition-all"
+            >
+              →
+            </button>
           </div>
+          
+          <p className="mt-4 text-gray-400 text-sm">Reagiere auf den mittleren Pfeil</p>
+          
+          {feedback && (
+            <div className={`mt-4 px-4 py-2 rounded-lg ${
+              feedback.type === 'success' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'
+            }`}>
+              {feedback.message}
+            </div>
+          )}
         </div>
       )}
 

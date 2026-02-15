@@ -394,17 +394,19 @@ const AttentionTest = ({ onComplete, onCancel }) => {
 
       {/* Sustained Attention */}
       {phase === 'sustained' && (
-        <div 
-          className="flex flex-col items-center py-12 cursor-pointer select-none"
-          onClick={handleSustainedResponse}
-          onKeyDown={(e) => e.key === ' ' && handleSustainedResponse()}
-          tabIndex={0}
-        >
-          <div className="w-32 h-32 bg-gray-800 rounded-2xl flex items-center justify-center mb-8">
+        <div className="flex flex-col items-center py-8 select-none">
+          <div className="w-32 h-32 bg-gray-800 rounded-2xl flex items-center justify-center mb-6">
             <span className="text-6xl font-bold text-white">{currentLetter}</span>
           </div>
           
-          <p className="text-gray-500">Klicke oder drücke Leertaste bei "X"</p>
+          <button
+            onClick={handleSustainedResponse}
+            className="w-40 h-40 rounded-full bg-provoid-600 hover:bg-provoid-500 active:scale-95 transition-all shadow-lg shadow-provoid-500/30 flex items-center justify-center mb-4"
+          >
+            <span className="text-5xl font-bold text-white">X</span>
+          </button>
+          
+          <p className="text-gray-400 text-sm">Drücke den Button nur bei "X"</p>
           
           {feedback && (
             <div className={`mt-4 text-4xl ${
