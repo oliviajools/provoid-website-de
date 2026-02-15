@@ -28,14 +28,14 @@ export function Proof() {
   ];
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+    <section className="py-16 md:py-20">
       <div className="container px-4 md:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-12">
-            <h3 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+            <h3 className="text-3xl md:text-4xl font-bold mb-6">
               Begleitung mit neurowissenschaftlicher Expertise
             </h3>
-            <p className="text-lg text-slate-400 max-w-3xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Wir übersetzen Forschung in anwendbare Schritte und begleiten Sie empathisch, strukturiert und evidenzbasiert.
             </p>
           </div>
@@ -95,19 +95,19 @@ function ProofCarousel({ items }: { items: { icon: LucideIcon; text: string; des
           const Icon = item.icon;
           return (
             <li
-              className="relative w-[280px] max-w-full shrink-0 rounded-2xl border border-slate-700/50 bg-slate-800/50 backdrop-blur-sm px-6 py-8 hover:border-cyan-500/30 transition-all"
+              className="relative w-[280px] max-w-full shrink-0 rounded-2xl border border-border bg-card px-6 py-8 hover:border-primary/30 hover:shadow-md transition-all"
               key={`${item.text}-${idx}`}
             >
               <div className="flex flex-col items-center text-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-cyan-500/10 flex items-center justify-center ring-1 ring-cyan-500/20">
-                  <Icon className="w-8 h-8 text-cyan-400" />
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Icon className="w-8 h-8 text-primary" />
                 </div>
                 <div>
-                  <h4 className="text-base font-semibold text-cyan-400 mb-2">
+                  <h4 className="text-base font-semibold text-foreground mb-2">
                     {item.text}
                   </h4>
                   {item.description && (
-                    <p className="text-sm text-slate-400">
+                    <p className="text-sm text-muted-foreground">
                       {item.description}
                     </p>
                   )}

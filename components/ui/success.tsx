@@ -33,7 +33,7 @@ export function Success() {
     }, []);
 
     return (
-      <section className="py-8 md:py-12" ref={sectionRef}>
+      <section className="py-16 md:py-20" ref={sectionRef}>
         <div className="container px-4 md:px-6 lg:px-8">
           <div className="relative">
             <ContainerScroll
