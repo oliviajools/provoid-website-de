@@ -36,6 +36,7 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
   const stressHandledRef = useRef(false);
   const stressTrialRef = useRef(0);
   const breathTrialRef = useRef(0);
+  const goNoGoTrialRef = useRef(0);
 
   const TRIALS_GO_NOGO = 24;
   const TRIALS_PER_TEST = 8;
@@ -51,6 +52,7 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
   const startGoNoGoTest = useCallback(() => {
     setPhase('gonogo');
     setTrial(0);
+    goNoGoTrialRef.current = 0;
     trialDataRef.current = [];
     runGoNoGoTrial();
   }, []);
@@ -114,7 +116,8 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
   };
 
   const advanceGoNoGo = () => {
-    const nextTrial = trial + 1;
+    goNoGoTrialRef.current += 1;
+    const nextTrial = goNoGoTrialRef.current;
     setTrial(nextTrial);
     
     if (nextTrial >= TRIALS_GO_NOGO) {
