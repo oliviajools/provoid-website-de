@@ -9,12 +9,17 @@ body {
   color: #1e293b;
 }
 
-/* Ensure buttons with dark backgrounds have light text */
+/* Ensure buttons with dark or teal backgrounds have light text */
 button.bg-gray-700,
 button.bg-gray-800,
 .bg-gray-700 button,
-.bg-gray-800 button {
-  color: #ffffff;
+.bg-gray-800 button,
+button.bg-provoid-400,
+button.bg-provoid-500,
+button.bg-provoid-600,
+button.provoid-gradient,
+.provoid-gradient button {
+  color: #ffffff !important;
 }
 
 @layer utilities {

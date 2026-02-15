@@ -456,8 +456,7 @@ const DecisionMakingTest = ({ onComplete, onCancel }) => {
               <button
                 key={i}
                 onClick={() => handleTacticalDecision(opt)}
-                className="w-full p-4 bg-gray-700 hover:bg-gray-600 rounded-xl text-left transition-colors"
-                style={{ color: '#ffffff' }}
+                className="w-full p-4 bg-gray-700 hover:bg-gray-600 rounded-xl text-left transition-colors text-white"
               >
                 {opt.text}
               </button>
