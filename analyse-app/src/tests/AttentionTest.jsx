@@ -63,7 +63,7 @@ const AttentionTest = ({ onComplete, onCancel }) => {
     setCurrentLetter(letter);
     stimulusStartRef.current = performance.now();
     
-    // Letter shown for 400ms (faster), then blank for 600ms
+    // Letter shown for 1000ms, then blank for 500ms
     timeoutRef.current = setTimeout(() => {
       setCurrentLetter('');
       
@@ -86,8 +86,8 @@ const AttentionTest = ({ onComplete, onCancel }) => {
         } else {
           runSustainedTrial();
         }
-      }, 600);
-    }, 400);
+      }, 500);
+    }, 1000);
   };
 
   const handleSustainedResponse = () => {
