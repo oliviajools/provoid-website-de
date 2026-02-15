@@ -241,7 +241,7 @@ const AdminTeamDetail = () => {
                   <td className="px-4 py-3">
                     {player.test_count > 0 ? (
                       <Link
-                        to={`/player/${player.id}`}
+                        to={`/players/${player.id}`}
                         className="text-provoid-400 hover:text-provoid-300 hover:underline"
                       >
                         {player.test_count}
@@ -254,7 +254,7 @@ const AdminTeamDetail = () => {
                     <div className="flex justify-end gap-1">
                       {player.test_count > 0 && (
                         <Link
-                          to={`/player/${player.id}`}
+                          to={`/players/${player.id}`}
                           className="p-2 hover:bg-provoid-500/20 rounded-lg transition-colors"
                           title="Ergebnisse anzeigen"
                         >
