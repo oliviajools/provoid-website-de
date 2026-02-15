@@ -15,6 +15,8 @@ const MovementPlanningTest = ({ onComplete, onCancel }) => {
   
   const timeoutRef = useRef(null);
   const trialDataRef = useRef([]);
+  const sequenceTimeoutsRef = useRef([]);
+  const sequenceIdRef = useRef(0);
 
   const TRIALS_PER_TEST = 8;
   const SEQUENCE_LENGTH = 4;
@@ -23,6 +25,7 @@ const MovementPlanningTest = ({ onComplete, onCancel }) => {
   useEffect(() => {
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      sequenceTimeoutsRef.current.forEach(t => clearTimeout(t));
     };
   }, []);
 
@@ -173,30 +176,44 @@ const MovementPlanningTest = ({ onComplete, onCancel }) => {
   }, []);
 
   const generateAndShowSequence = (currentTrial = trial) => {
+    // Clear any existing sequence timeouts
+    sequenceTimeoutsRef.current.forEach(t => clearTimeout(t));
+    sequenceTimeoutsRef.current = [];
+    sequenceIdRef.current += 1;
+    const thisSequenceId = sequenceIdRef.current;
+    
     const length = SEQUENCE_LENGTH + Math.floor(currentTrial / 2);
     const pattern = Array.from({ length }, () => Math.floor(Math.random() * 4));
     setSequencePattern(pattern);
     setUserSequence([]);
     setIsShowingSequence(true);
     setFeedback(null);
+    setActiveButton(null);
     
-    // Show sequence
+    // Show sequence with proper cleanup
     let i = 0;
     const showNext = () => {
+      // Check if this sequence is still active
+      if (sequenceIdRef.current !== thisSequenceId) return;
+      
       if (i < pattern.length) {
         setActiveButton(pattern[i]);
-        setTimeout(() => {
+        const t1 = setTimeout(() => {
+          if (sequenceIdRef.current !== thisSequenceId) return;
           setActiveButton(null);
           i++;
-          setTimeout(showNext, 300);
+          const t2 = setTimeout(showNext, 300);
+          sequenceTimeoutsRef.current.push(t2);
         }, 500);
+        sequenceTimeoutsRef.current.push(t1);
       } else {
         setIsShowingSequence(false);
         setStimulusStart(performance.now());
       }
     };
     
-    setTimeout(showNext, 500);
+    const t0 = setTimeout(showNext, 500);
+    sequenceTimeoutsRef.current.push(t0);
   };
 
   const handleSequenceInput = (button) => {
