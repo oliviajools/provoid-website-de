@@ -501,8 +501,11 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
   finishBreathTestRef.current = finishBreathTest;
 
   useEffect(() => {
-    if (phase === 'complete' && results.length === 3) {
-      setTimeout(() => onComplete(results), 2000);
+    if (phase === 'complete') {
+      const timer = setTimeout(() => {
+        onComplete(results.length > 0 ? results : [{ test_name: 'regulation_fallback', subcategory: 'Selbstregulation', normalized_score: 50, trials_completed: 0 }]);
+      }, 2000);
+      return () => clearTimeout(timer);
     }
   }, [phase, results, onComplete]);
 

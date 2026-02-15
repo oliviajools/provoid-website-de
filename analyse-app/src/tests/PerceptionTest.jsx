@@ -333,8 +333,17 @@ const PerceptionTest = ({ onComplete, onCancel }) => {
   };
 
   useEffect(() => {
-    if (phase === 'complete' && results.length === 3) {
-      setTimeout(() => onComplete(results), 2000);
+    if (phase === 'complete') {
+      // Complete after 2 seconds regardless of results count
+      const timer = setTimeout(() => {
+        onComplete(results.length > 0 ? results : [{
+          test_name: 'perception_fallback',
+          subcategory: 'Wahrnehmung',
+          normalized_score: 50,
+          trials_completed: 0
+        }]);
+      }, 2000);
+      return () => clearTimeout(timer);
     }
   }, [phase, results, onComplete]);
 

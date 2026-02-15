@@ -345,8 +345,11 @@ const AttentionTest = ({ onComplete, onCancel }) => {
   };
 
   useEffect(() => {
-    if (phase === 'complete' && results.length === 3) {
-      setTimeout(() => onComplete(results), 2000);
+    if (phase === 'complete') {
+      const timer = setTimeout(() => {
+        onComplete(results.length > 0 ? results : [{ test_name: 'attention_fallback', subcategory: 'Aufmerksamkeit', normalized_score: 50, trials_completed: 0 }]);
+      }, 2000);
+      return () => clearTimeout(timer);
     }
   }, [phase, results, onComplete]);
 
