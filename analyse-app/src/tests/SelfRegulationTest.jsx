@@ -25,6 +25,8 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
   const [breathTimeLeft, setBreathTimeLeft] = useState(45); // 45 Sekunden
   const [currentCycleStart, setCurrentCycleStart] = useState(null);
   const [currentInhaleEnd, setCurrentInhaleEnd] = useState(null);
+  const [expectedPhase, setExpectedPhase] = useState('inhale');
+  const [lastActionTime, setLastActionTime] = useState(null);
   
   const timeoutRef = useRef(null);
   const intervalRef = useRef(null);
@@ -352,10 +354,6 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
     }, 1000);
   }, []);
 
-  // expectedPhase: 'inhale' oder 'exhale' - welcher Button gedrückt werden soll
-  const [expectedPhase, setExpectedPhase] = useState('inhale');
-  const [lastActionTime, setLastActionTime] = useState(null);
-  
   const handleBreathButton = (buttonType) => {
     if (breathPhase !== 'breathing') return;
     
