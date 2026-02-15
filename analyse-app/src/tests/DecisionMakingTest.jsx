@@ -248,43 +248,31 @@ const DecisionMakingTest = ({ onComplete, onCancel }) => {
     setOccluded(false);
     occludedRef.current = false;
     
-    // 5 Zielzonen statt 3 für höhere Schwierigkeit
-    const targetZone = Math.floor(Math.random() * 5); // 0-4
+    // 3 Zielzonen für bessere Nachvollziehbarkeit
+    const targetZone = Math.floor(Math.random() * 3); // 0-2 (Links, Mitte, Rechts)
     
-    // Verschiedene Startpositionen (auch von rechts oder Mitte)
-    const startSide = Math.random();
-    let startX, startY;
-    if (startSide < 0.4) {
-      startX = 5 + Math.random() * 15; // Links
-      startY = 10 + Math.random() * 30;
-    } else if (startSide < 0.8) {
-      startX = 80 + Math.random() * 15; // Rechts
-      startY = 10 + Math.random() * 30;
-    } else {
-      startX = 40 + Math.random() * 20; // Mitte-oben
-      startY = 5 + Math.random() * 15;
-    }
+    // Startposition oben, leicht variiert
+    const startX = 40 + (Math.random() - 0.5) * 30; // 25-55%
+    const startY = 5 + Math.random() * 10; // 5-15% von oben
     
-    // Zielpositionen basierend auf Zone
-    const endX = 10 + targetZone * 20; // 10, 30, 50, 70, 90
-    const endY = 88 + Math.random() * 8;
+    // Zielpositionen basierend auf Zone (Links=20%, Mitte=50%, Rechts=80%)
+    const endX = 20 + targetZone * 30;
+    const endY = 85 + Math.random() * 10;
     
-    // Kurvenfaktor für nicht-lineare Bahnen
-    const curveStrength = (Math.random() - 0.5) * 40;
+    // Geringerer Kurvenfaktor für klarere Flugbahnen
+    const curveStrength = (Math.random() - 0.5) * 15;
     
     setMovingObject({ x: startX, y: startY, targetX: endX, targetY: endY, curveStrength, targetZone });
     setTargetZones([
-      { id: 0, label: '1', x: 10 },
-      { id: 1, label: '2', x: 30 },
-      { id: 2, label: '3', x: 50 },
-      { id: 3, label: '4', x: 70 },
-      { id: 4, label: '5', x: 90 }
+      { id: 0, label: 'Links', x: 20 },
+      { id: 1, label: 'Mitte', x: 50 },
+      { id: 2, label: 'Rechts', x: 80 }
     ]);
     
-    // Animate object - schneller und frühere Verdeckung
+    // Animate object - langsamer und spätere Verdeckung für bessere Sichtbarkeit
     let progress = 0;
-    const duration = 1000 + Math.random() * 400; // 1.0-1.4s (schneller)
-    const occlusionPoint = 0.25 + Math.random() * 0.15; // Verdeckung bei 25-40% (früher)
+    const duration = 1500 + Math.random() * 500; // 1.5-2.0s (langsamer)
+    const occlusionPoint = 0.50 + Math.random() * 0.15; // Verdeckung bei 50-65% (später)
     
     intervalRef.current = setInterval(() => {
       progress += 40 / duration; // Schnellere Updates
@@ -469,9 +457,23 @@ const DecisionMakingTest = ({ onComplete, onCancel }) => {
       {phase === 'anticipation_intro' && (
         <div className="text-center py-8">
           <h3 className="text-xl font-semibold mb-4">Test 3: Antizipation</h3>
-          <p className="text-gray-500 mb-6 max-w-md mx-auto">
-            Beobachte die Flugbahn des Balls. Wenn er verschwindet, sage voraus, wo er landen wird.
-          </p>
+          <div className="bg-gray-800/50 rounded-2xl p-6 mb-6 max-w-lg mx-auto text-left">
+            <h4 className="font-semibold text-provoid-400 mb-3">So funktioniert der Test:</h4>
+            <ol className="space-y-2 text-gray-300">
+              <li className="flex gap-3">
+                <span className="bg-provoid-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+                <span>Ein <strong className="text-white">Ball</strong> fliegt über das Spielfeld.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="bg-provoid-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+                <span>Der Ball <strong className="text-yellow-400">verschwindet</strong> bevor er ankommt.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="bg-provoid-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+                <span>Klicke auf <strong className="text-green-400">Links</strong>, <strong className="text-green-400">Mitte</strong> oder <strong className="text-green-400">Rechts</strong> - wo der Ball landen würde.</span>
+              </li>
+            </ol>
+          </div>
           <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-xl mb-6 max-w-md mx-auto">
             <p className="text-sm text-blue-300">
               <strong>Neurowissenschaft:</strong> Antizipation aktiviert prädiktive 
@@ -506,16 +508,16 @@ const DecisionMakingTest = ({ onComplete, onCancel }) => {
               </div>
             )}
             
-            {/* Target zones - 5 Zonen */}
-            <div className="absolute bottom-0 left-0 right-0 flex justify-between px-1 py-2">
+            {/* Target zones - 3 Zonen */}
+            <div className="absolute bottom-0 left-0 right-0 flex justify-around px-4 py-2">
               {targetZones.map(zone => (
                 <button
                   key={zone.id}
                   onClick={() => handleAnticipationResponse(zone.id)}
                   disabled={!occluded}
-                  className={`w-14 h-10 rounded-lg transition-all text-sm font-bold ${
+                  className={`px-6 py-3 rounded-xl transition-all text-base font-bold ${
                     occluded 
-                      ? 'bg-provoid-600 hover:bg-provoid-500 hover:scale-110' 
+                      ? 'bg-provoid-600 hover:bg-provoid-500 hover:scale-110 shadow-lg' 
                       : 'bg-gray-600/50 cursor-not-allowed'
                   }`}
                 >
