@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Users, Activity, TrendingUp, PlayCircle, ChevronRight, User } from 'lucide-react';
+import { Users, Activity, TrendingUp, ChevronRight, User } from 'lucide-react';
 import { apiUrl } from '../config/api';
 import ScoreRing from '../components/ScoreRing';
 
@@ -96,14 +96,7 @@ const Dashboard = () => {
               <User className="w-5 h-5" />
               Mit Code anmelden
             </Link>
-            <Link
-              to="/new-test"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-provoid-500 text-provoid-600 rounded-xl font-semibold hover:bg-provoid-50 transition-colors"
-            >
-              <PlayCircle className="w-5 h-5" />
-              Team-Code Testung
-            </Link>
-          </div>
+                      </div>
         </div>
       </div>
 
