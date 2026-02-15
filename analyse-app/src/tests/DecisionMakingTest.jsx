@@ -44,14 +44,16 @@ const DecisionMakingTest = ({ onComplete, onCancel }) => {
   }, []);
 
   const patterns = [
-    { sequence: ['⚪', '⚫', '⚪', '⚫'], next: '⚪', wrong: ['⚫', '🔴', '🔵'] },
-    { sequence: ['🔴', '🔴', '🔵', '🔴', '🔴', '🔵'], next: '🔴', wrong: ['🔵', '🟢', '🟡'] },
-    { sequence: ['▲', '▼', '▲', '▼', '▲'], next: '▼', wrong: ['▲', '◆', '●'] },
-    { sequence: ['1', '2', '4', '8'], next: '16', wrong: ['10', '12', '6'] },
-    { sequence: ['A', 'C', 'E', 'G'], next: 'I', wrong: ['H', 'J', 'F'] },
-    { sequence: ['🏃', '🏃', '🚶', '🏃', '🏃', '🚶'], next: '🏃', wrong: ['🚶', '🧍', '🏊'] },
-    { sequence: ['→', '↑', '←', '↓', '→', '↑'], next: '←', wrong: ['→', '↓', '↑'] },
-    { sequence: ['⚽', '⚽', '🏀', '⚽', '⚽', '🏀'], next: '⚽', wrong: ['🏀', '🏈', '⚾'] },
+    { sequence: ['⚪', '⚫', '⚪', '⚫', '⚪', '⚫'], next: '⚪', wrong: ['⚫', '🔴', '🔵'] },
+    { sequence: ['🔴', '�', '🔵', '🔴', '�', '🔵'], next: '🔴', wrong: ['🔵', '🟢', '🟡'] },
+    { sequence: ['▲', '▲', '▼', '▲', '▲', '▼', '▲'], next: '▲', wrong: ['▼', '◆', '●'] },
+    { sequence: ['2', '4', '8', '16', '32'], next: '64', wrong: ['48', '36', '128'] },
+    { sequence: ['B', 'D', 'F', 'H', 'J'], next: 'L', wrong: ['K', 'M', 'I'] },
+    { sequence: ['🏃', '🚶', '🏃', '🏃', '🚶', '🏃', '🏃', '🏃'], next: '🚶', wrong: ['🏃', '🧍', '🏊'] },
+    { sequence: ['→', '→', '↑', '→', '→', '↑', '→', '→'], next: '↑', wrong: ['→', '↓', '←'] },
+    { sequence: ['⚽', '🏀', '⚽', '⚽', '🏀', '⚽', '⚽', '⚽'], next: '🏀', wrong: ['⚽', '🏈', '⚾'] },
+    { sequence: ['1', '1', '2', '3', '5', '8'], next: '13', wrong: ['10', '11', '9'] },
+    { sequence: ['🔵', '🔴', '🔵', '🔵', '🔴', '🔵', '🔵', '🔵'], next: '🔴', wrong: ['🔵', '🟢', '🟡'] },
   ];
 
   const runPatternTrial = () => {
@@ -121,16 +123,7 @@ const DecisionMakingTest = ({ onComplete, onCancel }) => {
     runTacticalTrial();
   }, []);
 
-  const scenarios = [
-    {
-      situation: 'Du hast den Ball am Flügel. Eine Mitspielerin ist frei im Zentrum, eine weitere macht einen Lauf in die Tiefe. Ein Gegner kommt auf dich zu.',
-      options: [
-        { text: 'Pass ins Zentrum zur freien Spielerin', score: 90 },
-        { text: 'Steilpass in die Tiefe', score: 70 },
-        { text: 'Dribbling gegen den Gegner', score: 40 },
-        { text: 'Rückpass zur Verteidigung', score: 30 }
-      ]
-    },
+  const allScenarios = [
     {
       situation: 'Kontersituation: 3 gegen 2. Du führst den Ball zentral, links und rechts je eine Mitspielerin.',
       options: [
@@ -175,14 +168,45 @@ const DecisionMakingTest = ({ onComplete, onCancel }) => {
         { text: 'Schnell herausstürmen', score: 55 },
         { text: 'Nach links oder rechts bewegen', score: 35 }
       ]
+    },
+    {
+      situation: 'Du hast den Ball im Mittelfeld. Zwei Gegner kommen auf dich zu, eine Mitspielerin bietet sich an.',
+      options: [
+        { text: 'Schnell zur freien Mitspielerin passen', score: 85 },
+        { text: 'Versuch, beide zu umdribbeln', score: 30 },
+        { text: 'Rückpass zum Torwart', score: 60 },
+        { text: 'Ball lang nach vorne schlagen', score: 45 }
+      ]
+    },
+    {
+      situation: 'Elfmeter für dein Team. Du bist die Schützin. Die Torhüterin bewegt sich früh.',
+      options: [
+        { text: 'Sicher in die Mitte schießen', score: 70 },
+        { text: 'Warten und in die Ecke schießen, die sie freigibt', score: 85 },
+        { text: 'Hart in eine Ecke schießen', score: 65 },
+        { text: 'Lupfer versuchen', score: 40 }
+      ]
+    },
+    {
+      situation: 'Anstoß nach einem Gegentor. Noch 5 Minuten zu spielen, Spielstand unentschieden.',
+      options: [
+        { text: 'Ruhig aufbauen und Ballbesitz halten', score: 75 },
+        { text: 'Sofort nach vorne spielen', score: 60 },
+        { text: 'Langer Ball in die Spitze', score: 50 },
+        { text: 'Ball in der eigenen Hälfte zirkulieren lassen', score: 85 }
+      ]
     }
   ];
+  
+  // Shuffle scenarios at component level to avoid duplicates
+  const [scenarios] = useState(() => 
+    [...allScenarios].sort(() => Math.random() - 0.5).slice(0, TRIALS_PER_TEST)
+  );
 
   const runTacticalTrial = () => {
     setFeedback(null);
     
-    const scenarioIndex = trial % scenarios.length;
-    const currentScenario = scenarios[scenarioIndex];
+    const currentScenario = scenarios[trial];
     
     setScenario(currentScenario.situation);
     setDecisionOptions(currentScenario.options.sort(() => Math.random() - 0.5));

@@ -72,8 +72,9 @@ const MovementPlanningTest = ({ onComplete, onCancel }) => {
       const validTrials = trialDataRef.current.filter(t => t.rt > 100 && t.rt < 1000);
       const avgRT = validTrials.reduce((sum, t) => sum + t.rt, 0) / validTrials.length;
       
-      // Normalize: 200ms = 100%, 400ms = 50%, 600ms = 0%
-      const normalizedScore = Math.max(0, Math.min(100, 100 - ((avgRT - 200) / 4)));
+      // Normalize: 180ms = 100%, 280ms = 80%, 380ms = 60%, 500ms = 40%
+      // More forgiving formula - typical simple RT is 200-350ms
+      const normalizedScore = Math.max(0, Math.min(100, 120 - ((avgRT - 150) / 5)));
       
       setResults(prev => [...prev, {
         test_name: 'simple_reaction',
@@ -146,9 +147,10 @@ const MovementPlanningTest = ({ onComplete, onCancel }) => {
         : 1000;
       const accuracy = trialDataRef.current.filter(t => t.correct).length / TRIALS_PER_TEST;
       
-      // Normalize: 300ms = 100%, 600ms = 50%, 900ms = 0%
-      const rtScore = Math.max(0, Math.min(100, 100 - ((avgRT - 300) / 6)));
-      const normalizedScore = (rtScore * 0.7) + (accuracy * 100 * 0.3);
+      // Normalize: 350ms = 100%, 500ms = 70%, 700ms = 40%
+      // More forgiving - typical choice RT is 400-600ms
+      const rtScore = Math.max(0, Math.min(100, 130 - ((avgRT - 300) / 5)));
+      const normalizedScore = (rtScore * 0.6) + (accuracy * 100 * 0.4);
       
       setResults(prev => [...prev, {
         test_name: 'choice_reaction',
@@ -276,7 +278,8 @@ const MovementPlanningTest = ({ onComplete, onCancel }) => {
     const avgCompletedSteps = trialDataRef.current.reduce((sum, t) => sum + t.completedSteps, 0) / TRIALS_PER_TEST;
     
     // Normalize based on accuracy and average completed steps
-    const normalizedScore = (accuracy * 60) + (avgCompletedSteps / (SEQUENCE_LENGTH + 2)) * 40;
+    // More forgiving - reward partial completion more
+    const normalizedScore = (accuracy * 50) + (avgCompletedSteps / (SEQUENCE_LENGTH + 1)) * 50;
     
     setResults(prev => [...prev, {
       test_name: 'motor_sequencing',
