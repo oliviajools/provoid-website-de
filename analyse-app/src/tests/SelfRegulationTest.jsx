@@ -491,7 +491,7 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
         <span>
           {phase === 'gonogo' && `Go/No-Go: ${trial}/${TRIALS_GO_NOGO}`}
           {phase === 'stress' && `Stress-Test: ${trial}/${TRIALS_PER_TEST}`}
-          {phase === 'breath' && `Atmung: ${trial}/${BREATH_CYCLES}`}
+          {phase === 'breath' && `Atmung: ${breathCycles.length} Zyklen`}
         </span>
       </div>
 
