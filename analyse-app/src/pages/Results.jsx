@@ -148,9 +148,6 @@ const Results = () => {
     };
   };
 
-  const totalScore = session.total_score || 0;
-  const interpretation = getScoreInterpretation(totalScore);
-
   // Identify strengths, middle, and weaknesses (sorted by score)
   const sortedCategories = [...categoryScores].sort((a, b) => b.score - a.score);
   const strengths = sortedCategories.slice(0, 2);

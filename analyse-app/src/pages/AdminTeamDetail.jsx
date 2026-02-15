@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Users, Plus, Pencil, Trash2, X, Copy, Check } from 'lucide-react';
+import { ArrowLeft, Users, Plus, Pencil, Trash2, X, Copy, Check, Eye } from 'lucide-react';
 import { apiUrl } from '../config/api';
 
 const AdminTeamDetail = () => {
@@ -238,18 +238,40 @@ const AdminTeamDetail = () => {
                     )}
                   </td>
                   <td className="px-4 py-3 text-gray-400">{player.position || '-'}</td>
-                  <td className="px-4 py-3 text-gray-400">{player.test_count || 0}</td>
+                  <td className="px-4 py-3">
+                    {player.test_count > 0 ? (
+                      <Link
+                        to={`/player/${player.id}`}
+                        className="text-provoid-400 hover:text-provoid-300 hover:underline"
+                      >
+                        {player.test_count}
+                      </Link>
+                    ) : (
+                      <span className="text-gray-500">0</span>
+                    )}
+                  </td>
                   <td className="px-4 py-3 text-right">
                     <div className="flex justify-end gap-1">
+                      {player.test_count > 0 && (
+                        <Link
+                          to={`/player/${player.id}`}
+                          className="p-2 hover:bg-provoid-500/20 rounded-lg transition-colors"
+                          title="Ergebnisse anzeigen"
+                        >
+                          <Eye className="w-4 h-4 text-provoid-400" />
+                        </Link>
+                      )}
                       <button
                         onClick={() => openEditModal(player)}
                         className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                        title="Bearbeiten"
                       >
                         <Pencil className="w-4 h-4 text-gray-400" />
                       </button>
                       <button
                         onClick={() => handleDelete(player.id)}
                         className="p-2 hover:bg-red-500/20 rounded-lg transition-colors"
+                        title="Löschen"
                       >
                         <Trash2 className="w-4 h-4 text-red-400" />
                       </button>
