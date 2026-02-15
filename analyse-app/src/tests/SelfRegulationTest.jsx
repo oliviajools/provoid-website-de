@@ -329,7 +329,10 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
   // Breathing/Self-Regulation Test
   const BREATH_DURATION = 45; // Sekunden
   
-  const startBreathTest = useCallback(() => {
+  // Ref to hold finishBreathTest to avoid stale closure
+  const finishBreathTestRef = useRef(null);
+  
+  const startBreathTest = () => {
     setPhase('breath');
     setBreathPhase('breathing');
     setBreathCycles([]);
@@ -346,13 +349,15 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
       setBreathTimeLeft(prev => {
         if (prev <= 1) {
           clearInterval(intervalRef.current);
-          finishBreathTest();
+          if (finishBreathTestRef.current) {
+            finishBreathTestRef.current();
+          }
           return 0;
         }
         return prev - 1;
       });
     }, 1000);
-  }, []);
+  };
 
   const handleBreathButton = (buttonType) => {
     if (breathPhase !== 'breathing') return;
@@ -466,6 +471,9 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
       setPhase('complete');
     }, 3000);
   };
+  
+  // Keep ref updated with latest finishBreathTest
+  finishBreathTestRef.current = finishBreathTest;
 
   useEffect(() => {
     if (phase === 'complete' && results.length === 3) {
@@ -636,11 +644,11 @@ const SelfRegulationTest = ({ onComplete, onCancel }) => {
             <ol className="space-y-3 text-gray-300">
               <li className="flex gap-3">
                 <span className="bg-provoid-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
-                <span><strong className="text-blue-400">Drücke und halte</strong> den Button, während du <strong className="text-blue-400">einatmest</strong>.</span>
+                <span>Drücke <strong className="text-blue-400">⬆️ Einatmen</strong> während du einatmest.</span>
               </li>
               <li className="flex gap-3">
                 <span className="bg-provoid-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
-                <span><strong className="text-provoid-300">Lasse los</strong>, während du <strong className="text-provoid-300">ausatmest</strong>.</span>
+                <span>Drücke <strong className="text-orange-400">⬇️ Ausatmen</strong> während du ausatmest.</span>
               </li>
               <li className="flex gap-3">
                 <span className="bg-provoid-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
