@@ -13,6 +13,7 @@ import { BlogTeaser } from "@/components/ui/blog-teaser";
 import { PurchaseJourney } from "@/components/ui/purchase-journey";
 import { NeuroAtlasTeaser } from "@/components/ui/neuro-atlas-teaser";
 import { NeuroChatbot } from "@/components/ui/neuro-chatbot";
+import { PublicationViewer } from "@/components/ui/publication-viewer";
 import Image from "next/image";
 
 export default function Home() {
@@ -124,6 +125,14 @@ export default function Home() {
 
       {/* Blog Teaser - Neuroverse */}
       <BlogTeaser />
+
+      {/* NeuroInsight Publication */}
+      <PublicationViewer
+        pdfUrl="/NeuroInsight_Vol1_Issue1_202602.pdf"
+        title="NeuroInsight"
+        subtitle="Unsere wissenschaftliche Publikation mit den neuesten Erkenntnissen aus der Neuroforschung"
+        issueInfo="Vol. 1, Ausgabe 1 — Februar 2026"
+      />
 
       {/* Neuro-Atlas Interactive Section */}
       <NeuroAtlasTeaser />
