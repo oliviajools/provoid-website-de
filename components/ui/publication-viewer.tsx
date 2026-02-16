@@ -2,25 +2,64 @@
 
 import { useState, useRef, useEffect, TouchEvent, ChangeEvent, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import * as pdfjsLib from "pdfjs-dist";
+
+// Set worker source
+if (typeof window !== "undefined") {
+  pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+}
 
 interface PublicationViewerProps {
   pdfUrl: string;
   title: string;
   subtitle?: string;
   issueInfo?: string;
-  pageImages?: string[];
 }
 
-export function PublicationViewer({ pdfUrl, title, subtitle, issueInfo, pageImages: providedImages = [] }: PublicationViewerProps) {
+export function PublicationViewer({ pdfUrl, title, subtitle, issueInfo }: PublicationViewerProps) {
   const [currentPage, setCurrentPage] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [pageImages, setPageImages] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const pageImages = providedImages;
   const totalPages = pageImages.length;
   const minSwipeDistance = 50;
+
+  // Load PDF and render pages
+  useEffect(() => {
+    const loadPdf = async () => {
+      try {
+        const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+        const images: string[] = [];
+        
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page = await pdf.getPage(i);
+          const scale = 1.5;
+          const viewport = page.getViewport({ scale });
+          
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d")!;
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+          
+          // @ts-expect-error - pdfjs types mismatch
+          await page.render({ canvasContext: context, viewport }).promise;
+          images.push(canvas.toDataURL("image/jpeg", 0.8));
+        }
+        
+        setPageImages(images);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("PDF load error:", error);
+        setIsLoading(false);
+      }
+    };
+    
+    loadPdf();
+  }, [pdfUrl]);
 
   const goToPage = useCallback((page: number) => {
     if (page >= 0 && page < totalPages && !isAnimating) {
@@ -88,7 +127,14 @@ export function PublicationViewer({ pdfUrl, title, subtitle, issueInfo, pageImag
                 onTouchMove={onTouchMove}
                 onTouchEnd={onTouchEnd}
               >
-                {pageImages.length === 0 ? (
+                {isLoading ? (
+                  <div className="flex items-center justify-center h-full">
+                    <div className="flex flex-col items-center gap-3">
+                      <div className="w-8 h-8 border-2 border-gray-300 border-t-primary rounded-full animate-spin" />
+                      <p className="text-sm text-gray-500">Dokument wird geladen...</p>
+                    </div>
+                  </div>
+                ) : pageImages.length === 0 ? (
                   <div className="flex items-center justify-center h-full">
                     <a
                       href={pdfUrl}
@@ -122,7 +168,7 @@ export function PublicationViewer({ pdfUrl, title, subtitle, issueInfo, pageImag
               </div>
 
               {/* Large Navigation Arrows - LinkedIn Style */}
-              {pageImages.length > 0 && (
+              {!isLoading && pageImages.length > 0 && (
                 <>
                   <button
                     onClick={() => goToPage(currentPage - 1)}
@@ -145,7 +191,7 @@ export function PublicationViewer({ pdfUrl, title, subtitle, issueInfo, pageImag
             </div>
 
             {/* Bottom Bar - LinkedIn Style */}
-            {pageImages.length > 0 && (
+            {!isLoading && pageImages.length > 0 && (
               <div className="flex items-center gap-4 px-4 py-3 bg-gray-100 border-t border-gray-200">
                 {/* Page Counter */}
                 <span className="text-sm font-medium text-gray-700 min-w-[60px]">
