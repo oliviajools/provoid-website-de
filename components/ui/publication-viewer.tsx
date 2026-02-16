@@ -2,12 +2,6 @@
 
 import { useState, useRef, useEffect, TouchEvent, ChangeEvent, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
-import * as pdfjsLib from "pdfjs-dist";
-
-// Set worker source
-if (typeof window !== "undefined") {
-  pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
-}
 
 interface PublicationViewerProps {
   pdfUrl: string;
@@ -28,10 +22,14 @@ export function PublicationViewer({ pdfUrl, title, subtitle, issueInfo }: Public
   const totalPages = pageImages.length;
   const minSwipeDistance = 50;
 
-  // Load PDF and render pages
+  // Load PDF and render pages (client-side only)
   useEffect(() => {
     const loadPdf = async () => {
       try {
+        // Dynamic import to avoid SSR issues
+        const pdfjsLib = await import("pdfjs-dist");
+        pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+        
         const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
         const images: string[] = [];
         
@@ -45,8 +43,7 @@ export function PublicationViewer({ pdfUrl, title, subtitle, issueInfo }: Public
           canvas.height = viewport.height;
           canvas.width = viewport.width;
           
-          // @ts-expect-error - pdfjs types mismatch
-          await page.render({ canvasContext: context, viewport }).promise;
+          await page.render({ canvasContext: context, viewport } as Parameters<typeof page.render>[0]).promise;
           images.push(canvas.toDataURL("image/jpeg", 0.8));
         }
         
