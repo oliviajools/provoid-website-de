@@ -10,58 +10,49 @@ interface PublicationViewerProps {
 }
 
 export function PublicationViewer({ pdfUrl, title, subtitle, issueInfo }: PublicationViewerProps) {
+  // Hide PDF toolbar with URL parameters
+  const pdfEmbedUrl = `${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`;
+  
   return (
-    <section className="py-12 md:py-16">
+    <section className="py-8 md:py-12">
       <div className="container px-4 md:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-6">
-          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">{issueInfo}</p>
-          <h2 className="text-2xl md:text-3xl font-bold mb-2">{title}</h2>
-          {subtitle && <p className="text-muted-foreground max-w-xl mx-auto text-sm">{subtitle}</p>}
+        {/* Header - minimal */}
+        <div className="text-center mb-4">
+          {issueInfo && <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">{issueInfo}</p>}
+          <h2 className="text-xl md:text-2xl font-bold">{title}</h2>
+          {subtitle && <p className="text-muted-foreground text-sm mt-1">{subtitle}</p>}
         </div>
 
-        {/* Embedded PDF Viewer */}
-        <div className="relative max-w-4xl mx-auto">
-          <div className="relative bg-white rounded-lg border border-gray-200 shadow-lg overflow-hidden">
-            {/* PDF Embed */}
-            <div className="relative h-[500px] md:h-[650px] bg-gray-100">
-              <object
-                data={pdfUrl}
-                type="application/pdf"
-                className="w-full h-full"
-              >
-                <embed
-                  src={pdfUrl}
-                  type="application/pdf"
-                  className="w-full h-full"
-                />
-              </object>
-            </div>
+        {/* Clean PDF Viewer - LinkedIn Style */}
+        <div className="relative max-w-3xl mx-auto">
+          {/* PDF Container - no border, clean */}
+          <div className="relative aspect-[3/4] md:aspect-[4/5] bg-white rounded-lg shadow-2xl overflow-hidden">
+            <iframe
+              src={pdfEmbedUrl}
+              className="w-full h-full border-0"
+              title={title}
+            />
+          </div>
 
-            {/* Bottom Bar */}
-            <div className="flex items-center justify-between px-4 py-3 bg-gray-100 border-t border-gray-200">
-              <span className="text-sm text-gray-600">Scrolle durch das Dokument</span>
-              
-              <div className="flex items-center gap-2">
-                <a
-                  href={pdfUrl}
-                  download
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-200 hover:bg-gray-300 transition-colors text-sm font-medium text-gray-700"
-                >
-                  <Download className="w-4 h-4" />
-                  Download
-                </a>
-                <a
-                  href={pdfUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors text-sm font-medium"
-                >
-                  <Maximize2 className="w-4 h-4" />
-                  Vollbild
-                </a>
-              </div>
-            </div>
+          {/* Minimal Bottom Actions */}
+          <div className="flex items-center justify-center gap-4 mt-4">
+            <a
+              href={pdfUrl}
+              download
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted hover:bg-muted/80 transition-colors text-sm font-medium"
+            >
+              <Download className="w-4 h-4" />
+              Download
+            </a>
+            <a
+              href={pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-sm font-medium"
+            >
+              <Maximize2 className="w-4 h-4" />
+              Vollbild
+            </a>
           </div>
         </div>
       </div>
