@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef, useEffect, TouchEvent } from "react";
-import { ChevronLeft, ChevronRight, Download, Maximize2, BookOpen } from "lucide-react";
+import { useState, useRef, useEffect, TouchEvent, ChangeEvent } from "react";
+import { ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 
 interface PublicationViewerProps {
   pdfUrl: string;
@@ -99,54 +99,54 @@ export function PublicationViewer({ pdfUrl, title, subtitle, issueInfo, pageImag
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentPage, totalPages]);
 
+  const handleSliderChange = (e: ChangeEvent<HTMLInputElement>) => {
+    goToPage(parseInt(e.target.value));
+  };
+
   return (
-    <section className="py-12 md:py-16 bg-gradient-to-b from-background to-muted/30">
+    <section className="py-12 md:py-16">
       <div className="container px-4 md:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-3">
-            <BookOpen className="w-4 h-4" />
-            <span>Wissenschaftliche Publikation</span>
-          </div>
+          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">{issueInfo}</p>
           <h2 className="text-2xl md:text-3xl font-bold mb-2">{title}</h2>
           {subtitle && <p className="text-muted-foreground max-w-xl mx-auto text-sm">{subtitle}</p>}
-          {issueInfo && <p className="text-xs text-muted-foreground/70 mt-1">{issueInfo}</p>}
         </div>
 
-        {/* Compact Swipeable Viewer */}
-        <div className="relative max-w-3xl mx-auto">
+        {/* LinkedIn-Style Document Viewer */}
+        <div className="relative max-w-4xl mx-auto">
           <div 
             ref={containerRef}
-            className="relative bg-card rounded-xl border border-border shadow-xl overflow-hidden"
+            className="relative bg-white rounded-lg border border-gray-200 shadow-lg overflow-hidden"
           >
-            {/* Swipeable Area */}
-            <div
-              className="relative h-[350px] md:h-[450px] overflow-hidden cursor-grab active:cursor-grabbing"
-              onTouchStart={onTouchStart}
-              onTouchMove={onTouchMove}
-              onTouchEnd={onTouchEnd}
-            >
-              {isLoading ? (
-                <div className="flex items-center justify-center h-full">
-                  <div className="flex flex-col items-center gap-3">
-                    <div className="w-10 h-10 border-3 border-primary/30 border-t-primary rounded-full animate-spin" />
-                    <p className="text-sm text-muted-foreground">Laden...</p>
+            {/* Document Area with Navigation */}
+            <div className="relative">
+              {/* Swipeable Content */}
+              <div
+                className="relative h-[400px] md:h-[520px] overflow-hidden bg-gray-50"
+                onTouchStart={onTouchStart}
+                onTouchMove={onTouchMove}
+                onTouchEnd={onTouchEnd}
+              >
+                {isLoading ? (
+                  <div className="flex items-center justify-center h-full">
+                    <div className="flex flex-col items-center gap-3">
+                      <div className="w-8 h-8 border-2 border-gray-300 border-t-primary rounded-full animate-spin" />
+                      <p className="text-sm text-gray-500">Dokument wird geladen...</p>
+                    </div>
                   </div>
-                </div>
-              ) : pageImages.length === 0 ? (
-                <div className="flex items-center justify-center h-full">
-                  <a
-                    href={pdfUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-                  >
-                    <Maximize2 className="w-5 h-5" />
-                    PDF öffnen
-                  </a>
-                </div>
-              ) : (
-                <>
+                ) : pageImages.length === 0 ? (
+                  <div className="flex items-center justify-center h-full">
+                    <a
+                      href={pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors font-medium"
+                    >
+                      PDF öffnen
+                    </a>
+                  </div>
+                ) : (
                   <div 
                     className="flex transition-transform duration-300 ease-out h-full"
                     style={{ transform: `translateX(-${currentPage * 100}%)` }}
@@ -154,88 +154,79 @@ export function PublicationViewer({ pdfUrl, title, subtitle, issueInfo, pageImag
                     {pageImages.map((imgSrc, index) => (
                       <div
                         key={index}
-                        className="flex-shrink-0 w-full h-full flex items-center justify-center p-4 bg-muted/10"
+                        className="flex-shrink-0 w-full h-full flex items-center justify-center p-6 md:p-8"
                       >
                         <img
                           src={imgSrc}
                           alt={`Seite ${index + 1}`}
-                          className="max-h-full max-w-full object-contain rounded shadow-md"
+                          className="max-h-full max-w-full object-contain shadow-sm"
                           draggable={false}
                         />
                       </div>
                     ))}
                   </div>
+                )}
+              </div>
 
-                  {/* Navigation Arrows */}
+              {/* Large Navigation Arrows - LinkedIn Style */}
+              {!isLoading && pageImages.length > 0 && (
+                <>
                   <button
                     onClick={() => goToPage(currentPage - 1)}
                     disabled={currentPage === 0}
-                    className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 backdrop-blur border border-border shadow-lg hover:bg-background transition-all disabled:opacity-0 disabled:pointer-events-none"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/90 hover:bg-white border border-gray-200 rounded-full shadow-md ml-3 transition-all disabled:opacity-0 disabled:pointer-events-none"
+                    aria-label="Vorherige Seite"
                   >
-                    <ChevronLeft className="w-5 h-5" />
+                    <ChevronLeft className="w-6 h-6 text-gray-700" />
                   </button>
                   <button
                     onClick={() => goToPage(currentPage + 1)}
                     disabled={currentPage >= totalPages - 1}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 backdrop-blur border border-border shadow-lg hover:bg-background transition-all disabled:opacity-0 disabled:pointer-events-none"
+                    className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/90 hover:bg-white border border-gray-200 rounded-full shadow-md mr-3 transition-all disabled:opacity-0 disabled:pointer-events-none"
+                    aria-label="Nächste Seite"
                   >
-                    <ChevronRight className="w-5 h-5" />
+                    <ChevronRight className="w-6 h-6 text-gray-700" />
                   </button>
                 </>
               )}
             </div>
 
-            {/* Bottom Bar */}
-            <div className="flex items-center justify-between px-4 py-2 bg-muted/30 border-t border-border">
-              <div className="flex items-center gap-2">
-                {/* Page dots for few pages, otherwise text */}
-                {totalPages <= 10 ? (
-                  <div className="flex gap-1.5">
-                    {pageImages.map((_, i) => (
-                      <button
-                        key={i}
-                        onClick={() => goToPage(i)}
-                        className={`w-2 h-2 rounded-full transition-all ${
-                          currentPage === i
-                            ? "bg-primary w-4"
-                            : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                ) : (
-                  <span className="text-sm text-muted-foreground">
-                    {currentPage + 1} / {totalPages}
-                  </span>
-                )}
-              </div>
-              
-              <div className="flex items-center gap-2">
-                <a
-                  href={pdfUrl}
-                  download
-                  className="p-2 rounded-lg hover:bg-muted transition-colors"
-                  title="PDF herunterladen"
-                >
-                  <Download className="w-4 h-4 text-muted-foreground" />
-                </a>
+            {/* Bottom Bar - LinkedIn Style */}
+            {!isLoading && pageImages.length > 0 && (
+              <div className="flex items-center gap-4 px-4 py-3 bg-gray-100 border-t border-gray-200">
+                {/* Page Counter */}
+                <span className="text-sm font-medium text-gray-700 min-w-[60px]">
+                  {currentPage + 1} / {totalPages}
+                </span>
+                
+                {/* Slider */}
+                <div className="flex-1 flex items-center">
+                  <input
+                    type="range"
+                    min="0"
+                    max={totalPages - 1}
+                    value={currentPage}
+                    onChange={handleSliderChange}
+                    className="w-full h-1 bg-gray-300 rounded-full appearance-none cursor-pointer accent-primary
+                      [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 
+                      [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-gray-600 [&::-webkit-slider-thumb]:cursor-pointer
+                      [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:hover:bg-gray-700"
+                  />
+                </div>
+                
+                {/* Fullscreen Button */}
                 <a
                   href={pdfUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg hover:bg-muted transition-colors"
+                  className="p-2 rounded hover:bg-gray-200 transition-colors"
                   title="Vollbild öffnen"
                 >
-                  <Maximize2 className="w-4 h-4 text-muted-foreground" />
+                  <Maximize2 className="w-5 h-5 text-gray-600" />
                 </a>
               </div>
-            </div>
+            )}
           </div>
-
-          {/* Hint */}
-          <p className="text-center text-xs text-muted-foreground mt-3">
-            ← Wischen oder Pfeiltasten zum Blättern →
-          </p>
         </div>
       </div>
     </section>
