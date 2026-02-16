@@ -72,7 +72,7 @@ export function PublicationViewer({ pdfUrl, title, subtitle, issueInfo, pageCoun
           >
             {/* Swipeable Content */}
             <div
-              className="relative h-[280px] md:h-[360px] overflow-hidden cursor-grab active:cursor-grabbing"
+              className="relative h-[380px] md:h-[480px] overflow-hidden cursor-grab active:cursor-grabbing"
               onTouchStart={onTouchStart}
               onTouchMove={onTouchMove}
               onTouchEnd={onTouchEnd}
