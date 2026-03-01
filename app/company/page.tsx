@@ -32,7 +32,7 @@ export default function CompanyPage() {
               </div>
               <Image
                 src="/brain.png"
-                alt="Gehirn Illustration"
+                alt="Gehirn Illustration 1"
                 width={768}
                 height={768}
                 priority
@@ -44,7 +44,7 @@ export default function CompanyPage() {
           </div>
         </div>
       </section>
-
+## test 
       {/* Content Section */}
       <section className="container px-4 md:px-6 lg:px-8 py-[38px] md:py-[58px]">
         <div className="mx-auto max-w-4xl">
