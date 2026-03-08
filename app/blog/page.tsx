@@ -20,8 +20,6 @@ function getBlogData(): BlogData {
   }
 }
 
-##test 
-
 export const metadata: Metadata = {
   title: "Neuroverse Blog | PROVOID",
   description: "Aktuelle Entwicklungen aus der Neurowissenschaft – wöchentlich neue Studienergebnisse, Erkenntnisse und Trends.",
