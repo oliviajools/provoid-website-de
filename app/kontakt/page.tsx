@@ -56,10 +56,10 @@ export default function KontaktPage() {
                 </div>
                 <h3 className="mb-2 text-lg font-semibold">E-Mail</h3>
                 <a 
-                  href="mailto:oliviajools@icloud.com"
+                  href="mailto:olivia.provoid@gmail.com"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors break-all"
                 >
-                  oliviajools@icloud.com
+                  olivia.provoid@gmail.com
                 </a>
               </CardContent>
             </Card>
