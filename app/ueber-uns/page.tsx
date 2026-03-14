@@ -184,6 +184,34 @@ export default function UeberUnsPage() {
               </div>
             </div>
 
+            <div className="bg-card border rounded-2xl overflow-hidden mt-8">
+              <div className="grid md:grid-cols-[300px_1fr] gap-0">
+                <div className="relative aspect-square md:aspect-auto">
+                  <Image
+                    src="/team/Tito.jpeg"
+                    alt="Tito Nadler - Head of Sports bei PROVOID"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6 md:p-8">
+                  <div className="mb-4">
+                    <h3 className="text-2xl font-bold">Tito Nadler</h3>
+                    <p className="text-primary font-medium">Head of Sports</p>
+                  </div>
+
+                  <div className="prose prose-neutral dark:prose-invert max-w-none">
+                    <p>
+                      With comprehensive experience playing and coaching competitive sports and an incredible wealth of sporting knowledge in all areas, Tito is taking over the management of PROVOID&apos;s sports division.
+                    </p>
+                    <p>
+                      Tito has already worked with a nervous system-centered approach himself and will be using his experience to expand &amp; develop PROVOID SPORTS.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Team Growth Note */}
             <div className="mt-8 text-center">
               <p className="text-muted-foreground">
