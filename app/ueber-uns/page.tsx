@@ -232,12 +232,12 @@ export default function UeberUnsPage() {
 
             <div className="bg-card border rounded-2xl overflow-hidden mt-8">
               <div className="grid md:grid-cols-[300px_1fr] gap-0">
-                <div className="relative aspect-square md:aspect-auto">
+                <div className="relative aspect-square md:aspect-auto md:min-h-[340px] bg-muted/30">
                   <Image
                     src="/team/Ian.jpeg"
                     alt="Ian Manuel Paniagua - Technical Lead bei PROVOID"
                     fill
-                    className="object-cover"
+                    className="object-contain p-6"
                   />
                 </div>
                 <div className="p-6 md:p-8">
