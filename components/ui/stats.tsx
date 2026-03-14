@@ -23,7 +23,7 @@ export function Stats() {
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-4 gap-6">
             {/* Stat 1: 2023 */}
             <StatCard delay={0.1} icon={<Rocket className="w-6 h-6" />}>
               <div className="text-4xl md:text-5xl font-bold text-foreground mb-3">
@@ -51,6 +51,15 @@ export function Stats() {
               </div>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 STARTERiN Award Hamburg 2025
+              </p>
+            </StatCard>
+
+            <StatCard delay={0.4} icon={<Trophy className="w-6 h-6" />}>
+              <div className="text-4xl md:text-5xl font-bold text-foreground mb-3">
+                1. Preis
+              </div>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                Jugend forscht 2026
               </p>
             </StatCard>
           </div>
