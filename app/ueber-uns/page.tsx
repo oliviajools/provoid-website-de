@@ -186,6 +186,24 @@ export default function UeberUnsPage() {
 
             <div className="bg-card border rounded-2xl overflow-hidden mt-8">
               <div className="grid md:grid-cols-[300px_1fr] gap-0">
+                <div className="relative aspect-square md:aspect-auto bg-muted/30 flex items-center justify-center">
+                  <span className="text-muted-foreground font-medium">Coming soon</span>
+                </div>
+                <div className="p-6 md:p-8">
+                  <div className="mb-4">
+                    <h3 className="text-2xl font-bold">Jonathan Miller</h3>
+                    <p className="text-primary font-medium">Chief Financial Officer / Chief Marketing Officer</p>
+                  </div>
+
+                  <div className="prose prose-neutral dark:prose-invert max-w-none">
+                    <p>Coming soon.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-card border rounded-2xl overflow-hidden mt-8">
+              <div className="grid md:grid-cols-[300px_1fr] gap-0">
                 <div className="relative aspect-square md:aspect-auto">
                   <Image
                     src="/team/Tito.jpeg"
@@ -207,24 +225,6 @@ export default function UeberUnsPage() {
                     <p>
                       Tito hat bereits selbst mit einem auf das Nervensystem ausgerichteten Ansatz gearbeitet und wird seine Erfahrungen nutzen, um PROVOID SPORTS weiter auszubauen und zu entwickeln.
                     </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-card border rounded-2xl overflow-hidden mt-8">
-              <div className="grid md:grid-cols-[300px_1fr] gap-0">
-                <div className="relative aspect-square md:aspect-auto bg-muted/30 flex items-center justify-center">
-                  <span className="text-muted-foreground font-medium">Coming soon</span>
-                </div>
-                <div className="p-6 md:p-8">
-                  <div className="mb-4">
-                    <h3 className="text-2xl font-bold">Jonathan Miller</h3>
-                    <p className="text-primary font-medium">Chief Financial Officer / Chief Marketing Officer</p>
-                  </div>
-
-                  <div className="prose prose-neutral dark:prose-invert max-w-none">
-                    <p>Coming soon.</p>
                   </div>
                 </div>
               </div>
