@@ -202,11 +202,47 @@ export default function UeberUnsPage() {
 
                   <div className="prose prose-neutral dark:prose-invert max-w-none">
                     <p>
-                      With comprehensive experience playing and coaching competitive sports and an incredible wealth of sporting knowledge in all areas, Tito is taking over the management of PROVOID&apos;s sports division.
+                      Mit seiner umfassenden Erfahrung als aktiver Sportler und Trainer im Leistungssport sowie seinem enormen Sportwissen in allen Bereichen übernimmt Tito die Leitung der Sportabteilung von PROVOID.
                     </p>
                     <p>
-                      Tito has already worked with a nervous system-centered approach himself and will be using his experience to expand &amp; develop PROVOID SPORTS.
+                      Tito hat bereits selbst mit einem auf das Nervensystem ausgerichteten Ansatz gearbeitet und wird seine Erfahrungen nutzen, um PROVOID SPORTS weiter auszubauen und zu entwickeln.
                     </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-card border rounded-2xl overflow-hidden mt-8">
+              <div className="grid md:grid-cols-[300px_1fr] gap-0">
+                <div className="relative aspect-square md:aspect-auto bg-muted/30 flex items-center justify-center">
+                  <span className="text-muted-foreground font-medium">Coming soon</span>
+                </div>
+                <div className="p-6 md:p-8">
+                  <div className="mb-4">
+                    <h3 className="text-2xl font-bold">Jonathan Miller</h3>
+                    <p className="text-primary font-medium">Chief Financial Officer / Chief Marketing Officer</p>
+                  </div>
+
+                  <div className="prose prose-neutral dark:prose-invert max-w-none">
+                    <p>Coming soon.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-card border rounded-2xl overflow-hidden mt-8">
+              <div className="grid md:grid-cols-[300px_1fr] gap-0">
+                <div className="relative aspect-square md:aspect-auto bg-muted/30 flex items-center justify-center">
+                  <span className="text-muted-foreground font-medium">Coming soon</span>
+                </div>
+                <div className="p-6 md:p-8">
+                  <div className="mb-4">
+                    <h3 className="text-2xl font-bold">Ian Manuel Paniagua</h3>
+                    <p className="text-primary font-medium">Technical Lead</p>
+                  </div>
+
+                  <div className="prose prose-neutral dark:prose-invert max-w-none">
+                    <p>Coming soon.</p>
                   </div>
                 </div>
               </div>
