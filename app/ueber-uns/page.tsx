@@ -232,8 +232,13 @@ export default function UeberUnsPage() {
 
             <div className="bg-card border rounded-2xl overflow-hidden mt-8">
               <div className="grid md:grid-cols-[300px_1fr] gap-0">
-                <div className="relative aspect-square md:aspect-auto bg-muted/30 flex items-center justify-center">
-                  <span className="text-muted-foreground font-medium">Coming soon</span>
+                <div className="relative aspect-square md:aspect-auto">
+                  <Image
+                    src="/team/Ian.jpeg"
+                    alt="Ian Manuel Paniagua - Technical Lead bei PROVOID"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <div className="p-6 md:p-8">
                   <div className="mb-4">
