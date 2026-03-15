@@ -196,7 +196,9 @@ export default function UeberUnsPage() {
                   </div>
 
                   <div className="prose prose-neutral dark:prose-invert max-w-none">
-                    <p>Coming soon.</p>
+                    <p>
+                      Jonny studiert derzeit Betriebswirtschaftslehre an der LMU, wobei er sich ein solides akademisches Fundament in den Bereichen Rechnungswesen, Finanzen und Start-up-Entwicklung aufbaut. Neben seinem Studium hat er durch sein Praktikum bei Caesar Ventures wertvolle praktische Erfahrungen im Bereich Risikokapital gesammelt. Sein Fachwissen stärkt Provoid in allerlei Hinsicht.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -234,7 +236,7 @@ export default function UeberUnsPage() {
               <div className="grid md:grid-cols-[300px_1fr] gap-0">
                 <div className="relative aspect-square md:aspect-auto md:min-h-[340px]">
                   <Image
-                    src="/team/Ian.jpeg"
+                    src="/team/Ian.png"
                     alt="Ian Manuel Paniagua - Technical Lead bei PROVOID"
                     fill
                     className="object-cover"
@@ -247,7 +249,9 @@ export default function UeberUnsPage() {
                   </div>
 
                   <div className="prose prose-neutral dark:prose-invert max-w-none">
-                    <p>Coming soon.</p>
+                    <p>
+                      Dank seiner Erfahrung in der Software- und Produktentwicklung wird Ian die technische Seite des Projekts leiten und das Team in den Bereichen technische Unterstützung, Sicherheit und Produktdigitalisierung unterstützen.
+                    </p>
                   </div>
                 </div>
               </div>
