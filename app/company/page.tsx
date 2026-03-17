@@ -125,67 +125,34 @@ export default function CompanyPage() {
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
                 <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <h3>Neuroscience &amp; Neuromarketing - Seminare</h3>
-                  <h4>Basics Neuromarketing &amp; Consumer Neuroscience</h4>
+                  <p>
+                    Wähle aus unseren Leistungen genau das Format, das zu deinem Ziel passt – von kompakten Seminaren bis hin zur tiefen Produktevaluation.
+                  </p>
+
+                  <h3>Neuroscience &amp; Neuromarketing – Seminar</h3>
+                  <p>
+                    Kompakte Einführung in Neuromarketing &amp; Consumer Neuroscience – verständlich, praxisnah und direkt anwendbar.
+                  </p>
                   <ul>
-                    <li>Overview verschiedener Reize &amp; Strategien</li>
-                    <li>Schnittfelder Neuro &amp; Psychologie</li>
-                    <li>Hands-On Tools</li>
-                    <li>Zeitlicher Rahmen: 2-3 Stunden inkl. einer Pause</li>
-                    <li>Handout</li>
-                    <li>Online &amp; in Präsenz; vorzugsweise in Präsenz</li>
+                    <li>Bessere Kunden- und Kaufprozess-Insights</li>
+                    <li>Neue Perspektiven für Entwicklung &amp; Marketing</li>
+                    <li>Wissenschaftliches Fundament für bestehende und neue Strategien</li>
                   </ul>
 
-                  <h4>Warum sollten Unternehmen diese Dienstleistung in Anspruch nehmen?</h4>
-                  <ul>
-                    <li>Sie verstehen Ihre Kunden besser</li>
-                    <li>Es öffnet neue Perspektiven in Entwicklung &amp; Marketing</li>
-                    <li>Sie bekommen Insights an die Hand, ihre Produkte besser zu verkaufen</li>
-                  </ul>
-
-                  <h4>Was sind die konkreten Wins für Teilnehmer?</h4>
-                  <ul>
-                    <li>Sie verstehen, warum sie welche Marketingtechniken anwenden</li>
-                    <li>Sie erlangen neue Perspektiven und Ansätze</li>
-                    <li>Sie verstehen ihre Gehirne und die ihrer Kunden besser</li>
-                    <li>Sie können das Wissen anwenden, um ihre Produkte zu optimieren und ihren Gewinn zu steigern</li>
-                  </ul>
-
-                  <h4>Inhalte (Beispiele)</h4>
-                  <ul>
-                    <li>Kaufprozess im Gehirn darstellen</li>
-                    <li>Ladenbesuch: warum hineingehen? Warum Produkte anschauen?</li>
-                    <li>Welche Hirnareale sind relevant?</li>
-                    <li>Ein Grundlagen-Modul, handfest, zwei Advanced</li>
-                    <li>Bereits bekannte Strategien unterfüttern mit Wissen &amp; dies als Grundlage für weitere Möglichkeiten legen</li>
-                  </ul>
-
-                  <hr />
-
-                  <h3>Neuroscience &amp; Neuromarketing - Workshop</h3>
-                  <ul>
-                    <li>Auf den Kunden zugeschnitten → branchenspezifisch</li>
-                    <li>Ziel: Verständnis für die konkrete Auswirkung der eigenen Produkte auf das Gehirn der Kunden entwickeln</li>
-                    <li>Hands-On Strategien zum Branding/Marketing/Produktentwicklung/Produktdesign</li>
-                    <li>Zeitlicher Rahmen: 4-6 Stunden inkl. Pausen</li>
-                    <li>Nur in Präsenz</li>
-                    <li>Konkretes, auf das eigene Business zugeschnittenes Handout</li>
-                    <li>Action Items</li>
-                  </ul>
-
-                  <hr />
+                  <h3>Neuroscience &amp; Neuromarketing – Workshop</h3>
+                  <p>
+                    Maßgeschneidertes, branchenspezifisches Format mit Hands-On Strategien für Branding, Marketing, Produktentwicklung und Produktdesign.
+                  </p>
 
                   <h3>EEG-Produktevaluation &amp; Analyse</h3>
-                  <ul>
-                    <li>Testung der neuronalen Wirkung von Produkten im EEG und fMRI</li>
-                    <li>Dient dem Produktdesign</li>
-                    <li>Gibt sehr wertvolle Insights über die neuronalen Effekte von Produkten auf Konsumenten</li>
-                    <li>Preis abhängig von Probandengröße</li>
-                  </ul>
-
-                  <hr />
+                  <p>
+                    Testung der neuronalen Wirkung von Produkten (z. B. per EEG, optional ergänzend fMRI), um datenbasierte Entscheidungen im Produktdesign zu ermöglichen.
+                  </p>
 
                   <h3>Begleitende Produktentwicklung</h3>
+                  <p>
+                    Kontinuierliche Begleitung von der Idee bis zur Umsetzung – mit neurowissenschaftlicher Perspektive für bessere Produkt- und Marketingentscheidungen.
+                  </p>
                 </div>
               </AccordionContent>
             </AccordionItem>
