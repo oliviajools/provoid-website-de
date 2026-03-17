@@ -120,73 +120,72 @@ export default function CompanyPage() {
                   <div className="rounded-full bg-primary/10 p-3">
                     <Briefcase className="h-6 w-6 text-primary" />
                   </div>
-                  <span className="text-xl font-semibold">Unsere Leistungen</span>
+                  <span className="text-xl font-semibold">Produktübersicht PROVOID-Company</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
                 <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <div className="grid gap-4 md:grid-cols-2 not-prose mb-6">
-                    <div className="p-4 rounded-xl border bg-muted/30">
-                      <div className="flex items-center gap-3 mb-2">
-                        <Brain className="h-5 w-5 text-primary" />
-                        <h4 className="font-semibold">Neuromarketing-Beratung</h4>
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        Strategische Beratung auf Basis neurowissenschaftlicher Erkenntnisse für Marketing, Vertrieb und Kommunikation.
-                      </p>
-                    </div>
-                    <div className="p-4 rounded-xl border bg-muted/30">
-                      <div className="flex items-center gap-3 mb-2">
-                        <Globe className="h-5 w-5 text-primary" />
-                        <h4 className="font-semibold">Webseiten & Apps</h4>
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        Conversion-optimierte digitale Produkte, die auf kognitiven Prinzipien basieren.
-                      </p>
-                    </div>
-                    <div className="p-4 rounded-xl border bg-muted/30">
-                      <div className="flex items-center gap-3 mb-2">
-                        <Smartphone className="h-5 w-5 text-primary" />
-                        <h4 className="font-semibold">Software-Entwicklung</h4>
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        Individuelle Software-Lösungen, flexibel an Ihre Anforderungen angepasst.
-                      </p>
-                    </div>
-                    <div className="p-4 rounded-xl border bg-muted/30">
-                      <div className="flex items-center gap-3 mb-2">
-                        <BarChart3 className="h-5 w-5 text-primary" />
-                        <h4 className="font-semibold">Prozessanalyse</h4>
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        Analyse interner und externer Prozesse mit Fokus auf Optimierungspotenziale.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="workshops" className="rounded-2xl border bg-card px-6 shadow-sm">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <GraduationCap className="h-6 w-6 text-primary" />
-                  </div>
-                  <span className="text-xl font-semibold">Workshops & Seminare</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-6">
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <p>
-                    Wir geben Workshops und Seminare zu Neuromarketing und der Rolle der Neurowissenschaft in Ihrer Branche. Ob für Marketing-Teams, Führungskräfte oder ganze Abteilungen – wir vermitteln praxisnahes Wissen, das sofort anwendbar ist.
-                  </p>
-                  <ul className="space-y-2 pl-6 list-disc">
-                    <li><strong>Neuromarketing-Grundlagen:</strong> Wie das Gehirn Kaufentscheidungen trifft</li>
-                    <li><strong>Branchenspezifische Insights:</strong> Neurowissenschaft angewendet auf Ihr Geschäftsfeld</li>
-                    <li><strong>Praktische Anwendung:</strong> Hands-on-Übungen für Ihr Team</li>
-                    <li><strong>Inhouse oder extern:</strong> Flexibel nach Ihren Wünschen</li>
+                  <h3>Neuroscience &amp; Neuromarketing - Seminare</h3>
+                  <h4>Basics Neuromarketing &amp; Consumer Neuroscience</h4>
+                  <ul>
+                    <li>Overview verschiedener Reize &amp; Strategien</li>
+                    <li>Schnittfelder Neuro &amp; Psychologie</li>
+                    <li>Hands-On Tools</li>
+                    <li>Zeitlicher Rahmen: 2-3 Stunden inkl. einer Pause</li>
+                    <li>Handout</li>
+                    <li>Online &amp; in Präsenz; vorzugsweise in Präsenz</li>
                   </ul>
+
+                  <h4>Warum sollten Unternehmen diese Dienstleistung in Anspruch nehmen?</h4>
+                  <ul>
+                    <li>Sie verstehen Ihre Kunden besser</li>
+                    <li>Es öffnet neue Perspektiven in Entwicklung &amp; Marketing</li>
+                    <li>Sie bekommen Insights an die Hand, ihre Produkte besser zu verkaufen</li>
+                  </ul>
+
+                  <h4>Was sind die konkreten Wins für Teilnehmer?</h4>
+                  <ul>
+                    <li>Sie verstehen, warum sie welche Marketingtechniken anwenden</li>
+                    <li>Sie erlangen neue Perspektiven und Ansätze</li>
+                    <li>Sie verstehen ihre Gehirne und die ihrer Kunden besser</li>
+                    <li>Sie können das Wissen anwenden, um ihre Produkte zu optimieren und ihren Gewinn zu steigern</li>
+                  </ul>
+
+                  <h4>Inhalte (Beispiele)</h4>
+                  <ul>
+                    <li>Kaufprozess im Gehirn darstellen</li>
+                    <li>Ladenbesuch: warum hineingehen? Warum Produkte anschauen?</li>
+                    <li>Welche Hirnareale sind relevant?</li>
+                    <li>Ein Grundlagen-Modul, handfest, zwei Advanced</li>
+                    <li>Bereits bekannte Strategien unterfüttern mit Wissen &amp; dies als Grundlage für weitere Möglichkeiten legen</li>
+                  </ul>
+
+                  <hr />
+
+                  <h3>Neuroscience &amp; Neuromarketing - Workshop</h3>
+                  <ul>
+                    <li>Auf den Kunden zugeschnitten → branchenspezifisch</li>
+                    <li>Ziel: Verständnis für die konkrete Auswirkung der eigenen Produkte auf das Gehirn der Kunden entwickeln</li>
+                    <li>Hands-On Strategien zum Branding/Marketing/Produktentwicklung/Produktdesign</li>
+                    <li>Zeitlicher Rahmen: 4-6 Stunden inkl. Pausen</li>
+                    <li>Nur in Präsenz</li>
+                    <li>Konkretes, auf das eigene Business zugeschnittenes Handout</li>
+                    <li>Action Items</li>
+                  </ul>
+
+                  <hr />
+
+                  <h3>EEG-Produktevaluation &amp; Analyse</h3>
+                  <ul>
+                    <li>Testung der neuronalen Wirkung von Produkten im EEG und fMRI</li>
+                    <li>Dient dem Produktdesign</li>
+                    <li>Gibt sehr wertvolle Insights über die neuronalen Effekte von Produkten auf Konsumenten</li>
+                    <li>Preis abhängig von Probandengröße</li>
+                  </ul>
+
+                  <hr />
+
+                  <h3>Begleitende Produktentwicklung</h3>
                 </div>
               </AccordionContent>
             </AccordionItem>
