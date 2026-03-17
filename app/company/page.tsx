@@ -125,34 +125,74 @@ export default function CompanyPage() {
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
                 <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <p>
-                    Wähle aus unseren Leistungen genau das Format, das zu deinem Ziel passt – von kompakten Seminaren bis hin zur tiefen Produktevaluation.
-                  </p>
+                  <div className="not-prose space-y-6">
+                    <p className="text-muted-foreground">
+                      Wähle das passende Format – kompakt zum Einstieg oder tiefgehend für datenbasierte Produktentscheidungen.
+                    </p>
 
-                  <h3>Neuroscience &amp; Neuromarketing – Seminar</h3>
-                  <p>
-                    Kompakte Einführung in Neuromarketing &amp; Consumer Neuroscience – verständlich, praxisnah und direkt anwendbar.
-                  </p>
-                  <ul>
-                    <li>Bessere Kunden- und Kaufprozess-Insights</li>
-                    <li>Neue Perspektiven für Entwicklung &amp; Marketing</li>
-                    <li>Wissenschaftliches Fundament für bestehende und neue Strategien</li>
-                  </ul>
+                    <div className="grid gap-4 md:grid-cols-2">
+                      <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                        <div className="flex items-start gap-4">
+                          <div className="rounded-xl bg-primary/10 p-3 text-primary">
+                            <GraduationCap className="h-6 w-6" />
+                          </div>
+                          <div className="space-y-2">
+                            <h3 className="text-lg font-semibold leading-snug">Seminar: Neuroscience &amp; Neuromarketing</h3>
+                            <p className="text-sm text-muted-foreground">
+                              Kompakte Einführung in Neuromarketing &amp; Consumer Neuroscience – verständlich, praxisnah und direkt anwendbar.
+                            </p>
+                          </div>
+                        </div>
+                        <ul className="mt-4 space-y-1 text-sm text-muted-foreground list-disc pl-5">
+                          <li>Bessere Kunden- und Kaufprozess-Insights</li>
+                          <li>Neue Perspektiven für Entwicklung &amp; Marketing</li>
+                          <li>Wissenschaftliches Fundament für Strategien</li>
+                        </ul>
+                      </div>
 
-                  <h3>Neuroscience &amp; Neuromarketing – Workshop</h3>
-                  <p>
-                    Maßgeschneidertes, branchenspezifisches Format mit Hands-On Strategien für Branding, Marketing, Produktentwicklung und Produktdesign.
-                  </p>
+                      <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                        <div className="flex items-start gap-4">
+                          <div className="rounded-xl bg-primary/10 p-3 text-primary">
+                            <Sparkles className="h-6 w-6" />
+                          </div>
+                          <div className="space-y-2">
+                            <h3 className="text-lg font-semibold leading-snug">Workshop: Branchenspezifisch &amp; Hands-On</h3>
+                            <p className="text-sm text-muted-foreground">
+                              Maßgeschneidertes Format mit konkreten Strategien für Branding, Marketing, Produktentwicklung und Produktdesign.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
 
-                  <h3>EEG-Produktevaluation &amp; Analyse</h3>
-                  <p>
-                    Testung der neuronalen Wirkung von Produkten (z. B. per EEG, optional ergänzend fMRI), um datenbasierte Entscheidungen im Produktdesign zu ermöglichen.
-                  </p>
+                      <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                        <div className="flex items-start gap-4">
+                          <div className="rounded-xl bg-primary/10 p-3 text-primary">
+                            <Brain className="h-6 w-6" />
+                          </div>
+                          <div className="space-y-2">
+                            <h3 className="text-lg font-semibold leading-snug">EEG-Produktevaluation &amp; Analyse</h3>
+                            <p className="text-sm text-muted-foreground">
+                              Testung der neuronalen Wirkung von Produkten (z. B. per EEG, optional ergänzend fMRI) – für datenbasierte Entscheidungen im Produktdesign.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
 
-                  <h3>Begleitende Produktentwicklung</h3>
-                  <p>
-                    Kontinuierliche Begleitung von der Idee bis zur Umsetzung – mit neurowissenschaftlicher Perspektive für bessere Produkt- und Marketingentscheidungen.
-                  </p>
+                      <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                        <div className="flex items-start gap-4">
+                          <div className="rounded-xl bg-primary/10 p-3 text-primary">
+                            <Package className="h-6 w-6" />
+                          </div>
+                          <div className="space-y-2">
+                            <h3 className="text-lg font-semibold leading-snug">Begleitende Produktentwicklung</h3>
+                            <p className="text-sm text-muted-foreground">
+                              Kontinuierliche Begleitung von der Idee bis zur Umsetzung – mit neurowissenschaftlicher Perspektive für bessere Produkt- und Marketingentscheidungen.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </AccordionContent>
             </AccordionItem>
