@@ -221,7 +221,7 @@ export default function SportsPage() {
                   <div className="rounded-full bg-primary/10 p-3">
                     <FlaskConical className="h-6 w-6 text-primary" />
                   </div>
-                  <span className="text-xl font-semibold">Science behind PROVOID</span>
+                  <span className="text-xl font-semibold">Wissenschaftlicher Hintergrund</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4 pb-6">
