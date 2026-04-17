@@ -47,7 +47,7 @@ export default function CompanyPage() {
       </section>
       {/* Content Section */}
       <section className="container px-4 md:px-6 lg:px-8 py-[38px] md:py-[58px]">
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-6xl">
           <div className="space-y-12">
             <div className="rounded-2xl border bg-card p-6 md:p-8 shadow-sm">
               <div className="flex items-center gap-4">
@@ -62,8 +62,8 @@ export default function CompanyPage() {
                 </div>
               </div>
 
-              <div className="mt-8 grid gap-4 md:grid-cols-2">
-                <div className="rounded-2xl border bg-card p-6 shadow-sm">
+              <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
                   <div className="flex items-start gap-4">
                     <div className="rounded-xl bg-primary/10 p-3 text-primary">
                       <GraduationCap className="h-6 w-6" />
@@ -82,7 +82,7 @@ export default function CompanyPage() {
                   </ul>
                 </div>
 
-                <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
                   <div className="flex items-start gap-4">
                     <div className="rounded-xl bg-primary/10 p-3 text-primary">
                       <Sparkles className="h-6 w-6" />
@@ -96,7 +96,7 @@ export default function CompanyPage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
                   <div className="flex items-start gap-4">
                     <div className="rounded-xl bg-primary/10 p-3 text-primary">
                       <Brain className="h-6 w-6" />
@@ -110,7 +110,7 @@ export default function CompanyPage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
                   <div className="flex items-start gap-4">
                     <div className="rounded-xl bg-primary/10 p-3 text-primary">
                       <Package className="h-6 w-6" />
@@ -151,8 +151,8 @@ export default function CompanyPage() {
                 </div>
               </div>
 
-              <div className="mt-8 grid gap-4">
-                <div className="rounded-2xl border bg-card p-6 shadow-sm">
+              <div className="mt-8 grid gap-4 md:grid-cols-2">
+                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
                   <div className="flex items-center gap-4">
                     <div className="rounded-full bg-primary/10 p-3">
                       <Sparkles className="h-6 w-6 text-primary" />
@@ -169,7 +169,7 @@ export default function CompanyPage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
                   <div className="flex items-center gap-4">
                     <div className="rounded-full bg-primary/10 p-3">
                       <Building2 className="h-6 w-6 text-primary" />
@@ -186,7 +186,7 @@ export default function CompanyPage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
                   <div className="flex items-center gap-4">
                     <div className="rounded-full bg-primary/10 p-3">
                       <FlaskConical className="h-6 w-6 text-primary" />
@@ -203,7 +203,7 @@ export default function CompanyPage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
                   <div className="flex items-center gap-4">
                     <div className="rounded-full bg-primary/10 p-3">
                       <ShieldCheck className="h-6 w-6 text-primary" />
@@ -220,7 +220,7 @@ export default function CompanyPage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all md:col-span-2">
                   <div className="flex items-center gap-4">
                     <div className="rounded-full bg-primary/10 p-3">
                       <Target className="h-6 w-6 text-primary" />
