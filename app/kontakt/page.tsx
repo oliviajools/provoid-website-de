@@ -49,35 +49,33 @@ export default function KontaktPage() {
       <section className="container px-4 md:px-6 lg:px-8 py-[38px] md:py-[58px]">
         <div className="mx-auto max-w-4xl">
           <div className="grid gap-6 md:grid-cols-3">
-            <Card className="border-2 hover:border-primary/50 transition-colors">
-              <CardContent className="pt-6 pb-6 flex flex-col items-center text-center">
-                <div className="mb-4 rounded-full bg-primary/10 p-4">
-                  <Mail className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="mb-2 text-lg font-semibold">E-Mail</h3>
-                <a 
-                  href="mailto:olivia.provoid@gmail.com"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors break-all"
-                >
-                  olivia.provoid@gmail.com
-                </a>
-              </CardContent>
-            </Card>
+            <a href="mailto:olivia.provoid@gmail.com" className="block">
+              <Card className="border-2 hover:border-primary/50 transition-colors">
+                <CardContent className="pt-6 pb-6 flex flex-col items-center text-center">
+                  <div className="mb-4 rounded-full bg-primary/10 p-4">
+                    <Mail className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="mb-2 text-lg font-semibold">E-Mail</h3>
+                  <span className="text-sm text-muted-foreground hover:text-primary transition-colors break-all">
+                    olivia.provoid@gmail.com
+                  </span>
+                </CardContent>
+              </Card>
+            </a>
 
-            <Card className="border-2 hover:border-primary/50 transition-colors">
-              <CardContent className="pt-6 pb-6 flex flex-col items-center text-center">
-                <div className="mb-4 rounded-full bg-primary/10 p-4">
-                  <Phone className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="mb-2 text-lg font-semibold">Telefon</h3>
-                <a 
-                  href="tel:+491744401044"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  +49 1744401044
-                </a>
-              </CardContent>
-            </Card>
+            <a href="tel:+491744401044" className="block">
+              <Card className="border-2 hover:border-primary/50 transition-colors">
+                <CardContent className="pt-6 pb-6 flex flex-col items-center text-center">
+                  <div className="mb-4 rounded-full bg-primary/10 p-4">
+                    <Phone className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="mb-2 text-lg font-semibold">Telefon</h3>
+                  <span className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    +49 1744401044
+                  </span>
+                </CardContent>
+              </Card>
+            </a>
 
             <Card className="border-2 hover:border-primary/50 transition-colors">
               <CardContent className="pt-6 pb-6 flex flex-col items-center text-center">

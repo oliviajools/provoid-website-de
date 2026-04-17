@@ -1,7 +1,8 @@
 import { Metadata } from "next";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Target, Eye, Briefcase, Package, Users, FlaskConical, BarChart3, Globe, Smartphone, Brain, Palette, MousePointer, TrendingUp, ShieldCheck, Building2, GraduationCap, Sparkles } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { FinalCta } from "@/components/ui/final-cta";
+import { Brain, Briefcase, Building2, FlaskConical, GraduationCap, Package, ShieldCheck, Sparkles, Target } from "lucide-react";
 
 import Image from "next/image";
 
@@ -47,243 +48,202 @@ export default function CompanyPage() {
       {/* Content Section */}
       <section className="container px-4 md:px-6 lg:px-8 py-[38px] md:py-[58px]">
         <div className="mx-auto max-w-4xl">
-          <Accordion type="single" collapsible className="space-y-4">
-            <AccordionItem value="unterschied" className="rounded-2xl border bg-card px-6 shadow-sm">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <Sparkles className="h-6 w-6 text-primary" />
+          <div className="space-y-12">
+            <div className="rounded-2xl border bg-card p-6 md:p-8 shadow-sm">
+              <div className="flex items-center gap-4">
+                <div className="rounded-full bg-primary/10 p-3">
+                  <Briefcase className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold tracking-tight">Produktübersicht PROVOID-Company</h2>
+                  <p className="mt-1 text-muted-foreground">
+                    Wähle das passende Format – kompakt zum Einstieg oder tiefgehend für datenbasierte Produktentscheidungen.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-8 grid gap-4 md:grid-cols-2">
+                <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                  <div className="flex items-start gap-4">
+                    <div className="rounded-xl bg-primary/10 p-3 text-primary">
+                      <GraduationCap className="h-6 w-6" />
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="text-lg font-semibold leading-snug">Seminar: Neuroscience &amp; Neuromarketing</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Kompakte Einführung in Neuromarketing &amp; Consumer Neuroscience – verständlich, praxisnah und direkt anwendbar.
+                      </p>
+                    </div>
                   </div>
-                  <span className="text-xl font-semibold">Wer wir sind</span>
+                  <ul className="mt-4 space-y-1 text-sm text-muted-foreground list-disc pl-5">
+                    <li>Bessere Kunden- und Kaufprozess-Insights</li>
+                    <li>Neue Perspektiven für Entwicklung &amp; Marketing</li>
+                    <li>Wissenschaftliches Fundament für Strategien</li>
+                  </ul>
                 </div>
-              </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-6">
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <p>
-                    PROVOID ist Hamburgs erste Neuromarketing-Agentur. Wir nutzen neurowissenschaftliche Erkenntnisse als Fundament unserer Arbeit – gehen aber weit darüber hinaus. Anders als klassische Agenturen arbeiten wir nicht nur von außen, sondern begleiten Sie auf Wunsch auch direkt vor Ort.
-                  </p>
-                  <p>
-                    Was uns auszeichnet: Wir sind junge Unternehmerinnen, die sich mit Kreativität, Expertise und Neugier in jeden Kunden einarbeiten, um das Maximum zu erreichen. Wir kommen zu Ihnen ins Unternehmen, arbeiten uns tief in Ihre Branche ein und verstehen Ihre internen und externen Prozesse. So entstehen Lösungen, die wirklich zu Ihnen passen – keine Templates, keine Standardkonzepte.
-                  </p>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
 
-            <AccordionItem value="ansatz" className="rounded-2xl border bg-card px-6 shadow-sm">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <Brain className="h-6 w-6 text-primary" />
-                  </div>
-                  <span className="text-xl font-semibold">Unser Ansatz</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-6">
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <p>
-                    Wir arbeiten auf Basis einer zentralen Grundannahme: Ein Großteil aller Prozesse – ob Kaufentscheidungen, Teamdynamiken oder Markenwahrnehmung – läuft unterbewusst ab. Diese verborgenen Mechanismen möchten wir aufdecken und nutzbar machen.
-                  </p>
-                  <p>
-                    Unsere Arbeit hilft dabei, die Identität des Käufers und des Mitarbeiters zu klarifizieren. Wer sind Ihre Kunden wirklich? Was treibt Ihre Mitarbeitenden an? Durch neurowissenschaftliche Methoden machen wir sichtbar, was sonst im Verborgenen bleibt – und schaffen so die Basis für authentische Kommunikation und echte Verbindung.
-                  </p>
-                  <p>
-                    In der Neurowissenschaft existieren unzählige Erkenntnisse, die bisher kaum in der Praxis ankommen. Dieses Potenzial wollen wir erschließen: durch fundiertes Wissen, kontinuierliche Weiterbildung und selbst entwickelte Tools, die neurowissenschaftliche Forschung für Unternehmen zugänglich und anwendbar machen.
-                  </p>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="exklusiv" className="rounded-2xl border bg-card px-6 shadow-sm">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <Building2 className="h-6 w-6 text-primary" />
-                  </div>
-                  <span className="text-xl font-semibold">Exklusive Betreuung</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-6">
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <p>
-                    Jeder Kunde wird bei uns exklusiv betreut. Wir arbeiten intensiv und persönlich – direkt vor Ort in Ihrem Unternehmen. So lernen wir Ihre Kultur, Ihre Herausforderungen und Ihre Ziele aus erster Hand kennen.
-                  </p>
-                  <p>
-                    Ob interne Prozesse, Kundenreisen oder digitale Touchpoints: Wir analysieren, was für Ihr Unternehmen relevant ist, und entwickeln maßgeschneiderte Strategien und Lösungen.
-                  </p>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="leistungen" className="rounded-2xl border bg-card px-6 shadow-sm">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <Briefcase className="h-6 w-6 text-primary" />
-                  </div>
-                  <span className="text-xl font-semibold">Produktübersicht PROVOID-Company</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-6">
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <div className="not-prose space-y-6">
-                    <p className="text-muted-foreground">
-                      Wähle das passende Format – kompakt zum Einstieg oder tiefgehend für datenbasierte Produktentscheidungen.
-                    </p>
-
-                    <div className="grid gap-4 md:grid-cols-2">
-                      <div className="rounded-2xl border bg-card p-6 shadow-sm">
-                        <div className="flex items-start gap-4">
-                          <div className="rounded-xl bg-primary/10 p-3 text-primary">
-                            <GraduationCap className="h-6 w-6" />
-                          </div>
-                          <div className="space-y-2">
-                            <h3 className="text-lg font-semibold leading-snug">Seminar: Neuroscience &amp; Neuromarketing</h3>
-                            <p className="text-sm text-muted-foreground">
-                              Kompakte Einführung in Neuromarketing &amp; Consumer Neuroscience – verständlich, praxisnah und direkt anwendbar.
-                            </p>
-                          </div>
-                        </div>
-                        <ul className="mt-4 space-y-1 text-sm text-muted-foreground list-disc pl-5">
-                          <li>Bessere Kunden- und Kaufprozess-Insights</li>
-                          <li>Neue Perspektiven für Entwicklung &amp; Marketing</li>
-                          <li>Wissenschaftliches Fundament für Strategien</li>
-                        </ul>
-                      </div>
-
-                      <div className="rounded-2xl border bg-card p-6 shadow-sm">
-                        <div className="flex items-start gap-4">
-                          <div className="rounded-xl bg-primary/10 p-3 text-primary">
-                            <Sparkles className="h-6 w-6" />
-                          </div>
-                          <div className="space-y-2">
-                            <h3 className="text-lg font-semibold leading-snug">Workshop: Branchenspezifisch &amp; Hands-On</h3>
-                            <p className="text-sm text-muted-foreground">
-                              Maßgeschneidertes Format mit konkreten Strategien für Branding, Marketing, Produktentwicklung und Produktdesign.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="rounded-2xl border bg-card p-6 shadow-sm">
-                        <div className="flex items-start gap-4">
-                          <div className="rounded-xl bg-primary/10 p-3 text-primary">
-                            <Brain className="h-6 w-6" />
-                          </div>
-                          <div className="space-y-2">
-                            <h3 className="text-lg font-semibold leading-snug">EEG-Produktevaluation &amp; Analyse</h3>
-                            <p className="text-sm text-muted-foreground">
-                              Testung der neuronalen Wirkung von Produkten (z. B. per EEG, optional ergänzend fMRI) – für datenbasierte Entscheidungen im Produktdesign.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="rounded-2xl border bg-card p-6 shadow-sm">
-                        <div className="flex items-start gap-4">
-                          <div className="rounded-xl bg-primary/10 p-3 text-primary">
-                            <Package className="h-6 w-6" />
-                          </div>
-                          <div className="space-y-2">
-                            <h3 className="text-lg font-semibold leading-snug">Begleitende Produktentwicklung</h3>
-                            <p className="text-sm text-muted-foreground">
-                              Kontinuierliche Begleitung von der Idee bis zur Umsetzung – mit neurowissenschaftlicher Perspektive für bessere Produkt- und Marketingentscheidungen.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                  <div className="flex items-start gap-4">
+                    <div className="rounded-xl bg-primary/10 p-3 text-primary">
+                      <Sparkles className="h-6 w-6" />
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="text-lg font-semibold leading-snug">Workshop: Branchenspezifisch &amp; Hands-On</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Maßgeschneidertes Format mit klaren Strategien und konkreten Umsetzungs-Sprints – für Branding, Marketing, Produktentwicklung und Produktdesign.
+                      </p>
                     </div>
                   </div>
                 </div>
-              </AccordionContent>
-            </AccordionItem>
 
-            <AccordionItem value="forschung" className="rounded-2xl border bg-card px-6 shadow-sm">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <FlaskConical className="h-6 w-6 text-primary" />
+                <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                  <div className="flex items-start gap-4">
+                    <div className="rounded-xl bg-primary/10 p-3 text-primary">
+                      <Brain className="h-6 w-6" />
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="text-lg font-semibold leading-snug">EEG-Produktevaluation &amp; Analyse</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Testung der neuronalen Wirkung von Produkten (z. B. per EEG, optional ergänzend fMRI) – inkl. Interpretation &amp; Handlungsempfehlungen für datenbasierte Entscheidungen im Produktdesign.
+                      </p>
+                    </div>
                   </div>
-                  <span className="text-xl font-semibold">Forschung & Entwicklung</span>
                 </div>
-              </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-6">
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <p>
-                    Wir sind nicht nur Anwender, sondern forschen kontinuierlich selbst. Unser Ziel: immer auf dem neuesten Stand der Neurowissenschaft zu sein und dieses Wissen direkt in unsere Arbeit einfließen zu lassen.
-                  </p>
-                  <p>
-                    Wir entwickeln eigene Programme und Tools auf Basis von EEG-Messungen, um Erkenntnisse über kognitive Prozesse messbar und nutzbar zu machen. So verbinden wir wissenschaftliche Tiefe mit praktischer Anwendung.
-                  </p>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
 
-            <AccordionItem value="diskretion" className="rounded-2xl border bg-card px-6 shadow-sm">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <ShieldCheck className="h-6 w-6 text-primary" />
+                <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                  <div className="flex items-start gap-4">
+                    <div className="rounded-xl bg-primary/10 p-3 text-primary">
+                      <Package className="h-6 w-6" />
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="text-lg font-semibold leading-snug">Begleitende Produktentwicklung</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Kontinuierliche Begleitung von der Idee bis zur Umsetzung – mit neurowissenschaftlicher Perspektive, Feedback-Loops und Priorisierung für bessere Produkt- und Marketingentscheidungen.
+                      </p>
+                    </div>
                   </div>
-                  <span className="text-xl font-semibold">Diskretion & Vertrauen</span>
                 </div>
-              </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-6">
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <p>
-                    Diskretion ist die Basis unserer Arbeit. Wir verstehen, dass wir als externe Partner tiefe Einblicke in Ihr Unternehmen erhalten. Dieses Vertrauen nehmen wir ernst.
-                  </p>
-                  <p>
-                    Alle Informationen, Strategien und Entwicklungen bleiben streng vertraulich. Wir arbeiten im Hintergrund und treten nicht als sichtbarer Partner auf – es sei denn, Sie wünschen es ausdrücklich.
-                  </p>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
+              </div>
+            </div>
 
-            <AccordionItem value="flexibel" className="rounded-2xl border bg-card px-6 shadow-sm">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <Target className="h-6 w-6 text-primary" />
-                  </div>
-                  <span className="text-xl font-semibold">Flexibel & Individuell</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-6">
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <p>
-                    Jedes Unternehmen ist anders. Deshalb gibt es bei uns keine starren Pakete oder festgelegten Abläufe. Wir passen uns an – an Ihre Branche, Ihre Größe, Ihre Ziele und Ihren Zeitrahmen.
+            <div className="rounded-2xl border bg-card p-6 md:p-8 shadow-sm">
+              <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                <div>
+                  <h2 className="text-2xl font-bold tracking-tight">Bereit für den nächsten Schritt?</h2>
+                  <p className="mt-1 text-muted-foreground">
+                    Buchen Sie direkt einen Termin – schnell, unverbindlich und ohne Umwege.
                   </p>
-                  <ul className="space-y-2 pl-6 list-disc">
-                    <li>Projektbasierte Zusammenarbeit oder langfristige Partnerschaft</li>
-                    <li>Einmalige Beratung oder kontinuierliche Begleitung</li>
-                    <li>Einzelne Services oder ganzheitliche Lösungen</li>
-                    <li>Vor Ort, remote oder hybrid</li>
-                  </ul>
                 </div>
-              </AccordionContent>
-            </AccordionItem>
+                <Link href="/kontakt" className="w-full md:w-auto">
+                  <Button size="lg" className="w-full md:w-auto">Termin buchen</Button>
+                </Link>
+              </div>
+            </div>
 
-            <AccordionItem value="kontakt" className="rounded-2xl border bg-card px-6 shadow-sm">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <Users className="h-6 w-6 text-primary" />
+            <div className="rounded-2xl border bg-card p-6 md:p-8 shadow-sm">
+              <div className="flex items-center gap-4">
+                <div className="rounded-full bg-primary/10 p-3">
+                  <Brain className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold tracking-tight">Unser Ansatz</h2>
+                  <p className="mt-1 text-muted-foreground">Wissenschaftlich fundiert, individuell und diskret – so arbeiten wir mit Ihnen.</p>
+                </div>
+              </div>
+
+              <div className="mt-8 grid gap-4">
+                <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                  <div className="flex items-center gap-4">
+                    <div className="rounded-full bg-primary/10 p-3">
+                      <Sparkles className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-semibold">Wer wir sind</h3>
                   </div>
-                  <span className="text-xl font-semibold">Zusammenarbeit starten</span>
+                  <div className="prose prose-neutral dark:prose-invert max-w-none mt-4">
+                    <p>
+                      PROVOID ist Hamburgs erste Neuromarketing-Agentur. Wir nutzen neurowissenschaftliche Erkenntnisse als Fundament unserer Arbeit – gehen aber weit darüber hinaus. Anders als klassische Agenturen arbeiten wir nicht nur von außen, sondern begleiten Sie auf Wunsch auch direkt vor Ort.
+                    </p>
+                    <p>
+                      Was uns auszeichnet: Wir sind junge Unternehmerinnen, die sich mit Kreativität, Expertise und Neugier in jeden Kunden einarbeiten, um das Maximum zu erreichen. Wir kommen zu Ihnen ins Unternehmen, arbeiten uns tief in Ihre Branche ein und verstehen Ihre internen und externen Prozesse. So entstehen Lösungen, die wirklich zu Ihnen passen – keine Templates, keine Standardkonzepte.
+                    </p>
+                  </div>
                 </div>
-              </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-6">
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <p>
-                    Interessiert an einer Zusammenarbeit? Wir beginnen mit einem unverbindlichen Gespräch, um Ihre Situation und Ziele zu verstehen. Darauf basierend entwickeln wir einen individuellen Vorschlag – ohne starre Pakete, ohne versteckte Kosten.
-                  </p>
-                  <p>
-                    Ob Start-up oder etabliertes Unternehmen, ob einzelnes Projekt oder langfristige Partnerschaft – wir finden die passende Lösung für Sie.
-                  </p>
+
+                <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                  <div className="flex items-center gap-4">
+                    <div className="rounded-full bg-primary/10 p-3">
+                      <Building2 className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-semibold">Exklusive Betreuung</h3>
+                  </div>
+                  <div className="prose prose-neutral dark:prose-invert max-w-none mt-4">
+                    <p>
+                      Jeder Kunde wird bei uns exklusiv betreut. Wir arbeiten intensiv und persönlich – direkt vor Ort in Ihrem Unternehmen. So lernen wir Ihre Kultur, Ihre Herausforderungen und Ihre Ziele aus erster Hand kennen.
+                    </p>
+                    <p>
+                      Ob interne Prozesse, Kundenreisen oder digitale Touchpoints: Wir analysieren, was für Ihr Unternehmen relevant ist, und entwickeln maßgeschneiderte Strategien und Lösungen.
+                    </p>
+                  </div>
                 </div>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+
+                <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                  <div className="flex items-center gap-4">
+                    <div className="rounded-full bg-primary/10 p-3">
+                      <FlaskConical className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-semibold">Forschung &amp; Entwicklung</h3>
+                  </div>
+                  <div className="prose prose-neutral dark:prose-invert max-w-none mt-4">
+                    <p>
+                      Wir sind nicht nur Anwender, sondern forschen kontinuierlich selbst. Unser Ziel: immer auf dem neuesten Stand der Neurowissenschaft zu sein und dieses Wissen direkt in unsere Arbeit einfließen zu lassen.
+                    </p>
+                    <p>
+                      Wir entwickeln eigene Programme und Tools auf Basis von EEG-Messungen, um Erkenntnisse über kognitive Prozesse messbar und nutzbar zu machen. So verbinden wir wissenschaftliche Tiefe mit praktischer Anwendung.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                  <div className="flex items-center gap-4">
+                    <div className="rounded-full bg-primary/10 p-3">
+                      <ShieldCheck className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-semibold">Diskretion &amp; Vertrauen</h3>
+                  </div>
+                  <div className="prose prose-neutral dark:prose-invert max-w-none mt-4">
+                    <p>
+                      Diskretion ist die Basis unserer Arbeit. Wir verstehen, dass wir als externe Partner tiefe Einblicke in Ihr Unternehmen erhalten. Dieses Vertrauen nehmen wir ernst.
+                    </p>
+                    <p>
+                      Alle Informationen, Strategien und Entwicklungen bleiben streng vertraulich. Wir arbeiten im Hintergrund und treten nicht als sichtbarer Partner auf – es sei denn, Sie wünschen es ausdrücklich.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border bg-card p-6 shadow-sm">
+                  <div className="flex items-center gap-4">
+                    <div className="rounded-full bg-primary/10 p-3">
+                      <Target className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-semibold">Flexibel &amp; Individuell</h3>
+                  </div>
+                  <div className="prose prose-neutral dark:prose-invert max-w-none mt-4">
+                    <p>
+                      Jedes Unternehmen ist anders. Deshalb gibt es bei uns keine starren Pakete oder festgelegten Abläufe. Wir passen uns an – an Ihre Branche, Ihre Größe, Ihre Ziele und Ihren Zeitrahmen.
+                    </p>
+                    <ul className="space-y-2 pl-6 list-disc">
+                      <li>Projektbasierte Zusammenarbeit oder langfristige Partnerschaft</li>
+                      <li>Einmalige Beratung oder kontinuierliche Begleitung</li>
+                      <li>Einzelne Services oder ganzheitliche Lösungen</li>
+                      <li>Vor Ort, remote oder hybrid</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <FinalCta />
+          </div>
         </div>
       </section>
     </div>
