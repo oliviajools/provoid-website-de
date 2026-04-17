@@ -49,76 +49,109 @@ export default function CompanyPage() {
       <section className="container px-4 md:px-6 lg:px-8 py-[38px] md:py-[58px]">
         <div className="mx-auto max-w-7xl">
           <div className="space-y-12">
-            <div className="rounded-2xl border bg-card p-6 md:p-8 shadow-sm">
+            <div className="rounded-2xl border bg-card p-8 md:p-12 shadow-sm">
               <div className="flex items-center gap-4">
                 <div className="rounded-full bg-primary/10 p-3">
                   <Briefcase className="h-6 w-6 text-primary" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold tracking-tight">Produktübersicht PROVOID-Company</h2>
-                  <p className="mt-1 text-muted-foreground">
+                  <p className="mt-3 text-muted-foreground max-w-prose leading-relaxed">
                     Wähle das passende Format – kompakt zum Einstieg oder tiefgehend für datenbasierte Produktentscheidungen.
                   </p>
                 </div>
               </div>
 
-              <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4 items-stretch">
-                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all h-full">
-                  <div className="flex items-start gap-4">
-                    <div className="rounded-xl bg-primary/10 p-3 text-primary">
-                      <GraduationCap className="h-6 w-6" />
+              <div className="mt-10 space-y-6">
+                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 md:p-8 shadow-sm">
+                  <div className="grid gap-6 md:grid-cols-12 md:items-start">
+                    <div className="md:col-span-5">
+                      <div className="flex items-start gap-4">
+                        <div className="rounded-xl bg-primary/10 p-3 text-primary">
+                          <GraduationCap className="h-6 w-6" />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-semibold leading-snug">Seminar: Neuroscience &amp; Neuromarketing</h3>
+                          <p className="mt-3 text-muted-foreground leading-relaxed max-w-prose">
+                            Kompakte Einführung in Neuromarketing &amp; Consumer Neuroscience – verständlich, praxisnah und direkt anwendbar.
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="space-y-2">
-                      <h3 className="text-xl font-semibold leading-snug">Seminar: Neuroscience &amp; Neuromarketing</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        Kompakte Einführung in Neuromarketing &amp; Consumer Neuroscience – verständlich, praxisnah und direkt anwendbar.
-                      </p>
-                    </div>
-                  </div>
-                  <ul className="mt-4 space-y-1 text-sm text-muted-foreground list-disc pl-5">
-                    <li>Bessere Kunden- und Kaufprozess-Insights</li>
-                    <li>Neue Perspektiven für Entwicklung &amp; Marketing</li>
-                    <li>Wissenschaftliches Fundament für Strategien</li>
-                  </ul>
-                </div>
-
-                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all h-full">
-                  <div className="flex items-start gap-4">
-                    <div className="rounded-xl bg-primary/10 p-3 text-primary">
-                      <Sparkles className="h-6 w-6" />
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="text-xl font-semibold leading-snug">Workshop: Branchenspezifisch &amp; Hands-On</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        Maßgeschneidertes Format mit klaren Strategien und konkreten Umsetzungs-Sprints – für Branding, Marketing, Produktentwicklung und Produktdesign.
-                      </p>
+                    <div className="md:col-span-7">
+                      <ul className="space-y-2 text-sm md:text-base text-muted-foreground list-disc pl-5 leading-relaxed">
+                        <li>Bessere Kunden- und Kaufprozess-Insights</li>
+                        <li>Neue Perspektiven für Entwicklung &amp; Marketing</li>
+                        <li>Wissenschaftliches Fundament für Strategien</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
 
-                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all h-full">
-                  <div className="flex items-start gap-4">
-                    <div className="rounded-xl bg-primary/10 p-3 text-primary">
-                      <Brain className="h-6 w-6" />
+                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 md:p-8 shadow-sm">
+                  <div className="grid gap-6 md:grid-cols-12 md:items-start">
+                    <div className="md:col-span-5">
+                      <div className="flex items-start gap-4">
+                        <div className="rounded-xl bg-primary/10 p-3 text-primary">
+                          <Sparkles className="h-6 w-6" />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-semibold leading-snug">Workshop: Branchenspezifisch &amp; Hands-On</h3>
+                          <p className="mt-3 text-muted-foreground leading-relaxed max-w-prose">
+                            Maßgeschneidertes Format mit klaren Strategien und konkreten Umsetzungs-Sprints – für Branding, Marketing, Produktentwicklung und Produktdesign.
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="space-y-2">
-                      <h3 className="text-xl font-semibold leading-snug">EEG-Produktevaluation &amp; Analyse</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        Testung der neuronalen Wirkung von Produkten (z. B. per EEG, optional ergänzend fMRI) – inkl. Interpretation &amp; Handlungsempfehlungen für datenbasierte Entscheidungen im Produktdesign.
+                    <div className="md:col-span-7">
+                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-prose">
+                        Ideal, wenn Sie nicht nur Wissen wollen, sondern direkt konkrete Entscheidungen und Umsetzungen anstoßen möchten.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all h-full">
-                  <div className="flex items-start gap-4">
-                    <div className="rounded-xl bg-primary/10 p-3 text-primary">
-                      <Package className="h-6 w-6" />
+                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 md:p-8 shadow-sm">
+                  <div className="grid gap-6 md:grid-cols-12 md:items-start">
+                    <div className="md:col-span-5">
+                      <div className="flex items-start gap-4">
+                        <div className="rounded-xl bg-primary/10 p-3 text-primary">
+                          <Brain className="h-6 w-6" />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-semibold leading-snug">EEG-Produktevaluation &amp; Analyse</h3>
+                          <p className="mt-3 text-muted-foreground leading-relaxed max-w-prose">
+                            Testung der neuronalen Wirkung von Produkten (z. B. per EEG, optional ergänzend fMRI) – inkl. Interpretation &amp; Handlungsempfehlungen für datenbasierte Entscheidungen im Produktdesign.
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="space-y-2">
-                      <h3 className="text-xl font-semibold leading-snug">Begleitende Produktentwicklung</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        Kontinuierliche Begleitung von der Idee bis zur Umsetzung – mit neurowissenschaftlicher Perspektive, Feedback-Loops und Priorisierung für bessere Produkt- und Marketingentscheidungen.
+                    <div className="md:col-span-7">
+                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-prose">
+                        Besonders sinnvoll bei high-stakes Entscheidungen (Positionierung, Produktvarianten, Design), bei denen reine Befragungen oft zu kurz greifen.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 md:p-8 shadow-sm">
+                  <div className="grid gap-6 md:grid-cols-12 md:items-start">
+                    <div className="md:col-span-5">
+                      <div className="flex items-start gap-4">
+                        <div className="rounded-xl bg-primary/10 p-3 text-primary">
+                          <Package className="h-6 w-6" />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-semibold leading-snug">Begleitende Produktentwicklung</h3>
+                          <p className="mt-3 text-muted-foreground leading-relaxed max-w-prose">
+                            Kontinuierliche Begleitung von der Idee bis zur Umsetzung – mit neurowissenschaftlicher Perspektive, Feedback-Loops und Priorisierung für bessere Produkt- und Marketingentscheidungen.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="md:col-span-7">
+                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-prose">
+                        Für Teams, die schnell lernen, iterieren und messbar bessere Entscheidungen treffen möchten – ohne den Fokus im Alltag zu verlieren.
                       </p>
                     </div>
                   </div>
@@ -140,7 +173,7 @@ export default function CompanyPage() {
               </div>
             </div>
 
-            <div className="rounded-2xl border bg-card p-6 md:p-8 shadow-sm">
+            <div className="rounded-2xl border bg-card p-8 md:p-12 shadow-sm">
               <div className="flex items-center gap-4">
                 <div className="rounded-full bg-primary/10 p-3">
                   <Brain className="h-6 w-6 text-primary" />
@@ -151,8 +184,8 @@ export default function CompanyPage() {
                 </div>
               </div>
 
-              <div className="mt-8 grid gap-4 md:grid-cols-2">
-                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+              <div className="mt-10 space-y-6">
+                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 md:p-8 shadow-sm">
                   <div className="flex items-center gap-4">
                     <div className="rounded-full bg-primary/10 p-3">
                       <Sparkles className="h-6 w-6 text-primary" />
@@ -169,7 +202,7 @@ export default function CompanyPage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 md:p-8 shadow-sm">
                   <div className="flex items-center gap-4">
                     <div className="rounded-full bg-primary/10 p-3">
                       <Building2 className="h-6 w-6 text-primary" />
@@ -186,7 +219,7 @@ export default function CompanyPage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 md:p-8 shadow-sm">
                   <div className="flex items-center gap-4">
                     <div className="rounded-full bg-primary/10 p-3">
                       <FlaskConical className="h-6 w-6 text-primary" />
@@ -203,7 +236,7 @@ export default function CompanyPage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 md:p-8 shadow-sm">
                   <div className="flex items-center gap-4">
                     <div className="rounded-full bg-primary/10 p-3">
                       <ShieldCheck className="h-6 w-6 text-primary" />
@@ -220,7 +253,7 @@ export default function CompanyPage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all md:col-span-2">
+                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 md:p-8 shadow-sm">
                   <div className="flex items-center gap-4">
                     <div className="rounded-full bg-primary/10 p-3">
                       <Target className="h-6 w-6 text-primary" />
