@@ -39,11 +39,6 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/sports" className="text-muted-foreground hover:text-primary transition-colors">
-                  PROVOID-Sports
-                </Link>
-              </li>
-              <li>
                 <Link href="/news" className="text-muted-foreground hover:text-primary transition-colors">
                   News
                 </Link>
@@ -59,7 +54,7 @@ export function Footer() {
           <div>
             <h4 className="mb-4 text-sm font-semibold">Kontakt</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>olivia.provoid@gmail.com</li>
+              <li>olivia@provoid.de</li>
               <li>+49 1744401044</li>
             </ul>
           </div>

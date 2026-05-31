@@ -49,7 +49,7 @@ export default function KontaktPage() {
       <section className="container px-4 md:px-6 lg:px-8 py-[38px] md:py-[58px]">
         <div className="mx-auto max-w-4xl">
           <div className="grid gap-6 md:grid-cols-3">
-            <a href="mailto:olivia.provoid@gmail.com" className="block">
+            <a href="mailto:olivia@provoid.de" className="block">
               <Card className="border-2 hover:border-primary/50 transition-colors">
                 <CardContent className="pt-6 pb-6 flex flex-col items-center text-center">
                   <div className="mb-4 rounded-full bg-primary/10 p-4">
@@ -57,7 +57,7 @@ export default function KontaktPage() {
                   </div>
                   <h3 className="mb-2 text-lg font-semibold">E-Mail</h3>
                   <span className="text-sm text-muted-foreground hover:text-primary transition-colors break-all">
-                    olivia.provoid@gmail.com
+                    olivia@provoid.de
                   </span>
                 </CardContent>
               </Card>

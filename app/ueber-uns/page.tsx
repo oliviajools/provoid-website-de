@@ -125,7 +125,7 @@ export default function UeberUnsPage() {
                       Mit 15 Jahren begann Olivia als Juniorstudentin Physik an der Universität Hamburg zu studieren. Parallel forschte sie am Schülerforschungszentrum Hamburg, wo sie mit PROVOID den Landespreis bei Jugend forscht gewann.
                     </p>
                     <p>
-                      2025 schloss sie ihr Abitur als Jahrgangsbeste ab (NC 0,9) und gründete PROVOID. Sie kombiniert wissenschaftliche Tiefe mit unternehmerischem Denken und bringt Erfahrung aus Sport (Fußballtrainerin bei SC Victoria Hamburg) und Forschung zusammen.
+                      2025 schloss sie ihr Abitur als Jahrgangsbeste ab (NC 0,8) und gründete PROVOID. Sie kombiniert wissenschaftliche Tiefe mit unternehmerischem Denken und bringt Erfahrung aus Sport (Fußballtrainerin bei SC Victoria Hamburg) und Forschung zusammen.
                     </p>
                   </div>
 

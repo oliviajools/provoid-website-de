@@ -43,7 +43,7 @@ export default function ImpressumPage() {
               <div>
                 <h2 className="mb-2 text-xl font-semibold tracking-tight">Kontakt</h2>
                 <p>Telefon: <a className="text-foreground hover:underline" href="tel:+491744401044">+49 174 4401044</a></p>
-                <p>E-Mail: <a className="text-foreground hover:underline" href="mailto:oliviabahr@avoid-procrastination-provoid.com">oliviabahr@avoid-procrastination-provoid.com</a></p>
+                <p>E-Mail: <a className="text-foreground hover:underline" href="mailto:olivia@provoid.de">olivia@provoid.de</a></p>
               </div>
             </div>
           </div>

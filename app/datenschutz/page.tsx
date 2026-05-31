@@ -34,7 +34,7 @@ export default function DatenschutzPage() {
             <div>
               <h2 className="mb-2 text-xl font-semibold tracking-tight">1. Verantwortlicher & Kontakt</h2>
               <p>Verantwortlich: PROVOID (App-Betreiber)</p>
-              <p>Kontakt: <a className="text-foreground hover:underline" href="mailto:oliviabahr@avoid-procrastination-provoid.com">oliviabahr@avoid-procrastination-provoid.com</a></p>
+              <p>Kontakt: <a className="text-foreground hover:underline" href="mailto:olivia@provoid.de">olivia@provoid.de</a></p>
             </div>
 
             <div>
@@ -88,7 +88,7 @@ export default function DatenschutzPage() {
                 <li>Widerspruch gegen Verarbeitungen auf Grundlage berechtigter Interessen</li>
                 <li>Beschwerderecht bei einer Datenschutzaufsichtsbehörde</li>
               </ul>
-              <p className="mt-2">Kontakt zur Ausübung: <a className="text-foreground hover:underline" href="mailto:oliviabahr@avoid-procrastination-provoid.com">oliviabahr@avoid-procrastination-provoid.com</a></p>
+              <p className="mt-2">Kontakt zur Ausübung: <a className="text-foreground hover:underline" href="mailto:olivia@provoid.de">olivia@provoid.de</a></p>
             </div>
 
             <div>

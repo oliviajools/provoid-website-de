@@ -30,7 +30,6 @@ export function Header() {
         <nav className="hidden md:flex items-center gap-3">
           <NavLink href="/">Home</NavLink>
           <NavLink href="/company">Company</NavLink>
-          <NavLink href="/sports">Sports</NavLink>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -54,7 +53,6 @@ export function Header() {
           <div className="container px-4 py-4 flex flex-col gap-3">
             <NavLink href="/" className="text-base active:bg-primary/15 active:border-primary/40 rounded-md transition-colors" onClick={closeMenu}>Home</NavLink>
             <NavLink href="/company" className="text-base active:bg-primary/15 active:border-primary/40 rounded-md transition-colors" onClick={closeMenu}>Company</NavLink>
-            <NavLink href="/sports" className="text-base active:bg-primary/15 active:border-primary/40 rounded-md transition-colors" onClick={closeMenu}>Sports</NavLink>
           </div>
         </nav>
       )}
