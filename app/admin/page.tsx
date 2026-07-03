@@ -11,6 +11,7 @@ export default function Admin() {
     date: new Date().getFullYear().toString(),
     tags: "",
     shortVersion: "",
+    author: "",
   });
 
   const [generatedCode, setGeneratedCode] = useState("");
@@ -47,6 +48,7 @@ export default function Admin() {
       date: formData.date,
       tags,
       ...(formData.shortVersion && { shortVersion: formData.shortVersion }),
+      ...(formData.author && { author: formData.author }),
     };
 
     setGeneratedCode(
@@ -57,6 +59,7 @@ export default function Admin() {
     date: "${blogPost.date}",
     tags: [${blogPost.tags.map((tag) => `"${tag}"`).join(", ")}],
     ${blogPost.shortVersion ? `shortVersion: "${blogPost.shortVersion}",` : ""}
+    ${blogPost.author ? `author: "${blogPost.author}",` : ""}
     content: \`${blogPost.content}\`
   },`
     );
@@ -76,6 +79,7 @@ export default function Admin() {
       date: new Date().getFullYear().toString(),
       tags: "",
       shortVersion: "",
+      author: "",
     });
     setGeneratedCode("");
   };
@@ -156,6 +160,18 @@ export default function Admin() {
                   required
                   className="w-full px-4 py-2 border border-border rounded-editorial text-text-primary focus:outline-none focus:border-primary-accent"
                   placeholder="2026"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-text-primary mb-2">Autor (optional)</label>
+                <input
+                  type="text"
+                  name="author"
+                  value={formData.author}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-border rounded-editorial text-text-primary focus:outline-none focus:border-primary-accent"
+                  placeholder="Max Mustermann (Praktikant)"
                 />
               </div>
 

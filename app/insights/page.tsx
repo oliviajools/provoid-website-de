@@ -51,6 +51,7 @@ export default function Insights() {
                 slug={post.id}
                 date={post.date}
                 tags={post.tags}
+                author={post.author}
               />
             ))}
           </div>

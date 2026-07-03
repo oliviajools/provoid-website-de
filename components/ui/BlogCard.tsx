@@ -6,16 +6,21 @@ interface BlogCardProps {
   slug: string;
   date?: string;
   tags?: string[];
+  author?: string;
 }
 
-export function BlogCard({ title, excerpt, slug, date, tags = [] }: BlogCardProps) {
+export function BlogCard({ title, excerpt, slug, date, tags = [], author }: BlogCardProps) {
   return (
     <Link href={`/insights/${slug}`} className="block group">
       <article className="border border-border bg-surface p-6 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
         <h3 className="text-xl font-semibold text-text-primary mb-3 group-hover:text-primary-accent transition-colors">
           {title}
         </h3>
-        {date && <p className="text-sm text-primary-accent mb-3 font-medium">{date}</p>}
+        {(date || author) && (
+          <p className="text-sm text-primary-accent mb-3 font-medium">
+            {date}{date && author && " · "}{author}
+          </p>
+        )}
         <p className="text-text-secondary line-clamp-3 mb-4 flex-grow">{excerpt}</p>
         {tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-4">

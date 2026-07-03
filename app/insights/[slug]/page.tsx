@@ -86,7 +86,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-text-primary mb-6">
                 {post.title}
               </h1>
-              <p className="text-lg text-text-muted mb-4">{post.date}</p>
+              <p className="text-lg text-text-muted mb-4">
+                {post.date}{post.author && ` · ${post.author}`}
+              </p>
               {post.tags && post.tags.length > 0 && (
                 <div className="flex flex-wrap gap-2 mb-8">
                   {post.tags.map((tag) => (
