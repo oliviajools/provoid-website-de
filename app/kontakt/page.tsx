@@ -1,109 +1,75 @@
-import { Metadata } from "next";
-import { Mail, Phone, MapPin } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { SectionHeader } from "@/components/SectionHeader";
+import { CTABlock } from "@/components/ui/CTABlock";
+import Image from "next/image";
 
-export const metadata: Metadata = {
-  title: "Kontakt | PROVOID",
-  description: "Kontaktieren Sie PROVOID - Wir freuen uns auf Ihre Nachricht.",
-  alternates: {
-    canonical: "/kontakt",
-  },
-};
-
-export default function KontaktPage() {
+export default function Contact() {
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-primary/20 to-background py-[48px] md:py-[77px]">
-        <div className="container px-4 md:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              <span className="text-primary">Kontakt</span>
-            </h1>
-            <p className="text-lg text-muted-foreground md:text-xl">
-              Wir freuen uns auf Ihre Nachricht
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Calendly Embed Section */}
-      <section className="container px-4 md:px-6 lg:px-8 py-4 md:py-8">
-        <div className="mx-auto max-w-4xl">
-          <div className="rounded-2xl border bg-card p-3 md:p-4 shadow-sm">
-            <div className="w-full h-[calc(100vh-280px)] md:h-[calc(100vh-200px)] rounded-lg overflow-hidden">
-              <iframe
-                src="https://calendly.com/oliviajools/30min"
-                width="100%"
-                height="100%"
-                frameBorder="0"
-                title="Calendly Terminbuchung"
-                className="rounded-lg"
+      <section className="relative py-8 md:py-12 bg-surface overflow-hidden">
+        <div className="container relative z-10">
+          <div className="max-w-4xl flex items-center justify-between gap-8">
+            <div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-text-primary mb-4">
+                KONTAKT
+              </h1>
+              <p className="text-base md:text-lg text-text-secondary mb-6 max-w-3xl">
+                Bereit für den nächsten Schritt? Sprechen Sie mit uns über Ihr Projekt oder Ihre Frage.
+              </p>
+            </div>
+            <div className="flex-shrink-0 hidden md:block">
+              <Image
+                src="/brain.png"
+                alt="Gehirn Illustration"
+                width={768}
+                height={768}
+                priority
+                loading="eager"
+                quality={90}
+                className="relative mx-auto h-auto w-48 md:w-56 lg:w-64 drop-shadow-lg"
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Information Section */}
-      <section className="container px-4 md:px-6 lg:px-8 py-[38px] md:py-[58px]">
-        <div className="mx-auto max-w-4xl">
-          <div className="grid gap-6 md:grid-cols-3">
-            <a href="mailto:olivia@provoid.de" className="block">
-              <Card className="border-2 hover:border-primary/50 transition-colors">
-                <CardContent className="pt-6 pb-6 flex flex-col items-center text-center">
-                  <div className="mb-4 rounded-full bg-primary/10 p-4">
-                    <Mail className="h-8 w-8 text-primary" />
-                  </div>
-                  <h3 className="mb-2 text-lg font-semibold">E-Mail</h3>
-                  <span className="text-sm text-muted-foreground hover:text-primary transition-colors break-all">
-                    olivia@provoid.de
-                  </span>
-                </CardContent>
-              </Card>
-            </a>
-
-            <a href="tel:+491744401044" className="block">
-              <Card className="border-2 hover:border-primary/50 transition-colors">
-                <CardContent className="pt-6 pb-6 flex flex-col items-center text-center">
-                  <div className="mb-4 rounded-full bg-primary/10 p-4">
-                    <Phone className="h-8 w-8 text-primary" />
-                  </div>
-                  <h3 className="mb-2 text-lg font-semibold">Telefon</h3>
-                  <span className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    +49 1744401044
-                  </span>
-                </CardContent>
-              </Card>
-            </a>
-
-            <Card className="border-2 hover:border-primary/50 transition-colors">
-              <CardContent className="pt-6 pb-6 flex flex-col items-center text-center">
-                <div className="mb-4 rounded-full bg-primary/10 p-4">
-                  <MapPin className="h-8 w-8 text-primary" />
+      <section className="py-8 md:py-12 bg-white">
+        <div className="container">
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="border border-border bg-surface p-8 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1">
+              <h3 className="text-xl font-semibold text-text-primary mb-6">Direkter Kontakt</h3>
+              <div className="space-y-4">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-2">E-Mail</p>
+                  <a href="mailto:olivia@provoid.de" className="text-lg text-primary-accent hover:text-primary-light transition-colors">olivia@provoid.de</a>
                 </div>
-                <h3 className="mb-2 text-lg font-semibold">Adresse</h3>
-                <address className="text-sm text-muted-foreground not-italic">
-                  Olivia Bahr<br />
-                  Beim Andreasbrunnen 6<br />
-                  20249 Hamburg<br />
-                  Deutschland
-                </address>
-              </CardContent>
-            </Card>
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-2">Telefon</p>
+                  <a href="tel:+491744401044" className="text-lg text-primary-accent hover:text-primary-light transition-colors">+49 174 440 1044</a>
+                </div>
+              </div>
+            </div>
 
+            <div className="border border-border bg-surface p-8 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1">
+              <h3 className="text-xl font-semibold text-text-primary mb-6">Wir freuen uns auf Ihre Nachricht</h3>
+              <p className="text-text-secondary mb-6">
+                Egal ob Unternehmen, Sportverein oder Einzelperson: Wir beraten Sie gerne zu Ihren Anforderungen und finden gemeinsam die passende Lösung.
+              </p>
+              <CTABlock primary={{ text: "E-Mail schreiben", href: "mailto:olivia@provoid.de" }} secondary={{ text: "Anrufen", href: "tel:+491744401044" }} />
+            </div>
           </div>
+        </div>
+      </section>
 
-          {/* Additional Info Section */}
-          <div className="mt-12 rounded-2xl border bg-card p-6 md:p-8 shadow-sm">
-            <h2 className="mb-4 text-2xl font-bold tracking-tight">
-              Nehmen Sie Kontakt auf
-            </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Haben Sie Fragen zu unseren Dienstleistungen oder möchten Sie mehr über PROVOID erfahren? 
-              Buchen Sie direkt einen Termin über Calendly oder kontaktieren Sie uns per E-Mail oder Telefon. 
-              Wir freuen uns darauf, von Ihnen zu hören und gemeinsam mit Ihnen die besten Lösungen 
-              für Ihre Bedürfnisse zu entwickeln.
+      <section className="py-section-mobile md:py-section bg-surface">
+        <div className="container">
+          <SectionHeader label="OFFICE" title="Standort" />
+          
+          <div className="mt-12 border border-border bg-white p-8 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1">
+            <p className="text-text-secondary mb-4">
+              PROVOID ist in Hamburg beheimatet und arbeitet deutschlandweit sowie digital mit Kunden zusammen.
+            </p>
+            <p className="text-text-secondary">
+              Für persönliche Termine und Kooperationen in Hamburg kontaktieren Sie uns bitte vorab per E-Mail oder Telefon.
             </p>
           </div>
         </div>

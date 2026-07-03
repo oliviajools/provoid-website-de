@@ -1,58 +1,62 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { NavLink } from "./NavLink";
+import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
 
 export function Header() {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const toggleMenu = () => setMobileMenuOpen(!mobileMenuOpen);
-  const closeMenu = () => setMobileMenuOpen(false);
+  const isActive = (path: string) => {
+    if (path === "/") {
+      return pathname === "/";
+    }
+    return pathname.startsWith(path);
+  };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between px-4 md:px-6 lg:px-8">
-        <Link href="/" className="flex items-center space-x-2" onClick={closeMenu}>
-          <Image
-            src="/logo-provoid-svg.svg"
-            alt="PROVOID Logo"
-            width={32}
-            height={32}
-            className="h-8 w-8"
-          />
-          <span className="text-2xl font-bold text-primary">PROVOID</span>
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-surface/95 backdrop-blur">
+      <div className="container flex h-16 items-center justify-between">
+        <Link href="/" className="flex items-center gap-3">
+          <img src="/Logo-provoid.png" alt="PROVOID" className="h-8" />
+          <div className="flex flex-col">
+            <span className="text-xl font-semibold tracking-tight text-text-primary">PROVOID</span>
+            <span className="text-[0.6rem] tracking-widest text-primary-accent uppercase">no brain. no gain.</span>
+          </div>
         </Link>
-        
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-3">
-          <NavLink href="/">Home</NavLink>
-          <NavLink href="/company">Company</NavLink>
+
+        <nav className="hidden md:flex items-center gap-8">
+          <Link href="/" className={`text-sm font-medium ${isActive("/") ? "text-primary-accent" : "text-text-primary"} hover:text-primary-accent transition-colors`}>Home</Link>
+          <Link href="/company" className={`text-sm font-medium ${isActive("/company") ? "text-primary-accent" : "text-text-primary"} hover:text-primary-accent transition-colors`}>Company</Link>
+          <Link href="/sports" className={`text-sm font-medium ${isActive("/sports") ? "text-primary-accent" : "text-text-primary"} hover:text-primary-accent transition-colors`}>Sports</Link>
+          <Link href="/insights" className={`text-sm font-medium ${isActive("/insights") ? "text-primary-accent" : "text-text-primary"} hover:text-primary-accent transition-colors`}>Neuro-Insights</Link>
+          <Link href="/about" className={`text-sm font-medium ${isActive("/about") ? "text-primary-accent" : "text-text-primary"} hover:text-primary-accent transition-colors`}>About</Link>
+          <Link href="/kontakt" className={`text-sm font-medium ${isActive("/kontakt") ? "text-primary-accent" : "text-text-primary"} hover:text-primary-accent transition-colors`}>Kontakt</Link>
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden p-2 text-primary transition-colors active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
-          aria-label="Toggle menu"
-          aria-expanded={mobileMenuOpen}
-        >
-          {mobileMenuOpen ? (
-            <X className="h-6 w-6" />
-          ) : (
-            <Menu className="h-6 w-6" />
-          )}
+        <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden p-2 text-text-primary" aria-label="Toggle menu">
+          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
-      {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <nav className="md:hidden border-t bg-background">
-          <div className="container px-4 py-4 flex flex-col gap-3">
-            <NavLink href="/" className="text-base active:bg-primary/15 active:border-primary/40 rounded-md transition-colors" onClick={closeMenu}>Home</NavLink>
-            <NavLink href="/company" className="text-base active:bg-primary/15 active:border-primary/40 rounded-md transition-colors" onClick={closeMenu}>Company</NavLink>
+        <nav className="md:hidden border-t border-border bg-surface">
+          <div className="container py-4 flex flex-col gap-4">
+            <div className="flex items-center gap-3 mb-4">
+              <img src="/Logo-provoid.png" alt="PROVOID" className="h-8" />
+              <div className="flex flex-col">
+                <span className="text-xl font-semibold tracking-tight text-text-primary">PROVOID</span>
+                <span className="text-[0.6rem] tracking-widest text-primary-accent uppercase">no brain. no gain.</span>
+              </div>
+            </div>
+            <Link href="/" className={`text-sm font-medium ${isActive("/") ? "text-primary-accent" : "text-text-primary"}`} onClick={() => setMobileMenuOpen(false)}>Home</Link>
+            <Link href="/company" className={`text-sm font-medium ${isActive("/company") ? "text-primary-accent" : "text-text-primary"}`} onClick={() => setMobileMenuOpen(false)}>Company</Link>
+            <Link href="/sports" className={`text-sm font-medium ${isActive("/sports") ? "text-primary-accent" : "text-text-primary"}`} onClick={() => setMobileMenuOpen(false)}>Sports</Link>
+            <Link href="/insights" className={`text-sm font-medium ${isActive("/insights") ? "text-primary-accent" : "text-text-primary"}`} onClick={() => setMobileMenuOpen(false)}>Neuro-Insights</Link>
+            <Link href="/about" className={`text-sm font-medium ${isActive("/about") ? "text-primary-accent" : "text-text-primary"}`} onClick={() => setMobileMenuOpen(false)}>About</Link>
+            <Link href="/kontakt" className={`text-sm font-medium ${isActive("/kontakt") ? "text-primary-accent" : "text-text-primary"}`} onClick={() => setMobileMenuOpen(false)}>Kontakt</Link>
           </div>
         </nav>
       )}

@@ -1,39 +1,32 @@
-import { Metadata } from "next";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { FinalCta } from "@/components/ui/final-cta";
-import { Brain, Briefcase, Building2, FlaskConical, GraduationCap, Package, ShieldCheck, Sparkles, Target } from "lucide-react";
+"use client";
 
+import { useState } from "react";
+import React from "react";
 import Image from "next/image";
+import { SectionHeader } from "@/components/SectionHeader";
+import { CTABlock } from "@/components/ui/CTABlock";
+import { ProofCard } from "@/components/ui/ProofCard";
 
-export const metadata: Metadata = {
-  title: "PROVOID-Company | Neuromarketing-Agentur Hamburg",
-  description: "Hamburgs erste Neuromarketing-Agentur. Exklusive Betreuung, maßgeschneiderte Lösungen und Workshops – wissenschaftlich fundiert und diskret.",
-  alternates: {
-    canonical: "/company",
-  },
-};
-
-export default function CompanyPage() {
+export default function Company() {
+  const [activeStep, setActiveStep] = useState<number | null>(0);
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-primary/20 to-background py-[48px] md:py-[77px]">
-        <div className="container px-4 md:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              <span className="text-primary">PROVOID</span>-Company
-            </h1>
-            <p className="text-lg text-muted-foreground md:text-xl">
-              Hamburgs erste Neuromarketing-Agentur
-            </p>
-            <div className="relative mt-2 flex justify-center">
-              <div aria-hidden className="pointer-events-none absolute inset-0 mx-auto flex justify-center items-center">
-                <div className="h-48 w-48 md:h-64 md:w-64 lg:h-72 lg:w-72 rounded-full bg-primary/40 blur-[56px] animate-pulse" />
-              </div>
+      <section className="relative py-section-mobile md:py-section bg-surface overflow-hidden">
+        <div className="container relative z-10">
+          <div className="max-w-4xl flex items-start justify-between gap-8">
+            <div>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-text-primary mb-6">
+                ENTSCHEIDUNGEN VERSTEHEN - WACHSTUM STEUERN.
+              </h1>
+              <p className="text-lg md:text-xl text-text-secondary mb-8 max-w-3xl">
+                Wir helfen Unternehmen, Verhalten, Motivation und Kaufentscheidungen wissenschaftlich zu verstehen und daraus klare Strategien für Marketing, Kommunikation und Teams abzuleiten.
+              </p>
+              <CTABlock primary={{ text: "Erstgespräch buchen", href: "/kontakt" }} secondary={{ text: "Leistungen ansehen", href: "#services" }} />
+            </div>
+            <div className="flex-shrink-0">
               <Image
                 src="/brain.png"
-                alt="Gehirn Illustration 1"
+                alt="Gehirn Illustration"
                 width={768}
                 height={768}
                 priority
@@ -45,238 +38,261 @@ export default function CompanyPage() {
           </div>
         </div>
       </section>
-      {/* Content Section */}
-      <section className="container px-4 md:px-6 lg:px-8 py-[38px] md:py-[58px]">
-        <div className="mx-auto max-w-7xl">
-          <div className="space-y-12">
-            <div className="rounded-2xl border bg-card p-8 md:p-12 shadow-sm">
-              <div className="flex items-center gap-4">
-                <div className="rounded-full bg-primary/10 p-3">
-                  <Briefcase className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold tracking-tight">Produktübersicht PROVOID-Company</h2>
-                  <p className="mt-3 text-muted-foreground max-w-prose leading-relaxed">
-                    Wähle das passende Format – kompakt zum Einstieg oder tiefgehend für datenbasierte Produktentscheidungen.
-                  </p>
-                </div>
-              </div>
 
-              <div className="mt-10 space-y-6">
-                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 md:p-8 shadow-sm">
-                  <div className="grid gap-6 md:grid-cols-12 md:items-start">
-                    <div className="md:col-span-5">
-                      <div className="flex items-start gap-4">
-                        <div className="rounded-xl bg-primary/10 p-3 text-primary">
-                          <GraduationCap className="h-6 w-6" />
-                        </div>
-                        <div>
-                          <h3 className="text-2xl font-semibold leading-snug">Seminar: Neuroscience &amp; Neuromarketing</h3>
-                          <p className="mt-3 text-muted-foreground leading-relaxed max-w-prose">
-                            Kompakte Einführung in Neuromarketing &amp; Consumer Neuroscience – verständlich, praxisnah und direkt anwendbar.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="md:col-span-7">
-                      <ul className="space-y-2 text-sm md:text-base text-muted-foreground list-disc pl-5 leading-relaxed">
-                        <li>Bessere Kunden- und Kaufprozess-Insights</li>
-                        <li>Neue Perspektiven für Entwicklung &amp; Marketing</li>
-                        <li>Wissenschaftliches Fundament für Strategien</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 md:p-8 shadow-sm">
-                  <div className="grid gap-6 md:grid-cols-12 md:items-start">
-                    <div className="md:col-span-5">
-                      <div className="flex items-start gap-4">
-                        <div className="rounded-xl bg-primary/10 p-3 text-primary">
-                          <Sparkles className="h-6 w-6" />
-                        </div>
-                        <div>
-                          <h3 className="text-2xl font-semibold leading-snug">Workshop: Branchenspezifisch &amp; Hands-On</h3>
-                          <p className="mt-3 text-muted-foreground leading-relaxed max-w-prose">
-                            Maßgeschneidertes Format mit klaren Strategien und konkreten Umsetzungs-Sprints – für Branding, Marketing, Produktentwicklung und Produktdesign.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="md:col-span-7">
-                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-prose">
-                        Ideal, wenn Sie nicht nur Wissen wollen, sondern direkt konkrete Entscheidungen und Umsetzungen anstoßen möchten.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 md:p-8 shadow-sm">
-                  <div className="grid gap-6 md:grid-cols-12 md:items-start">
-                    <div className="md:col-span-5">
-                      <div className="flex items-start gap-4">
-                        <div className="rounded-xl bg-primary/10 p-3 text-primary">
-                          <Brain className="h-6 w-6" />
-                        </div>
-                        <div>
-                          <h3 className="text-2xl font-semibold leading-snug">EEG-Produktevaluation &amp; Analyse</h3>
-                          <p className="mt-3 text-muted-foreground leading-relaxed max-w-prose">
-                            Testung der neuronalen Wirkung von Produkten (z. B. per EEG, optional ergänzend fMRI) – inkl. Interpretation &amp; Handlungsempfehlungen für datenbasierte Entscheidungen im Produktdesign.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="md:col-span-7">
-                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-prose">
-                        Besonders sinnvoll bei high-stakes Entscheidungen (Positionierung, Produktvarianten, Design), bei denen reine Befragungen oft zu kurz greifen.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 md:p-8 shadow-sm">
-                  <div className="grid gap-6 md:grid-cols-12 md:items-start">
-                    <div className="md:col-span-5">
-                      <div className="flex items-start gap-4">
-                        <div className="rounded-xl bg-primary/10 p-3 text-primary">
-                          <Package className="h-6 w-6" />
-                        </div>
-                        <div>
-                          <h3 className="text-2xl font-semibold leading-snug">Begleitende Produktentwicklung</h3>
-                          <p className="mt-3 text-muted-foreground leading-relaxed max-w-prose">
-                            Kontinuierliche Begleitung von der Idee bis zur Umsetzung – mit neurowissenschaftlicher Perspektive, Feedback-Loops und Priorisierung für bessere Produkt- und Marketingentscheidungen.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="md:col-span-7">
-                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-prose">
-                        Für Teams, die schnell lernen, iterieren und messbar bessere Entscheidungen treffen möchten – ohne den Fokus im Alltag zu verlieren.
-                      </p>
-                    </div>
-                  </div>
-                </div>
+      <section id="services" className="py-section-mobile md:py-section bg-white">
+        <div className="container">
+          <SectionHeader label="PRODUKTE" title="Unser Angebot für Unternehmen" />
+          
+          <div className="grid md:grid-cols-2 gap-8 mt-12">
+            <div className="border border-border bg-black p-8 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1">
+              <h3 className="text-xl font-semibold text-white mb-4">Seminar: Neuroscience & Neuromarketing</h3>
+              <p className="text-sm text-gray-300 mb-4">Kompakte Einführung in Neuromarketing & Consumer Neuroscience</p>
+              <div className="space-y-3 text-sm">
+                <div className="flex items-start gap-3"><span className="text-primary-accent mt-1">•</span><span className="text-gray-300">Bessere Kunden- und Kaufprozess-Insights</span></div>
+                <div className="flex items-start gap-3"><span className="text-primary-accent mt-1">•</span><span className="text-gray-300">Neue Perspektiven für Entwicklung & Marketing</span></div>
+                <div className="flex items-start gap-3"><span className="text-primary-accent mt-1">•</span><span className="text-gray-300">Wissenschaftliches Fundament für Strategien</span></div>
               </div>
             </div>
 
-            <div className="rounded-2xl border bg-card p-6 md:p-8 shadow-sm">
-              <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                <div>
-                  <h2 className="text-2xl font-bold tracking-tight">Bereit für den nächsten Schritt?</h2>
-                  <p className="mt-1 text-muted-foreground">
-                    Buchen Sie direkt einen Termin – schnell, unverbindlich und ohne Umwege.
-                  </p>
-                </div>
-                <Link href="/kontakt" className="w-full md:w-auto">
-                  <Button size="lg" className="w-full md:w-auto">Termin buchen</Button>
-                </Link>
+            <div className="border border-border bg-black p-8 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1">
+              <h3 className="text-xl font-semibold text-white mb-4">Workshop: Branchenspezifisch & Hands-On</h3>
+              <p className="text-sm text-gray-300 mb-4">Maßgeschneidertes Format mit klaren Strategien und konkreten Umsetzungs-Sprints</p>
+              <div className="space-y-3 text-sm">
+                <div className="flex items-start gap-3"><span className="text-primary-accent mt-1">•</span><span className="text-gray-300">Für Branding, Marketing, Produktentwicklung und Produktdesign</span></div>
+                <div className="flex items-start gap-3"><span className="text-primary-accent mt-1">•</span><span className="text-gray-300">Konkrete Entscheidungen und Umsetzungen direkt anstoßen</span></div>
+                <div className="flex items-start gap-3"><span className="text-primary-accent mt-1">•</span><span className="text-gray-300">Praktische Anwendung statt nur Wissen</span></div>
               </div>
             </div>
 
-            <div className="rounded-2xl border bg-card p-8 md:p-12 shadow-sm">
-              <div className="flex items-center gap-4">
-                <div className="rounded-full bg-primary/10 p-3">
-                  <Brain className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold tracking-tight">Unser Ansatz</h2>
-                  <p className="mt-1 text-muted-foreground">Wissenschaftlich fundiert, individuell und diskret – so arbeiten wir mit Ihnen.</p>
-                </div>
-              </div>
-
-              <div className="mt-10 space-y-6">
-                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 md:p-8 shadow-sm">
-                  <div className="flex items-center gap-4">
-                    <div className="rounded-full bg-primary/10 p-3">
-                      <Sparkles className="h-6 w-6 text-primary" />
-                    </div>
-                    <h3 className="text-lg font-semibold">Wer wir sind</h3>
-                  </div>
-                  <div className="prose prose-neutral dark:prose-invert max-w-none mt-4">
-                    <p>
-                      PROVOID ist Hamburgs erste Neuromarketing-Agentur. Wir nutzen neurowissenschaftliche Erkenntnisse als Fundament unserer Arbeit – gehen aber weit darüber hinaus. Anders als klassische Agenturen arbeiten wir nicht nur von außen, sondern begleiten Sie auf Wunsch auch direkt vor Ort.
-                    </p>
-                    <p>
-                      Was uns auszeichnet: Wir sind junge Unternehmerinnen, die sich mit Kreativität, Expertise und Neugier in jeden Kunden einarbeiten, um das Maximum zu erreichen. Wir kommen zu Ihnen ins Unternehmen, arbeiten uns tief in Ihre Branche ein und verstehen Ihre internen und externen Prozesse. So entstehen Lösungen, die wirklich zu Ihnen passen – keine Templates, keine Standardkonzepte.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 md:p-8 shadow-sm">
-                  <div className="flex items-center gap-4">
-                    <div className="rounded-full bg-primary/10 p-3">
-                      <Building2 className="h-6 w-6 text-primary" />
-                    </div>
-                    <h3 className="text-lg font-semibold">Exklusive Betreuung</h3>
-                  </div>
-                  <div className="prose prose-neutral dark:prose-invert max-w-none mt-4">
-                    <p>
-                      Jeder Kunde wird bei uns exklusiv betreut. Wir arbeiten intensiv und persönlich – direkt vor Ort in Ihrem Unternehmen. So lernen wir Ihre Kultur, Ihre Herausforderungen und Ihre Ziele aus erster Hand kennen.
-                    </p>
-                    <p>
-                      Ob interne Prozesse, Kundenreisen oder digitale Touchpoints: Wir analysieren, was für Ihr Unternehmen relevant ist, und entwickeln maßgeschneiderte Strategien und Lösungen.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 md:p-8 shadow-sm">
-                  <div className="flex items-center gap-4">
-                    <div className="rounded-full bg-primary/10 p-3">
-                      <FlaskConical className="h-6 w-6 text-primary" />
-                    </div>
-                    <h3 className="text-lg font-semibold">Forschung &amp; Entwicklung</h3>
-                  </div>
-                  <div className="prose prose-neutral dark:prose-invert max-w-none mt-4">
-                    <p>
-                      Wir sind nicht nur Anwender, sondern forschen kontinuierlich selbst. Unser Ziel: immer auf dem neuesten Stand der Neurowissenschaft zu sein und dieses Wissen direkt in unsere Arbeit einfließen zu lassen.
-                    </p>
-                    <p>
-                      Wir entwickeln eigene Programme und Tools auf Basis von EEG-Messungen, um Erkenntnisse über kognitive Prozesse messbar und nutzbar zu machen. So verbinden wir wissenschaftliche Tiefe mit praktischer Anwendung.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 md:p-8 shadow-sm">
-                  <div className="flex items-center gap-4">
-                    <div className="rounded-full bg-primary/10 p-3">
-                      <ShieldCheck className="h-6 w-6 text-primary" />
-                    </div>
-                    <h3 className="text-lg font-semibold">Diskretion &amp; Vertrauen</h3>
-                  </div>
-                  <div className="prose prose-neutral dark:prose-invert max-w-none mt-4">
-                    <p>
-                      Diskretion ist die Basis unserer Arbeit. Wir verstehen, dass wir als externe Partner tiefe Einblicke in Ihr Unternehmen erhalten. Dieses Vertrauen nehmen wir ernst.
-                    </p>
-                    <p>
-                      Alle Informationen, Strategien und Entwicklungen bleiben streng vertraulich. Wir arbeiten im Hintergrund und treten nicht als sichtbarer Partner auf – es sei denn, Sie wünschen es ausdrücklich.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-transparent p-7 md:p-8 shadow-sm">
-                  <div className="flex items-center gap-4">
-                    <div className="rounded-full bg-primary/10 p-3">
-                      <Target className="h-6 w-6 text-primary" />
-                    </div>
-                    <h3 className="text-lg font-semibold">Flexibel &amp; Individuell</h3>
-                  </div>
-                  <div className="prose prose-neutral dark:prose-invert max-w-none mt-4">
-                    <p>
-                      Jedes Unternehmen ist anders. Deshalb gibt es bei uns keine starren Pakete oder festgelegten Abläufe. Wir passen uns an – an Ihre Branche, Ihre Größe, Ihre Ziele und Ihren Zeitrahmen.
-                    </p>
-                    <ul className="space-y-2 pl-6 list-disc">
-                      <li>Projektbasierte Zusammenarbeit oder langfristige Partnerschaft</li>
-                      <li>Einmalige Beratung oder kontinuierliche Begleitung</li>
-                      <li>Einzelne Services oder ganzheitliche Lösungen</li>
-                      <li>Vor Ort, remote oder hybrid</li>
-                    </ul>
-                  </div>
-                </div>
+            <div className="border border-border bg-black p-8 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1">
+              <h3 className="text-xl font-semibold text-white mb-4">EEG-Produktevaluation & Analyse</h3>
+              <p className="text-sm text-gray-300 mb-4">Testung der neuronalen Wirkung von Produkten inkl. Interpretation & Handlungsempfehlungen</p>
+              <div className="space-y-3 text-sm">
+                <div className="flex items-start gap-3"><span className="text-primary-accent mt-1">•</span><span className="text-gray-300">EEG-Testung (optional ergänzend fMRI)</span></div>
+                <div className="flex items-start gap-3"><span className="text-primary-accent mt-1">•</span><span className="text-gray-300">Datenbasierte Entscheidungen im Produktdesign</span></div>
+                <div className="flex items-start gap-3"><span className="text-primary-accent mt-1">•</span><span className="text-gray-300">Besonders bei high-stakes Entscheidungen (Positionierung, Design)</span></div>
               </div>
             </div>
 
-            <FinalCta />
+            <div className="border border-primary-accent bg-black p-8 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1">
+              <h3 className="text-xl font-semibold text-white mb-4">Begleitende Produktentwicklung</h3>
+              <p className="text-sm text-gray-300 mb-4">Kontinuierliche Begleitung von der Idee bis zur Umsetzung</p>
+              <div className="space-y-3 text-sm">
+                <div className="flex items-start gap-3"><span className="text-primary-accent mt-1">•</span><span className="text-gray-300">Neurowissenschaftliche Perspektive und Feedback-Loops</span></div>
+                <div className="flex items-start gap-3"><span className="text-primary-accent mt-1">•</span><span className="text-gray-300">Priorisierung für bessere Produkt- und Marketingentscheidungen</span></div>
+                <div className="flex items-start gap-3"><span className="text-primary-accent mt-1">•</span><span className="text-gray-300">Schnell lernen, iterieren und messbar bessere Entscheidungen treffen</span></div>
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
+
+      <section className="py-section-mobile md:py-section bg-white">
+        <div className="container">
+          <SectionHeader label="THE PROBLEM" title="Die meisten Strategien beginnen zu spät." description="Viele Unternehmen verlassen sich auf Umfragen, Annahmen oder oberflächliche Daten. Doch Entscheidungen entstehen oft, bevor Menschen sie bewusst erklären können." />
+          
+          <div className="grid md:grid-cols-2 gap-8 mt-12">
+            <div className="border border-border bg-surface p-8 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1">
+              <h3 className="text-lg font-semibold text-text-primary mb-6">Ohne PROVOID</h3>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3"><span className="text-text-muted mt-1">•</span><span className="text-text-secondary">Annahmen statt Mechanismen</span></li>
+                <li className="flex items-start gap-3"><span className="text-text-muted mt-1">•</span><span className="text-text-secondary">Zielgruppen ohne psychologische Tiefe</span></li>
+                <li className="flex items-start gap-3"><span className="text-text-muted mt-1">•</span><span className="text-text-secondary">Kommunikation ohne neuronale Relevanz</span></li>
+                <li className="flex items-start gap-3"><span className="text-text-muted mt-1">•</span><span className="text-text-secondary">Conversion-Potenzial bleibt ungenutzt</span></li>
+              </ul>
+            </div>
+
+            <div className="border border-primary-accent bg-surface p-8 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1">
+              <h3 className="text-lg font-semibold text-text-primary mb-6">Mit PROVOID</h3>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3"><span className="text-primary-accent mt-1">+</span><span className="text-text-secondary">Verhalten besser verstehen</span></li>
+                <li className="flex items-start gap-3"><span className="text-primary-accent mt-1">+</span><span className="text-text-secondary">Kaufmotive präzisieren</span></li>
+                <li className="flex items-start gap-3"><span className="text-primary-accent mt-1">+</span><span className="text-text-secondary">Touchpoints gehirngerecht optimieren</span></li>
+                <li className="flex items-start gap-3"><span className="text-primary-accent mt-1">+</span><span className="text-text-secondary">Entscheidungen messbarer machen</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" className="py-section-mobile md:py-section bg-surface">
+        <div className="container">
+          <SectionHeader label="SERVICES" title="Von Analyse zu Anwendung." />
+          
+          <div className="mt-12 space-y-8">
+            <div className="border border-border bg-black p-4 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1 group">
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <span className="text-sm font-semibold uppercase tracking-wider text-gray-400 group-hover:text-primary-accent transition-colors">01</span>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-primary-accent transition-colors">Diagnose</h4>
+                  <p className="text-sm text-gray-300">Analyse von Zielgruppe, Kommunikation, Entscheidungswegen und psychologischen Triggern.</p>
+                </div>
+              </div>
+            </div>
+            <div className="border border-border bg-black p-4 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1 group">
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <span className="text-sm font-semibold uppercase tracking-wider text-gray-400 group-hover:text-primary-accent transition-colors">02</span>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-primary-accent transition-colors">Neuro-Strategie</h4>
+                  <p className="text-sm text-gray-300">Ableitung konkreter Hypothesen, Botschaften, Touchpoints und Maßnahmen.</p>
+                </div>
+              </div>
+            </div>
+            <div className="border border-border bg-black p-4 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1 group">
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <span className="text-sm font-semibold uppercase tracking-wider text-gray-400 group-hover:text-primary-accent transition-colors">03</span>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-primary-accent transition-colors">Umsetzung</h4>
+                  <p className="text-sm text-gray-300">Workshops, Kampagnenlogik, Teamformate, Tool-Integration.</p>
+                </div>
+              </div>
+            </div>
+            <div className="border border-border bg-black p-4 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1 group">
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <span className="text-sm font-semibold uppercase tracking-wider text-gray-400 group-hover:text-primary-accent transition-colors">04</span>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-primary-accent transition-colors">Evaluation</h4>
+                  <p className="text-sm text-gray-300">Messung, Feedback, Optimierung, Weiterentwicklung.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-section-mobile md:py-section bg-white">
+        <div className="container">
+          <SectionHeader label="CLIENT JOURNEY" title="Wie Wir Sie unterstützen." />
+          
+          <div className="mt-12">
+            <div className="flex items-center justify-center gap-2 mb-8">
+              <button
+                onClick={() => setActiveStep(activeStep === null ? 0 : Math.max(0, activeStep - 1))}
+                className="p-2 rounded-editorial bg-surface text-text-muted hover:bg-border2 transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
+                disabled={activeStep === null || activeStep === 0}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              {[
+                { number: "01", title: "Ausgangslage", description: "Ein mittelständisches Unternehmen im B2C-Bereich kämpft mit stagnierenden Conversion-Raten trotz intensiver Marketingaktivitäten." },
+                { number: "02", title: "Herausforderung", description: "Kunden wandern im Checkout-Prozess ab und es besteht Unklarheit über die tatsächlichen Kaufmotive." },
+                { number: "03", title: "Analyse", description: "Eine neurowissenschaftliche Analyse der Entscheidungspunkte identifiziert implizite Barrieren und Trigger." },
+                { number: "04", title: "Umsetzung", description: "Die Optimierung der Touchpoints basiert auf neuronalen Prinzipien und die Kommunikation wird an emotionale Entscheidungswege angepasst." },
+                { number: "05", title: "Ergebnis", description: "Es zeigt sich eine messbare Verbesserung der Conversion-Rate, eine höhere Kundenbindung und ein klareres Verständnis der Zielgruppenpsychologie." }
+              ].map((step, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveStep(index)}
+                  className={`px-4 py-2 rounded-editorial text-sm font-semibold transition-all duration-300 ${
+                    activeStep === index
+                      ? 'bg-primary-accent text-white'
+                      : 'bg-surface text-text-muted hover:bg-border2'
+                  }`}
+                >
+                  {step.number}
+                </button>
+              ))}
+
+              <button
+                onClick={() => setActiveStep(activeStep === null ? 0 : Math.min(4, activeStep + 1))}
+                className="p-2 rounded-editorial bg-surface text-text-muted hover:bg-border2 transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
+                disabled={activeStep === null || activeStep === 4}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="flex flex-col md:flex-row gap-4 items-center relative">
+              {[
+                { number: "01", title: "Ausgangslage", description: "Ein mittelständisches Unternehmen im B2C-Bereich kämpft mit stagnierenden Conversion-Raten trotz intensiver Marketingaktivitäten." },
+                { number: "02", title: "Herausforderung", description: "Kunden wandern im Checkout-Prozess ab und es besteht Unklarheit über die tatsächlichen Kaufmotive." },
+                { number: "03", title: "Analyse", description: "Eine neurowissenschaftliche Analyse der Entscheidungspunkte identifiziert implizite Barrieren und Trigger." },
+                { number: "04", title: "Umsetzung", description: "Die Optimierung der Touchpoints basiert auf neuronalen Prinzipien und die Kommunikation wird an emotionale Entscheidungswege angepasst." },
+                { number: "05", title: "Ergebnis", description: "Es zeigt sich eine messbare Verbesserung der Conversion-Rate, eine höhere Kundenbindung und ein klareres Verständnis der Zielgruppenpsychologie." }
+              ].map((step, index) => (
+                <React.Fragment key={index}>
+                  <div className="w-full md:w-[18%]">
+                    <div 
+                      onClick={() => setActiveStep(index)}
+                      className={`border bg-black p-4 rounded-card hover:border-primary-accent transition-all duration-500 ease-in-out cursor-pointer ${
+                        activeStep === index 
+                          ? 'border-primary-accent' 
+                          : 'border-border'
+                      }`}
+                    >
+                      <div className="text-4xl font-bold text-gray-400 mb-2 transition-colors duration-500 ease-in-out" style={{ color: activeStep === index ? '#3DB8DE' : '' }}>
+                        {step.number}
+                      </div>
+                      <h4 className="text-lg font-semibold text-white mb-2 transition-colors duration-500 ease-in-out" style={{ color: activeStep === index ? '#3DB8DE' : '' }}>
+                        {step.title}
+                      </h4>
+                      {activeStep === index && (
+                        <p className="text-xs text-white mt-3 transition-all duration-500 ease-in-out text-center">
+                          {step.description}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  {index < 4 && (
+                    <div 
+                      onClick={() => setActiveStep(index + 1)}
+                      className="hidden md:flex items-center justify-center w-6 cursor-pointer hover:text-primary-accent transition-colors"
+                      style={{ marginTop: '32px' }}
+                    >
+                      <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-section-mobile md:py-section bg-surface">
+        <div className="container">
+          <SectionHeader label="EVIDENCE" title="Wissenschaftliche Fundierung" />
+          
+          <div className="grid md:grid-cols-3 gap-8 mt-12">
+            <ProofCard title="Implizite Assoziationen" field="Neuromarketing" result="Implizite Messverfahren (IAT, fMRI) zeigen, dass unbewusste Assoziationen Kaufentscheidungen stärker beeinflussen als bewusste Präferenzen." relevance="Begründet unsere Fokussierung auf implizite Verfahren." />
+            <ProofCard title="Emotionale Konditionierung" field="Verhaltenspsychologie" result="Wiederholte emotionale Reize schaffen neuronale Pfade, die automatische Entscheidungen steuern." relevance="Erklärt die Wirksamkeit von konsistenten Brand-Touchpoints." />
+            <ProofCard title="Aufmerksamkeit und Verarbeitung" field="Kognitive Neurowissenschaft" result="Visuelle Reize werden innerhalb von Millisekunden gefiltert; nur emotional relevante Informationen erreichen das bewusste Bewusstsein." relevance="Validiert unsere Ansätze für visuelle Kommunikation." />
+          </div>
+        </div>
+      </section>
+
+      <section className="py-section-mobile md:py-section bg-white">
+        <div className="container">
+          <SectionHeader label="RECOGNITION" title="Auszeichnungen und Kooperationen" />
+          
+          <div className="grid md:grid-cols-2 gap-8 mt-12">
+            <div className="border border-border bg-surface p-6 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1"><h3 className="text-lg font-semibold text-text-primary mb-4">Jugend forscht</h3><p className="text-text-secondary">Auszeichnung für neurowissenschaftliches Forschungsprojekt.</p></div>
+            <div className="border border-border bg-surface p-6 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1"><h3 className="text-lg font-semibold text-text-primary mb-4">Young Founders / JugendUnternimmt</h3><p className="text-text-secondary">Programm für junge Gründer und Unternehmer.</p></div>
+            <div className="border border-border bg-surface p-6 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1"><h3 className="text-lg font-semibold text-text-primary mb-4">STARTERiN Award</h3><p className="text-text-secondary">Nominierung für innovatives Gründungskonzept.</p></div>
+            <div className="border border-border bg-surface p-6 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1"><h3 className="text-lg font-semibold text-text-primary mb-4">EEG-Kooperationen</h3><p className="text-text-secondary">Wissenschaftliche Zusammenarbeit und Testungen im Neurolabor.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-surface">
+        <div className="container py-section-mobile md:py-section">
+          <SectionHeader label="CONTACT" title="Bereit für wissenschaftlich fundiertes Wachstum?" />
+          <div className="mt-12"><CTABlock primary={{ text: "Company-Gespräch buchen", href: "/kontakt" }} /></div>
         </div>
       </section>
     </div>

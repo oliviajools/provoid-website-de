@@ -1,36 +1,24 @@
-import { Metadata } from "next";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Target, Eye, Briefcase, Package, Users, FlaskConical, ClipboardCheck } from "lucide-react";
+import { SectionHeader } from "@/components/SectionHeader";
+import { CTABlock } from "@/components/ui/CTABlock";
+import { ProcessStep } from "@/components/ui/ProcessStep";
 import Image from "next/image";
-import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "PROVOID-Sports | Sportlösungen",
-  description: "Professionelle Unterstützung für Sportorganisationen und Athleten - wissenschaftlich fundiert und leistungsorientiert.",
-  alternates: {
-    canonical: "/sports",
-  },
-};
-
-export default function SportsPage() {
+export default function Sports() {
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-primary/20 to-background py-[48px] md:py-[77px]">
-        <div className="container px-4 md:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              <span className="text-primary">PROVOID</span>-Sports
-            </h1>
-            <p className="text-lg text-muted-foreground md:text-xl">
-              no brain no gain
-            </p>
-            <div className="relative mt-2 flex justify-center">
-              <div aria-hidden className="pointer-events-none absolute inset-0 mx-auto flex justify-center items-center">
-                <div className="h-48 w-48 md:h-64 md:w-64 lg:h-72 lg:w-72 rounded-full bg-primary/40 blur-[56px] animate-pulse" />
-              </div>
+      <section className="relative py-section-mobile md:py-section bg-surface overflow-hidden">
+        <div className="container relative z-10">
+          <div className="max-w-4xl flex items-start justify-between gap-8">
+            <div>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-text-primary mb-6">
+                NEUROATHLETISCHE PERFORMANCE MESSBAR GEMACHT.
+              </h1>
+              <p className="text-lg md:text-xl text-text-secondary mb-8 max-w-3xl">
+                PROVOID Sports verbindet Neurowissenschaft, Trainingspsychologie und digitale Tools, um Fokus, Motivation und Entscheidungsverhalten im Sport gezielt zu stärken.
+              </p>
+              <CTABlock primary={{ text: "Sports-Paket anfragen", href: "/kontakt" }} secondary={{ text: "App kennenlernen", href: "#app" }} />
+            </div>
+            <div className="flex-shrink-0">
               <Image
                 src="/brain.png"
                 alt="Gehirn Illustration"
@@ -46,224 +34,132 @@ export default function SportsPage() {
         </div>
       </section>
 
-      {/* Content Section */}
-      <section className="container px-4 md:px-6 lg:px-8 py-[38px] md:py-[58px]">
-        <div className="mx-auto max-w-4xl">
-          <Accordion type="single" collapsible className="space-y-4">
-            <AccordionItem value="ziel" className="rounded-2xl border bg-card px-6 shadow-sm">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <Target className="h-6 w-6 text-primary" />
+      <section className="py-section-mobile md:py-section bg-white">
+        <div className="container">
+          <SectionHeader label="THE PROBLEM" title="Leistung beginnt im Nervensystem." />
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+            <div className="border border-border bg-black p-6 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1"><h3 className="text-lg font-semibold text-white mb-2">Autonome Dysbalance</h3><p className="text-sm text-gray-300">Sympathikus-Parasympathikus-Ungleichgewicht beeinträchtigt Regeneration.</p></div>
+            <div className="border border-border bg-black p-6 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1"><h3 className="text-lg font-semibold text-white mb-2">Neuronale Übererregung</h3><p className="text-sm text-gray-300">Chronische Aktivierung reduziert Entscheidungsfähigkeit und Reaktionszeit.</p></div>
+            <div className="border border-border bg-black p-6 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1"><h3 className="text-lg font-semibold text-white mb-2">Defizite in neuroplastischer Adaption</h3><p className="text-sm text-gray-300">Unzureichende Anpassungsfähigkeit an neue Trainingsreize.</p></div>
+            <div className="border border-border bg-black p-6 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1"><h3 className="text-lg font-semibold text-white mb-2">Sensorische Integrationsstörungen</h3><p className="text-sm text-gray-300">Verschmelzung visueller, vestibulärer und propriozeptiver Informationen beeinträchtigt.</p></div>
+            <div className="border border-border bg-black p-6 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1"><h3 className="text-lg font-semibold text-white mb-2">Mangelnde neurologische Sicherheit</h3><p className="text-sm text-gray-300">Nervensystem interpretiert Situationen als bedrohlich statt sicher.</p></div>
+            <div className="border border-border bg-black p-6 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1"><h3 className="text-lg font-semibold text-white mb-2">Suboptimale motorische Kontrolle</h3><p className="text-sm text-gray-300">Neuronale Pfade für Bewegungsabläufe nicht effizient etabliert.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-section-mobile md:py-section bg-surface">
+        <div className="container">
+          <SectionHeader label="METHOD" title="Neurologische Analyse und Training." />
+          
+          <div className="mt-12 space-y-8">
+            <ProcessStep number="01" title="Neurologische Analyse" description="Status des Nervensystems, Autonome Balance, Sensorische Integration." />
+            <ProcessStep number="02" title="Neuroplastische Aktivierung" description="Gezielte Reize zur Stärkung neuronaler Verbindungen und Pfade." />
+            <ProcessStep number="03" title="System-Training" description="Routinen für autonome Regulation und neurologische Sicherheit." />
+            <ProcessStep number="04" title="Edukativer Transfer" description="Verständnis eigener Stärken und Schwächen für nachhaltige Selbstregulation." />
+            <ProcessStep number="05" title="Integration" description="Verankerung neuer neuronaler Muster in Training und Wettkampf." />
+          </div>
+        </div>
+      </section>
+
+      <section className="py-section-mobile md:py-section bg-white">
+        <div className="container">
+          <SectionHeader label="CASE / SC VICTORIA HAMBURG" title="Wie wir Performance steigern" />
+          
+          <div className="mt-12 border border-border bg-surface p-8 rounded-card">
+            <div className="space-y-6">
+              <div><p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-2">Projekt</p><p className="text-text-secondary">SC Victoria Hamburg, Kooperation mit vier Jugendteams über 8 Monate</p></div>
+              <div><p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-2">Angebot</p><p className="text-text-secondary">Neuroathletik-Training, individuelle Analysen, App-Zugang</p></div>
+              <div><p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-2">Umsetzung</p><p className="text-text-secondary">Vermittlung von Neuroathletik-Wissen, Nervensystem-Analysen auf Sicherheiten und Unsicherheiten, individuelle Trainingspläne, App-Integration für neuronale Leistungsoptimierung</p></div>
+              <div><p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-2">Ergebnis</p><p className="text-text-secondary">Festes neurologisches Grundverständnis bei allen Spieler:innen, messbare Leistungsoptimierung durch App-Nutzung, solide Basis für weitere Entwicklung</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="app" className="py-section-mobile md:py-section bg-surface">
+        <div className="container">
+          <SectionHeader label="APP" title="Neuro-gestützte Gamification für Teams." description="Basierend auf EEG-Messungen: Welche Reize aktivieren welche Gehirnareale? Wir haben Fußball-Funktionen auf neuronale Prozesse abgebildet und in Gamification verwandelt." />
+          
+          <div className="mt-12 border border-border bg-white p-8 rounded-card">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="flex items-center justify-center">
+                <div className="border border-border bg-surface p-8 rounded-card w-full max-w-sm aspect-[9/16] flex items-center justify-center overflow-hidden">
+                  <img src="/app-mockup.jpeg" alt="PROVOID App" className="w-full h-full object-cover" />
+                </div>
+              </div>
+              <div className="flex flex-col justify-center">
+                <h3 className="text-lg font-semibold text-text-primary mb-2 text-left">Entwicklungsprozess</h3>
+                <p className="text-sm text-text-muted mb-6 text-left">Vom Labor zur App</p>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary-accent text-white flex items-center justify-center text-sm font-semibold">1</div>
+                    <p className="text-base text-text-secondary">EEG-Messung neuronaler Aktivitätsmuster</p>
                   </div>
-                  <span className="text-xl font-semibold">Ziel</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-6">
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <p>
-                    Unser Ziel ist es, Sportorganisationen sowie Athletinnen und Athleten durch angewandte Neurowissenschaft zu nachhaltiger Spitzenleistung zu befähigen. Wir wollen Reaktionsfähigkeit, Entscheidungsqualität, Fokus und Selbstregulation stärken und zugleich mentale Stabilität und Wohlbefinden fördern. Leistung soll messbar wachsen und sich im Training, im Wettkampf und in der Teamkultur dauerhaft zeigen.
-                  </p>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-
-            {/* Vision */}
-            <AccordionItem value="vision" className="rounded-2xl border bg-card px-6 shadow-sm">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <Eye className="h-6 w-6 text-primary" />
+                  <div className="flex items-center gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary-accent text-white flex items-center justify-center text-sm font-semibold">2</div>
+                    <p className="text-base text-text-secondary">Fußball-Funktionen auf Gehirnareale abgebildet</p>
                   </div>
-                  <span className="text-xl font-semibold">Vision</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-6">
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <p>
-                    Unsere Vision ist es, der führende Partner für angewandte Neurowissenschaft im Sport zu sein. Wir wollen neue Standards in Neuroathletik und Neurotech setzen und den Markt verantwortungsvoll mitgestalten. Dafür verbinden wir Forschung und Praxis, machen neuronale Mechanismen verständlich und nutzbar und richten Entwicklung konsequent auf messbare Wirkung aus. So unterstützen wir Athletinnen, Athleten und Teams dabei, Reaktionsfähigkeit, Entscheidungsqualität, Fokus, Selbstregulation und mentale Stabilität nachhaltig zu stärken, mit Blick auf Gesundheit, Fairness und die langfristige Entwicklung von Talenten.
-                  </p>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-
-            {/* Leistungen */}
-            <AccordionItem value="leistungen" className="rounded-2xl border bg-card px-6 shadow-sm">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <Briefcase className="h-6 w-6 text-primary" />
+                  <div className="flex items-center gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary-accent text-white flex items-center justify-center text-sm font-semibold">3</div>
+                    <p className="text-base text-text-secondary">Gezielte Reize für relevante Areale entwickelt</p>
                   </div>
-                  <span className="text-xl font-semibold">Leistungen</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-6">
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <p className="font-semibold">Unsere Leistungen im Sportbereich</p>
-                  <ul className="space-y-2 pl-6 list-disc">
-                    <li>Neuroathletik Wissensvermittlung für Athletinnen und Athleten, altersgerecht und praxisnah</li>
-                    <li>Optionale individuelle EEG Analyse zur Testung neuroathletischer Eigenschaften</li>
-                    <li>Gezielte Förderung in sechs Einheiten mit Übungen für Wahrnehmung, Reaktionsfähigkeit, Entscheidungsfindung, Koordination und Selbstregulation</li>
-                    <li>Programme für Jugendteams mit altersgerechter Didaktik, Trainingseinheiten und begleitendem Austausch mit Trainerinnen und Trainern</li>
-                    <li>Optionale Neurostimulation durch die PROVOID-App als non-invasive Ergänzung zur Leistungsunterstützung</li>
-                    <li>Teamprogramme mit klarer Struktur aus Wissen, Analyse, Training, persönlichen Auswertungen und optionalen Abschlusstestungen</li>
-                  </ul>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="pakete" className="rounded-2xl border bg-card px-6 shadow-sm">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <Package className="h-6 w-6 text-primary" />
+                  <div className="flex items-center gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary-accent text-white flex items-center justify-center text-sm font-semibold">4</div>
+                    <p className="text-base text-text-secondary">Neurofriendly Games durch Gamification</p>
                   </div>
-                  <span className="text-xl font-semibold">Pakete</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-6">
-                <div className="grid gap-4 md:grid-cols-2">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>Athlet-Paket</CardTitle>
-                      <CardDescription>Für Einzelsportler</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• Individuelle Leistungsdiagnostik</li>
-                        <li>• Personalisierter Neuro-Trainingsplan</li>
-                        <li>• App-Zugang</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>Team-Paket</CardTitle>
-                      <CardDescription>Für Mannschaftssportarten</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2 text-sm text-muted-foreground list-disc pl-6">
-                        <li>Team-Analyse und Diagnostik</li>
-                        <li>Kollektive Trainingsstrategien</li>
-                        <li>Trainingssitzungen mit neuroathletischen Schwerpunkten</li>
-                        <li>Saisonbegleitende Betreuung</li>
-                        <li>App-Zugänge</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>Vereins-Paket</CardTitle>
-                      <CardDescription>Für Sportvereine</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• Nachwuchsförderung</li>
-                        <li>• Arbeit mit mehreren Teams</li>
-                        <li>• Neurowissenschaftliche Integration in die Vereinsarbeit</li>
-                        <li>• Langfristige Partnerschaft & Datensicherung</li>
-                        <li>• Einzel- und Teamzugänge der App</li>
-                        <li>• Eingangs- und Abschlussanalyse</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>Individual-Paket</CardTitle>
-                      <CardDescription>Let’s talk</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• Flexible Anpassung</li>
-                        <li>• Individuelle Betreuung</li>
-                        <li>• Sportspezifische Schwerpunkte</li>
-                        <li>• App-Zugänge falls gewünscht</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="zielgruppe" className="rounded-2xl border bg-card px-6 shadow-sm">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <Users className="h-6 w-6 text-primary" />
+                  <div className="flex items-center gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary-accent text-white flex items-center justify-center text-sm font-semibold">5</div>
+                    <p className="text-base text-text-secondary">Team-Challenges und Leaderboard</p>
                   </div>
-                  <span className="text-xl font-semibold">Zielgruppe</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-6">
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <p>
-                    Unsere Dienstleistungen richten sich an:
-                  </p>
-                  <ul className="space-y-2 pl-6 list-disc">
-                    <li>Professionelle Athleten und Spitzensportler</li>
-                    <li>Nachwuchstalente und Jugendsportler</li>
-                    <li>Sportvereine und -verbände</li>
-                    <li>Mannschaften in allen Leistungsklassen</li>
-                    <li>Trainer und Betreuer</li>
-                    <li>Sportmanager und Funktionäre</li>
-                    <li>Fitness- und Gesundheitssportler</li>
-                  </ul>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="science" className="rounded-2xl border bg-card px-6 shadow-sm">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <FlaskConical className="h-6 w-6 text-primary" />
-                  </div>
-                  <span className="text-xl font-semibold">Wissenschaftlicher Hintergrund</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-6">
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <p>
-                    Unsere Methoden basieren auf aktuellen wissenschaftlichen Erkenntnissen aus den Bereichen 
-                    Sportwissenschaft, Trainingslehre, Sportpsychologie und Biomechanik. Wir kombinieren 
-                    evidenzbasierte Ansätze mit modernster Technologie und nutzen datengestützte Analysen, 
-                    um die Leistung zu optimieren. Durch kontinuierliche Forschung und Zusammenarbeit mit 
-                    Experten stellen wir sicher, dass unsere Methoden stets dem neuesten Stand der Sportwissenschaft 
-                    entsprechen. Dabei berücksichtigen wir individuelle physiologische, psychologische und 
-                    biomechanische Faktoren.
-                  </p>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="testung" className="rounded-2xl border bg-card px-6 shadow-sm">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <ClipboardCheck className="h-6 w-6 text-primary" />
-                  </div>
-                  <span className="text-xl font-semibold">Testung</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="pt-4 pb-6">
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
-                  <p>
-                    Neuroathletische Testung – Messen Sie Ihre Reaktionsfähigkeit, Fokus, Entscheidungsqualität und Selbstregulation.
-                  </p>
-                  <div className="mt-6">
-                    <Button asChild>
-                      <Link href="/analyse">
-                        Zur Analyse →
-                      </Link>
-                    </Button>
+                  <div className="flex items-center gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary-accent text-white flex items-center justify-center text-sm font-semibold">6</div>
+                    <p className="text-base text-text-secondary">Gehirn im Team und individuell optimieren</p>
                   </div>
                 </div>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-section-mobile md:py-section bg-white">
+        <div className="container">
+          <SectionHeader label="PACKAGES" title="Angebote für Vereine und Athlet:innen" />
+          
+          <div className="grid md:grid-cols-2 gap-8 mt-12">
+            <div className="border border-border bg-surface p-8 rounded-card hover:border-border2 transition-colors">
+              <h3 className="text-xl font-semibold text-text-primary mb-4">Saisonprogramm</h3>
+              <p className="text-sm text-text-secondary mb-6">Für Sportvereine und Mannschaften</p>
+              <div className="space-y-4 mb-8">
+                <div><p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-1">Für wen</p><p className="text-sm text-text-secondary">Vereine, Jugendteams, Mannschaften</p></div>
+                <div><p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-1">Inhalt</p><p className="text-sm text-text-secondary">Neuro-Edukation, Neurotrainingssessions, individuelle Betreuung bei Bedarf</p></div>
+                <div><p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-1">Dauer</p><p className="text-sm text-text-secondary">Ganze Saison (8+ Monate)</p></div>
+                <div><p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-1">App</p><p className="text-sm text-text-secondary">Zugang für alle Spieler:innen</p></div>
+              </div>
+              <CTABlock primary={{ text: "Auf Anfrage", href: "/kontakt" }} />
+            </div>
+
+            <div className="border border-primary-accent bg-surface p-8 rounded-card hover:border-primary-accent transition-colors">
+              <h3 className="text-xl font-semibold text-text-primary mb-4">Einzelsportler:innen</h3>
+              <p className="text-sm text-text-secondary mb-6">Für ambitionierte Athlet:innen im Leistungsbereich</p>
+              <div className="space-y-4 mb-8">
+                <div><p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-1">Für wen</p><p className="text-sm text-text-secondary">Einzelsportler:innen, Leistungssport</p></div>
+                <div><p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-1">Inhalt</p><p className="text-sm text-text-secondary">Individuelle Analysen, Trainingspläne, neurologische Sicherheit</p></div>
+                <div><p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-1">Dauer</p><p className="text-sm text-text-secondary">Auf Anfrage und individuell vereinbart</p></div>
+                <div><p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-1">App</p><p className="text-sm text-text-secondary">Voller Zugang mit personalisiertem Dashboard</p></div>
+              </div>
+              <CTABlock primary={{ text: "Auf Anfrage", href: "/kontakt" }} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-section-mobile md:py-section bg-surface">
+        <div className="container">
+          <SectionHeader label="CONTACT" title="Bereit für nachhaltige Performance?" />
+          <div className="mt-12"><CTABlock primary={{ text: "Sports-Gespräch buchen", href: "/kontakt" }} /></div>
         </div>
       </section>
     </div>
