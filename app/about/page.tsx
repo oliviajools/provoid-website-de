@@ -38,7 +38,7 @@ export default function About() {
             <div className="border border-border bg-white p-8 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1">
               <h3 className="text-xl font-semibold text-text-primary mb-2">Olivia</h3>
               <p className="text-sm text-text-muted mb-4">Gründerin & CEO</p>
-              <p className="text-text-secondary mb-4">Gründete PROVOID 2025 nach dem Abitur als Jahrgangsbeste. Sie kombiniert wissenschaftliche Tiefe mit unternehmerischem Denken sowie ihrer Erfahrung aus Sport und Forschung.</p>
+              <p className="text-text-secondary mb-4">Olivia gründete PROVOID Anfang 2025 während ihres Abiturs. Seit mehreren Jahren erforscht sie erfolgreich das Gehirn, unter anderem bei Wettbewerben wie Jugend forscht. Sie kombiniert seither Ihre Begeisterung für Wissenschaft mit unternehmerischem Denken sowie eigener Erfahrung aus Sport und Psychologie.</p>
               
               <button
                 onClick={() => setShowOliviaDetails(!showOliviaDetails)}
