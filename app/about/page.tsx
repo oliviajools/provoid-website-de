@@ -54,7 +54,7 @@ export default function About() {
                 <div className="space-y-4">
                   <div>
                     <p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-2">Biografie</p>
-                    <p className="text-sm text-text-secondary">Mit 15 Jahren begann Olivia als Juniorstudentin Physik an der Universität Hamburg zu studieren. Parallel forschte sie am Schülerforschungszentrum Hamburg, wo sie mit PROVOID den Landespreis bei Jugend forscht gewann. Erfahrung als Fußballtrainerin bei SC Victoria Hamburg.</p>
+                    <p className="text-sm text-text-secondary">Mit 15 Jahren begann Olivia als Juniorstudentin Physik an der Universität Hamburg zu studieren und schloss ihr Juniorstudium in experimenteller und theoretischer Physik sowie Mathematik ab. Sie legte ihr Abitur mit einem Schnitt besser als 1.0 ab. Parallel forschte sie am Schülerforschungszentrum Hamburg an Projekten wie dem „A2C-System“ und „PROVOID“, mit dem sie den Landespreis bei Jugend forscht in der Kategorie Arbeitswelt gewann. Zudem absolvierte sie Praktika in der neurologischen Medizin und am Institut für Computational Neuroscience am UKE. Seit 2025 ist sie Gründerin des Startups PROVOID und als selbstständige IT-Expertin tätig.</p>
                   </div>
                   <div>
                     <p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-2">Ausbildung & Zertifikate</p>
