@@ -4,20 +4,14 @@ export default function Impressum() {
   return (
     <div className="flex flex-col">
       <section className="relative py-section-mobile md:py-section bg-surface overflow-hidden">
-        <div className="frequency-line top-1/3" />
         <div className="container relative z-10">
-          <div className="max-w-4xl flex items-start justify-between gap-8">
-            <div>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-text-primary mb-6">
-                IMPRESSUM
-              </h1>
-              <p className="text-lg md:text-xl text-text-secondary mb-8 max-w-3xl">
-                Verantwortlich gemäß § 5 TMG
-              </p>
-            </div>
-            <div className="flex-shrink-0">
-              <img src="/Logo-provoid.png" alt="PROVOID" className="h-24 md:h-32" />
-            </div>
+          <div className="max-w-4xl">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-text-primary mb-6">
+              IMPRESSUM
+            </h1>
+            <p className="text-lg md:text-xl text-text-secondary mb-8 max-w-3xl">
+              Verantwortlich gemäß § 5 TMG
+            </p>
           </div>
         </div>
       </section>

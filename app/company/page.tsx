@@ -21,7 +21,7 @@ export default function Company() {
               <p className="text-lg md:text-xl text-text-secondary mb-8 max-w-3xl">
                 Wir helfen Unternehmen, Verhalten, Motivation und Kaufentscheidungen wissenschaftlich zu verstehen und daraus klare Strategien für Marketing, Kommunikation und Teams abzuleiten.
               </p>
-              <CTABlock primary={{ text: "Erstgespräch buchen", href: "/kontakt" }} secondary={{ text: "Leistungen ansehen", href: "#services" }} />
+              <CTABlock primary={{ text: "Gespräch buchen", href: "/kontakt" }} secondary={{ text: "Leistungen ansehen", href: "#services" }} />
             </div>
             <div className="flex-shrink-0">
               <Image
@@ -39,7 +39,7 @@ export default function Company() {
         </div>
       </section>
 
-      <section id="services" className="py-section-mobile md:py-section bg-white">
+      <section id="services" className="py-8 md:py-12 bg-white">
         <div className="container">
           <SectionHeader label="PRODUKTE" title="Unser Angebot für Unternehmen" />
           
@@ -105,10 +105,10 @@ export default function Company() {
             <div className="border border-primary-accent bg-surface p-8 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1">
               <h3 className="text-lg font-semibold text-text-primary mb-6">Mit PROVOID</h3>
               <ul className="space-y-4">
-                <li className="flex items-start gap-3"><span className="text-primary-accent mt-1">+</span><span className="text-text-secondary">Verhalten besser verstehen</span></li>
+                <li className="flex items-start gap-3"><span className="text-primary-accent mt-1">+</span><span className="text-text-secondary">Verhalten wirklich verstehen</span></li>
                 <li className="flex items-start gap-3"><span className="text-primary-accent mt-1">+</span><span className="text-text-secondary">Kaufmotive präzisieren</span></li>
                 <li className="flex items-start gap-3"><span className="text-primary-accent mt-1">+</span><span className="text-text-secondary">Touchpoints gehirngerecht optimieren</span></li>
-                <li className="flex items-start gap-3"><span className="text-primary-accent mt-1">+</span><span className="text-text-secondary">Entscheidungen messbarer machen</span></li>
+                <li className="flex items-start gap-3"><span className="text-primary-accent mt-1">+</span><span className="text-text-secondary">Entscheidungen messbar machen</span></li>
               </ul>
             </div>
           </div>
@@ -117,7 +117,7 @@ export default function Company() {
 
       <section id="services" className="py-section-mobile md:py-section bg-surface">
         <div className="container">
-          <SectionHeader label="SERVICES" title="Von Analyse zu Anwendung." />
+          <SectionHeader label="SERVICES" title="Diagnose. Strategie. Umsetzung. Evaluation." />
           
           <div className="mt-12 space-y-8">
             <div className="border border-border bg-black p-4 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1 group">
@@ -233,14 +233,14 @@ export default function Company() {
                           : 'border-border'
                       }`}
                     >
-                      <div className="text-4xl font-bold text-gray-400 mb-2 transition-colors duration-500 ease-in-out" style={{ color: activeStep === index ? '#3DB8DE' : '' }}>
+                      <div className="text-2xl font-bold text-gray-400 mb-2 transition-colors duration-500 ease-in-out" style={{ color: activeStep === index ? '#3DB8DE' : '' }}>
                         {step.number}
                       </div>
                       <h4 className="text-lg font-semibold text-white mb-2 transition-colors duration-500 ease-in-out" style={{ color: activeStep === index ? '#3DB8DE' : '' }}>
                         {step.title}
                       </h4>
                       {activeStep === index && (
-                        <p className="text-xs text-white mt-3 transition-all duration-500 ease-in-out text-center">
+                        <p className="text-xs text-white mt-3 transition-all duration-500 ease-in-out text-left">
                           {step.description}
                         </p>
                       )}
@@ -292,7 +292,7 @@ export default function Company() {
       <section className="bg-surface">
         <div className="container py-section-mobile md:py-section">
           <SectionHeader label="CONTACT" title="Bereit für wissenschaftlich fundiertes Wachstum?" />
-          <div className="mt-12"><CTABlock primary={{ text: "Company-Gespräch buchen", href: "/kontakt" }} /></div>
+          <div className="mt-12"><CTABlock primary={{ text: "Gespräch buchen", href: "/kontakt" }} /></div>
         </div>
       </section>
     </div>

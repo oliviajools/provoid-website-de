@@ -17,7 +17,7 @@ export function BlogCard({ title, excerpt, slug, date, tags = [], author }: Blog
           {title}
         </h3>
         {(date || author) && (
-          <p className="text-sm text-primary-accent mb-3 font-medium">
+          <p className="text-sm text-text-muted mb-3 font-medium">
             {date}{date && author && " · "}{author}
           </p>
         )}

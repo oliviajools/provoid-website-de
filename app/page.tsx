@@ -161,10 +161,10 @@ export default function Home() {
               <p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-2">Neurowissenschaft</p>
               <h3 className="text-lg font-semibold text-text-primary mb-3">Emotion und Belohnungssystem</h3>
               <p className={`text-sm text-text-secondary transition-all duration-300 ${expandedCard === 1 ? '' : 'line-clamp-2'}`}>
-                Das Belohnungssystem im Gehirn reagiert stärker auf anticipation als auf tatsächliche Belohnung.
+                Das Belohnungssystem im Gehirn reagiert stärker auf die Antizipation als auf tatsächliche Belohnung.
               </p>
               <div className={`mt-4 transition-all duration-300 ${expandedCard === 1 ? 'opacity-100 max-h-20' : 'opacity-0 max-h-0 overflow-hidden'}`}>
-                <p className="text-sm text-text-muted italic">Erklärt, warum Vorfreude und Erwartung stärker wirken als reine Incentives.</p>
+                <p className="text-sm text-text-muted italic">Erklärt, warum Vorfreude und Erwartung stärker wirken als reine Incentives. (Knutson et al., 2001)</p>
               </div>
               <div className="mt-4 flex items-center text-sm text-primary-accent">
                 <span>{expandedCard === 1 ? 'Weniger anzeigen' : 'Mehr erfahren'}</span>
@@ -218,12 +218,12 @@ export default function Home() {
               </button>
 
               {[
-                { number: "01", title: "Wahrnehmung", description: "Erster Kontakt mit Marke oder Produkt, oft unbewusst und durch Muster gesteuert." },
-                { number: "02", title: "Emotion", description: "Gefühlhafte Reaktion, das limbische System bewertet, bevor der Verstand urteilt." },
-                { number: "03", title: "Bewertung", description: "Rationale Begründung, der Verstand sucht nach Argumenten für die emotionale Entscheidung." },
-                { number: "04", title: "Aktivierung", description: "Vorbereitung der Handlung, neuronale Pfade für die Entscheidung werden gestärkt." },
-                { number: "05", title: "Entscheidung", description: "Der Moment der Wahl, oft als rational erlebt, aber emotional vorbereitet." },
-                { number: "06", title: "Handlung", description: "Umsetzung, Kauf, Kontakt oder weitere Interaktion." }
+                { number: "01", title: "Wahrnehmung", description: "Erster Kontakt mit Marke oder Produkt, oft unbewusst und durch Muster gesteuert. (~50-100ms, visueller Kortex)" },
+                { number: "02", title: "Emotion", description: "Gefühlhafte Reaktion, das limbische System bewertet, bevor der Verstand urteilt. (~100-300ms, Amygdala)" },
+                { number: "03", title: "Bewertung", description: "Rationale Begründung, der Verstand sucht nach Argumenten für die emotionale Entscheidung. (~300-500ms, präfrontaler Kortex)" },
+                { number: "04", title: "Aktivierung", description: "Vorbereitung der Handlung, neuronale Pfade für die Entscheidung werden gestärkt. (~500-1000ms, motorischer Kortex)" },
+                { number: "05", title: "Entscheidung", description: "Der Moment der Wahl, oft als rational erlebt, aber emotional vorbereitet. (~1000-2000ms, Striatum)" },
+                { number: "06", title: "Handlung", description: "Umsetzung, Kauf, Kontakt oder weitere Interaktion. (>2000ms, motorische Ausführung)" }
               ].map((step, index) => (
                 <button
                   key={index}
@@ -265,12 +265,12 @@ export default function Home() {
                     </h4>
                     <p className="text-base text-text-secondary">
                       {[
-                        "Dies ist der erste Kontakt mit einer Marke oder einem Produkt, der oft unbewusst und durch Muster gesteuert erfolgt.",
-                        "Es entsteht eine gefühlhafte Reaktion, bei der das limbische System bewertet, bevor der Verstand urteilt.",
-                        "Es folgt eine rationale Begründung, bei der der Verstand nach Argumenten für die emotionale Entscheidung sucht.",
-                        "Es erfolgt die Vorbereitung der Handlung, bei der neuronale Pfade für die Entscheidung gestärkt werden.",
-                        "Dies ist der Moment der Wahl, der oft als rational erlebt wird, aber emotional vorbereitet ist.",
-                        "Es erfolgt die Umsetzung durch Kauf, Kontakt oder weitere Interaktion."
+                        "Dies ist der erste Kontakt mit einer Marke oder einem Produkt, der oft unbewusst und durch Muster gesteuert erfolgt. (~50-100ms, visuelle Verarbeitung im Kortex)",
+                        "Es entsteht eine gefühlhafte Reaktion, bei der das limbische System bewertet, bevor der Verstand urteilt. (~100-300ms, Amygdala-Aktivierung)",
+                        "Es folgt eine rationale Begründung, bei der der Verstand nach Argumenten für die emotionale Entscheidung sucht. (~300-500ms, präfrontale Bewertung)",
+                        "Es erfolgt die Vorbereitung der Handlung, bei der neuronale Pfade für die Entscheidung gestärkt werden. (~500-1000ms, motorische Planung)",
+                        "Dies ist der Moment der Wahl, der oft als rational erlebt wird, aber emotional vorbereitet ist. (~1000-2000ms, Belohnungssystem im Striatum)",
+                        "Es erfolgt die Umsetzung durch Kauf, Kontakt oder weitere Interaktion. (>2000ms, motorische Ausführung)"
                       ][activeStep]}
                     </p>
                   </div>

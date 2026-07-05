@@ -1,8 +1,23 @@
+"use client";
+
+import { useState } from "react";
 import { SectionHeader } from "@/components/SectionHeader";
 import { CTABlock } from "@/components/ui/CTABlock";
 import Image from "next/image";
 
 export default function Contact() {
+  const [message, setMessage] = useState("");
+
+  const handleQuickContact = (type: string) => {
+    const subject = type === "sports" ? "Anfrage: Sports-Paket für Trainer" : "Anfrage: Video-Call vereinbaren";
+    window.location.href = `mailto:olivia@provoid.de?subject=${encodeURIComponent(subject)}`;
+  };
+
+  const handleDirectMessage = () => {
+    if (message.trim()) {
+      window.location.href = `mailto:olivia@provoid.de?subject=Kontakt über Website&body=${encodeURIComponent(message)}`;
+    }
+  };
   return (
     <div className="flex flex-col">
       <section className="relative py-8 md:py-12 bg-surface overflow-hidden">
@@ -50,11 +65,41 @@ export default function Contact() {
             </div>
 
             <div className="border border-border bg-surface p-8 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1">
-              <h3 className="text-xl font-semibold text-text-primary mb-6">Wir freuen uns auf Ihre Nachricht</h3>
+              <h3 className="text-xl font-semibold text-text-primary mb-6">Schnellkontakt</h3>
               <p className="text-text-secondary mb-6">
-                Egal ob Unternehmen, Sportverein oder Einzelperson: Wir beraten Sie gerne zu Ihren Anforderungen und finden gemeinsam die passende Lösung.
+                Wählen Sie eine Option oder schreiben Sie uns direkt:
               </p>
-              <CTABlock primary={{ text: "E-Mail schreiben", href: "mailto:olivia@provoid.de" }} secondary={{ text: "Anrufen", href: "tel:+491744401044" }} />
+              <div className="space-y-3 mb-6">
+                <button
+                  onClick={() => handleQuickContact("sports")}
+                  className="w-full px-4 py-3 text-left border border-border rounded-editorial hover:border-primary-accent hover:bg-primary-accent/5 transition-colors text-sm text-text-primary"
+                >
+                  🏃 Sportpaket für Trainer anfragen
+                </button>
+                <button
+                  onClick={() => handleQuickContact("call")}
+                  className="w-full px-4 py-3 text-left border border-border rounded-editorial hover:border-primary-accent hover:bg-primary-accent/5 transition-colors text-sm text-text-primary"
+                >
+                  📞 Video-Call vereinbaren
+                </button>
+              </div>
+              <div className="border-t border-border pt-6">
+                <p className="text-sm font-semibold text-text-primary mb-3">Oder direkt schreiben:</p>
+                <textarea
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="Ihre Nachricht..."
+                  rows={4}
+                  className="w-full px-4 py-3 border border-border rounded-editorial text-text-primary placeholder:text-text-muted focus:outline-none focus:border-primary-accent transition-colors resize-none mb-3"
+                />
+                <button
+                  onClick={handleDirectMessage}
+                  disabled={!message.trim()}
+                  className="w-full px-4 py-3 text-sm font-medium text-white bg-primary hover:bg-primary-light transition-colors rounded-editorial shadow-lg shadow-primary-accent/20 hover:shadow-primary-accent/30 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Nachricht absenden
+                </button>
+              </div>
             </div>
           </div>
         </div>
