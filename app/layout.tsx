@@ -11,9 +11,9 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.provoid.de/"),
-  title: "PROVOID – Neurowissenschaft für Performance",
-  description: "no brain. no gain. PROVOID übersetzt neurowissenschaftliche Forschung in klare, anwendbare Systeme für bessere Entscheidungen, stärkere Performance und messbare Entwicklung.",
-  keywords: ["PROVOID", "Neurowissenschaft", "Performance", "Entscheidung", "Company", "Sports", "Neuro-Insights"],
+  title: "PROVOID – Neurowissenschaft für Unternehmen und Sport",
+  description: "PROVOID übersetzt neurowissenschaftliche Forschung in praktische Lösungen: Neuromarketing-Seminare und Beratung für Unternehmen, Neuroathletik-Programme für Vereine und Athlet:innen. Wissenschaftlich fundiert, messbar, aus Hamburg.",
+  keywords: ["PROVOID", "Neuromarketing", "Neuroathletik", "Neurowissenschaft", "Consumer Neuroscience", "Performance", "Entscheidung", "Sport", "Unternehmen", "Hamburg"],
   authors: [{ name: "PROVOID" }],
   alternates: {
     canonical: "/",

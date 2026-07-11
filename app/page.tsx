@@ -8,6 +8,7 @@ import { ProofCard } from "@/components/ui/ProofCard";
 import { ProductCard } from "@/components/ui/ProductCard";
 import { ProcessStep } from "@/components/ui/ProcessStep";
 import { BlogCard } from "@/components/ui/BlogCard";
+import { FAQSection } from "@/components/ui/FAQSection";
 import { blogPosts } from "@/lib/blog-posts";
 
 export default function Home() {
@@ -49,22 +50,6 @@ export default function Home() {
       </section>
 
       <section className="py-section-mobile md:py-section bg-white border-t border-primary-accent/10">
-        <div className="container">
-          <SectionHeader
-            label="WHO WE ARE"
-            title={
-            <div className="leading-tight">
-              Wissenschaftlich fundiert.<br />
-              Unternehmerisch gedacht.<br />
-              Praktisch angewandt.
-            </div>
-          }
-            description="PROVOID verbindet Neurowissenschaft, Verhaltenspsychologie und angewandte Performance-Strategien. Wir machen sichtbar, was Entscheidungen, Motivation und Verhalten wirklich beeinflusst, in Unternehmen, Teams und im Leistungssport."
-          />
-        </div>
-      </section>
-
-      <section className="py-section-mobile md:py-section bg-surface bg-primary-accent/10">
         <div className="container">
           <SectionHeader label="WHAT WE DO" title="Zwei Leistungsfelder" />
           
@@ -110,6 +95,22 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="py-section-mobile md:py-section bg-surface bg-primary-accent/10">
+        <div className="container">
+          <SectionHeader
+            label="WHO WE ARE"
+            title={
+            <div className="leading-tight">
+              Wissenschaftlich fundiert.<br />
+              Unternehmerisch gedacht.<br />
+              Praktisch angewandt.
+            </div>
+          }
+            description="PROVOID verbindet Neurowissenschaft, Verhaltenspsychologie und angewandte Performance-Strategien. Wir machen sichtbar, was Entscheidungen, Motivation und Verhalten wirklich beeinflusst, in Unternehmen, Teams und im Leistungssport."
+          />
+        </div>
+      </section>
+
       <section className="py-section-mobile md:py-section bg-white border-t border-primary-accent/10">
         <div className="container">
           <SectionHeader label="SOLUTIONS" title="Unsere Lösung für Ihre Herausforderung." />
@@ -140,7 +141,7 @@ export default function Home() {
                 Studien zeigen, dass 95% der Kaufentscheidungen unbewusst getroffen werden, bevor sie bewusst erklärt werden können.
               </p>
               <div className={`mt-4 transition-all duration-300 ${expandedCard === 0 ? 'opacity-100 max-h-20' : 'opacity-0 max-h-0 overflow-hidden'}`}>
-                <p className="text-sm text-text-muted italic">Begründet unseren Fokus auf implizite Messverfahren.</p>
+                <p className="text-sm text-text-muted italic">Begründet unseren Fokus auf implizite Messverfahren. (Gerald Zaltman, Harvard Business School)</p>
               </div>
               <div className="mt-4 flex items-center text-sm text-primary-accent">
                 <span>{expandedCard === 0 ? 'Weniger anzeigen' : 'Mehr erfahren'}</span>
@@ -188,7 +189,7 @@ export default function Home() {
                 Neurofeedback-Training kann die Fokusfähigkeit und Stressregulation bei Athleten signifikant verbessern.
               </p>
               <div className={`mt-4 transition-all duration-300 ${expandedCard === 2 ? 'opacity-100 max-h-20' : 'opacity-0 max-h-0 overflow-hidden'}`}>
-                <p className="text-sm text-text-muted italic">Validiert unseren Ansatz für digitale mentale Trainings.</p>
+                <p className="text-sm text-text-muted italic">Validiert unseren Ansatz für digitale mentale Trainings. (Gruzelier, 2014)</p>
               </div>
               <div className="mt-4 flex items-center text-sm text-primary-accent">
                 <span>{expandedCard === 2 ? 'Weniger anzeigen' : 'Mehr erfahren'}</span>
@@ -324,6 +325,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <FAQSection />
 
       <section className="py-section-mobile md:py-section bg-surface bg-primary-accent/10">
         <div className="container">
