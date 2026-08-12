@@ -44,13 +44,6 @@ export function Header() {
       {mobileMenuOpen && (
         <nav className="md:hidden border-t border-border bg-surface">
           <div className="container py-4 flex flex-col gap-4">
-            <div className="flex items-center gap-3 mb-4">
-              <img src="/Logo-provoid.png" alt="PROVOID" className="h-8" />
-              <div className="flex flex-col">
-                <span className="text-xl font-semibold tracking-tight text-text-primary">PROVOID</span>
-                <span className="text-[0.6rem] tracking-widest text-primary-accent uppercase">no brain. no gain.</span>
-              </div>
-            </div>
             <Link href="/" className={`text-sm font-medium ${isActive("/") ? "text-primary-accent" : "text-text-primary"}`} onClick={() => setMobileMenuOpen(false)}>Home</Link>
             <Link href="/company" className={`text-sm font-medium ${isActive("/company") ? "text-primary-accent" : "text-text-primary"}`} onClick={() => setMobileMenuOpen(false)}>Company</Link>
             <Link href="/sports" className={`text-sm font-medium ${isActive("/sports") ? "text-primary-accent" : "text-text-primary"}`} onClick={() => setMobileMenuOpen(false)}>Sports</Link>
