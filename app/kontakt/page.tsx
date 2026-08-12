@@ -4,18 +4,20 @@ import { useState } from "react";
 import { SectionHeader } from "@/components/SectionHeader";
 import { CTABlock } from "@/components/ui/CTABlock";
 import Image from "next/image";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function Contact() {
   const [message, setMessage] = useState("");
+  const { t } = useLanguage();
 
   const handleQuickContact = (type: string) => {
-    const subject = type === "sports" ? "Anfrage: Sports-Paket für Trainer" : "Anfrage: Video-Call vereinbaren";
+    const subject = type === "sports" ? t("Anfrage: Sports-Paket für Trainer", "Inquiry: Sports Package for Coaches") : t("Anfrage: Video-Call vereinbaren", "Inquiry: Schedule a Video Call");
     window.location.href = `mailto:olivia@provoid.de?subject=${encodeURIComponent(subject)}`;
   };
 
   const handleDirectMessage = () => {
     if (message.trim()) {
-      window.location.href = `mailto:olivia@provoid.de?subject=Kontakt über Website&body=${encodeURIComponent(message)}`;
+      window.location.href = `mailto:olivia@provoid.de?subject=${encodeURIComponent(t("Kontakt über Website", "Contact via Website"))}&body=${encodeURIComponent(message)}`;
     }
   };
   return (
@@ -25,10 +27,10 @@ export default function Contact() {
           <div className="max-w-4xl flex items-center justify-between gap-8">
             <div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-text-primary mb-4">
-                KONTAKT
+                {t("KONTAKT", "CONTACT")}
               </h1>
               <p className="text-base md:text-lg text-text-secondary mb-6 max-w-3xl">
-                Bereit für den nächsten Schritt? Sprechen Sie mit uns über Ihr Projekt oder Ihre Frage.
+                {t("Bereit für den nächsten Schritt? Sprechen Sie mit uns über Ihr Projekt oder Ihre Frage.", "Ready for the next step? Talk to us about your project or your question.")}
               </p>
             </div>
             <div className="flex-shrink-0 hidden md:block">
@@ -51,44 +53,44 @@ export default function Contact() {
         <div className="container">
           <div className="grid md:grid-cols-2 gap-8">
             <div className="border border-border bg-surface p-8 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1">
-              <h3 className="text-xl font-semibold text-text-primary mb-6">Direkter Kontakt</h3>
+              <h3 className="text-xl font-semibold text-text-primary mb-6">{t("Direkter Kontakt", "Direct Contact")}</h3>
               <div className="space-y-4">
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-2">E-Mail</p>
                   <a href="mailto:olivia@provoid.de" className="text-lg text-primary-accent hover:text-primary-light transition-colors">olivia@provoid.de</a>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-2">Telefon</p>
+                  <p className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-2">{t("Telefon", "Phone")}</p>
                   <a href="tel:+491744401044" className="text-lg text-primary-accent hover:text-primary-light transition-colors">+49 174 440 1044</a>
                 </div>
               </div>
             </div>
 
             <div className="border border-border bg-surface p-8 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1">
-              <h3 className="text-xl font-semibold text-text-primary mb-6">Schnellkontakt</h3>
+              <h3 className="text-xl font-semibold text-text-primary mb-6">{t("Schnellkontakt", "Quick Contact")}</h3>
               <p className="text-text-secondary mb-6">
-                Wählen Sie eine Option oder schreiben Sie uns direkt:
+                {t("Wählen Sie eine Option oder schreiben Sie uns direkt:", "Choose an option or write to us directly:")}
               </p>
               <div className="space-y-3 mb-6">
                 <button
                   onClick={() => handleQuickContact("sports")}
                   className="w-full px-4 py-3 text-left border border-border rounded-editorial hover:border-primary-accent hover:bg-primary-accent/5 transition-colors text-sm text-text-primary"
                 >
-                  🏃 Sportpaket für Trainer anfragen
+                  🏃 {t("Sportpaket für Trainer anfragen", "Inquire about Sports Package for Coaches")}
                 </button>
                 <button
                   onClick={() => handleQuickContact("call")}
                   className="w-full px-4 py-3 text-left border border-border rounded-editorial hover:border-primary-accent hover:bg-primary-accent/5 transition-colors text-sm text-text-primary"
                 >
-                  📞 Video-Call vereinbaren
+                  📞 {t("Video-Call vereinbaren", "Schedule a Video Call")}
                 </button>
               </div>
               <div className="border-t border-border pt-6">
-                <p className="text-sm font-semibold text-text-primary mb-3">Oder direkt schreiben:</p>
+                <p className="text-sm font-semibold text-text-primary mb-3">{t("Oder direkt schreiben:", "Or write directly:")}</p>
                 <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Ihre Nachricht..."
+                  placeholder={t("Ihre Nachricht...", "Your message...")}
                   rows={4}
                   className="w-full px-4 py-3 border border-border rounded-editorial text-text-primary placeholder:text-text-muted focus:outline-none focus:border-primary-accent transition-colors resize-none mb-3"
                 />
@@ -97,7 +99,7 @@ export default function Contact() {
                   disabled={!message.trim()}
                   className="w-full px-4 py-3 text-sm font-medium text-white bg-primary hover:bg-primary-light transition-colors rounded-editorial shadow-lg shadow-primary-accent/20 hover:shadow-primary-accent/30 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Nachricht absenden
+                  {t("Nachricht absenden", "Send Message")}
                 </button>
               </div>
             </div>
@@ -107,14 +109,14 @@ export default function Contact() {
 
       <section className="py-section-mobile md:py-section bg-surface">
         <div className="container">
-          <SectionHeader label="OFFICE" title="Standort" />
+          <SectionHeader label="OFFICE" title={t("Standort", "Location")} />
           
           <div className="mt-12 border border-border bg-white p-8 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1">
             <p className="text-text-secondary mb-4">
-              PROVOID ist in Hamburg beheimatet und arbeitet deutschlandweit sowie digital mit Kunden zusammen.
+              {t("PROVOID ist in Hamburg beheimatet und arbeitet deutschlandweit sowie digital mit Kunden zusammen.", "PROVOID is based in Hamburg and works with clients throughout Germany as well as digitally.")}
             </p>
             <p className="text-text-secondary">
-              Für persönliche Termine und Kooperationen in Hamburg kontaktieren Sie uns bitte vorab per E-Mail oder Telefon.
+              {t("Für persönliche Termine und Kooperationen in Hamburg kontaktieren Sie uns bitte vorab per E-Mail oder Telefon.", "For in-person appointments and collaborations in Hamburg, please contact us in advance by email or phone.")}
             </p>
           </div>
         </div>

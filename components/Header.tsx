@@ -4,10 +4,13 @@ import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { LanguageToggle } from "@/components/LanguageToggle";
 
 export function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   const isActive = (path: string) => {
     if (path === "/") {
@@ -28,28 +31,32 @@ export function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          <Link href="/" className={`text-sm font-medium ${isActive("/") ? "text-primary-accent" : "text-text-primary"} hover:text-primary-accent transition-colors`}>Home</Link>
+          <Link href="/" className={`text-sm font-medium ${isActive("/") ? "text-primary-accent" : "text-text-primary"} hover:text-primary-accent transition-colors`}>{t("Home", "Home")}</Link>
           <Link href="/company" className={`text-sm font-medium ${isActive("/company") ? "text-primary-accent" : "text-text-primary"} hover:text-primary-accent transition-colors`}>Company</Link>
           <Link href="/sports" className={`text-sm font-medium ${isActive("/sports") ? "text-primary-accent" : "text-text-primary"} hover:text-primary-accent transition-colors`}>Sports</Link>
           <Link href="/insights" className={`text-sm font-medium ${isActive("/insights") ? "text-primary-accent" : "text-text-primary"} hover:text-primary-accent transition-colors`}>Neuro-Insights</Link>
           <Link href="/about" className={`text-sm font-medium ${isActive("/about") ? "text-primary-accent" : "text-text-primary"} hover:text-primary-accent transition-colors`}>About</Link>
-          <Link href="/kontakt" className={`text-sm font-medium ${isActive("/kontakt") ? "text-primary-accent" : "text-text-primary"} hover:text-primary-accent transition-colors`}>Kontakt</Link>
+          <Link href="/kontakt" className={`text-sm font-medium ${isActive("/kontakt") ? "text-primary-accent" : "text-text-primary"} hover:text-primary-accent transition-colors`}>{t("Kontakt", "Contact")}</Link>
+          <LanguageToggle />
         </nav>
 
-        <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden p-2 text-text-primary" aria-label="Toggle menu">
-          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <LanguageToggle />
+          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2 text-text-primary" aria-label="Toggle menu">
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
       {mobileMenuOpen && (
         <nav className="md:hidden border-t border-border bg-surface">
           <div className="container py-4 flex flex-col gap-4">
-            <Link href="/" className={`text-sm font-medium ${isActive("/") ? "text-primary-accent" : "text-text-primary"}`} onClick={() => setMobileMenuOpen(false)}>Home</Link>
+            <Link href="/" className={`text-sm font-medium ${isActive("/") ? "text-primary-accent" : "text-text-primary"}`} onClick={() => setMobileMenuOpen(false)}>{t("Home", "Home")}</Link>
             <Link href="/company" className={`text-sm font-medium ${isActive("/company") ? "text-primary-accent" : "text-text-primary"}`} onClick={() => setMobileMenuOpen(false)}>Company</Link>
             <Link href="/sports" className={`text-sm font-medium ${isActive("/sports") ? "text-primary-accent" : "text-text-primary"}`} onClick={() => setMobileMenuOpen(false)}>Sports</Link>
             <Link href="/insights" className={`text-sm font-medium ${isActive("/insights") ? "text-primary-accent" : "text-text-primary"}`} onClick={() => setMobileMenuOpen(false)}>Neuro-Insights</Link>
             <Link href="/about" className={`text-sm font-medium ${isActive("/about") ? "text-primary-accent" : "text-text-primary"}`} onClick={() => setMobileMenuOpen(false)}>About</Link>
-            <Link href="/kontakt" className={`text-sm font-medium ${isActive("/kontakt") ? "text-primary-accent" : "text-text-primary"}`} onClick={() => setMobileMenuOpen(false)}>Kontakt</Link>
+            <Link href="/kontakt" className={`text-sm font-medium ${isActive("/kontakt") ? "text-primary-accent" : "text-text-primary"}`} onClick={() => setMobileMenuOpen(false)}>{t("Kontakt", "Contact")}</Link>
           </div>
         </nav>
       )}

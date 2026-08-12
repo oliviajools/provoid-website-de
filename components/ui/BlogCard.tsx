@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 interface BlogCardProps {
   title: string;
@@ -10,6 +13,7 @@ interface BlogCardProps {
 }
 
 export function BlogCard({ title, excerpt, slug, date, tags = [], author }: BlogCardProps) {
+  const { t } = useLanguage();
   return (
     <Link href={`/insights/${slug}`} className="block group">
       <article className="border border-border bg-surface p-6 rounded-card hover:border-primary-accent hover:shadow-lg hover:shadow-primary-accent/10 transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
@@ -35,7 +39,7 @@ export function BlogCard({ title, excerpt, slug, date, tags = [], author }: Blog
           </div>
         )}
         <span className="inline-flex items-center gap-2 text-sm font-medium text-primary-accent group-hover:gap-3 transition-all">
-          Weiterlesen
+          {t("Weiterlesen", "Read more")}
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>

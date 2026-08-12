@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="w-full border-t border-border bg-surface">
       <div className="container py-12">
@@ -13,9 +17,9 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">Navigation</h4>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">{t("Navigation", "Navigation")}</h4>
             <ul className="space-y-2">
-              <li><Link href="/" className="text-sm text-text-primary hover:text-text-secondary transition-colors">Home</Link></li>
+              <li><Link href="/" className="text-sm text-text-primary hover:text-text-secondary transition-colors">{t("Home", "Home")}</Link></li>
               <li><Link href="/company" className="text-sm text-text-primary hover:text-text-secondary transition-colors">Company</Link></li>
               <li><Link href="/sports" className="text-sm text-text-primary hover:text-text-secondary transition-colors">Sports</Link></li>
               <li><Link href="/insights" className="text-sm text-text-primary hover:text-text-secondary transition-colors">Neuro-Insights</Link></li>
@@ -24,7 +28,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">Kontakt</h4>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">{t("Kontakt", "Contact")}</h4>
             <ul className="space-y-2">
               <li><a href="mailto:olivia@provoid.de" className="text-sm text-text-primary hover:text-text-secondary transition-colors">olivia@provoid.de</a></li>
               <li><a href="tel:+491744401044" className="text-sm text-text-primary hover:text-text-secondary transition-colors">+49 174 440 1044</a></li>
@@ -32,17 +36,17 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">Rechtliches</h4>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">{t("Rechtliches", "Legal")}</h4>
             <ul className="space-y-2">
-              <li><Link href="/kontakt" className="text-sm text-text-primary hover:text-text-secondary transition-colors">Kontakt</Link></li>
-              <li><Link href="/datenschutz" className="text-sm text-text-primary hover:text-text-secondary transition-colors">Datenschutz</Link></li>
-              <li><Link href="/impressum" className="text-sm text-text-primary hover:text-text-secondary transition-colors">Impressum</Link></li>
+              <li><Link href="/kontakt" className="text-sm text-text-primary hover:text-text-secondary transition-colors">{t("Kontakt", "Contact")}</Link></li>
+              <li><Link href="/datenschutz" className="text-sm text-text-primary hover:text-text-secondary transition-colors">{t("Datenschutz", "Privacy Policy")}</Link></li>
+              <li><Link href="/impressum" className="text-sm text-text-primary hover:text-text-secondary transition-colors">{t("Impressum", "Legal Notice")}</Link></li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-border mt-8 pt-8">
-          <p className="text-sm text-text-muted">© {new Date().getFullYear()} PROVOID. Alle Rechte vorbehalten.</p>
+          <p className="text-sm text-text-muted">© {new Date().getFullYear()} PROVOID. {t("Alle Rechte vorbehalten.", "All rights reserved.")}</p>
         </div>
       </div>
     </footer>

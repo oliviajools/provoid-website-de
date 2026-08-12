@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { SectionHeader } from "@/components/SectionHeader";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-const faqItems = [
+const faqItemsDe = [
   {
     question: "Was ist Neuromarketing?",
     answer:
@@ -36,8 +37,43 @@ const faqItems = [
   },
 ];
 
+const faqItemsEn = [
+  {
+    question: "What is neuromarketing?",
+    answer:
+      "Neuromarketing combines neuroscience with marketing. It studies how the brain responds to brands, products and communication. Studies show that 95% of all purchase decisions are made unconsciously (Gerald Zaltman, Harvard Business School). Neuromarketing makes these unconscious processes measurable and usable.",
+  },
+  {
+    question: "What exactly does PROVOID do?",
+    answer:
+      "PROVOID translates neuroscientific research into practical solutions for companies and sport. We offer seminars and workshops on neuromarketing, neurologically grounded optimization of products and websites, season programs for sports clubs, and access to the PROVOID App for training and tracking.",
+  },
+  {
+    question: "How does a purchase decision unfold in the brain?",
+    answer:
+      "A purchase decision goes through six phases: perception (~50-100ms, visual cortex), emotion (~100-300ms, amygdala), evaluation (~300-500ms, prefrontal cortex), activation (~500-1000ms, motor cortex), decision (~1000-2000ms, striatum) and action (>2000ms). Emotion evaluates before the mind judges.",
+  },
+  {
+    question: "What is neuroathletics?",
+    answer:
+      "Neuroathletics trains the nervous system as the foundation of athletic performance. Focus, reaction time and movement quality depend on neural processing. Neurofeedback training can significantly improve focus and stress regulation in athletes. PROVOID offers neuro-education, training sessions and individual support.",
+  },
+  {
+    question: "Who are PROVOID's offerings suitable for?",
+    answer:
+      "Our offerings are aimed at companies and brands (neuromarketing, seminars, consulting), sports clubs and coaching teams (season programs), and ambitious individual athletes at the performance level. We operate throughout Germany, based in Hamburg.",
+  },
+  {
+    question: "What scientific basis does PROVOID work on?",
+    answer:
+      "Our work is based on current neuroscientific research, our own EEG measurements in cooperation with neuro labs, and established studies, e.g. on anticipation in the reward system (Knutson et al., 2001). With NeuroInsight, we also publish our own scientific publication.",
+  },
+];
+
 export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const { t, language } = useLanguage();
+  const faqItems = language === "de" ? faqItemsDe : faqItemsEn;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -59,7 +95,7 @@ export function FAQSection() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="container">
-        <SectionHeader label="FAQ" title="Häufige Fragen" />
+        <SectionHeader label="FAQ" title={t("Häufige Fragen", "Frequently Asked Questions")} />
 
         <div className="mt-12 max-w-3xl space-y-4">
           {faqItems.map((item, index) => (

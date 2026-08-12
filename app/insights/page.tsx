@@ -1,10 +1,14 @@
+"use client";
+
 import { SectionHeader } from "@/components/SectionHeader";
 import { CTABlock } from "@/components/ui/CTABlock";
 import { BlogCard } from "@/components/ui/BlogCard";
 import { blogPosts } from "@/lib/blog-posts";
 import Image from "next/image";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function Insights() {
+  const { t } = useLanguage();
   return (
     <div className="flex flex-col">
       <section className="relative py-8 md:py-12 bg-surface overflow-hidden">
@@ -14,7 +18,7 @@ export default function Insights() {
               NEURO-INSIGHTS
             </h1>
             <p className="text-lg md:text-xl text-text-secondary mb-8 max-w-3xl">
-              Aktuellste Neurowissenschaftliche Erkenntnisse aus der Forschung.
+              {t("Aktuellste Neurowissenschaftliche Erkenntnisse aus der Forschung.", "The latest neuroscientific insights from research.")}
             </p>
           </div>
         </div>
@@ -24,8 +28,8 @@ export default function Insights() {
         <div className="container">
           <SectionHeader 
             label="BLOG" 
-            title="Aktuelle Artikel" 
-            description="Wöchentlich neuer Input zu Neurowissenschaftliche Studien, Erkenntnissen und Trends." 
+            title={t("Aktuelle Artikel", "Latest Articles")} 
+            description={t("Wöchentlich neuer Input zu Neurowissenschaftliche Studien, Erkenntnissen und Trends.", "Weekly new input on neuroscientific studies, findings and trends.")} 
           />
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
@@ -46,20 +50,20 @@ export default function Insights() {
 
       <section className="py-section-mobile md:py-section bg-surface">
         <div className="container">
-          <SectionHeader label="NEWSLETTER" title="Bleiben Sie informiert" description="Abonnieren Sie unseren Newsletter für regelmäßige Neurowissenschaftliche Einblicke." />
+          <SectionHeader label="NEWSLETTER" title={t("Bleiben Sie informiert", "Stay Informed")} description={t("Abonnieren Sie unseren Newsletter für regelmäßige Neurowissenschaftliche Einblicke.", "Subscribe to our newsletter for regular neuroscientific insights.")} />
           
           <div className="mt-12 max-w-md">
             <form className="flex flex-col sm:flex-row gap-4">
               <input
                 type="email"
-                placeholder="Ihre E-Mail-Adresse"
+                placeholder={t("Ihre E-Mail-Adresse", "Your email address")}
                 className="flex-1 px-4 py-3 border border-border rounded-editorial text-text-primary placeholder:text-text-muted focus:outline-none focus:border-primary-accent transition-colors"
               />
               <button
                 type="submit"
                 className="px-6 py-3 text-sm font-medium text-white bg-primary hover:bg-primary-light transition-colors rounded-editorial shadow-lg shadow-primary-accent/20 hover:shadow-primary-accent/30"
               >
-                Abonnieren
+                {t("Abonnieren", "Subscribe")}
               </button>
             </form>
           </div>
